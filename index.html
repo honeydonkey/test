@@ -418,25 +418,52 @@
       <div class="orb orb-3"></div>
     </div>
     <!-- NAVIGATION -->
-    <nav class="fixed top-0 left-0 right-0 z-50 pt-5">
-      <div class="container-main">
-        <div class="glass-nav rounded-full h-20 px-7 flex items-center justify-between">
-          <div class="flex items-center gap-4">
-            <div class="w-11 h-11 rounded-full bg-gradient-to-br from-pink-400 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-pink-500/20">
-              <span class="text-white font-black text-sm"> MW </span>
-            </div>
-          </div>
-          <div id="desktopNav" class="hidden lg:flex items-center gap-2"></div>
-          <button id="menuBtn" class="lg:hidden glass-button w-14 h-14 flex items-center justify-center">
-            <i data-lucide="menu" class="w-5 h-5 text-pink-600"></i>
-          </button>
-        </div>
-        <!-- MOBILE NAV -->
-        <div id="mobileNav" class="hidden mt-4 glass p-5">
-          <div id="mobileNavItems" class="space-y-3"></div>
+<nav class="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+  <div class="container-main">
+    <div
+      class="glass-nav relative rounded-full min-h-[74px] lg:h-20 px-4 sm:px-6"
+    >
+      <!-- LEFT LOGO -->
+      <div
+        class="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 flex items-center"
+      >
+        <div
+          class="w-11 h-11 rounded-full bg-gradient-to-br from-pink-400 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-pink-500/20"
+        >
+          <span class="text-white font-black text-sm">MW</span>
         </div>
       </div>
-    </nav>
+
+      <!-- CENTER NAV -->
+      <div class="hidden lg:flex justify-center items-center h-full">
+        <div
+          id="desktopNav"
+          class="flex items-center gap-2 xl:gap-3"
+        ></div>
+      </div>
+
+      <!-- MOBILE MENU BUTTON -->
+      <div
+        class="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 lg:hidden"
+      >
+        <button
+          id="menuBtn"
+          class="glass-button w-12 h-12 flex items-center justify-center"
+        >
+          <i data-lucide="menu" class="w-5 h-5 text-pink-600"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE NAV -->
+    <div
+      id="mobileNav"
+      class="hidden mt-4 glass p-4 sm:p-5 rounded-3xl"
+    >
+      <div id="mobileNavItems" class="space-y-3"></div>
+    </div>
+  </div>
+</nav>
     <!-- MAIN -->
     <main class="relative z-10 pt-28">
       <!-- HERO -->
