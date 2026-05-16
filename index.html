@@ -1,0 +1,631 @@
+# FULL ENHANCED CYBERSECURITY PORTFOLIO CODE
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marianne Wong — Cyber Intelligence Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyberDark: '#06070d',
+                        cyberCard: '#0f111a',
+                        cyberBlue: '#00e5ff',
+                        cyberPink: '#ff007f',
+                        cyberGray: '#a5afc3',
+                        cyberBorder: '#1d2333'
+                    },
+                    fontFamily: {
+                        display: ['Orbitron', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #06070d;
+            color: white;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -3;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(0,229,255,0.08), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255,0,127,0.08), transparent 30%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .noise {
+            position: fixed;
+            inset: 0;
+            opacity: 0.04;
+            z-index: -1;
+            background-image:
+                url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            pointer-events: none;
+        }
+
+        h1,h2,h3,h4,.font-display {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .cyber-card {
+            background: rgba(15,17,26,0.75);
+            border: 1px solid rgba(255,255,255,0.06);
+            backdrop-filter: blur(14px);
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                130deg,
+                transparent,
+                rgba(255,255,255,0.03),
+                transparent
+            );
+            transform: translateX(-100%);
+            transition: 0.8s;
+        }
+
+        .cyber-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0,229,255,0.4);
+            box-shadow:
+                0 0 20px rgba(0,229,255,0.12),
+                0 0 40px rgba(0,229,255,0.08);
+        }
+
+        .neon-blue {
+            color: #00e5ff;
+            text-shadow: 0 0 12px rgba(0,229,255,0.7);
+        }
+
+        .neon-pink {
+            color: #ff007f;
+            text-shadow: 0 0 12px rgba(255,0,127,0.7);
+        }
+
+        .section-divider {
+            height: 1px;
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(0,229,255,0.7),
+                    rgba(255,0,127,0.7),
+                    transparent
+                );
+            margin: 70px 0;
+            position: relative;
+        }
+
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: #00e5ff;
+            border-radius: 999px;
+            box-shadow: 0 0 18px #00e5ff;
+        }
+
+        .glow-orb {
+            position: fixed;
+            border-radius: 9999px;
+            filter: blur(80px);
+            opacity: 0.18;
+            z-index: -5;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .orb-one {
+            width: 320px;
+            height: 320px;
+            background: #00e5ff;
+            top: 5%;
+            left: -120px;
+        }
+
+        .orb-two {
+            width: 280px;
+            height: 280px;
+            background: #ff007f;
+            bottom: 5%;
+            right: -80px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-35px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 14px;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #00e5ff, #ff007f);
+        }
+
+        .timeline-node {
+            position: absolute;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 9999px;
+            background: #06070d;
+            border: 2px solid #00e5ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0,229,255,0.6);
+        }
+
+        .metric-box {
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-pill {
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-pill:hover {
+            transform: translateY(-3px);
+            border-color: #00e5ff;
+            box-shadow: 0 0 15px rgba(0,229,255,0.3);
+        }
+
+        .terminal-line::after {
+            content: '_';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.7s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#00e5ff, #ff007f);
+            border-radius: 999px;
+        }
+
+    </style>
+</head>
+
+<body class="min-h-screen antialiased px-6 lg:px-10 py-10 max-w-7xl mx-auto">
+
+    <div class="noise"></div>
+
+    <div class="glow-orb orb-one"></div>
+    <div class="glow-orb orb-two"></div>
+
+    <!-- HERO -->
+
+    <section class="grid lg:grid-cols-[1.2fr_0.8fr] gap-14 items-center min-h-[85vh] fade-in">
+
+        <div>
+
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-8">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span class="uppercase tracking-[0.3em] text-xs text-cyan-300 font-display">
+                    Analyst Node Active
+                </span>
+            </div>
+
+            <h1 class="text-6xl lg:text-8xl font-black uppercase leading-none tracking-[0.12em] mb-6">
+                Marianne
+                <span class="neon-pink block mt-2">Wong</span>
+            </h1>
+
+            <div class="h-[2px] w-40 bg-gradient-to-r from-cyan-400 to-pink-500 mb-8"></div>
+
+            <p class="text-cyan-300 uppercase tracking-[0.35em] text-sm font-display mb-8 terminal-line">
+                Cybersecurity Risk Analyst
+            </p>
+
+            <p class="text-cyberGray text-lg leading-9 max-w-2xl mb-10">
+                Elevating cybersecurity posture through AI-driven risk intelligence,
+                vendor security governance, threat intelligence operations, and enterprise
+                resilience engineering.
+            </p>
+
+            <div class="flex flex-wrap gap-5">
+
+                <a href="#contact"
+                    class="px-7 py-4 rounded-full bg-cyan-400 text-black font-bold tracking-wider hover:bg-white transition-all shadow-[0_0_25px_rgba(0,229,255,0.35)]">
+                    INITIATE_CONTACT
+                </a>
+
+                <a href="https://flowcv.com/resume/2mofja4dwmne"
+                    target="_blank"
+                    class="px-7 py-4 rounded-full border border-pink-500 text-pink-400 font-bold tracking-wider hover:bg-pink-500 hover:text-white transition-all">
+                    DOWNLOAD_DOSSIER
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="space-y-6">
+
+            <div class="cyber-card rounded-3xl p-8">
+
+                <div class="flex items-center justify-between mb-6">
+                    <span class="font-display text-sm uppercase tracking-[0.3em] text-cyan-300">
+                        Threat Metrics
+                    </span>
+
+                    <i class="fas fa-shield-halved text-pink-500 text-xl"></i>
+                </div>
+
+                <div class="grid grid-cols-2 gap-5">
+
+                    <div class="metric-box rounded-2xl p-5">
+                        <div class="text-4xl font-black neon-blue mb-2">40%</div>
+                        <div class="text-sm text-cyberGray uppercase tracking-wider">
+                            Phishing Resilience
+                        </div>
+                    </div>
+
+                    <div class="metric-box rounded-2xl p-5">
+                        <div class="text-4xl font-black neon-pink mb-2">30%</div>
+                        <div class="text-sm text-cyberGray uppercase tracking-wider">
+                            Attack Surface Reduction
+                        </div>
+                    </div>
+
+                    <div class="metric-box rounded-2xl p-5">
+                        <div class="text-4xl font-black neon-blue mb-2">200+</div>
+                        <div class="text-sm text-cyberGray uppercase tracking-wider">
+                            Weekly Threat Feeds
+                        </div>
+                    </div>
+
+                    <div class="metric-box rounded-2xl p-5">
+                        <div class="text-4xl font-black neon-pink mb-2">25%</div>
+                        <div class="text-sm text-cyberGray uppercase tracking-wider">
+                            AI Automation Impact
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="cyber-card rounded-3xl p-8">
+
+                <div class="flex items-center justify-between mb-6">
+                    <span class="font-display text-sm uppercase tracking-[0.3em] text-pink-400">
+                        Intelligence Domains
+                    </span>
+
+                    <i class="fas fa-satellite-dish text-cyan-400"></i>
+                </div>
+
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-pill px-4 py-2 rounded-full text-sm text-cyan-300">Threat Intelligence</span>
+                    <span class="skill-pill px-4 py-2 rounded-full text-sm text-pink-400">Vendor Risk</span>
+                    <span class="skill-pill px-4 py-2 rounded-full text-sm text-cyan-300">DORA Compliance</span>
+                    <span class="skill-pill px-4 py-2 rounded-full text-sm text-pink-400">AI Security</span>
+                    <span class="skill-pill px-4 py-2 rounded-full text-sm text-cyan-300">PCI-DSS</span>
+                    <span class="skill-pill px-4 py-2 rounded-full text-sm text-pink-400">Incident Response</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- EXPERIENCE -->
+
+    <section class="fade-in">
+
+        <div class="flex items-center gap-4 mb-14">
+            <i class="fas fa-network-wired text-cyan-400 text-2xl"></i>
+            <h2 class="text-3xl lg:text-4xl font-black uppercase tracking-[0.25em]">
+                Experience Log
+            </h2>
+        </div>
+
+        <div class="timeline space-y-10">
+
+            <div class="relative">
+                <div class="timeline-node">
+                    <div class="w-2 h-2 rounded-full bg-cyan-400"></div>
+                </div>
+
+                <div class="cyber-card rounded-3xl p-8">
+
+                    <div class="flex flex-col lg:flex-row lg:justify-between gap-5 mb-6">
+
+                        <div>
+                            <h3 class="text-3xl font-bold mb-3">
+                                Risk Analyst
+                                <span class="neon-pink">@ Grab</span>
+                            </h3>
+
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs uppercase tracking-wider">
+                                    Vendor Risk
+                                </span>
+
+                                <span class="px-3 py-1 rounded-full bg-pink-500/10 border border-pink-400/30 text-pink-300 text-xs uppercase tracking-wider">
+                                    Compliance
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="text-cyan-300 uppercase tracking-[0.25em] text-sm font-display">
+                            Dec 2025 — Present
+                        </div>
+
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-5 text-cyberGray leading-8">
+
+                        <div>
+                            • Conduct third-party security risk assessments.
+                            <br><br>
+                            • Review SOC reports, policies, and compliance documentation.
+                            <br><br>
+                            • Maintain vendor intelligence dashboards.
+                        </div>
+
+                        <div>
+                            • Prioritize remediation findings.
+                            <br><br>
+                            • Drive mitigation strategies.
+                            <br><br>
+                            • Strengthen enterprise security posture.
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SKILLS -->
+
+    <section class="fade-in">
+
+        <div class="flex items-center gap-4 mb-14">
+            <i class="fas fa-microchip text-pink-500 text-2xl"></i>
+            <h2 class="text-3xl lg:text-4xl font-black uppercase tracking-[0.25em]">
+                Capabilities Matrix
+            </h2>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-8">
+
+            <div class="cyber-card rounded-3xl p-8">
+                <h3 class="text-xl font-bold mb-6 neon-blue uppercase tracking-[0.2em]">
+                    Governance & Compliance
+                </h3>
+
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-pill px-4 py-2 rounded-full">PCI-DSS</span>
+                    <span class="skill-pill px-4 py-2 rounded-full">DORA</span>
+                    <span class="skill-pill px-4 py-2 rounded-full">Vendor Risk</span>
+                    <span class="skill-pill px-4 py-2 rounded-full">GRC</span>
+                </div>
+            </div>
+
+            <div class="cyber-card rounded-3xl p-8">
+                <h3 class="text-xl font-bold mb-6 neon-pink uppercase tracking-[0.2em]">
+                    Threat Operations
+                </h3>
+
+                <div class="flex flex-wrap gap-3">
+                    <span class="skill-pill px-4 py-2 rounded-full">Threat Intelligence</span>
+                    <span class="skill-pill px-4 py-2 rounded-full">Incident Response</span>
+                    <span class="skill-pill px-4 py-2 rounded-full">Phishing Simulation</span>
+                    <span class="skill-pill px-4 py-2 rounded-full">Security Awareness</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="fade-in mb-24">
+
+        <div class="cyber-card rounded-[40px] p-10 lg:p-16 relative overflow-hidden">
+
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_#00e5ff,_transparent_35%)]"></div>
+
+            <div class="relative z-10">
+
+                <div class="text-sm uppercase tracking-[0.4em] text-cyan-300 font-display mb-6">
+                    Secure Uplink Established
+                </div>
+
+                <h2 class="text-5xl lg:text-6xl font-black leading-tight mb-8 max-w-4xl">
+                    Ready To Strengthen Your
+                    <span class="neon-pink">Cybersecurity Posture</span>
+                </h2>
+
+                <p class="text-cyberGray text-lg leading-9 max-w-3xl mb-12">
+                    Available for cybersecurity risk analysis, threat intelligence,
+                    vendor governance, compliance operations, and AI-enhanced
+                    security initiatives.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-5">
+
+                    <a href="mailto:marianne_wong@protonmail.com"
+                        class="cyber-card rounded-2xl p-6 flex items-center justify-between hover:border-cyan-400">
+
+                        <div>
+                            <div class="text-xs uppercase tracking-[0.25em] text-cyan-300 mb-2">
+                                Email Channel
+                            </div>
+                            <div class="text-lg font-semibold">
+                                marianne_wong@protonmail.com
+                            </div>
+                        </div>
+
+                        <i class="fas fa-arrow-right text-cyan-400"></i>
+
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/mwhm/"
+                        target="_blank"
+                        class="cyber-card rounded-2xl p-6 flex items-center justify-between hover:border-pink-500">
+
+                        <div>
+                            <div class="text-xs uppercase tracking-[0.25em] text-pink-300 mb-2">
+                                Professional Network
+                            </div>
+                            <div class="text-lg font-semibold">
+                                LinkedIn Profile
+                            </div>
+                        </div>
+
+                        <i class="fas fa-arrow-right text-pink-400"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="border-t border-white/10 pt-10 pb-6 text-sm text-cyberGray">
+
+        <div class="flex flex-col lg:flex-row lg:justify-between gap-5 uppercase tracking-[0.25em] font-display">
+
+            <div>
+                SYS.STATUS : SECURE
+            </div>
+
+            <div>
+                NODE : MALAYSIA
+            </div>
+
+            <div>
+                BUILD : v3.2.6
+            </div>
+
+            <div>
+                CONNECTION : ENCRYPTED
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script>
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add('visible')
+                }
+            })
+        }, { threshold: 0.1 })
+
+        document.querySelectorAll('.fade-in').forEach((el) => {
+            observer.observe(el)
+        })
+
+    </script>
+
+</body>
+</html>
+```
