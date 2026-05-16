@@ -2,9 +2,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "build",
   "framework": "create-react-app",
-  "env": {
-    "REACT_APP_ENV": "@react_app_env"
-  },
   "github": {
     "enabled": true,
     "silent": false,
