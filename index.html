@@ -1,628 +1,724 @@
+# Refined Cybersecurity Portfolio Structure (Content Preserved, Styling-First Approach)
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marianne Wong — Cyber Intelligence Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marianne Wong — Cybersecurity Risk Analyst</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet" />
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        cyberDark: '#06070d',
-                        cyberCard: '#0f111a',
-                        cyberBlue: '#00e5ff',
-                        cyberPink: '#ff007f',
-                        cyberGray: '#a5afc3',
-                        cyberBorder: '#1d2333'
-                    },
-                    fontFamily: {
-                        display: ['Orbitron', 'sans-serif'],
-                        body: ['Inter', 'sans-serif']
-                    }
-                }
-            }
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#050816',
+            surface: 'rgba(255,255,255,0.04)',
+            border: 'rgba(255,255,255,0.08)',
+            cyan: '#00e5ff',
+            pink: '#ff4fd8',
+            muted: '#9aa4bf'
+          },
+          fontFamily: {
+            display: ['Orbitron', 'sans-serif'],
+            body: ['Inter', 'sans-serif']
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <style>
+  <style>
+    :root {
+      --bg: #050816;
+      --surface: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --cyan: #00e5ff;
+      --pink: #ff4fd8;
+      --text: #f5f7ff;
+      --muted: #9aa4bf;
+    }
 
-        * {
-            scroll-behavior: smooth;
-        }
+    * {
+      scroll-behavior: smooth;
+    }
 
-        body {
-            background: #06070d;
-            color: white;
-            overflow-x: hidden;
-            font-family: 'Inter', sans-serif;
-            position: relative;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(0,229,255,.12), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(255,79,216,.10), transparent 25%),
+        linear-gradient(135deg, #050816 0%, #070b1a 40%, #090d1f 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -3;
-            pointer-events: none;
-        }
+    h1, h2, h3, .font-display {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: .05em;
+    }
 
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background:
-                radial-gradient(circle at 20% 20%, rgba(0,229,255,0.08), transparent 30%),
-                radial-gradient(circle at 80% 70%, rgba(255,0,127,0.08), transparent 30%);
-            z-index: -2;
-            pointer-events: none;
-        }
+    .container-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px 24px 80px;
+    }
 
-        .noise {
-            position: fixed;
-            inset: 0;
-            opacity: 0.04;
-            z-index: -1;
-            background-image:
-                url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            pointer-events: none;
-        }
+    .glass-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 28px;
+      transition: .35s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-        h1,h2,h3,h4,.font-display {
-            font-family: 'Orbitron', sans-serif;
-        }
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,229,255,.22);
+      box-shadow:
+        0 15px 50px rgba(0,0,0,.45),
+        0 0 35px rgba(0,229,255,.08);
+    }
 
-        .cyber-card {
-            background: rgba(15,17,26,0.75);
-            border: 1px solid rgba(255,255,255,0.06);
-            backdrop-filter: blur(14px);
-            transition: all 0.35s ease;
-            position: relative;
-            overflow: hidden;
-        }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
 
-        .cyber-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                130deg,
-                transparent,
-                rgba(255,255,255,0.03),
-                transparent
-            );
-            transform: translateX(-100%);
-            transition: 0.8s;
-        }
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,229,255,.55),
+        rgba(255,79,216,.55),
+        transparent
+      );
+      margin: 70px 0;
+    }
 
-        .cyber-card:hover::before {
-            transform: translateX(100%);
-        }
+    .skill-pill {
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: .92rem;
+      color: #dce6ff;
+      transition: .3s ease;
+    }
 
-        .cyber-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0,229,255,0.4);
-            box-shadow:
-                0 0 20px rgba(0,229,255,0.12),
-                0 0 40px rgba(0,229,255,0.08);
-        }
+    .skill-pill:hover {
+      border-color: rgba(0,229,255,.35);
+      color: white;
+      box-shadow: 0 0 18px rgba(0,229,255,.15);
+    }
 
-        .neon-blue {
-            color: #00e5ff;
-            text-shadow: 0 0 12px rgba(0,229,255,0.7);
-        }
+    .timeline-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--cyan);
+      box-shadow: 0 0 12px rgba(0,229,255,.8);
+      margin-top: 9px;
+      flex-shrink: 0;
+    }
 
-        .neon-pink {
-            color: #ff007f;
-            text-shadow: 0 0 12px rgba(255,0,127,0.7);
-        }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 48px;
+      align-items: center;
+      min-height: 88vh;
+    }
 
-        .section-divider {
-            height: 1px;
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(0,229,255,0.7),
-                    rgba(255,0,127,0.7),
-                    transparent
-                );
-            margin: 70px 0;
-            position: relative;
-        }
+    .hero-orb {
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle,
+        rgba(0,229,255,.65),
+        rgba(0,229,255,.08),
+        transparent 72%);
+      filter: blur(8px);
+      animation: floaty 6s ease-in-out infinite;
+      margin: 0 auto;
+    }
 
-        .section-divider::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 12px;
-            height: 12px;
-            background: #00e5ff;
-            border-radius: 999px;
-            box-shadow: 0 0 18px #00e5ff;
-        }
+    @keyframes floaty {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
 
-        .glow-orb {
-            position: fixed;
-            border-radius: 9999px;
-            filter: blur(80px);
-            opacity: 0.18;
-            z-index: -5;
-            animation: float 10s infinite ease-in-out;
-        }
+    .experience-item {
+      cursor: pointer;
+    }
 
-        .orb-one {
-            width: 320px;
-            height: 320px;
-            background: #00e5ff;
-            top: 5%;
-            left: -120px;
-        }
+    .experience-content {
+      display: none;
+    }
 
-        .orb-two {
-            width: 280px;
-            height: 280px;
-            background: #ff007f;
-            bottom: 5%;
-            right: -80px;
-            animation-delay: 2s;
-        }
+    .experience-item.active .experience-content {
+      display: block;
+    }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-35px); }
-            100% { transform: translateY(0px); }
-        }
+    .experience-item.active .expand-icon {
+      transform: rotate(90deg);
+      color: var(--cyan);
+    }
 
-        .timeline {
-            position: relative;
-            padding-left: 50px;
-        }
+    .expand-icon {
+      transition: .3s ease;
+    }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 14px;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, #00e5ff, #ff007f);
-        }
+    a {
+      transition: .3s ease;
+    }
 
-        .timeline-node {
-            position: absolute;
-            left: 0;
-            width: 30px;
-            height: 30px;
-            border-radius: 9999px;
-            background: #06070d;
-            border: 2px solid #00e5ff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(0,229,255,0.6);
-        }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
 
-        .metric-box {
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.02);
-            backdrop-filter: blur(10px);
-        }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,.12);
+      border-radius: 999px;
+    }
 
-        .skill-pill {
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
-        }
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 60px;
+      }
 
-        .skill-pill:hover {
-            transform: translateY(-3px);
-            border-color: #00e5ff;
-            box-shadow: 0 0 15px rgba(0,229,255,0.3);
-        }
-
-        .terminal-line::after {
-            content: '_';
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: 0.7s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0px);
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(#00e5ff, #ff007f);
-            border-radius: 999px;
-        }
-
-    </style>
+      .hero-orb {
+        width: 260px;
+        height: 260px;
+      }
+    }
+  </style>
 </head>
 
-<body class="min-h-screen antialiased px-6 lg:px-10 py-10 max-w-7xl mx-auto">
-
-    <div class="noise"></div>
-
-    <div class="glow-orb orb-one"></div>
-    <div class="glow-orb orb-two"></div>
+<body>
+  <main class="container-wrap">
 
     <!-- HERO -->
+    <section class="hero-grid">
+      <div>
+        <p class="font-display uppercase tracking-[0.35em] text-cyan text-xs mb-5">
+          Cybersecurity Risk Analyst
+        </p>
 
-    <section class="grid lg:grid-cols-[1.2fr_0.8fr] gap-14 items-center min-h-[85vh] fade-in">
+        <h1 class="text-6xl lg:text-7xl font-black leading-none mb-8">
+          Marianne
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">
+            Wong
+          </span>
+        </h1>
 
-        <div>
+        <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mb-10">
+          Building resilient security ecosystems through governance, third-party risk management,
+          threat intelligence, compliance operations, and security awareness initiatives.
+        </p>
 
-            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 mb-8">
-                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                <span class="uppercase tracking-[0.3em] text-xs text-cyan-300 font-display">
-                    Analyst Node Active
-                </span>
-            </div>
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a href="#contact" class="px-7 py-3 rounded-full bg-cyan text-black font-semibold hover:bg-white">
+            Connect
+          </a>
 
-            <h1 class="text-6xl lg:text-8xl font-black uppercase leading-none tracking-[0.12em] mb-6">
-                Marianne
-                <span class="neon-pink block mt-2">Wong</span>
-            </h1>
-
-            <div class="h-[2px] w-40 bg-gradient-to-r from-cyan-400 to-pink-500 mb-8"></div>
-
-            <p class="text-cyan-300 uppercase tracking-[0.35em] text-sm font-display mb-8 terminal-line">
-                Cybersecurity Risk Analyst
-            </p>
-
-            <p class="text-cyberGray text-lg leading-9 max-w-2xl mb-10">
-                Elevating cybersecurity posture through AI-driven risk intelligence,
-                vendor security governance, threat intelligence operations, and enterprise
-                resilience engineering.
-            </p>
-
-            <div class="flex flex-wrap gap-5">
-
-                <a href="#contact"
-                    class="px-7 py-4 rounded-full bg-cyan-400 text-black font-bold tracking-wider hover:bg-white transition-all shadow-[0_0_25px_rgba(0,229,255,0.35)]">
-                    INITIATE_CONTACT
-                </a>
-
-                <a href="https://flowcv.com/resume/2mofja4dwmne"
-                    target="_blank"
-                    class="px-7 py-4 rounded-full border border-pink-500 text-pink-400 font-bold tracking-wider hover:bg-pink-500 hover:text-white transition-all">
-                    DOWNLOAD_DOSSIER
-                </a>
-
-            </div>
-
+          <a href="#experience" class="px-7 py-3 rounded-full border border-white/10 hover:border-cyan/40">
+            View Experience
+          </a>
         </div>
 
-        <div class="space-y-6">
-
-            <div class="cyber-card rounded-3xl p-8">
-
-                <div class="flex items-center justify-between mb-6">
-                    <span class="font-display text-sm uppercase tracking-[0.3em] text-cyan-300">
-                        Threat Metrics
-                    </span>
-
-                    <i class="fas fa-shield-halved text-pink-500 text-xl"></i>
-                </div>
-
-                <div class="grid grid-cols-2 gap-5">
-
-                    <div class="metric-box rounded-2xl p-5">
-                        <div class="text-4xl font-black neon-blue mb-2">40%</div>
-                        <div class="text-sm text-cyberGray uppercase tracking-wider">
-                            Phishing Resilience
-                        </div>
-                    </div>
-
-                    <div class="metric-box rounded-2xl p-5">
-                        <div class="text-4xl font-black neon-pink mb-2">30%</div>
-                        <div class="text-sm text-cyberGray uppercase tracking-wider">
-                            Attack Surface Reduction
-                        </div>
-                    </div>
-
-                    <div class="metric-box rounded-2xl p-5">
-                        <div class="text-4xl font-black neon-blue mb-2">200+</div>
-                        <div class="text-sm text-cyberGray uppercase tracking-wider">
-                            Weekly Threat Feeds
-                        </div>
-                    </div>
-
-                    <div class="metric-box rounded-2xl p-5">
-                        <div class="text-4xl font-black neon-pink mb-2">25%</div>
-                        <div class="text-sm text-cyberGray uppercase tracking-wider">
-                            AI Automation Impact
-                        </div>
-                    </div>
-
-                </div>
-
+        <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-400">
+          <div class="glass-card p-4">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-envelope text-cyan"></i>
+              <span>marianne_wong@protonmail.com</span>
             </div>
+          </div>
 
-            <div class="cyber-card rounded-3xl p-8">
-
-                <div class="flex items-center justify-between mb-6">
-                    <span class="font-display text-sm uppercase tracking-[0.3em] text-pink-400">
-                        Intelligence Domains
-                    </span>
-
-                    <i class="fas fa-satellite-dish text-cyan-400"></i>
-                </div>
-
-                <div class="flex flex-wrap gap-3">
-                    <span class="skill-pill px-4 py-2 rounded-full text-sm text-cyan-300">Threat Intelligence</span>
-                    <span class="skill-pill px-4 py-2 rounded-full text-sm text-pink-400">Vendor Risk</span>
-                    <span class="skill-pill px-4 py-2 rounded-full text-sm text-cyan-300">DORA Compliance</span>
-                    <span class="skill-pill px-4 py-2 rounded-full text-sm text-pink-400">AI Security</span>
-                    <span class="skill-pill px-4 py-2 rounded-full text-sm text-cyan-300">PCI-DSS</span>
-                    <span class="skill-pill px-4 py-2 rounded-full text-sm text-pink-400">Incident Response</span>
-                </div>
-
+          <div class="glass-card p-4">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-phone text-pink"></i>
+              <span>+6019-234-56789</span>
             </div>
+          </div>
 
+          <div class="glass-card p-4">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-location-dot text-cyan"></i>
+              <span>Dengkil, Selangor, Malaysia</span>
+            </div>
+          </div>
+
+          <div class="glass-card p-4">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-shield-halved text-pink"></i>
+              <span>GRC · Threat Intelligence · Vendor Risk</span>
+            </div>
+          </div>
         </div>
+      </div>
 
+      <div class="relative flex justify-center items-center">
+        <div class="hero-orb"></div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- SUMMARY -->
+    <section>
+      <h2 class="section-title">
+        <i class="fas fa-terminal text-pink"></i>
+        SYS.SUMMARY
+      </h2>
+
+      <div class="glass-card p-8 leading-relaxed text-slate-300 text-[15px]">
+        Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk management,
+        security awareness, and security operations support. Experienced in vendor security assessments,
+        regulatory compliance aligned with PCI DSS and DORA, and threat intelligence analysis.
+        Demonstrated success improving phishing resilience through enterprise security awareness campaigns.
+        Combines risk analysis, incident investigation, and threat intelligence to strengthen organisational
+        security posture through AI adoption and operational security improvements.
+      </div>
     </section>
 
     <div class="section-divider"></div>
 
     <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2 class="section-title">
+        <i class="fas fa-network-wired text-cyan"></i>
+        EXP.LOG
+      </h2>
 
-    <section class="fade-in">
+      <div class="space-y-6">
 
-        <div class="flex items-center gap-4 mb-14">
-            <i class="fas fa-network-wired text-cyan-400 text-2xl"></i>
-            <h2 class="text-3xl lg:text-4xl font-black uppercase tracking-[0.25em]">
-                Experience Log
-            </h2>
-        </div>
+        <!-- Grab -->
+        <div class="glass-card experience-item p-8" onclick="toggleExp(this)">
+          <div class="flex justify-between gap-5 flex-wrap">
+            <div>
+              <h3 class="text-2xl font-semibold flex items-center gap-4 mb-2">
+                <i class="fas fa-chevron-right expand-icon text-sm text-slate-500"></i>
+                Risk Analyst
+                <span class="text-pink">@ Grab</span>
+              </h3>
 
-        <div class="timeline space-y-10">
-
-            <div class="relative">
-                <div class="timeline-node">
-                    <div class="w-2 h-2 rounded-full bg-cyan-400"></div>
-                </div>
-
-                <div class="cyber-card rounded-3xl p-8">
-
-                    <div class="flex flex-col lg:flex-row lg:justify-between gap-5 mb-6">
-
-                        <div>
-                            <h3 class="text-3xl font-bold mb-3">
-                                Risk Analyst
-                                <span class="neon-pink">@ Grab</span>
-                            </h3>
-
-                            <div class="flex flex-wrap gap-3">
-                                <span class="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs uppercase tracking-wider">
-                                    Vendor Risk
-                                </span>
-
-                                <span class="px-3 py-1 rounded-full bg-pink-500/10 border border-pink-400/30 text-pink-300 text-xs uppercase tracking-wider">
-                                    Compliance
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="text-cyan-300 uppercase tracking-[0.25em] text-sm font-display">
-                            Dec 2025 — Present
-                        </div>
-
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-5 text-cyberGray leading-8">
-
-                        <div>
-                            • Conduct third-party security risk assessments.
-                            <br><br>
-                            • Review SOC reports, policies, and compliance documentation.
-                            <br><br>
-                            • Maintain vendor intelligence dashboards.
-                        </div>
-
-                        <div>
-                            • Prioritize remediation findings.
-                            <br><br>
-                            • Drive mitigation strategies.
-                            <br><br>
-                            • Strengthen enterprise security posture.
-                        </div>
-
-                    </div>
-
-                </div>
+              <p class="text-sm text-slate-500">
+                Dec 2025 – Present
+              </p>
             </div>
 
+            <span class="h-fit px-4 py-2 rounded-full text-xs border border-cyan/30 text-cyan uppercase tracking-widest">
+              Active
+            </span>
+          </div>
+
+          <div class="experience-content mt-8 space-y-5">
+            <div class="flex gap-4">
+              <span class="timeline-dot"></span>
+              <p>Conduct third-party security risk assessments evaluating vendor controls across infrastructure security, data protection, and compliance.</p>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="timeline-dot"></span>
+              <p>Perform due diligence reviews of vendor security documentation, including security policies, SOC reports, and compliance attestations.</p>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="timeline-dot"></span>
+              <p>Maintain a vendor risk dashboard to track key metrics and provide regular updates to management.</p>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="timeline-dot"></span>
+              <p>Identify, document, and prioritize findings from risk assessments and vendor evaluations.</p>
+            </div>
+
+            <div class="flex gap-4">
+              <span class="timeline-dot"></span>
+              <p>Develop and track remediation plans for identified findings or issues, ensuring timely resolution and mitigation of risks.</p>
+            </div>
+          </div>
         </div>
 
+        <!-- Deriv -->
+        <div class="glass-card experience-item p-8" onclick="toggleExp(this)">
+          <div>
+            <h3 class="text-2xl font-semibold flex items-center gap-4 mb-2">
+              <i class="fas fa-chevron-right expand-icon text-sm text-slate-500"></i>
+              Junior Security Analyst
+              <span class="text-pink">@ Deriv HQ</span>
+            </h3>
+
+            <p class="text-sm text-slate-500">
+              Jan 2023 – Dec 2025
+            </p>
+          </div>
+
+          <div class="experience-content mt-8 space-y-5">
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Ensured regulatory compliance through policy reviews, gap analyses and vendor risk assessments.</p></div>
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Spearheaded organisation-wide security awareness programs.</p></div>
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Created educational materials to strengthen employee engagement.</p></div>
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Co-led offensive security campaigns focused on reducing organisational attack surface.</p></div>
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Investigated security incidents and developed incident response playbooks.</p></div>
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Delivered projects including Threat Map Model initiatives, PCI-DSS scans and DORA readiness assessments.</p></div>
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Contributed to AI-powered security chatbot development.</p></div>
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Applied AI tools to automate GRC processes.</p></div>
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Analysed weekly threat intelligence feeds to identify emerging risks.</p></div>
+          </div>
+        </div>
+
+        <!-- BeSquare -->
+        <div class="glass-card experience-item p-8" onclick="toggleExp(this)">
+          <div>
+            <h3 class="text-2xl font-semibold flex items-center gap-4 mb-2">
+              <i class="fas fa-chevron-right expand-icon text-sm text-slate-500"></i>
+              BeSquare IT Graduate Programme
+            </h3>
+
+            <p class="text-sm text-slate-500">
+              Jun 2022 – Dec 2022
+            </p>
+          </div>
+
+          <div class="experience-content mt-8 space-y-5">
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Completed a nine-module program with industry experts, developing a full-stack web application in a five-member team.</p></div>
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Implemented security measures including input validation and password hashing.</p></div>
+          </div>
+        </div>
+
+        <!-- Internship -->
+        <div class="glass-card experience-item p-8" onclick="toggleExp(this)">
+          <div>
+            <h3 class="text-2xl font-semibold flex items-center gap-4 mb-2">
+              <i class="fas fa-chevron-right expand-icon text-sm text-slate-500"></i>
+              IT Project Management Intern
+            </h3>
+
+            <p class="text-sm text-slate-500">
+              Mar 2021 – Jun 2021
+            </p>
+          </div>
+
+          <div class="experience-content mt-8 space-y-5">
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Partnered with cross-functional teams to design comprehensive network improvement strategies.</p></div>
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Produced detailed process flowcharts and technical documentation for upcoming projects.</p></div>
+            <div class="flex gap-4"><span class="timeline-dot"></span><p>Supported project management initiatives by participating in vendor meetings and stakeholder discussions.</p></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <div class="section-divider"></div>
 
     <!-- SKILLS -->
+    <section>
+      <h2 class="section-title">
+        <i class="fas fa-microchip text-pink"></i>
+        CAPABILITIES
+      </h2>
 
-    <section class="fade-in">
+      <div class="flex flex-wrap gap-4">
+        <span class="skill-pill">Incident Playbooks</span>
+        <span class="skill-pill">Gap Analysis</span>
+        <span class="skill-pill">Security Awareness</span>
+        <span class="skill-pill">Third Party Vendor Risk Assessment</span>
+        <span class="skill-pill">AI Prompting</span>
+        <span class="skill-pill">Threat Intelligence</span>
+        <span class="skill-pill">Vendor Risk Management</span>
+        <span class="skill-pill">GRC</span>
+        <span class="skill-pill">PCI-DSS</span>
+        <span class="skill-pill">DORA Compliance</span>
+        <span class="skill-pill">Phishing Simulations</span>
+        <span class="skill-pill">Incident Response</span>
+        <span class="skill-pill">KnowBe4</span>
+        <span class="skill-pill">Google Workspace</span>
+        <span class="skill-pill">CrowdStrike</span>
+        <span class="skill-pill">UpGuard</span>
+        <span class="skill-pill">Windows</span>
+        <span class="skill-pill">macOS</span>
+        <span class="skill-pill">Kandji</span>
+        <span class="skill-pill">JumpCloud</span>
+        <span class="skill-pill">Microsoft 365</span>
+        <span class="skill-pill">BurpSuite</span>
+        <span class="skill-pill">Wireshark</span>
+        <span class="skill-pill">Nmap</span>
+        <span class="skill-pill">CATO</span>
+        <span class="skill-pill">NordLayer</span>
+        <span class="skill-pill">FortiManager</span>
+        <span class="skill-pill">Linux</span>
+        <span class="skill-pill">JamF</span>
+        <span class="skill-pill">ClickUp</span>
+        <span class="skill-pill">Certa</span>
+      </div>
+    </section>
 
-        <div class="flex items-center gap-4 mb-14">
-            <i class="fas fa-microchip text-pink-500 text-2xl"></i>
-            <h2 class="text-3xl lg:text-4xl font-black uppercase tracking-[0.25em]">
-                Capabilities Matrix
-            </h2>
+    <div class="section-divider"></div>
+
+    <!-- EDUCATION -->
+    <section>
+      <h2 class="section-title">
+        <i class="fas fa-graduation-cap text-cyan"></i>
+        EDUCATION_DATA
+      </h2>
+
+      <div class="glass-card p-8 flex gap-6 items-start">
+        <div class="w-16 h-16 rounded-full border border-cyan/30 flex items-center justify-center shrink-0">
+          <i class="fas fa-book text-cyan text-xl"></i>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-2xl font-semibold mb-2">
+            Bachelor of Science (Honours) in Cybersecurity
+          </h3>
 
-            <div class="cyber-card rounded-3xl p-8">
-                <h3 class="text-xl font-bold mb-6 neon-blue uppercase tracking-[0.2em]">
-                    Governance & Compliance
-                </h3>
+          <p class="text-pink mb-2">
+            Asia Pacific Institute of Technology (APIIT)
+          </p>
 
-                <div class="flex flex-wrap gap-3">
-                    <span class="skill-pill px-4 py-2 rounded-full">PCI-DSS</span>
-                    <span class="skill-pill px-4 py-2 rounded-full">DORA</span>
-                    <span class="skill-pill px-4 py-2 rounded-full">Vendor Risk</span>
-                    <span class="skill-pill px-4 py-2 rounded-full">GRC</span>
-                </div>
-            </div>
+          <p class="text-slate-400 text-sm">
+            May 2019 – Apr 2022
+          </p>
+        </div>
+      </div>
+    </section>
 
-            <div class="cyber-card rounded-3xl p-8">
-                <h3 class="text-xl font-bold mb-6 neon-pink uppercase tracking-[0.2em]">
-                    Threat Operations
-                </h3>
+    <div class="section-divider"></div>
 
-                <div class="flex flex-wrap gap-3">
-                    <span class="skill-pill px-4 py-2 rounded-full">Threat Intelligence</span>
-                    <span class="skill-pill px-4 py-2 rounded-full">Incident Response</span>
-                    <span class="skill-pill px-4 py-2 rounded-full">Phishing Simulation</span>
-                    <span class="skill-pill px-4 py-2 rounded-full">Security Awareness</span>
-                </div>
-            </div>
+    <!-- CERTIFICATIONS -->
+    <section>
+      <h2 class="section-title">
+        <i class="fas fa-certificate text-pink"></i>
+        CERTIFICATIONS
+      </h2>
 
+      <div class="glass-card p-8 flex gap-6 items-start justify-between flex-wrap">
+        <div class="flex gap-5">
+          <div class="w-16 h-16 rounded-full border border-pink/30 flex items-center justify-center shrink-0">
+            <i class="fas fa-shield-alt text-pink text-xl"></i>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-2">
+              CompTIA Security+
+            </h3>
+
+            <p class="text-slate-400 text-sm mb-4">
+              CompTIA · Issued Feb 2026 · Expires Feb 2029
+            </p>
+
+            <p class="text-slate-400 leading-relaxed max-w-2xl">
+              Validates cybersecurity skills including threat management, cryptography,
+              identity management, network security, and risk mitigation.
+            </p>
+          </div>
         </div>
 
+        <a href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url"
+           target="_blank"
+           class="px-5 py-3 rounded-full border border-cyan/30 text-cyan hover:bg-cyan hover:text-black h-fit">
+          Verify Certificate
+        </a>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ACHIEVEMENTS -->
+    <section>
+      <h2 class="section-title">
+        <i class="fas fa-trophy text-cyan"></i>
+        ACHIEVEMENTS
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <div class="glass-card p-8">
+          <div class="flex justify-between items-start mb-5">
+            <h3 class="text-xl font-semibold leading-snug pr-5">
+              Global Cyber Skills Benchmark CTF 2025
+            </h3>
+
+            <i class="fas fa-flag text-cyan"></i>
+          </div>
+
+          <p class="text-slate-400 leading-relaxed mb-6">
+            Participated with Deriv colleagues in an international cybersecurity competition.
+          </p>
+
+          <a href="https://drive.google.com/file/d/1-GFO9SalKL8FN1ETDzBRgPDv2iGJ3lJv/view"
+             target="_blank"
+             class="text-cyan hover:text-white">
+            View Reference
+          </a>
+        </div>
+
+        <div class="glass-card p-8">
+          <div class="flex justify-between items-start mb-5">
+            <h3 class="text-xl font-semibold leading-snug pr-5">
+              Wiz AI Security 2025
+            </h3>
+
+            <i class="fas fa-robot text-pink"></i>
+          </div>
+
+          <p class="text-slate-400 leading-relaxed mb-6">
+            Completed AI prompt injection activities focused on identifying and exploiting AI security vulnerabilities.
+          </p>
+
+          <a href="https://drive.google.com/file/d/1Ifr1TRc1RqVrjvesGCW9I9kqzLFvrsDl/view"
+             target="_blank"
+             class="text-pink hover:text-white">
+            View Reference
+          </a>
+        </div>
+
+        <div class="glass-card p-8">
+          <div class="flex justify-between items-start mb-5">
+            <h3 class="text-xl font-semibold leading-snug pr-5">
+              Kaspersky CTF 2025
+            </h3>
+
+            <i class="fas fa-bug text-cyan"></i>
+          </div>
+
+          <p class="text-slate-400 leading-relaxed mb-6">
+            Participated in Kaspersky Capture The Flag competition focused on threat hunting.
+          </p>
+
+          <a href="https://drive.google.com/file/d/1CSoBVBAM9bbdvSvjrvw-ltpjG8uDI-P2/view"
+             target="_blank"
+             class="text-cyan hover:text-white">
+            View Reference
+          </a>
+        </div>
+
+        <div class="glass-card p-8">
+          <div class="flex justify-between items-start mb-5">
+            <h3 class="text-xl font-semibold leading-snug pr-5">
+              Girls in CTF 2024
+            </h3>
+
+            <i class="fas fa-user-ninja text-pink"></i>
+          </div>
+
+          <p class="text-slate-400 leading-relaxed mb-6">
+            Competed in an Open Source Intelligence (OSINT) focused cybersecurity competition.
+          </p>
+
+          <a href="https://drive.google.com/file/d/1FCblOIgXGqrGZmxy2dRg-rmIWYtM1dzQ/view"
+             target="_blank"
+             class="text-pink hover:text-white">
+            View Reference
+          </a>
+        </div>
+      </div>
     </section>
 
     <div class="section-divider"></div>
 
     <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">
+        <i class="fas fa-satellite-dish text-pink"></i>
+        UPLINK_ESTABLISHED
+      </h2>
 
-    <section id="contact" class="fade-in mb-24">
+      <div class="grid md:grid-cols-2 gap-5 mb-8">
 
-        <div class="cyber-card rounded-[40px] p-10 lg:p-16 relative overflow-hidden">
+        <a href="mailto:marianne_wong@protonmail.com"
+           class="glass-card p-6 flex items-center gap-4 hover:text-cyan">
+          <i class="fas fa-envelope text-cyan text-lg"></i>
+          <span>marianne_wong@protonmail.com</span>
+        </a>
 
-            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_#00e5ff,_transparent_35%)]"></div>
+        <a href="https://wa.me/601923456789"
+           target="_blank"
+           class="glass-card p-6 flex items-center gap-4 hover:text-pink">
+          <i class="fab fa-whatsapp text-pink text-lg"></i>
+          <span>+6019-234-56789</span>
+        </a>
 
-            <div class="relative z-10">
+        <a href="https://www.linkedin.com/in/mwhm/"
+           target="_blank"
+           class="glass-card p-6 flex items-center gap-4 hover:text-cyan">
+          <i class="fab fa-linkedin text-cyan text-lg"></i>
+          <span>linkedin.com/in/mwhm/</span>
+        </a>
 
-                <div class="text-sm uppercase tracking-[0.4em] text-cyan-300 font-display mb-6">
-                    Secure Uplink Established
-                </div>
+        <a href="https://tryhackme.com/p/honeydonkey"
+           target="_blank"
+           class="glass-card p-6 flex items-center gap-4 hover:text-pink">
+          <i class="fas fa-shield-alt text-pink text-lg"></i>
+          <span>tryhackme.com/p/honeydonkey</span>
+        </a>
 
-                <h2 class="text-5xl lg:text-6xl font-black leading-tight mb-8 max-w-4xl">
-                    Ready To Strengthen Your
-                    <span class="neon-pink">Cybersecurity Posture</span>
-                </h2>
+        <a href="https://app.hackthebox.com/profile/1698023"
+           target="_blank"
+           class="glass-card p-6 flex items-center gap-4 hover:text-cyan md:col-span-2">
+          <i class="fas fa-cube text-cyan text-lg"></i>
+          <span>hackthebox.com/profile/1698023</span>
+        </a>
+      </div>
 
-                <p class="text-cyberGray text-lg leading-9 max-w-3xl mb-12">
-                    Available for cybersecurity risk analysis, threat intelligence,
-                    vendor governance, compliance operations, and AI-enhanced
-                    security initiatives.
-                </p>
+      <div class="flex flex-wrap gap-5">
+        <a href="https://flowcv.com/resume/2mofja4dwmne"
+           target="_blank"
+           class="px-8 py-4 rounded-full bg-cyan text-black font-semibold hover:bg-white transition-all">
+          DOWNLOAD_RESUME.PDF
+        </a>
 
-                <div class="grid md:grid-cols-2 gap-5">
-
-                    <a href="mailto:marianne_wong@protonmail.com"
-                        class="cyber-card rounded-2xl p-6 flex items-center justify-between hover:border-cyan-400">
-
-                        <div>
-                            <div class="text-xs uppercase tracking-[0.25em] text-cyan-300 mb-2">
-                                Email Channel
-                            </div>
-                            <div class="text-lg font-semibold">
-                                marianne_wong@protonmail.com
-                            </div>
-                        </div>
-
-                        <i class="fas fa-arrow-right text-cyan-400"></i>
-
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/mwhm/"
-                        target="_blank"
-                        class="cyber-card rounded-2xl p-6 flex items-center justify-between hover:border-pink-500">
-
-                        <div>
-                            <div class="text-xs uppercase tracking-[0.25em] text-pink-300 mb-2">
-                                Professional Network
-                            </div>
-                            <div class="text-lg font-semibold">
-                                LinkedIn Profile
-                            </div>
-                        </div>
-
-                        <i class="fas fa-arrow-right text-pink-400"></i>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
+        <button onclick="copyLink(this)"
+                class="glass-card px-8 py-4 rounded-full">
+          <span class="copy-text">SHARE_PORTFOLIO</span>
+        </button>
+      </div>
     </section>
 
     <!-- FOOTER -->
-
-    <footer class="border-t border-white/10 pt-10 pb-6 text-sm text-cyberGray">
-
-        <div class="flex flex-col lg:flex-row lg:justify-between gap-5 uppercase tracking-[0.25em] font-display">
-
-            <div>
-                SYS.STATUS : SECURE
-            </div>
-
-            <div>
-                NODE : MALAYSIA
-            </div>
-
-            <div>
-                BUILD : v3.2.6
-            </div>
-
-            <div>
-                CONNECTION : ENCRYPTED
-            </div>
-
-        </div>
-
+    <footer class="text-center text-slate-600 text-xs tracking-[0.3em] mt-24 pt-8 border-t border-white/5 font-display">
+      SYS.DATE: 2026 // MARIANNE_WONG // SEC_RISK_ANALYST // CONNECTION_SECURE
     </footer>
+  </main>
 
-    <script>
+  <script>
+    function toggleExp(element) {
+      element.classList.toggle('active');
+    }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting){
-                    entry.target.classList.add('visible')
-                }
-            })
-        }, { threshold: 0.1 })
+    function copyLink(btn) {
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => {
+          const text = btn.querySelector('.copy-text');
+          const original = text.innerText;
 
-        document.querySelectorAll('.fade-in').forEach((el) => {
-            observer.observe(el)
+          text.innerText = 'LINK_COPIED';
+
+          setTimeout(() => {
+            text.innerText = original;
+          }, 2500);
         })
-
-    </script>
-
+        .catch(err => console.error(err));
+    }
+  </script>
 </body>
 </html>
 ```
