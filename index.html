@@ -10,34 +10,85 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    html {
-      scroll-behavior: smooth;
+
+    html{
+      scroll-behavior:smooth;
     }
 
     :root{
-      --glass-bg: rgba(255,255,255,0.06);
-      --glass-border: rgba(255,255,255,0.12);
 
-      --blur-xl: 30px;
-      --blur-lg: 20px;
+      /* =========================================
+         LIGHT MODE
+      ========================================= */
 
-      --shadow-soft:
-        0 4px 30px rgba(0,0,0,0.25),
-        inset 0 1px 1px rgba(255,255,255,0.08);
+      --bg-primary:#f8f3ff;
+      --bg-secondary:#efe5ff;
 
-      --shadow-hover:
-        0 10px 40px rgba(0,0,0,0.45),
-        inset 0 1px 1px rgba(255,255,255,0.12);
+      --text-primary:#18111f;
+      --text-secondary:rgba(24,17,31,.72);
 
-      --apple-ease: cubic-bezier(.16,1,.3,1);
+      --accent-primary:#ec4899;
+      --accent-secondary:#d946ef;
+      --accent-tertiary:#c084fc;
+
+      --glass-bg:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.55),
+          rgba(255,255,255,.18)
+        );
+
+      --glass-border:rgba(255,255,255,.45);
+
+      --glass-shadow:
+        0 10px 40px rgba(217,70,239,.12),
+        inset 0 1px 1px rgba(255,255,255,.75);
+
+      --glass-hover:
+        0 20px 55px rgba(217,70,239,.20),
+        inset 0 1px 1px rgba(255,255,255,.85);
+
+      --blur-xl:28px;
+
+      --apple-ease:cubic-bezier(.16,1,.3,1);
+    }
+
+    /* =========================================
+       DARK MODE
+    ========================================= */
+
+    body.dark{
+
+      --bg-primary:#140a18;
+      --bg-secondary:#1e1025;
+
+      --text-primary:#ffffff;
+      --text-secondary:rgba(255,255,255,.72);
+
+      --glass-bg:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.12),
+          rgba(255,255,255,.05)
+        );
+
+      --glass-border:rgba(255,255,255,.12);
+
+      --glass-shadow:
+        0 10px 40px rgba(0,0,0,.35),
+        inset 0 1px 1px rgba(255,255,255,.08);
+
+      --glass-hover:
+        0 20px 55px rgba(236,72,153,.22),
+        inset 0 1px 1px rgba(255,255,255,.12);
     }
 
     *{
-      box-sizing: border-box;
+      box-sizing:border-box;
     }
 
-    body {
-      margin: 0;
+    body{
+      margin:0;
 
       font-family:
         ui-sans-serif,
@@ -49,72 +100,77 @@
         sans-serif;
 
       background:
-        radial-gradient(circle at top left, rgba(0,180,255,.12), transparent 25%),
-        radial-gradient(circle at top right, rgba(255,0,140,.10), transparent 25%),
-        radial-gradient(circle at bottom left, rgba(128,0,255,.10), transparent 25%),
-        #050505;
+        radial-gradient(circle at top left, rgba(236,72,153,.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(217,70,239,.10), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(192,132,252,.10), transparent 28%),
+        linear-gradient(
+          180deg,
+          var(--bg-primary),
+          var(--bg-secondary)
+        );
 
-      color: white;
-      overflow-x: hidden;
+      color:var(--text-primary);
+
+      overflow-x:hidden;
+
+      transition:
+        background .45s ease,
+        color .45s ease;
     }
 
-    .bg-grid-pattern {
+    .bg-grid-pattern{
       background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
 
-      background-size: 48px 48px;
+      background-size:48px 48px;
     }
 
-    .section-title {
-      letter-spacing: .08em;
+    .section-title{
+      letter-spacing:.08em;
     }
 
     /* =========================================
-       APPLE GLASS
+       GLASS
     ========================================= */
 
-    .glass {
-      position: relative;
-      overflow: hidden;
+    .glass{
+      position:relative;
+      overflow:hidden;
 
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,0.12),
-          rgba(255,255,255,0.05)
-        );
+      background:var(--glass-bg);
 
-      border: 1px solid rgba(255,255,255,0.12);
+      border:1px solid var(--glass-border);
 
-      backdrop-filter: blur(var(--blur-xl)) saturate(180%);
-      -webkit-backdrop-filter: blur(var(--blur-xl)) saturate(180%);
+      backdrop-filter:blur(var(--blur-xl)) saturate(180%);
+      -webkit-backdrop-filter:blur(var(--blur-xl)) saturate(180%);
 
-      box-shadow: var(--shadow-soft);
+      box-shadow:var(--glass-shadow);
 
       transition:
         transform .45s var(--apple-ease),
-        border-color .45s var(--apple-ease),
         box-shadow .45s var(--apple-ease),
-        background .45s var(--apple-ease);
+        background .45s var(--apple-ease),
+        border-color .45s var(--apple-ease);
     }
 
-    .glass::before {
-      content: "";
+    .glass::before{
+      content:"";
 
-      position: absolute;
-      inset: 0;
+      position:absolute;
+      inset:0;
 
       background:
         linear-gradient(
           120deg,
-          rgba(255,255,255,0.28),
-          rgba(255,255,255,0.08) 35%,
+          rgba(255,255,255,.45),
+          rgba(255,255,255,.14) 35%,
           transparent 60%
         );
 
-      opacity: .9;
-      pointer-events: none;
+      opacity:.8;
+
+      pointer-events:none;
     }
 
     .glass::after{
@@ -123,72 +179,64 @@
       position:absolute;
       inset:1px;
 
-      border-radius: inherit;
+      border-radius:inherit;
 
-      border-top: 1px solid rgba(255,255,255,0.20);
+      border-top:1px solid rgba(255,255,255,.4);
 
       pointer-events:none;
     }
 
     .glass:hover{
-      transform: translateY(-4px) scale(1.01);
+      transform:translateY(-4px);
 
-      border-color: rgba(255,255,255,0.18);
-
-      box-shadow: var(--shadow-hover);
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,0.14),
-          rgba(255,255,255,0.07)
-        );
+      box-shadow:var(--glass-hover);
     }
 
     /* =========================================
        APPLE BUTTONS
     ========================================= */
 
-    .apple-btn {
-      position: relative;
+    .apple-btn{
+      position:relative;
 
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .75rem;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.75rem;
 
-      padding: 16px 28px;
+      padding:16px 28px;
 
-      border-radius: 999px;
+      border-radius:999px;
 
-      color: white;
-      font-weight: 600;
-      letter-spacing: -.01em;
-
-      border: 1px solid rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,.32);
 
       background:
         linear-gradient(
           180deg,
-          rgba(255,255,255,0.14),
-          rgba(255,255,255,0.06)
+          rgba(255,255,255,.42),
+          rgba(255,255,255,.16)
         );
 
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      color:var(--text-primary);
+
+      font-weight:600;
+
+      backdrop-filter:blur(20px) saturate(180%);
+      -webkit-backdrop-filter:blur(20px) saturate(180%);
 
       box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.15),
-        0 8px 30px rgba(0,0,0,0.35);
+        0 8px 32px rgba(217,70,239,.16),
+        inset 0 1px 1px rgba(255,255,255,.8);
+
+      overflow:hidden;
 
       transition:
         transform .35s var(--apple-ease),
-        background .35s var(--apple-ease),
         box-shadow .35s var(--apple-ease),
-        border-color .35s var(--apple-ease);
+        background .35s var(--apple-ease);
 
-      overflow: hidden;
-      cursor: pointer;
+      cursor:pointer;
+      text-decoration:none;
     }
 
     .apple-btn::before{
@@ -200,11 +248,10 @@
       background:
         linear-gradient(
           180deg,
-          rgba(255,255,255,0.22),
-          transparent 45%
+          rgba(255,255,255,.6),
+          transparent 40%
         );
 
-      opacity:.9;
       pointer-events:none;
     }
 
@@ -212,77 +259,70 @@
       content:"";
 
       position:absolute;
+
       top:-120%;
       left:-40%;
 
       width:40%;
       height:300%;
 
-      transform: rotate(25deg);
+      background:rgba(255,255,255,.4);
 
-      background: rgba(255,255,255,.18);
+      transform:rotate(25deg);
 
-      filter: blur(10px);
+      filter:blur(10px);
 
-      transition: transform .9s ease;
+      transition:transform .9s ease;
     }
 
     .apple-btn:hover::after{
-      transform: translateX(420%) rotate(25deg);
+      transform:translateX(420%) rotate(25deg);
     }
 
     .apple-btn:hover{
-      transform: translateY(-2px) scale(1.02);
-
-      border-color: rgba(255,255,255,0.22);
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,0.18),
-          rgba(255,255,255,0.08)
-        );
+      transform:translateY(-2px) scale(1.02);
 
       box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.18),
-        0 14px 40px rgba(0,0,0,0.45);
+        0 20px 48px rgba(217,70,239,.22),
+        inset 0 1px 1px rgba(255,255,255,.9);
     }
 
     .apple-btn:active{
-      transform: scale(.98);
+      transform:scale(.98);
     }
 
     /* =========================================
        GLASS LINKS
     ========================================= */
 
-    .glass-link {
-      position: relative;
+    .glass-link{
+      position:relative;
 
-      border-radius: 22px;
+      border-radius:24px;
 
-      border: 1px solid rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,.35);
 
       background:
         linear-gradient(
           135deg,
-          rgba(255,255,255,0.10),
-          rgba(255,255,255,0.04)
+          rgba(255,255,255,.35),
+          rgba(255,255,255,.14)
         );
 
-      backdrop-filter: blur(22px) saturate(180%);
-      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      backdrop-filter:blur(22px);
+      -webkit-backdrop-filter:blur(22px);
 
       box-shadow:
-        0 4px 24px rgba(0,0,0,0.25),
-        inset 0 1px 1px rgba(255,255,255,0.08);
+        0 8px 28px rgba(217,70,239,.14),
+        inset 0 1px 1px rgba(255,255,255,.75);
+
+      overflow:hidden;
 
       transition:
-        transform .45s var(--apple-ease),
-        background .45s var(--apple-ease),
-        border-color .45s var(--apple-ease);
+        transform .4s var(--apple-ease),
+        box-shadow .4s var(--apple-ease);
 
-      overflow: hidden;
+      text-decoration:none;
     }
 
     .glass-link::before{
@@ -294,7 +334,7 @@
       background:
         linear-gradient(
           180deg,
-          rgba(255,255,255,0.15),
+          rgba(255,255,255,.5),
           transparent 50%
         );
 
@@ -302,59 +342,23 @@
     }
 
     .glass-link:hover{
-      transform: translateY(-4px);
-
-      border-color: rgba(255,255,255,0.18);
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,0.13),
-          rgba(255,255,255,0.06)
-        );
-    }
-
-    /* =========================================
-       SKILL CHIPS
-    ========================================= */
-
-    .chip{
-      border-radius:999px;
-
-      border:1px solid rgba(255,255,255,0.10);
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,0.10),
-          rgba(255,255,255,0.04)
-        );
-
-      backdrop-filter: blur(14px);
+      transform:translateY(-4px);
 
       box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.06);
-
-      transition:
-        transform .3s ease,
-        background .3s ease;
-    }
-
-    .chip:hover{
-      transform: translateY(-2px);
+        0 20px 45px rgba(217,70,239,.18),
+        inset 0 1px 1px rgba(255,255,255,.85);
     }
 
     /* =========================================
-       HERO TITLE
+       HERO TEXT
     ========================================= */
 
     .hero-gradient{
       background:
         linear-gradient(
           90deg,
-          #7dd3fc,
-          #ffffff,
-          #f9a8d4,
+          #ec4899,
+          #d946ef,
           #c084fc
         );
 
@@ -363,12 +367,68 @@
     }
 
     /* =========================================
+       TEXT HELPERS
+    ========================================= */
+
+    .text-muted{
+      color:var(--text-secondary);
+    }
+
+    .text-pink-accent{
+      color:var(--accent-primary);
+    }
+
+    .text-purple-accent{
+      color:var(--accent-tertiary);
+    }
+
+    /* =========================================
+       CHIPS
+    ========================================= */
+
+    .chip{
+      border-radius:999px;
+
+      border:1px solid rgba(255,255,255,.3);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.32),
+          rgba(255,255,255,.12)
+        );
+
+      backdrop-filter:blur(16px);
+
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.75);
+
+      transition:
+        transform .3s ease;
+    }
+
+    .chip:hover{
+      transform:translateY(-2px);
+    }
+
+    /* =========================================
        NAVBAR
     ========================================= */
 
     #topNav{
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter:blur(24px) saturate(180%);
+      -webkit-backdrop-filter:blur(24px) saturate(180%);
+    }
+
+    /* =========================================
+       THEME TOGGLE
+    ========================================= */
+
+    .theme-toggle{
+      width:54px;
+      height:54px;
+
+      border-radius:999px;
     }
 
     /* =========================================
@@ -377,18 +437,22 @@
 
     .ambient-light{
       position:absolute;
+
       border-radius:9999px;
-      filter: blur(120px);
+
+      filter:blur(120px);
+
       opacity:.22;
-      animation: float 10s ease-in-out infinite;
+
+      animation:float 10s ease-in-out infinite;
     }
 
     @keyframes float{
       0%,100%{
-        transform: translateY(0px);
+        transform:translateY(0px);
       }
       50%{
-        transform: translateY(-25px);
+        transform:translateY(-24px);
       }
     }
 
@@ -399,13 +463,7 @@
     .glass,
     .apple-btn,
     .glass-link{
-      will-change: transform;
-    }
-
-    .glass:hover,
-    .apple-btn:hover,
-    .glass-link:hover{
-      transition-timing-function: cubic-bezier(.16,1,.3,1);
+      will-change:transform;
     }
 
     /* =========================================
@@ -414,18 +472,15 @@
 
     @media(max-width:768px){
 
-      .glass{
-        backdrop-filter: blur(20px);
-      }
-
       .apple-btn{
         width:100%;
       }
 
       h1{
-        line-height: .95 !important;
+        line-height:.95 !important;
       }
     }
+
   </style>
 </head>
 
@@ -437,15 +492,14 @@
 
   <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
 
-    <div class="absolute inset-0 bg-gradient-to-br from-black via-zinc-950 to-black"></div>
+    <div class="ambient-light top-[-100px] left-[-100px] w-[420px] h-[420px] bg-pink-400/30"></div>
 
-    <div class="ambient-light top-[-100px] left-[-100px] w-[420px] h-[420px] bg-cyan-400/30"></div>
+    <div class="ambient-light top-[10%] right-[-120px] w-[400px] h-[400px] bg-fuchsia-400/20" style="animation-delay:2s"></div>
 
-    <div class="ambient-light top-[10%] right-[-120px] w-[400px] h-[400px] bg-pink-400/20" style="animation-delay:2s"></div>
-
-    <div class="ambient-light bottom-[-120px] left-[20%] w-[360px] h-[360px] bg-purple-500/20" style="animation-delay:4s"></div>
+    <div class="ambient-light bottom-[-120px] left-[20%] w-[360px] h-[360px] bg-purple-400/20" style="animation-delay:4s"></div>
 
     <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+
   </div>
 
   <!-- =========================================
@@ -461,33 +515,58 @@
         <div class="flex items-center gap-4">
 
           <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
-            <i data-lucide="shield" class="w-6 h-6 text-cyan-300"></i>
+
+            <i data-lucide="shield" class="w-6 h-6 text-pink-400"></i>
+
           </div>
 
           <div>
-            <p class="text-xs font-bold tracking-[0.3em] text-cyan-300 uppercase">
+
+            <p class="text-xs font-bold tracking-[0.3em] text-pink-400 uppercase">
               Cybersecurity
             </p>
 
-            <p class="text-sm text-white/70">
+            <p class="text-sm text-muted">
               Marianne Wong
             </p>
+
           </div>
+
         </div>
 
         <div class="hidden md:flex items-center gap-6" id="desktopNav"></div>
 
-        <div class="md:hidden">
-          <button id="menuBtn" class="apple-btn px-4 py-3">
-            <i data-lucide="menu" class="w-5 h-5" id="menuIcon"></i>
+        <div class="flex items-center gap-3">
+
+          <button
+            id="themeToggle"
+            class="apple-btn theme-toggle hidden md:inline-flex"
+          >
+            <i data-lucide="moon" class="w-5 h-5" id="themeIcon"></i>
           </button>
+
+          <div class="md:hidden">
+
+            <button id="menuBtn" class="apple-btn px-4 py-3">
+
+              <i data-lucide="menu" class="w-5 h-5" id="menuIcon"></i>
+
+            </button>
+
+          </div>
+
         </div>
+
       </div>
+
     </div>
 
     <div id="mobileNav" class="hidden md:hidden px-4 pb-4">
+
       <div class="glass rounded-3xl p-3 space-y-2" id="mobileNavItems"></div>
+
     </div>
+
   </nav>
 
   <!-- =========================================
@@ -506,19 +585,24 @@
 
         <div class="max-w-5xl">
 
-          <p class="text-sm font-bold tracking-[0.35em] text-cyan-300 uppercase mb-8">
+          <p class="text-sm font-bold tracking-[0.35em] text-pink-400 uppercase mb-8">
             Cybersecurity Risk Analyst
           </p>
 
           <h1 class="text-5xl sm:text-7xl lg:text-[8rem] font-black leading-none mb-8">
+
             Marianne
+
             <span class="hero-gradient">Wong</span>
+
           </h1>
 
-          <p class="text-xl sm:text-2xl text-white/75 max-w-4xl leading-relaxed mb-12">
+          <p class="text-xl sm:text-2xl text-muted max-w-4xl leading-relaxed mb-12">
+
             Building resilient security ecosystems through governance,
             third-party risk management, threat intelligence, compliance operations,
             and enterprise security awareness initiatives.
+
           </p>
 
           <!-- Buttons -->
@@ -526,13 +610,19 @@
           <div class="flex flex-wrap gap-4 mb-10">
 
             <button class="apple-btn" data-scroll="contact">
+
               <i data-lucide="send" class="w-5 h-5"></i>
+
               Connect
+
             </button>
 
             <button class="apple-btn" data-scroll="experience">
+
               <i data-lucide="briefcase" class="w-5 h-5"></i>
+
               View Experience
+
             </button>
 
             <a
@@ -541,13 +631,19 @@
               rel="noreferrer"
               class="apple-btn"
             >
+
               <i data-lucide="download" class="w-5 h-5"></i>
+
               Resume PDF
+
             </a>
 
             <button id="shareBtn" class="apple-btn">
+
               <i data-lucide="share-2" class="w-5 h-5" id="shareIcon"></i>
+
               <span id="shareText">Share Portfolio</span>
+
             </button>
 
           </div>
@@ -558,71 +654,83 @@
 
             <a
               href="mailto:marianne_wong@protonmail.com"
-              class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
+              class="glass-link inline-flex items-center gap-3 px-6 py-4"
             >
-              <i data-lucide="mail" class="w-5 h-5 text-cyan-300"></i>
 
-              <span class="break-all">
+              <i data-lucide="mail" class="w-5 h-5 text-pink-400"></i>
+
+              <span class="break-all text-muted">
                 marianne_wong@protonmail.com
               </span>
+
             </a>
 
             <a
               href="https://wa.me/601923456789"
               target="_blank"
               rel="noreferrer"
-              class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
+              class="glass-link inline-flex items-center gap-3 px-6 py-4"
             >
-              <i data-lucide="phone" class="w-5 h-5 text-pink-300"></i>
 
-              <span>
+              <i data-lucide="phone" class="w-5 h-5 text-pink-400"></i>
+
+              <span class="text-muted">
                 +6019-234-56789
               </span>
+
             </a>
 
             <a
               href="https://www.linkedin.com/in/mwhm/"
               target="_blank"
               rel="noreferrer"
-              class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
+              class="glass-link inline-flex items-center gap-3 px-6 py-4"
             >
-              <i data-lucide="contact" class="w-5 h-5 text-cyan-300"></i>
 
-              <span>
+              <i data-lucide="contact" class="w-5 h-5 text-pink-400"></i>
+
+              <span class="text-muted">
                 LinkedIn Profile
               </span>
+
             </a>
 
             <a
               href="https://tryhackme.com/p/honeydonkey"
               target="_blank"
               rel="noreferrer"
-              class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
+              class="glass-link inline-flex items-center gap-3 px-6 py-4"
             >
-              <i data-lucide="shield" class="w-5 h-5 text-pink-300"></i>
 
-              <span>
+              <i data-lucide="shield" class="w-5 h-5 text-pink-400"></i>
+
+              <span class="text-muted">
                 TryHackMe
               </span>
+
             </a>
 
             <a
               href="https://profile.hackthebox.com/profile/019e0311-f857-703a-a1aa-b18288684ab7"
               target="_blank"
               rel="noreferrer"
-              class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
+              class="glass-link inline-flex items-center gap-3 px-6 py-4"
             >
-              <i data-lucide="shield-check" class="w-5 h-5 text-cyan-300"></i>
 
-              <span>
+              <i data-lucide="shield-check" class="w-5 h-5 text-pink-400"></i>
+
+              <span class="text-muted">
                 Hack The Box
               </span>
+
             </a>
 
           </div>
 
         </div>
+
       </div>
+
     </section>
 
     <!-- =========================================
@@ -636,7 +744,9 @@
         <div class="flex items-center gap-4 mb-10">
 
           <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
-            <i data-lucide="terminal" class="w-6 h-6 text-pink-300"></i>
+
+            <i data-lucide="terminal" class="w-6 h-6 text-pink-400"></i>
+
           </div>
 
           <h2 class="text-3xl font-bold section-title">
@@ -647,9 +757,9 @@
 
         <div class="glass rounded-[2rem] p-10 relative overflow-hidden">
 
-          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-cyan-400 to-pink-400"></div>
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-pink-400 to-purple-400"></div>
 
-          <p class="text-lg leading-relaxed text-white/75 pl-6">
+          <p class="text-lg leading-relaxed text-muted pl-6">
 
             Cybersecurity Risk Analyst with 3+ years of experience across GRC,
             third-party risk management, security awareness, and security operations support.
@@ -657,7 +767,7 @@
             and threat intelligence analysis.
 
             Demonstrated success improving phishing resilience by
-            <span class="font-bold text-cyan-300">40%</span>
+            <span class="font-bold text-pink-accent">40%</span>
             through enterprise security awareness campaigns.
 
             Combines risk analysis, incident investigation,
@@ -666,7 +776,9 @@
           </p>
 
         </div>
+
       </div>
+
     </section>
 
     <!-- =========================================
@@ -680,7 +792,9 @@
         <div class="flex items-center gap-4 mb-10">
 
           <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
-            <i data-lucide="network" class="w-6 h-6 text-cyan-300"></i>
+
+            <i data-lucide="network" class="w-6 h-6 text-pink-400"></i>
+
           </div>
 
           <h2 class="text-3xl font-bold section-title">
@@ -692,6 +806,7 @@
         <div class="space-y-6" id="experienceList"></div>
 
       </div>
+
     </section>
 
     <!-- =========================================
@@ -705,7 +820,9 @@
         <div class="flex items-center gap-4 mb-10">
 
           <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
-            <i data-lucide="zap" class="w-6 h-6 text-pink-300"></i>
+
+            <i data-lucide="zap" class="w-6 h-6 text-pink-400"></i>
+
           </div>
 
           <h2 class="text-3xl font-bold section-title">
@@ -717,6 +834,7 @@
         <div class="flex flex-wrap gap-3" id="skillsList"></div>
 
       </div>
+
     </section>
 
     <!-- =========================================
@@ -730,7 +848,9 @@
         <div class="flex items-center gap-4 mb-10">
 
           <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
-            <i data-lucide="graduation-cap" class="w-6 h-6 text-cyan-300"></i>
+
+            <i data-lucide="graduation-cap" class="w-6 h-6 text-pink-400"></i>
+
           </div>
 
           <h2 class="text-3xl font-bold section-title">
@@ -741,25 +861,27 @@
 
         <div class="glass rounded-[2rem] p-10 relative overflow-hidden">
 
-          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-cyan-400 to-cyan-500"></div>
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-pink-400 to-purple-400"></div>
 
           <div class="flex items-start gap-5">
 
             <div class="w-14 h-14 rounded-2xl glass flex items-center justify-center flex-shrink-0">
-              <i data-lucide="book" class="w-6 h-6 text-cyan-300"></i>
+
+              <i data-lucide="book" class="w-6 h-6 text-pink-400"></i>
+
             </div>
 
             <div>
 
-              <h3 class="text-2xl font-bold text-white">
+              <h3 class="text-2xl font-bold">
                 Bachelor of Science (Honours) in Cybersecurity
               </h3>
 
-              <p class="mt-3 text-pink-300">
+              <p class="mt-3 text-pink-accent">
                 Asia Pacific Institute of Technology (APIIT)
               </p>
 
-              <p class="mt-3 text-sm text-white/50">
+              <p class="mt-3 text-sm text-muted">
                 May 2019 – Apr 2022 · First Class Honours · CGPA 3.7
               </p>
 
@@ -770,6 +892,7 @@
         </div>
 
       </div>
+
     </section>
 
     <!-- =========================================
@@ -783,7 +906,9 @@
         <div class="flex items-center gap-4 mb-10">
 
           <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
-            <i data-lucide="badge-check" class="w-6 h-6 text-pink-300"></i>
+
+            <i data-lucide="badge-check" class="w-6 h-6 text-pink-400"></i>
+
           </div>
 
           <h2 class="text-3xl font-bold section-title">
@@ -794,12 +919,14 @@
 
         <div class="glass rounded-[2rem] p-10 relative overflow-hidden">
 
-          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-pink-400 to-pink-500"></div>
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-pink-400 to-purple-400"></div>
 
           <div class="flex items-start gap-5">
 
             <div class="w-14 h-14 rounded-2xl glass flex items-center justify-center flex-shrink-0">
-              <i data-lucide="shield" class="w-6 h-6 text-pink-300"></i>
+
+              <i data-lucide="shield" class="w-6 h-6 text-pink-400"></i>
+
             </div>
 
             <div class="flex-1">
@@ -808,11 +935,11 @@
 
                 <div>
 
-                  <h3 class="text-2xl font-bold text-white">
+                  <h3 class="text-2xl font-bold">
                     CompTIA Security+
                   </h3>
 
-                  <p class="mt-3 text-sm text-white/50">
+                  <p class="mt-3 text-sm text-muted">
                     CompTIA · Issued Feb 2026 · Expires Feb 2029
                   </p>
 
@@ -829,7 +956,7 @@
 
               </div>
 
-              <p class="mt-6 text-white/75 leading-relaxed">
+              <p class="mt-6 text-muted leading-relaxed">
 
                 Validates baseline cybersecurity skills including threat management,
                 cryptography, identity management, network security,
@@ -844,6 +971,7 @@
         </div>
 
       </div>
+
     </section>
 
     <!-- =========================================
@@ -857,7 +985,9 @@
         <div class="flex items-center gap-4 mb-10">
 
           <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
-            <i data-lucide="trophy" class="w-6 h-6 text-cyan-300"></i>
+
+            <i data-lucide="trophy" class="w-6 h-6 text-pink-400"></i>
+
           </div>
 
           <h2 class="text-3xl font-bold section-title">
@@ -869,6 +999,7 @@
         <div class="grid md:grid-cols-2 gap-6" id="achievementsGrid"></div>
 
       </div>
+
     </section>
 
     <!-- =========================================
@@ -881,7 +1012,7 @@
 
         <div class="glass rounded-[2.5rem] p-12 text-center">
 
-          <p class="text-sm tracking-[0.35em] uppercase text-cyan-300 font-bold mb-6">
+          <p class="text-sm tracking-[0.35em] uppercase text-pink-400 font-bold mb-6">
             Let's Build Secure Systems
           </p>
 
@@ -889,7 +1020,7 @@
             Open For Opportunities
           </h2>
 
-          <p class="text-xl text-white/70 leading-relaxed mb-10">
+          <p class="text-xl text-muted leading-relaxed mb-10">
             Cybersecurity Risk · GRC · Vendor Risk · Security Operations · AI Security
           </p>
 
@@ -899,8 +1030,11 @@
               href="mailto:marianne_wong@protonmail.com"
               class="apple-btn"
             >
+
               <i data-lucide="mail"></i>
+
               Email Me
+
             </a>
 
             <a
@@ -909,8 +1043,11 @@
               rel="noreferrer"
               class="apple-btn"
             >
+
               <i data-lucide="linkedin"></i>
+
               LinkedIn
+
             </a>
 
           </div>
@@ -918,6 +1055,7 @@
         </div>
 
       </div>
+
     </section>
 
   </main>
@@ -930,11 +1068,12 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      <p class="text-center text-xs tracking-[0.35em] uppercase text-white/40 font-mono">
+      <p class="text-center text-xs tracking-[0.35em] uppercase text-muted font-mono">
         SYS.DATE: 2026 // MARIANNE_WONG // SEC_RISK_ANALYST // CONNECTION_SECURE
       </p>
 
     </div>
+
   </footer>
 
   <!-- =========================================
@@ -994,7 +1133,7 @@
         company: 'Grab',
         period: 'Dec 2025 – Present',
         status: 'Active',
-        color: 'cyan',
+        color: 'pink',
         details: [
           'Conduct third-party security risk assessments evaluating vendor controls across infrastructure security, data protection, and compliance.',
           'Perform due diligence reviews of vendor security documentation, including security policies, SOC reports, and compliance attestations.',
@@ -1009,7 +1148,7 @@
         company: 'Deriv HQ',
         period: 'Jan 2023 – Dec 2025',
         status: '',
-        color: 'pink',
+        color: 'purple',
         details: [
           'Ensured regulatory compliance (DORA, PCI-DSS) through policy reviews, gap analyses and vendor risk assessments.',
           'Spearheaded organisation-wide security awareness programs, achieving 90%+ completion and 97% participation rates.',
@@ -1021,31 +1160,6 @@
           'Applied AI tools to automate GRC processes.',
           'Analysed 200+ weekly threat intelligence feeds to identify emerging risks.'
         ]
-      },
-
-      {
-        title: 'BeSquare IT Graduate Programme',
-        company: 'Deriv HQ',
-        period: 'Jun 2022 – Dec 2022',
-        status: '',
-        color: 'cyan',
-        details: [
-          'Completed a nine-module program with industry experts, developing a full-stack web app in a five-member team.',
-          'Implemented security measures including input validation and password hashing.'
-        ]
-      },
-
-      {
-        title: 'IT Project Management Intern',
-        company: 'Asian Supply Base SDN. BHD.',
-        period: 'Mar 2021 – Jun 2021',
-        status: '',
-        color: 'pink',
-        details: [
-          'Partnered with cross-functional teams to design comprehensive network improvement strategies.',
-          'Produced detailed process flowcharts and technical documentation for upcoming projects.',
-          'Supported project management initiatives by participating in vendor meetings and stakeholder discussions.'
-        ]
       }
     ];
 
@@ -1055,7 +1169,7 @@
         organization: 'Global Cybersecurity Org',
         rank: 'Rank 57/796',
         icon: 'flag',
-        color: 'cyan',
+        color: 'pink',
         description: 'Participated with Deriv colleagues and ranked 57 out of 796 participants in an international cybersecurity competition.',
         link: 'https://drive.google.com/file/d/1-GFO9SalKL8FN1ETDzBRgPDv2iGJ3lJv/view'
       },
@@ -1065,7 +1179,7 @@
         organization: 'Wiz',
         rank: 'Completed',
         icon: 'bot',
-        color: 'pink',
+        color: 'purple',
         description: 'Completed AI prompt injection activities, demonstrating skills in identifying and exploiting AI security vulnerabilities.',
         link: 'https://drive.google.com/file/d/1Ifr1TRc1RqVrjvesGCW9I9kqzLFvrsDl/view'
       },
@@ -1075,7 +1189,7 @@
         organization: 'Kaspersky',
         rank: 'Participant',
         icon: 'bug',
-        color: 'cyan',
+        color: 'pink',
         description: "Participated in Kaspersky's Capture The Flag competition focusing on threat hunting.",
         link: 'https://drive.google.com/file/d/1CSoBVBAM9bbdvSvjrvw-ltpjG8uDI-P2/view'
       },
@@ -1085,24 +1199,24 @@
         organization: 'Girls in CTF Organization',
         rank: 'Rank 65/80',
         icon: 'user-ninja',
-        color: 'pink',
+        color: 'purple',
         description: 'Competed and ranked 65 out of 80 teams, demonstrating advanced skills in Open Source Intelligence (OSINT).',
         link: 'https://drive.google.com/file/d/1FCblOIgXGqrGZmxy2dRg-rmIWYtM1dzQ/view'
       }
     ];
 
     /* =========================================
-       NAV
+       NAVIGATION
     ========================================= */
 
-    function renderNavItems() {
+    function renderNavItems(){
 
       const desktop = document.getElementById('desktopNav');
       const mobile = document.getElementById('mobileNavItems');
 
       desktop.innerHTML = navItems.map(item => `
         <button
-          class="nav-btn text-sm font-medium transition-all duration-300 text-white/60 hover:text-white"
+          class="nav-btn text-sm font-medium transition-all duration-300 text-muted hover:text-pink-400"
           data-target="${item.id}"
         >
           ${item.label}
@@ -1111,7 +1225,7 @@
 
       mobile.innerHTML = navItems.map(item => `
         <button
-          class="nav-btn flex items-center gap-3 w-full text-left px-4 py-3 rounded-2xl text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300"
+          class="nav-btn flex items-center gap-3 w-full text-left px-4 py-3 rounded-2xl text-muted hover:text-pink-400 hover:bg-white/10 transition-all duration-300"
           data-target="${item.id}"
         >
           <i data-lucide="${item.icon}" class="w-5 h-5"></i>
@@ -1124,7 +1238,7 @@
        SKILLS
     ========================================= */
 
-    function renderSkills() {
+    function renderSkills(){
 
       const el = document.getElementById('skillsList');
 
@@ -1132,10 +1246,10 @@
 
         const colorClass =
           index % 3 === 0
-            ? 'text-cyan-300'
+            ? 'text-pink-400'
             : index % 3 === 1
-            ? 'text-pink-300'
-            : 'text-purple-300';
+            ? 'text-fuchsia-400'
+            : 'text-purple-400';
 
         return `
           <span class="chip inline-flex items-center px-5 py-3 text-sm font-medium ${colorClass}">
@@ -1149,7 +1263,7 @@
        EXPERIENCE
     ========================================= */
 
-    function renderExperiences() {
+    function renderExperiences(){
 
       const el = document.getElementById('experienceList');
 
@@ -1165,7 +1279,7 @@
             <div class="flex items-start gap-4">
 
               <span
-                class="mt-1 text-white/50 transition-transform duration-300 exp-chevron"
+                class="mt-1 text-muted transition-transform duration-300 exp-chevron"
                 data-index="${idx}"
               >
                 <i data-lucide="chevron-right" class="w-5 h-5"></i>
@@ -1173,17 +1287,17 @@
 
               <div>
 
-                <h3 class="text-2xl font-bold text-white flex items-center gap-2 flex-wrap">
+                <h3 class="text-2xl font-bold flex items-center gap-2 flex-wrap">
 
                   ${exp.title}
 
-                  <span class="text-pink-300">@</span>
+                  <span class="text-pink-400">@</span>
 
                   <span>${exp.company}</span>
 
                 </h3>
 
-                <p class="text-sm text-white/50 mt-2">
+                <p class="text-sm text-muted mt-2">
                   ${exp.period}
                 </p>
 
@@ -1192,7 +1306,7 @@
             </div>
 
             ${exp.status ? `
-              <span class="chip px-4 py-2 text-xs font-bold uppercase tracking-wider text-cyan-300">
+              <span class="chip px-4 py-2 text-xs font-bold uppercase tracking-wider text-pink-400">
                 ${exp.status}
               </span>
             ` : ''}
@@ -1209,9 +1323,9 @@
               ${exp.details.map(detail => `
                 <li class="flex items-start gap-4">
 
-                  <span class="mt-2 h-2 w-2 rotate-45 ${exp.color === 'cyan' ? 'bg-cyan-300' : 'bg-pink-300'} shrink-0"></span>
+                  <span class="mt-2 h-2 w-2 rotate-45 ${exp.color === 'pink' ? 'bg-pink-400' : 'bg-purple-400'} shrink-0"></span>
 
-                  <p class="text-white/70 leading-relaxed">
+                  <p class="text-muted leading-relaxed">
                     ${detail}
                   </p>
 
@@ -1231,7 +1345,7 @@
        ACHIEVEMENTS
     ========================================= */
 
-    function renderAchievements() {
+    function renderAchievements(){
 
       const el = document.getElementById('achievementsGrid');
 
@@ -1243,17 +1357,17 @@
 
             <div>
 
-              <h3 class="text-xl font-bold text-white">
+              <h3 class="text-xl font-bold">
                 ${a.title}
               </h3>
 
               <div class="mt-3 flex flex-wrap items-center gap-2">
 
-                <span class="chip px-3 py-1 text-xs font-bold uppercase ${a.color === 'cyan' ? 'text-cyan-300' : 'text-pink-300'}">
+                <span class="chip px-3 py-1 text-xs font-bold uppercase ${a.color === 'pink' ? 'text-pink-400' : 'text-purple-400'}">
                   ${a.rank}
                 </span>
 
-                <span class="text-xs text-white/50">
+                <span class="text-xs text-muted">
                   ${a.organization}
                 </span>
 
@@ -1263,12 +1377,12 @@
 
             <i
               data-lucide="${a.icon}"
-              class="w-6 h-6 mt-1 ${a.color === 'cyan' ? 'text-cyan-300' : 'text-pink-300'}"
+              class="w-6 h-6 mt-1 ${a.color === 'pink' ? 'text-pink-400' : 'text-purple-400'}"
             ></i>
 
           </div>
 
-          <p class="text-white/70 leading-relaxed flex-grow">
+          <p class="text-muted leading-relaxed flex-grow">
             ${a.description}
           </p>
 
@@ -1276,7 +1390,7 @@
             href="${a.link}"
             target="_blank"
             rel="noreferrer"
-            class="mt-6 inline-flex items-center gap-2 text-sm font-bold ${a.color === 'cyan' ? 'text-cyan-300 hover:text-cyan-200' : 'text-pink-300 hover:text-pink-200'} transition-colors"
+            class="mt-6 inline-flex items-center gap-2 text-sm font-bold ${a.color === 'pink' ? 'text-pink-400 hover:text-pink-300' : 'text-purple-400 hover:text-purple-300'} transition-colors"
           >
 
             <i data-lucide="external-link" class="w-4 h-4"></i>
@@ -1294,19 +1408,14 @@
        ACTIVE NAV
     ========================================= */
 
-    function setActiveNav(activeId) {
+    function setActiveNav(activeId){
 
       document.querySelectorAll('.nav-btn').forEach(btn => {
 
         const isActive = btn.dataset.target === activeId;
 
-        btn.classList.toggle('text-white', isActive);
-        btn.classList.toggle('text-cyan-300', isActive);
+        btn.classList.toggle('text-pink-400', isActive);
 
-        if (!isActive) {
-          btn.classList.remove('text-white');
-          btn.classList.add('text-white/60');
-        }
       });
     }
 
@@ -1314,13 +1423,14 @@
        SCROLL
     ========================================= */
 
-    function scrollToSection(id) {
+    function scrollToSection(id){
 
       const el = document.getElementById(id);
 
-      if (el) {
+      if(el){
+
         el.scrollIntoView({
-          behavior: 'smooth'
+          behavior:'smooth'
         });
       }
 
@@ -1337,16 +1447,16 @@
        NAV STYLE
     ========================================= */
 
-    function updateNavStyle() {
+    function updateNavStyle(){
 
       const nav = document.getElementById('topNav');
 
       const scrolled = window.scrollY > 20;
 
-      if (scrolled) {
+      if(scrolled){
 
         nav.className =
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-white/10 bg-white/[0.03] backdrop-blur-2xl';
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-white/10 bg-white/[0.04] backdrop-blur-2xl';
 
       } else {
 
@@ -1359,7 +1469,7 @@
        ACTIVE SECTION
     ========================================= */
 
-    function updateActiveSection() {
+    function updateActiveSection(){
 
       const sections = [
         'home',
@@ -1374,16 +1484,16 @@
 
       const scrollPosition = window.scrollY + 150;
 
-      for (const section of sections) {
+      for(const section of sections){
 
         const el = document.getElementById(section);
 
-        if (!el) continue;
+        if(!el) continue;
 
         const top = el.offsetTop;
         const bottom = top + el.offsetHeight;
 
-        if (scrollPosition >= top && scrollPosition < bottom) {
+        if(scrollPosition >= top && scrollPosition < bottom){
 
           setActiveNav(section);
           break;
@@ -1399,21 +1509,23 @@
 
       const navBtn = e.target.closest('.nav-btn');
 
-      if (navBtn) {
+      if(navBtn){
+
         scrollToSection(navBtn.dataset.target);
         return;
       }
 
       const scrollBtn = e.target.closest('[data-scroll]');
 
-      if (scrollBtn) {
+      if(scrollBtn){
+
         scrollToSection(scrollBtn.dataset.scroll);
         return;
       }
 
       const expToggle = e.target.closest('.exp-toggle');
 
-      if (expToggle) {
+      if(expToggle){
 
         const index = expToggle.dataset.index;
 
@@ -1433,7 +1545,7 @@
         return;
       }
 
-      if (e.target.closest('#menuBtn')) {
+      if(e.target.closest('#menuBtn')){
 
         const mobileNav = document.getElementById('mobileNav');
 
@@ -1451,9 +1563,9 @@
         lucide.createIcons();
       }
 
-      if (e.target.closest('#shareBtn')) {
+      if(e.target.closest('#shareBtn')){
 
-        try {
+        try{
 
           await navigator.clipboard.writeText(window.location.href);
 
@@ -1473,12 +1585,64 @@
 
           }, 2200);
 
-        } catch (err) {
+        } catch(err){
 
           alert('Copy failed: ' + err.message);
         }
       }
+
     });
+
+    /* =========================================
+       THEME TOGGLE
+    ========================================= */
+
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+
+    function setTheme(mode){
+
+      if(mode === 'dark'){
+
+        document.body.classList.add('dark');
+
+        themeIcon.setAttribute('data-lucide', 'sun');
+
+      } else {
+
+        document.body.classList.remove('dark');
+
+        themeIcon.setAttribute('data-lucide', 'moon');
+      }
+
+      localStorage.setItem('theme', mode);
+
+      lucide.createIcons();
+    }
+
+    themeToggle?.addEventListener('click', () => {
+
+      const isDark = document.body.classList.contains('dark');
+
+      setTheme(isDark ? 'light' : 'dark');
+    });
+
+    /* =========================================
+       INITIAL THEME
+    ========================================= */
+
+    const savedTheme = localStorage.getItem('theme');
+
+    if(savedTheme){
+
+      setTheme(savedTheme);
+
+    } else {
+
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      setTheme(prefersDark ? 'dark' : 'light');
+    }
 
     /* =========================================
        SCROLL EVENTS
