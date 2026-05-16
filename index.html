@@ -1,642 +1,1056 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modern Cybersecurity Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-<!-- =========================
-APPLE-STYLE GLASSMORPHISM UPGRADE
-Replace your current <style> block with this
-========================= -->
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  :root{
-    --glass-bg: rgba(255,255,255,0.06);
-    --glass-border: rgba(255,255,255,0.12);
-    --glass-highlight: rgba(255,255,255,0.35);
+  <title>Marianne Wong — Cybersecurity Risk Analyst</title>
 
-    --blur-xl: 30px;
-    --blur-lg: 20px;
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-    --shadow-soft:
-      0 4px 30px rgba(0,0,0,0.25),
-      inset 0 1px 1px rgba(255,255,255,0.08);
-
-    --shadow-hover:
-      0 10px 40px rgba(0,0,0,0.45),
-      inset 0 1px 1px rgba(255,255,255,0.12);
-
-    --apple-ease: cubic-bezier(.16,1,.3,1);
-  }
-
-  body {
-    margin: 0;
-    font-family:
-      ui-sans-serif,
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      "SF Pro Display",
-      "Segoe UI",
-      sans-serif;
-
-    background:
-      radial-gradient(circle at top left, rgba(0,180,255,.12), transparent 25%),
-      radial-gradient(circle at top right, rgba(255,0,140,.10), transparent 25%),
-      radial-gradient(circle at bottom left, rgba(128,0,255,.10), transparent 25%),
-      #050505;
-
-    color: white;
-    overflow-x: hidden;
-  }
-
-  .bg-grid-pattern {
-    background-image:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-
-    background-size: 48px 48px;
-  }
-
-  .section-title {
-    letter-spacing: .08em;
-  }
-
-  /* =========================
-     APPLE GLASS
-  ========================= */
-
-  .glass {
-    position: relative;
-    overflow: hidden;
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,0.12),
-        rgba(255,255,255,0.05)
-      );
-
-    border: 1px solid rgba(255,255,255,0.12);
-
-    backdrop-filter: blur(var(--blur-xl)) saturate(180%);
-    -webkit-backdrop-filter: blur(var(--blur-xl)) saturate(180%);
-
-    box-shadow: var(--shadow-soft);
-
-    transition:
-      transform .45s var(--apple-ease),
-      border-color .45s var(--apple-ease),
-      box-shadow .45s var(--apple-ease),
-      background .45s var(--apple-ease);
-  }
-
-  /* glossy reflection */
-  .glass::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-      linear-gradient(
-        120deg,
-        rgba(255,255,255,0.28),
-        rgba(255,255,255,0.08) 35%,
-        transparent 60%
-      );
-
-    opacity: .9;
-    pointer-events: none;
-  }
-
-  /* subtle inner glow */
-  .glass::after{
-    content:"";
-
-    position:absolute;
-    inset:1px;
-
-    border-radius: inherit;
-
-    border-top: 1px solid rgba(255,255,255,0.20);
-
-    pointer-events:none;
-  }
-
-  .glass:hover{
-    transform: translateY(-4px) scale(1.01);
-
-    border-color: rgba(255,255,255,0.18);
-
-    box-shadow: var(--shadow-hover);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,0.14),
-        rgba(255,255,255,0.07)
-      );
-  }
-
-  /* =========================
-     APPLE GLASS BUTTONS
-  ========================= */
-
-  .apple-btn {
-    position: relative;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: .75rem;
-
-    padding: 16px 28px;
-
-    border-radius: 999px;
-
-    color: white;
-    font-weight: 600;
-    letter-spacing: -.01em;
-
-    border: 1px solid rgba(255,255,255,0.12);
-
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,0.14),
-        rgba(255,255,255,0.06)
-      );
-
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,0.15),
-      0 8px 30px rgba(0,0,0,0.35);
-
-    transition:
-      transform .35s var(--apple-ease),
-      background .35s var(--apple-ease),
-      box-shadow .35s var(--apple-ease),
-      border-color .35s var(--apple-ease);
-
-    overflow: hidden;
-  }
-
-  /* glossy top reflection */
-  .apple-btn::before{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,0.22),
-        transparent 45%
-      );
-
-    opacity:.9;
-    pointer-events:none;
-  }
-
-  /* animated light streak */
-  .apple-btn::after{
-    content:"";
-
-    position:absolute;
-    top:-120%;
-    left:-40%;
-
-    width:40%;
-    height:300%;
-
-    transform: rotate(25deg);
-
-    background: rgba(255,255,255,.18);
-
-    filter: blur(10px);
-
-    transition: transform .9s ease;
-  }
-
-  .apple-btn:hover::after{
-    transform: translateX(420%) rotate(25deg);
-  }
-
-  .apple-btn:hover{
-    transform: translateY(-2px) scale(1.02);
-
-    border-color: rgba(255,255,255,0.22);
-
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,0.18),
-        rgba(255,255,255,0.08)
-      );
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,0.18),
-      0 14px 40px rgba(0,0,0,0.45);
-  }
-
-  .apple-btn:active{
-    transform: scale(.98);
-  }
-
-  /* =========================
-     APPLE GLASS LINK CARDS
-  ========================= */
-
-  .glass-link {
-    position: relative;
-
-    border-radius: 22px;
-
-    border: 1px solid rgba(255,255,255,0.10);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,0.10),
-        rgba(255,255,255,0.04)
-      );
-
-    backdrop-filter: blur(22px) saturate(180%);
-    -webkit-backdrop-filter: blur(22px) saturate(180%);
-
-    box-shadow:
-      0 4px 24px rgba(0,0,0,0.25),
-      inset 0 1px 1px rgba(255,255,255,0.08);
-
-    transition:
-      transform .45s var(--apple-ease),
-      background .45s var(--apple-ease),
-      border-color .45s var(--apple-ease);
-  }
-
-  .glass-link:hover{
-    transform: translateY(-4px);
-
-    border-color: rgba(255,255,255,0.18);
-
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,255,255,0.13),
-        rgba(255,255,255,0.06)
-      );
-  }
-
-  /* =========================
-     NAVBAR
-  ========================= */
-
-  #topNav{
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-  }
-
-  /* =========================
-     SKILL CHIPS
-  ========================= */
-
-  .chip{
-    border-radius:999px;
-
-    border:1px solid rgba(255,255,255,0.10);
-
-    background:
-      linear-gradient(
-        180deg,
-        rgba(255,255,255,0.10),
-        rgba(255,255,255,0.04)
-      );
-
-    backdrop-filter: blur(14px);
-
-    box-shadow:
-      inset 0 1px 1px rgba(255,255,255,0.06);
-
-    transition:
-      transform .3s ease,
-      background .3s ease;
-  }
-
-  .chip:hover{
-    transform: translateY(-2px);
-  }
-
-  /* =========================
-     HERO TITLE
-  ========================= */
-
-  .hero-gradient{
-    background:
-      linear-gradient(
-        90deg,
-        #7dd3fc,
-        #ffffff,
-        #f9a8d4,
-        #c084fc
-      );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-  }
-
-  /* =========================
-     FLOATING LIGHTS
-  ========================= */
-
-  .ambient-light{
-    position:absolute;
-    border-radius:9999px;
-    filter: blur(120px);
-    opacity:.22;
-    animation: float 10s ease-in-out infinite;
-  }
-
-  @keyframes float{
-    0%,100%{
-      transform: translateY(0px);
-    }
-    50%{
-      transform: translateY(-25px);
-    }
-  }
-
-  /* =========================
-     MOBILE
-  ========================= */
-
-  @media(max-width:768px){
-    .glass{
-      backdrop-filter: blur(20px);
+  <style>
+    html {
+      scroll-behavior: smooth;
     }
 
-    .apple-btn{
-      width:100%;
+    :root{
+      --glass-bg: rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.12);
+
+      --blur-xl: 30px;
+      --blur-lg: 20px;
+
+      --shadow-soft:
+        0 4px 30px rgba(0,0,0,0.25),
+        inset 0 1px 1px rgba(255,255,255,0.08);
+
+      --shadow-hover:
+        0 10px 40px rgba(0,0,0,0.45),
+        inset 0 1px 1px rgba(255,255,255,0.12);
+
+      --apple-ease: cubic-bezier(.16,1,.3,1);
     }
-  }
-</style>
-  </head>
-  <body>
-    <!-- Background -->
-    <div class="fixed inset-0 z-0 pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
-      <div class="absolute inset-0 bg-gradient-to-tr from-cyan-900/10 via-transparent to-pink-900/10"></div>
-      <div class="absolute inset-0">
-        <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute top-0 right-0 w-96 h-96 bg-pink-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay:2s"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay:4s"></div>
-      </div>
-      <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
-    </div>
-    <!-- Nav -->
-    
-	<nav
-  id="topNav"
-  class="fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 w-[92%] max-w-5xl"
->
-      <div class="relative flex items-center justify-center h-16">
 
-		  
-  <!-- Desktop Nav Center -->
-  <div
-    class="hidden md:flex items-center justify-center gap-8 absolute left-1/2 -translate-x-1/2"
-    id="desktopNav"
-  ></div>
+    *{
+      box-sizing: border-box;
+    }
 
-  <!-- Mobile Menu Button -->
-  <div class="md:hidden absolute right-0">
-    <button
-      id="menuBtn"
-      class="inline-flex items-center justify-center p-2 rounded-full text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300"
-    >
-      <i data-lucide="menu" class="w-5 h-5" id="menuIcon"></i>
-    </button>
+    body {
+      margin: 0;
+
+      font-family:
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Segoe UI",
+        sans-serif;
+
+      background:
+        radial-gradient(circle at top left, rgba(0,180,255,.12), transparent 25%),
+        radial-gradient(circle at top right, rgba(255,0,140,.10), transparent 25%),
+        radial-gradient(circle at bottom left, rgba(128,0,255,.10), transparent 25%),
+        #050505;
+
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .bg-grid-pattern {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+      background-size: 48px 48px;
+    }
+
+    .section-title {
+      letter-spacing: .08em;
+    }
+
+    /* =========================================
+       APPLE GLASS
+    ========================================= */
+
+    .glass {
+      position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.12),
+          rgba(255,255,255,0.05)
+        );
+
+      border: 1px solid rgba(255,255,255,0.12);
+
+      backdrop-filter: blur(var(--blur-xl)) saturate(180%);
+      -webkit-backdrop-filter: blur(var(--blur-xl)) saturate(180%);
+
+      box-shadow: var(--shadow-soft);
+
+      transition:
+        transform .45s var(--apple-ease),
+        border-color .45s var(--apple-ease),
+        box-shadow .45s var(--apple-ease),
+        background .45s var(--apple-ease);
+    }
+
+    .glass::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          120deg,
+          rgba(255,255,255,0.28),
+          rgba(255,255,255,0.08) 35%,
+          transparent 60%
+        );
+
+      opacity: .9;
+      pointer-events: none;
+    }
+
+    .glass::after{
+      content:"";
+
+      position:absolute;
+      inset:1px;
+
+      border-radius: inherit;
+
+      border-top: 1px solid rgba(255,255,255,0.20);
+
+      pointer-events:none;
+    }
+
+    .glass:hover{
+      transform: translateY(-4px) scale(1.01);
+
+      border-color: rgba(255,255,255,0.18);
+
+      box-shadow: var(--shadow-hover);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.14),
+          rgba(255,255,255,0.07)
+        );
+    }
+
+    /* =========================================
+       APPLE BUTTONS
+    ========================================= */
+
+    .apple-btn {
+      position: relative;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .75rem;
+
+      padding: 16px 28px;
+
+      border-radius: 999px;
+
+      color: white;
+      font-weight: 600;
+      letter-spacing: -.01em;
+
+      border: 1px solid rgba(255,255,255,0.12);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.14),
+          rgba(255,255,255,0.06)
+        );
+
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.15),
+        0 8px 30px rgba(0,0,0,0.35);
+
+      transition:
+        transform .35s var(--apple-ease),
+        background .35s var(--apple-ease),
+        box-shadow .35s var(--apple-ease),
+        border-color .35s var(--apple-ease);
+
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .apple-btn::before{
+      content:"";
+
+      position:absolute;
+      inset:0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.22),
+          transparent 45%
+        );
+
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .apple-btn::after{
+      content:"";
+
+      position:absolute;
+      top:-120%;
+      left:-40%;
+
+      width:40%;
+      height:300%;
+
+      transform: rotate(25deg);
+
+      background: rgba(255,255,255,.18);
+
+      filter: blur(10px);
+
+      transition: transform .9s ease;
+    }
+
+    .apple-btn:hover::after{
+      transform: translateX(420%) rotate(25deg);
+    }
+
+    .apple-btn:hover{
+      transform: translateY(-2px) scale(1.02);
+
+      border-color: rgba(255,255,255,0.22);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.18),
+          rgba(255,255,255,0.08)
+        );
+
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.18),
+        0 14px 40px rgba(0,0,0,0.45);
+    }
+
+    .apple-btn:active{
+      transform: scale(.98);
+    }
+
+    /* =========================================
+       GLASS LINKS
+    ========================================= */
+
+    .glass-link {
+      position: relative;
+
+      border-radius: 22px;
+
+      border: 1px solid rgba(255,255,255,0.10);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.10),
+          rgba(255,255,255,0.04)
+        );
+
+      backdrop-filter: blur(22px) saturate(180%);
+      -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+      box-shadow:
+        0 4px 24px rgba(0,0,0,0.25),
+        inset 0 1px 1px rgba(255,255,255,0.08);
+
+      transition:
+        transform .45s var(--apple-ease),
+        background .45s var(--apple-ease),
+        border-color .45s var(--apple-ease);
+
+      overflow: hidden;
+    }
+
+    .glass-link::before{
+      content:"";
+
+      position:absolute;
+      inset:0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.15),
+          transparent 50%
+        );
+
+      pointer-events:none;
+    }
+
+    .glass-link:hover{
+      transform: translateY(-4px);
+
+      border-color: rgba(255,255,255,0.18);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.13),
+          rgba(255,255,255,0.06)
+        );
+    }
+
+    /* =========================================
+       SKILL CHIPS
+    ========================================= */
+
+    .chip{
+      border-radius:999px;
+
+      border:1px solid rgba(255,255,255,0.10);
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.10),
+          rgba(255,255,255,0.04)
+        );
+
+      backdrop-filter: blur(14px);
+
+      box-shadow:
+        inset 0 1px 1px rgba(255,255,255,0.06);
+
+      transition:
+        transform .3s ease,
+        background .3s ease;
+    }
+
+    .chip:hover{
+      transform: translateY(-2px);
+    }
+
+    /* =========================================
+       HERO TITLE
+    ========================================= */
+
+    .hero-gradient{
+      background:
+        linear-gradient(
+          90deg,
+          #7dd3fc,
+          #ffffff,
+          #f9a8d4,
+          #c084fc
+        );
+
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    /* =========================================
+       NAVBAR
+    ========================================= */
+
+    #topNav{
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+    }
+
+    /* =========================================
+       LIGHTS
+    ========================================= */
+
+    .ambient-light{
+      position:absolute;
+      border-radius:9999px;
+      filter: blur(120px);
+      opacity:.22;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform: translateY(0px);
+      }
+      50%{
+        transform: translateY(-25px);
+      }
+    }
+
+    /* =========================================
+       PERFORMANCE
+    ========================================= */
+
+    .glass,
+    .apple-btn,
+    .glass-link{
+      will-change: transform;
+    }
+
+    .glass:hover,
+    .apple-btn:hover,
+    .glass-link:hover{
+      transition-timing-function: cubic-bezier(.16,1,.3,1);
+    }
+
+    /* =========================================
+       MOBILE
+    ========================================= */
+
+    @media(max-width:768px){
+
+      .glass{
+        backdrop-filter: blur(20px);
+      }
+
+      .apple-btn{
+        width:100%;
+      }
+
+      h1{
+        line-height: .95 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================
+       BACKGROUND
+  ========================================= -->
+
+  <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+
+    <div class="absolute inset-0 bg-gradient-to-br from-black via-zinc-950 to-black"></div>
+
+    <div class="ambient-light top-[-100px] left-[-100px] w-[420px] h-[420px] bg-cyan-400/30"></div>
+
+    <div class="ambient-light top-[10%] right-[-120px] w-[400px] h-[400px] bg-pink-400/20" style="animation-delay:2s"></div>
+
+    <div class="ambient-light bottom-[-120px] left-[20%] w-[360px] h-[360px] bg-purple-500/20" style="animation-delay:4s"></div>
+
+    <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
   </div>
 
-</div>
-    </nav>
-    <main class="relative z-10 pt-16">
-      <!-- Hero -->
-      <section id="home" class="relative min-h-screen flex items-center justify-center pt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-          <div class="flex flex-col md:flex-row items-center gap-12">
-            <div class="flex-1 text-left">
-              <p class="text-sm font-bold tracking-widest text-cyan-400 uppercase mb-6">Cybersecurity Risk Analyst</p>
-              <h1 class="text-5xl sm:text-6xl lg:text-8xl font-black leading-none mb-6"> Marianne <span class="hero-gradient">Wong</span>
-				  <div class="ambient-light top-[-100px] left-[-100px] w-[420px] h-[420px] bg-cyan-400/30"></div>
+  <!-- =========================================
+       NAVBAR
+  ========================================= -->
 
-<div class="ambient-light top-[10%] right-[-120px] w-[400px] h-[400px] bg-pink-400/20" style="animation-delay:2s"></div>
+  <nav id="topNav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
 
-<div class="ambient-light bottom-[-120px] left-[20%] w-[360px] h-[360px] bg-purple-500/20" style="animation-delay:4s"></div>
-              </h1>
-              <p class="text-xl sm:text-2xl text-gray-300 mb-10 max-w-3xl leading-relaxed"> Building resilient security ecosystems through governance, third-party risk management, threat intelligence, compliance operations, and security awareness initiatives. </p>
-              <div class="flex flex-wrap gap-4">
-<button class="apple-btn">                  <i data-lucide="send" class="w-5 h-5"></i>Connect </button>
-<button class="apple-btn">                  <i data-lucide="briefcase" class="w-5 h-5"></i>View Experience </button>
-                <a href="https://flowcv.com/resume/2mofja4dwmne" target="_blank" rel="noreferrer" class="btn-card px-8 py-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-full hover:border-cyan-500/30 hover:bg-cyan-500/10 transition-all duration-300 flex items-center gap-2">
-                  <i data-lucide="download" class="w-5 h-5"></i>Resume PDF </a>
-                <button id="shareBtn" class="btn-card inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-full hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300">
-                  <i data-lucide="share-2" class="w-5 h-5" id="shareIcon"></i>
-                  <span id="shareText">Share Portfolio</span>
-                </button>
-              </div>
-              <div class="mt-8 flex flex-wrap gap-4">
-                <a href="mailto:marianne_wong@protonmail.com" class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
-                  <span class="break-all">marianne_wong@protonmail.com</span>
-                </a>
-                <a href="https://wa.me/601923456789" target="_blank" rel="noreferrer" class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
-                  <i data-lucide="phone" class="w-5 h-5 text-pink-400"></i>
-                  <span>+6019-234-56789</span>
-                </a>
-                <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
-                  <i data-lucide="contact" class="w-5 h-5 text-cyan-400"></i>
-                  <span>LinkedIn Profile</span>
-                </a>
-                <a href="https://tryhackme.com/p/honeydonkey" target="_blank" rel="noreferrer" class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
-                  <i data-lucide="shield" class="w-5 h-5 text-pink-400"></i>
-                  <span>TryHackMe</span>
-                </a>
-                <a href="https://profile.hackthebox.com/profile/019e0311-f857-703a-a1aa-b18288684ab7" target="_blank" rel="noreferrer" class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
-                  <i data-lucide="shield" class="w-5 h-5 text-cyan-400"></i>
-                  <span>Hack The Box</span>
-                </a>
-              </div>
-            </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="flex items-center justify-between h-20">
+
+        <div class="flex items-center gap-4">
+
+          <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
+            <i data-lucide="shield" class="w-6 h-6 text-cyan-300"></i>
+          </div>
+
+          <div>
+            <p class="text-xs font-bold tracking-[0.3em] text-cyan-300 uppercase">
+              Cybersecurity
+            </p>
+
+            <p class="text-sm text-white/70">
+              Marianne Wong
+            </p>
           </div>
         </div>
-      </section>
-      <!-- Summary -->
-      <section id="summary" class="relative py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center gap-3 mb-8">
-            <i data-lucide="terminal" class="w-6 h-6 text-pink-500"></i>
-            <h2 class="text-3xl font-bold section-title">SUMMARY</h2>
-          </div>
-          <div class="glass rounded-2xl p-8 relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-cyan-500 to-pink-500"></div>
-            <p class="text-lg leading-relaxed text-gray-300 pl-4"> Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk management, security awareness, and security operations support. Experienced in vendor security assessments, regulatory compliance aligned with PCI DSS and DORA, and threat intelligence analysis. Demonstrated success improving phishing resilience by <span class="font-bold text-cyan-400">40%</span> through enterprise security awareness campaigns. Combines risk analysis, incident investigation, and threat intelligence to strengthen organisational security posture through practical AI adoption. </p>
-          </div>
+
+        <div class="hidden md:flex items-center gap-6" id="desktopNav"></div>
+
+        <div class="md:hidden">
+          <button id="menuBtn" class="apple-btn px-4 py-3">
+            <i data-lucide="menu" class="w-5 h-5" id="menuIcon"></i>
+          </button>
         </div>
-      </section>
-      <!-- Experience -->
-      <section id="experience" class="relative py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center gap-3 mb-8">
-            <i data-lucide="network" class="w-6 h-6 text-cyan-500"></i>
-            <h2 class="text-3xl font-bold section-title">EXPERIENCE</h2>
-          </div>
-          <div class="space-y-6" id="experienceList"></div>
-        </div>
-      </section>
-      <!-- Skills -->
-      <section id="skills" class="relative py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center gap-3 mb-8">
-            <i data-lucide="zap" class="w-6 h-6 text-pink-500"></i>
-            <h2 class="text-3xl font-bold section-title">SKILLS</h2>
-          </div>
-          <div class="flex flex-wrap gap-3" id="skillsList"></div>
-        </div>
-      </section>
-      <!-- Education -->
-      <section id="education" class="relative py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center gap-3 mb-8">
-            <i data-lucide="graduation-cap" class="w-6 h-6 text-cyan-500"></i>
-            <h2 class="text-3xl font-bold section-title">EDUCATION</h2>
-          </div>
-          <div class="glass rounded-2xl p-8 relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-cyan-500 to-cyan-600"></div>
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl border border-cyan-500/30 bg-cyan-500/10 flex items-center justify-center flex-shrink-0">
-                <i data-lucide="book" class="w-6 h-6 text-cyan-400"></i>
-              </div>
-              <div>
-                <h3 class="text-xl font-bold text-white">Bachelor of Science (Honours) in Cybersecurity</h3>
-                <p class="mt-2 text-pink-400">Asia Pacific Institute of Technology (APIIT)</p>
-                <p class="mt-2 text-sm text-gray-400">May 2019 – Apr 2022 · First Class Honours · CGPA 3.7</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Certifications -->
-      <section id="certifications" class="relative py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center gap-3 mb-8">
-            <i data-lucide="badge-check" class="w-6 h-6 text-pink-500"></i>
-            <h2 class="text-3xl font-bold section-title">CERTIFICATIONS</h2>
-          </div>
-          <div class="glass rounded-2xl p-8 relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-pink-500 to-pink-600"></div>
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl border border-pink-500/30 bg-pink-500/10 flex items-center justify-center flex-shrink-0">
-                <i data-lucide="shield" class="w-6 h-6 text-pink-400"></i>
-              </div>
-              <div class="flex-1">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
-                  <div>
-                    <h3 class="text-xl font-bold text-white">CompTIA Security+</h3>
-                    <p class="mt-2 text-sm text-gray-400">CompTIA · Issued Feb 2026 · Expires Feb 2029</p>
-                  </div>
-                  <a href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-cyan-400 hover:bg-cyan-500/20 transition-colors"> Verify Cert </a>
-                </div>
-                <p class="mt-4 text-gray-300 leading-relaxed"> Validates baseline cybersecurity skills including threat management, cryptography, identity management, network security, and risk mitigation. </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Achievements -->
-      <section id="achievements" class="relative py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center gap-3 mb-8">
-            <i data-lucide="trophy" class="w-6 h-6 text-cyan-500"></i>
-            <h2 class="text-3xl font-bold section-title">ACHIEVEMENTS</h2>
-          </div>
-          <div class="grid md:grid-cols-2 gap-6" id="achievementsGrid"></div>
-        </div>
-      </section>
-    </main>
-    <footer class="relative py-8 border-t border-gray-800 z-10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p class="text-center text-xs tracking-widest uppercase text-gray-500 font-mono"> © 2026 // MARIANNE_WONG // SEC_RISK_ANALYST</p>
       </div>
-    </footer>
-    <script>
-      const navItems = [{
-        id: 'home',
-        label: 'Home',
-        icon: 'home'
-      }, {
-        id: 'summary',
-        label: 'Summary',
-        icon: 'file-text'
-      }, {
-        id: 'experience',
-        label: 'Experience',
-        icon: 'briefcase'
-      }, {
-        id: 'skills',
-        label: 'Skills',
-        icon: 'zap'
-      }, {
-        id: 'education',
-        label: 'Education',
-        icon: 'graduation-cap'
-      }, {
-        id: 'certifications',
-        label: 'Certifications',
-        icon: 'badge-check'
-      }, {
-        id: 'achievements',
-        label: 'Achievements',
-        icon: 'trophy'
-      }];
-      const skills = ['Incident Playbooks', 'Gap Analysis', 'Security Awareness', 'Third Party Vendor Risk Assessment', 'AI Prompting', 'Threat Intelligence', 'Vendor Risk Management', 'GRC', 'PCI-DSS', 'DORA Compliance', 'Phishing Simulations', 'Incident Response', 'KnowBe4', 'Google Workspace', 'CrowdStrike', 'UpGuard', 'Windows', 'macOS', 'Kandji', 'JumpCloud', 'Microsoft 365', 'BurpSuite', 'Wireshark', 'Nmap', 'CATO', 'NordLayer', 'FortiManager', 'Linux', 'JamF', 'ClickUp', 'Certa'];
-      const experiences = [{
+    </div>
+
+    <div id="mobileNav" class="hidden md:hidden px-4 pb-4">
+      <div class="glass rounded-3xl p-3 space-y-2" id="mobileNavItems"></div>
+    </div>
+  </nav>
+
+  <!-- =========================================
+       MAIN
+  ========================================= -->
+
+  <main class="relative z-10 pt-20">
+
+    <!-- =========================================
+         HERO
+    ========================================= -->
+
+    <section id="home" class="relative min-h-screen flex items-center">
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+
+        <div class="max-w-5xl">
+
+          <p class="text-sm font-bold tracking-[0.35em] text-cyan-300 uppercase mb-8">
+            Cybersecurity Risk Analyst
+          </p>
+
+          <h1 class="text-5xl sm:text-7xl lg:text-[8rem] font-black leading-none mb-8">
+            Marianne
+            <span class="hero-gradient">Wong</span>
+          </h1>
+
+          <p class="text-xl sm:text-2xl text-white/75 max-w-4xl leading-relaxed mb-12">
+            Building resilient security ecosystems through governance,
+            third-party risk management, threat intelligence, compliance operations,
+            and enterprise security awareness initiatives.
+          </p>
+
+          <!-- Buttons -->
+
+          <div class="flex flex-wrap gap-4 mb-10">
+
+            <button class="apple-btn" data-scroll="contact">
+              <i data-lucide="send" class="w-5 h-5"></i>
+              Connect
+            </button>
+
+            <button class="apple-btn" data-scroll="experience">
+              <i data-lucide="briefcase" class="w-5 h-5"></i>
+              View Experience
+            </button>
+
+            <a
+              href="https://flowcv.com/resume/2mofja4dwmne"
+              target="_blank"
+              rel="noreferrer"
+              class="apple-btn"
+            >
+              <i data-lucide="download" class="w-5 h-5"></i>
+              Resume PDF
+            </a>
+
+            <button id="shareBtn" class="apple-btn">
+              <i data-lucide="share-2" class="w-5 h-5" id="shareIcon"></i>
+              <span id="shareText">Share Portfolio</span>
+            </button>
+
+          </div>
+
+          <!-- Contact Cards -->
+
+          <div class="flex flex-wrap gap-4">
+
+            <a
+              href="mailto:marianne_wong@protonmail.com"
+              class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
+            >
+              <i data-lucide="mail" class="w-5 h-5 text-cyan-300"></i>
+
+              <span class="break-all">
+                marianne_wong@protonmail.com
+              </span>
+            </a>
+
+            <a
+              href="https://wa.me/601923456789"
+              target="_blank"
+              rel="noreferrer"
+              class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
+            >
+              <i data-lucide="phone" class="w-5 h-5 text-pink-300"></i>
+
+              <span>
+                +6019-234-56789
+              </span>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/mwhm/"
+              target="_blank"
+              rel="noreferrer"
+              class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
+            >
+              <i data-lucide="contact" class="w-5 h-5 text-cyan-300"></i>
+
+              <span>
+                LinkedIn Profile
+              </span>
+            </a>
+
+            <a
+              href="https://tryhackme.com/p/honeydonkey"
+              target="_blank"
+              rel="noreferrer"
+              class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
+            >
+              <i data-lucide="shield" class="w-5 h-5 text-pink-300"></i>
+
+              <span>
+                TryHackMe
+              </span>
+            </a>
+
+            <a
+              href="https://profile.hackthebox.com/profile/019e0311-f857-703a-a1aa-b18288684ab7"
+              target="_blank"
+              rel="noreferrer"
+              class="glass-link inline-flex items-center gap-3 px-6 py-4 text-white"
+            >
+              <i data-lucide="shield-check" class="w-5 h-5 text-cyan-300"></i>
+
+              <span>
+                Hack The Box
+              </span>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         SUMMARY
+    ========================================= -->
+
+    <section id="summary" class="relative py-24">
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex items-center gap-4 mb-10">
+
+          <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
+            <i data-lucide="terminal" class="w-6 h-6 text-pink-300"></i>
+          </div>
+
+          <h2 class="text-3xl font-bold section-title">
+            SUMMARY
+          </h2>
+
+        </div>
+
+        <div class="glass rounded-[2rem] p-10 relative overflow-hidden">
+
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-cyan-400 to-pink-400"></div>
+
+          <p class="text-lg leading-relaxed text-white/75 pl-6">
+
+            Cybersecurity Risk Analyst with 3+ years of experience across GRC,
+            third-party risk management, security awareness, and security operations support.
+            Experienced in vendor security assessments, regulatory compliance aligned with PCI DSS and DORA,
+            and threat intelligence analysis.
+
+            Demonstrated success improving phishing resilience by
+            <span class="font-bold text-cyan-300">40%</span>
+            through enterprise security awareness campaigns.
+
+            Combines risk analysis, incident investigation,
+            and threat intelligence to strengthen organisational security posture through practical AI adoption.
+
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         EXPERIENCE
+    ========================================= -->
+
+    <section id="experience" class="relative py-24">
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex items-center gap-4 mb-10">
+
+          <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
+            <i data-lucide="network" class="w-6 h-6 text-cyan-300"></i>
+          </div>
+
+          <h2 class="text-3xl font-bold section-title">
+            EXPERIENCE
+          </h2>
+
+        </div>
+
+        <div class="space-y-6" id="experienceList"></div>
+
+      </div>
+    </section>
+
+    <!-- =========================================
+         SKILLS
+    ========================================= -->
+
+    <section id="skills" class="relative py-24">
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex items-center gap-4 mb-10">
+
+          <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
+            <i data-lucide="zap" class="w-6 h-6 text-pink-300"></i>
+          </div>
+
+          <h2 class="text-3xl font-bold section-title">
+            SKILLS
+          </h2>
+
+        </div>
+
+        <div class="flex flex-wrap gap-3" id="skillsList"></div>
+
+      </div>
+    </section>
+
+    <!-- =========================================
+         EDUCATION
+    ========================================= -->
+
+    <section id="education" class="relative py-24">
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex items-center gap-4 mb-10">
+
+          <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
+            <i data-lucide="graduation-cap" class="w-6 h-6 text-cyan-300"></i>
+          </div>
+
+          <h2 class="text-3xl font-bold section-title">
+            EDUCATION
+          </h2>
+
+        </div>
+
+        <div class="glass rounded-[2rem] p-10 relative overflow-hidden">
+
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-cyan-400 to-cyan-500"></div>
+
+          <div class="flex items-start gap-5">
+
+            <div class="w-14 h-14 rounded-2xl glass flex items-center justify-center flex-shrink-0">
+              <i data-lucide="book" class="w-6 h-6 text-cyan-300"></i>
+            </div>
+
+            <div>
+
+              <h3 class="text-2xl font-bold text-white">
+                Bachelor of Science (Honours) in Cybersecurity
+              </h3>
+
+              <p class="mt-3 text-pink-300">
+                Asia Pacific Institute of Technology (APIIT)
+              </p>
+
+              <p class="mt-3 text-sm text-white/50">
+                May 2019 – Apr 2022 · First Class Honours · CGPA 3.7
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================
+         CERTIFICATIONS
+    ========================================= -->
+
+    <section id="certifications" class="relative py-24">
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex items-center gap-4 mb-10">
+
+          <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
+            <i data-lucide="badge-check" class="w-6 h-6 text-pink-300"></i>
+          </div>
+
+          <h2 class="text-3xl font-bold section-title">
+            CERTIFICATIONS
+          </h2>
+
+        </div>
+
+        <div class="glass rounded-[2rem] p-10 relative overflow-hidden">
+
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-pink-400 to-pink-500"></div>
+
+          <div class="flex items-start gap-5">
+
+            <div class="w-14 h-14 rounded-2xl glass flex items-center justify-center flex-shrink-0">
+              <i data-lucide="shield" class="w-6 h-6 text-pink-300"></i>
+            </div>
+
+            <div class="flex-1">
+
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+
+                <div>
+
+                  <h3 class="text-2xl font-bold text-white">
+                    CompTIA Security+
+                  </h3>
+
+                  <p class="mt-3 text-sm text-white/50">
+                    CompTIA · Issued Feb 2026 · Expires Feb 2029
+                  </p>
+
+                </div>
+
+                <a
+                  href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="apple-btn text-sm"
+                >
+                  Verify Cert
+                </a>
+
+              </div>
+
+              <p class="mt-6 text-white/75 leading-relaxed">
+
+                Validates baseline cybersecurity skills including threat management,
+                cryptography, identity management, network security,
+                and risk mitigation.
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================
+         ACHIEVEMENTS
+    ========================================= -->
+
+    <section id="achievements" class="relative py-24">
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex items-center gap-4 mb-10">
+
+          <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
+            <i data-lucide="trophy" class="w-6 h-6 text-cyan-300"></i>
+          </div>
+
+          <h2 class="text-3xl font-bold section-title">
+            ACHIEVEMENTS
+          </h2>
+
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6" id="achievementsGrid"></div>
+
+      </div>
+    </section>
+
+    <!-- =========================================
+         CONTACT
+    ========================================= -->
+
+    <section id="contact" class="relative py-24">
+
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="glass rounded-[2.5rem] p-12 text-center">
+
+          <p class="text-sm tracking-[0.35em] uppercase text-cyan-300 font-bold mb-6">
+            Let's Build Secure Systems
+          </p>
+
+          <h2 class="text-5xl font-black mb-6">
+            Open For Opportunities
+          </h2>
+
+          <p class="text-xl text-white/70 leading-relaxed mb-10">
+            Cybersecurity Risk · GRC · Vendor Risk · Security Operations · AI Security
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-4">
+
+            <a
+              href="mailto:marianne_wong@protonmail.com"
+              class="apple-btn"
+            >
+              <i data-lucide="mail"></i>
+              Email Me
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/mwhm/"
+              target="_blank"
+              rel="noreferrer"
+              class="apple-btn"
+            >
+              <i data-lucide="linkedin"></i>
+              LinkedIn
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================
+       FOOTER
+  ========================================= -->
+
+  <footer class="relative py-10 border-t border-white/10 z-10">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <p class="text-center text-xs tracking-[0.35em] uppercase text-white/40 font-mono">
+        SYS.DATE: 2026 // MARIANNE_WONG // SEC_RISK_ANALYST // CONNECTION_SECURE
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- =========================================
+       SCRIPT
+  ========================================= -->
+
+  <script>
+
+    const navItems = [
+      { id: 'home', label: 'Home', icon: 'home' },
+      { id: 'summary', label: 'Summary', icon: 'file-text' },
+      { id: 'experience', label: 'Experience', icon: 'briefcase' },
+      { id: 'skills', label: 'Skills', icon: 'zap' },
+      { id: 'education', label: 'Education', icon: 'graduation-cap' },
+      { id: 'certifications', label: 'Certifications', icon: 'badge-check' },
+      { id: 'achievements', label: 'Achievements', icon: 'trophy' },
+      { id: 'contact', label: 'Contact', icon: 'mail' }
+    ];
+
+    const skills = [
+      'Incident Playbooks',
+      'Gap Analysis',
+      'Security Awareness',
+      'Third Party Vendor Risk Assessment',
+      'AI Prompting',
+      'Threat Intelligence',
+      'Vendor Risk Management',
+      'GRC',
+      'PCI-DSS',
+      'DORA Compliance',
+      'Phishing Simulations',
+      'Incident Response',
+      'KnowBe4',
+      'Google Workspace',
+      'CrowdStrike',
+      'UpGuard',
+      'Windows',
+      'macOS',
+      'Kandji',
+      'JumpCloud',
+      'Microsoft 365',
+      'BurpSuite',
+      'Wireshark',
+      'Nmap',
+      'CATO',
+      'NordLayer',
+      'FortiManager',
+      'Linux',
+      'JamF',
+      'ClickUp',
+      'Certa'
+    ];
+
+    const experiences = [
+      {
         title: 'Risk Analyst',
         company: 'Grab',
         period: 'Dec 2025 – Present',
         status: 'Active',
         color: 'cyan',
-        details: ['Conduct third-party security risk assessments evaluating vendor controls across infrastructure security, data protection, and compliance.', 'Perform due diligence reviews of vendor security documentation, including security policies, SOC reports, and compliance attestations.', 'Maintain a vendor risk dashboard to track key metrics and provide regular updates to management.', 'Identify, document, and prioritize findings from risk assessments and vendor evaluations.', 'Develop and track remediation plans for identified findings or issues, ensuring timely resolution and mitigation of risks.']
-      }, {
+        details: [
+          'Conduct third-party security risk assessments evaluating vendor controls across infrastructure security, data protection, and compliance.',
+          'Perform due diligence reviews of vendor security documentation, including security policies, SOC reports, and compliance attestations.',
+          'Maintain a vendor risk dashboard to track key metrics and provide regular updates to management.',
+          'Identify, document, and prioritize findings from risk assessments and vendor evaluations.',
+          'Develop and track remediation plans for identified findings or issues, ensuring timely resolution and mitigation of risks.'
+        ]
+      },
+
+      {
         title: 'Junior Security Analyst',
         company: 'Deriv HQ',
         period: 'Jan 2023 – Dec 2025',
         status: '',
         color: 'pink',
-        details: ['Ensured regulatory compliance (DORA, PCI-DSS) through policy reviews, gap analyses and vendor risk assessments.', 'Spearheaded organisation-wide security awareness programs, achieving 90%+ completion and 97% participation rates.', 'Created educational materials to strengthen employee engagement.', 'Co-led offsec campaigns, reducing attack surface by 30%.', 'Investigated security incidents and developed incident response playbooks.', 'Delivered key projects including Threat Map Model, quarterly PCI-DSS scans and DORA readiness assessments.', 'Contributed to AI-powered security chatbot, reducing help desk workload by 25%.', 'Applied AI tools to automate GRC processes.', 'Analysed 200+ weekly threat intelligence feeds to identify emerging risks.']
-      }, {
+        details: [
+          'Ensured regulatory compliance (DORA, PCI-DSS) through policy reviews, gap analyses and vendor risk assessments.',
+          'Spearheaded organisation-wide security awareness programs, achieving 90%+ completion and 97% participation rates.',
+          'Created educational materials to strengthen employee engagement.',
+          'Co-led offsec campaigns, reducing attack surface by 30%.',
+          'Investigated security incidents and developed incident response playbooks.',
+          'Delivered key projects including Threat Map Model, quarterly PCI-DSS scans and DORA readiness assessments.',
+          'Contributed to AI-powered security chatbot, reducing help desk workload by 25%.',
+          'Applied AI tools to automate GRC processes.',
+          'Analysed 200+ weekly threat intelligence feeds to identify emerging risks.'
+        ]
+      },
+
+      {
         title: 'BeSquare IT Graduate Programme',
         company: 'Deriv HQ',
         period: 'Jun 2022 – Dec 2022',
         status: '',
         color: 'cyan',
-        details: ['Completed a nine-module program with industry experts, developing a full-stack web app in a five-member team.', 'Implemented security measures including input validation and password hashing.']
-      }, {
+        details: [
+          'Completed a nine-module program with industry experts, developing a full-stack web app in a five-member team.',
+          'Implemented security measures including input validation and password hashing.'
+        ]
+      },
+
+      {
         title: 'IT Project Management Intern',
         company: 'Asian Supply Base SDN. BHD.',
         period: 'Mar 2021 – Jun 2021',
         status: '',
         color: 'pink',
-        details: ['Partnered with cross-functional teams to design comprehensive network improvement strategies.', 'Produced detailed process flowcharts and technical documentation for upcoming projects.', 'Supported project management initiatives by participating in vendor meetings and stakeholder discussions.']
-      }];
-      const achievements = [{
+        details: [
+          'Partnered with cross-functional teams to design comprehensive network improvement strategies.',
+          'Produced detailed process flowcharts and technical documentation for upcoming projects.',
+          'Supported project management initiatives by participating in vendor meetings and stakeholder discussions.'
+        ]
+      }
+    ];
+
+    const achievements = [
+      {
         title: 'Global Cyber Skills Benchmark CTF 2025',
         organization: 'Global Cybersecurity Org',
         rank: 'Rank 57/796',
@@ -644,7 +1058,9 @@ Replace your current <style> block with this
         color: 'cyan',
         description: 'Participated with Deriv colleagues and ranked 57 out of 796 participants in an international cybersecurity competition.',
         link: 'https://drive.google.com/file/d/1-GFO9SalKL8FN1ETDzBRgPDv2iGJ3lJv/view'
-      }, {
+      },
+
+      {
         title: 'Wiz AI Security 2025',
         organization: 'Wiz',
         rank: 'Completed',
@@ -652,7 +1068,9 @@ Replace your current <style> block with this
         color: 'pink',
         description: 'Completed AI prompt injection activities, demonstrating skills in identifying and exploiting AI security vulnerabilities.',
         link: 'https://drive.google.com/file/d/1Ifr1TRc1RqVrjvesGCW9I9kqzLFvrsDl/view'
-      }, {
+      },
+
+      {
         title: 'Kaspersky CTF 2025',
         organization: 'Kaspersky',
         rank: 'Participant',
@@ -660,7 +1078,9 @@ Replace your current <style> block with this
         color: 'cyan',
         description: "Participated in Kaspersky's Capture The Flag competition focusing on threat hunting.",
         link: 'https://drive.google.com/file/d/1CSoBVBAM9bbdvSvjrvw-ltpjG8uDI-P2/view'
-      }, {
+      },
+
+      {
         title: 'Girls in CTF 2024',
         organization: 'Girls in CTF Organization',
         rank: 'Rank 65/80',
@@ -668,218 +1088,424 @@ Replace your current <style> block with this
         color: 'pink',
         description: 'Competed and ranked 65 out of 80 teams, demonstrating advanced skills in Open Source Intelligence (OSINT).',
         link: 'https://drive.google.com/file/d/1FCblOIgXGqrGZmxy2dRg-rmIWYtM1dzQ/view'
-      }];
+      }
+    ];
 
-      function renderNavItems() {
-        const desktop = document.getElementById('desktopNav');
+    /* =========================================
+       NAV
+    ========================================= */
 
-<div
-  id="mobileNav"
-  class="hidden md:hidden mt-3 glass-nav rounded-2xl p-3"
->
-  <div class="flex flex-col gap-2" id="mobileNavItems"></div>
-</div>
-        desktop.innerHTML = navItems.map(item => `
-        
-			desktop.innerHTML = navItems.map(item => `
-  <button
-    class="nav-btn px-4 py-2 rounded-full text-sm font-medium tracking-wide text-gray-300 hover:text-white hover:bg-white/10 transition-all duration-300"
-    data-target="${item.id}"
-  >
-    ${item.label}
-  </button>
-`).join('');
-        mobile.innerHTML = navItems.map(item => `
-        
-<button class="apple-btn">				<i data-lucide="${item.icon}" class="w-5 h-5"></i>
-				<span>${item.label}</span>
-			</button>
+    function renderNavItems() {
+
+      const desktop = document.getElementById('desktopNav');
+      const mobile = document.getElementById('mobileNavItems');
+
+      desktop.innerHTML = navItems.map(item => `
+        <button
+          class="nav-btn text-sm font-medium transition-all duration-300 text-white/60 hover:text-white"
+          data-target="${item.id}"
+        >
+          ${item.label}
+        </button>
       `).join('');
-      }
 
-      function renderSkills() {
-        const el = document.getElementById('skillsList');
-        el.innerHTML = skills.map((skill, index) => {
-          const colorClass = index % 3 === 0 ? 'border-cyan-500/30 bg-cyan-500/10 text-cyan-400' : index % 3 === 1 ? 'border-pink-500/30 bg-pink-500/10 text-pink-400' : 'border-purple-500/30 bg-purple-500/10 text-purple-400';
-          return `
-			<span class="chip inline-flex items-center px-4 py-2 text-sm font-medium ${colorClass}">${skill}</span>`;
-        }).join('');
-      }
+      mobile.innerHTML = navItems.map(item => `
+        <button
+          class="nav-btn flex items-center gap-3 w-full text-left px-4 py-3 rounded-2xl text-white/70 hover:text-white hover:bg-white/5 transition-all duration-300"
+          data-target="${item.id}"
+        >
+          <i data-lucide="${item.icon}" class="w-5 h-5"></i>
+          <span>${item.label}</span>
+        </button>
+      `).join('');
+    }
 
-      function renderExperiences() {
-        const el = document.getElementById('experienceList');
-        el.innerHTML = experiences.map((exp, idx) => `
-        
-			<div class="glass rounded-2xl overflow-hidden transition-all duration-300 hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-500/10">
-<button class="apple-btn">					<div class="flex items-start gap-4">
-						<span class="mt-1 text-gray-400 transition-transform duration-200 exp-chevron" data-index="${idx}">
-							<i data-lucide="chevron-right" class="w-5 h-5"></i>
-						</span>
-						<div>
-							<h3 class="text-xl font-bold text-white flex items-center gap-2 flex-wrap">${exp.title} 
-								<span class="text-pink-500">@</span>
-								<span>${exp.company}</span>
-							</h3>
-							<p class="text-sm text-gray-400 mt-1">${exp.period}</p>
-						</div>
-					</div>
+    /* =========================================
+       SKILLS
+    ========================================= */
+
+    function renderSkills() {
+
+      const el = document.getElementById('skillsList');
+
+      el.innerHTML = skills.map((skill, index) => {
+
+        const colorClass =
+          index % 3 === 0
+            ? 'text-cyan-300'
+            : index % 3 === 1
+            ? 'text-pink-300'
+            : 'text-purple-300';
+
+        return `
+          <span class="chip inline-flex items-center px-5 py-3 text-sm font-medium ${colorClass}">
+            ${skill}
+          </span>
+        `;
+      }).join('');
+    }
+
+    /* =========================================
+       EXPERIENCE
+    ========================================= */
+
+    function renderExperiences() {
+
+      const el = document.getElementById('experienceList');
+
+      el.innerHTML = experiences.map((exp, idx) => `
+
+        <div class="glass rounded-[2rem] overflow-hidden">
+
+          <button
+            class="w-full text-left p-8 cursor-pointer flex flex-col md:flex-row md:items-center md:justify-between gap-4 exp-toggle"
+            data-index="${idx}"
+          >
+
+            <div class="flex items-start gap-4">
+
+              <span
+                class="mt-1 text-white/50 transition-transform duration-300 exp-chevron"
+                data-index="${idx}"
+              >
+                <i data-lucide="chevron-right" class="w-5 h-5"></i>
+              </span>
+
+              <div>
+
+                <h3 class="text-2xl font-bold text-white flex items-center gap-2 flex-wrap">
+
+                  ${exp.title}
+
+                  <span class="text-pink-300">@</span>
+
+                  <span>${exp.company}</span>
+
+                </h3>
+
+                <p class="text-sm text-white/50 mt-2">
+                  ${exp.period}
+                </p>
+
+              </div>
+
+            </div>
+
             ${exp.status ? `
-					<span class="inline-flex items-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-cyan-400">${exp.status}</span>` : ''}
-          
-				</button>
-				<div class="px-6 pb-6 pl-20 hidden exp-details" data-index="${idx}">
-					<ul class="space-y-3">
+              <span class="chip px-4 py-2 text-xs font-bold uppercase tracking-wider text-cyan-300">
+                ${exp.status}
+              </span>
+            ` : ''}
+
+          </button>
+
+          <div
+            class="px-8 pb-8 pl-20 hidden exp-details"
+            data-index="${idx}"
+          >
+
+            <ul class="space-y-4">
+
               ${exp.details.map(detail => `
-                
-						<li class="flex items-start gap-3">
-							<span class="mt-2 h-2 w-2 rotate-45 ${exp.color === 'cyan' ? 'bg-cyan-500' : 'bg-pink-500'} shrink-0"></span>
-							<p class="text-gray-300 leading-relaxed">${detail}</p>
-						</li>
+                <li class="flex items-start gap-4">
+
+                  <span class="mt-2 h-2 w-2 rotate-45 ${exp.color === 'cyan' ? 'bg-cyan-300' : 'bg-pink-300'} shrink-0"></span>
+
+                  <p class="text-white/70 leading-relaxed">
+                    ${detail}
+                  </p>
+
+                </li>
               `).join('')}
-            
-					</ul>
-				</div>
-			</div>
-      `).join('');
-      }
 
-      function renderAchievements() {
-        const el = document.getElementById('achievementsGrid');
-        el.innerHTML = achievements.map((a) => `
-        
-			<div class="glass rounded-2xl p-6 h-full flex flex-col">
-				<div class="flex items-start justify-between gap-4 mb-4">
-					<div>
-						<h3 class="text-lg font-bold text-white">${a.title}</h3>
-						<div class="mt-2 flex flex-wrap items-center gap-2">
-							<span class="rounded-md px-2.5 py-1 text-xs font-bold uppercase ${a.color === 'cyan' ? 'border border-cyan-500/30 bg-cyan-500/10 text-cyan-400' : 'border border-pink-500/30 bg-pink-500/10 text-pink-400'}">${a.rank}</span>
-							<span class="text-xs text-gray-400">${a.organization}</span>
-						</div>
-					</div>
-					<i data-lucide="${a.icon}" class="w-6 h-6 mt-1 ${a.color === 'cyan' ? 'text-cyan-400' : 'text-pink-400'}"></i>
-				</div>
-				<p class="text-gray-300 leading-relaxed flex-grow">${a.description}</p>
-				<a href="${a.link}" target="_blank" rel="noreferrer" class="mt-4 inline-flex items-center gap-2 text-sm font-bold ${a.color === 'cyan' ? 'text-cyan-400 hover:text-cyan-300' : 'text-pink-400 hover:text-pink-300'} transition-colors">
-					<i data-lucide="external-link" class="w-4 h-4"></i>
+            </ul>
+
+          </div>
+
+        </div>
+
+      `).join('');
+    }
+
+    /* =========================================
+       ACHIEVEMENTS
+    ========================================= */
+
+    function renderAchievements() {
+
+      const el = document.getElementById('achievementsGrid');
+
+      el.innerHTML = achievements.map((a) => `
+
+        <div class="glass rounded-[2rem] p-8 h-full flex flex-col">
+
+          <div class="flex items-start justify-between gap-4 mb-6">
+
+            <div>
+
+              <h3 class="text-xl font-bold text-white">
+                ${a.title}
+              </h3>
+
+              <div class="mt-3 flex flex-wrap items-center gap-2">
+
+                <span class="chip px-3 py-1 text-xs font-bold uppercase ${a.color === 'cyan' ? 'text-cyan-300' : 'text-pink-300'}">
+                  ${a.rank}
+                </span>
+
+                <span class="text-xs text-white/50">
+                  ${a.organization}
+                </span>
+
+              </div>
+
+            </div>
+
+            <i
+              data-lucide="${a.icon}"
+              class="w-6 h-6 mt-1 ${a.color === 'cyan' ? 'text-cyan-300' : 'text-pink-300'}"
+            ></i>
+
+          </div>
+
+          <p class="text-white/70 leading-relaxed flex-grow">
+            ${a.description}
+          </p>
+
+          <a
+            href="${a.link}"
+            target="_blank"
+            rel="noreferrer"
+            class="mt-6 inline-flex items-center gap-2 text-sm font-bold ${a.color === 'cyan' ? 'text-cyan-300 hover:text-cyan-200' : 'text-pink-300 hover:text-pink-200'} transition-colors"
+          >
+
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+
             View Data
-          
-				</a>
-			</div>
+
+          </a>
+
+        </div>
+
       `).join('');
-      }
+    }
 
-      function setActiveNav(activeId) {
-		  
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-          const isActive = btn.dataset.target === activeId;
-          btn.classList.toggle('bg-white/10', isActive);
-btn.classList.toggle('text-white', isActive);
-          btn.classList.toggle('bg-cyan-500/10', isActive && btn.closest('#mobileNavItems'));
-          btn.classList.toggle('border', isActive && btn.closest('#mobileNavItems'));
-          btn.classList.toggle('border-cyan-500/30', isActive && btn.closest('#mobileNavItems'));
-          if (!btn.closest('#mobileNavItems')) {
-            btn.classList.toggle('text-gray-300', !isActive);
-            btn.classList.toggle('hover:text-white', !isActive);
-          }
-        });
-      }
+    /* =========================================
+       ACTIVE NAV
+    ========================================= */
 
-      function scrollToSection(id) {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({
+    function setActiveNav(activeId) {
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+
+        const isActive = btn.dataset.target === activeId;
+
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('text-cyan-300', isActive);
+
+        if (!isActive) {
+          btn.classList.remove('text-white');
+          btn.classList.add('text-white/60');
+        }
+      });
+    }
+
+    /* =========================================
+       SCROLL
+    ========================================= */
+
+    function scrollToSection(id) {
+
+      const el = document.getElementById(id);
+
+      if (el) {
+        el.scrollIntoView({
           behavior: 'smooth'
         });
-        document.getElementById('mobileNav').classList.add('hidden');
+      }
+
+      document.getElementById('mobileNav').classList.add('hidden');
+
+      const menuIcon = document.getElementById('menuIcon');
+
+      menuIcon.setAttribute('data-lucide', 'menu');
+
+      lucide.createIcons();
+    }
+
+    /* =========================================
+       NAV STYLE
+    ========================================= */
+
+    function updateNavStyle() {
+
+      const nav = document.getElementById('topNav');
+
+      const scrolled = window.scrollY > 20;
+
+      if (scrolled) {
+
+        nav.className =
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-white/10 bg-white/[0.03] backdrop-blur-2xl';
+
+      } else {
+
+        nav.className =
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500';
+      }
+    }
+
+    /* =========================================
+       ACTIVE SECTION
+    ========================================= */
+
+    function updateActiveSection() {
+
+      const sections = [
+        'home',
+        'summary',
+        'experience',
+        'skills',
+        'education',
+        'certifications',
+        'achievements',
+        'contact'
+      ];
+
+      const scrollPosition = window.scrollY + 150;
+
+      for (const section of sections) {
+
+        const el = document.getElementById(section);
+
+        if (!el) continue;
+
+        const top = el.offsetTop;
+        const bottom = top + el.offsetHeight;
+
+        if (scrollPosition >= top && scrollPosition < bottom) {
+
+          setActiveNav(section);
+          break;
+        }
+      }
+    }
+
+    /* =========================================
+       EVENTS
+    ========================================= */
+
+    document.addEventListener('click', async (e) => {
+
+      const navBtn = e.target.closest('.nav-btn');
+
+      if (navBtn) {
+        scrollToSection(navBtn.dataset.target);
+        return;
+      }
+
+      const scrollBtn = e.target.closest('[data-scroll]');
+
+      if (scrollBtn) {
+        scrollToSection(scrollBtn.dataset.scroll);
+        return;
+      }
+
+      const expToggle = e.target.closest('.exp-toggle');
+
+      if (expToggle) {
+
+        const index = expToggle.dataset.index;
+
+        const details = document.querySelector(`.exp-details[data-index="${index}"]`);
+
+        const chevron = document.querySelector(`.exp-chevron[data-index="${index}"]`);
+
+        const isOpen = !details.classList.contains('hidden');
+
+        details.classList.toggle('hidden');
+
+        chevron.style.transform =
+          isOpen
+            ? 'rotate(0deg)'
+            : 'rotate(90deg)';
+
+        return;
+      }
+
+      if (e.target.closest('#menuBtn')) {
+
+        const mobileNav = document.getElementById('mobileNav');
+
+        mobileNav.classList.toggle('hidden');
+
         const menuIcon = document.getElementById('menuIcon');
-        menuIcon.setAttribute('data-lucide', 'menu');
+
+        menuIcon.setAttribute(
+          'data-lucide',
+          mobileNav.classList.contains('hidden')
+            ? 'menu'
+            : 'x'
+        );
+
         lucide.createIcons();
       }
 
-		function updateNavStyle() {
- 		 nav.className =
-	'fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-white/10 bg-white/[0.03] backdrop-blur-2xl';
-}
-		.glass,
-.apple-btn,
-.glass-link{
-  will-change: transform;
-}
+      if (e.target.closest('#shareBtn')) {
 
-.glass:hover,
-.apple-btn:hover,
-.glass-link:hover{
-  transition-timing-function: cubic-bezier(.16,1,.3,1);
-}
+        try {
 
-      function updateActiveSection() {
-        const sections = ['home', 'summary', 'experience', 'skills', 'education', 'certifications', 'achievements'];
-        const scrollPosition = window.scrollY + 100;
-        for (const section of sections) {
-          const el = document.getElementById(section);
-          if (!el) continue;
-          const top = el.offsetTop;
-          const bottom = top + el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < bottom) {
-            setActiveNav(section);
-            break;
-          }
+          await navigator.clipboard.writeText(window.location.href);
+
+          document.getElementById('shareText').textContent = 'Link Copied';
+
+          document.getElementById('shareIcon').setAttribute('data-lucide', 'check');
+
+          lucide.createIcons();
+
+          setTimeout(() => {
+
+            document.getElementById('shareText').textContent = 'Share Portfolio';
+
+            document.getElementById('shareIcon').setAttribute('data-lucide', 'share-2');
+
+            lucide.createIcons();
+
+          }, 2200);
+
+        } catch (err) {
+
+          alert('Copy failed: ' + err.message);
         }
       }
-      document.addEventListener('click', async (e) => {
-        const navBtn = e.target.closest('.nav-btn');
-        if (navBtn) {
-          scrollToSection(navBtn.dataset.target);
-          return;
-        }
-        const scrollBtn = e.target.closest('[data-scroll]');
-        if (scrollBtn) {
-          scrollToSection(scrollBtn.dataset.scroll);
-          return;
-        }
-        const expToggle = e.target.closest('.exp-toggle');
-        if (expToggle) {
-          const index = expToggle.dataset.index;
-          const details = document.querySelector(`.exp-details[data-index="${index}"]`);
-          const chevron = document.querySelector(`.exp-chevron[data-index="${index}"]`);
-          const isOpen = !details.classList.contains('hidden');
-          details.classList.toggle('hidden');
-          chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
-          return;
-        }
-        if (e.target.closest('#menuBtn')) {
-          const mobileNav = document.getElementById('mobileNav');
-          mobileNav.classList.toggle('hidden');
-          const menuIcon = document.getElementById('menuIcon');
-          menuIcon.setAttribute('data-lucide', mobileNav.classList.contains('hidden') ? 'menu' : 'x');
-          lucide.createIcons();
-        }
-        if (e.target.closest('#shareBtn')) {
-          try {
-            await navigator.clipboard.writeText(window.location.href);
-            document.getElementById('shareText').textContent = 'Link Copied';
-            document.getElementById('shareIcon').setAttribute('data-lucide', 'check');
-            lucide.createIcons();
-            setTimeout(() => {
-              document.getElementById('shareText').textContent = 'Share Portfolio';
-              document.getElementById('shareIcon').setAttribute('data-lucide', 'share-2');
-              lucide.createIcons();
-            }, 2200);
-          } catch (err) {
-            alert('Copy failed: ' + err.message);
-          }
-        }
-      });
-      window.addEventListener('scroll', () => {
-        updateNavStyle();
-        updateActiveSection();
-      });
-      renderNavItems();
-      renderSkills();
-      renderExperiences();
-      renderAchievements();
-      lucide.createIcons();
+    });
+
+    /* =========================================
+       SCROLL EVENTS
+    ========================================= */
+
+    window.addEventListener('scroll', () => {
+
       updateNavStyle();
       updateActiveSection();
-    </script>
-  </body>
+
+    });
+
+    /* =========================================
+       INIT
+    ========================================= */
+
+    renderNavItems();
+    renderSkills();
+    renderExperiences();
+    renderAchievements();
+
+    lucide.createIcons();
+
+    updateNavStyle();
+    updateActiveSection();
+
+  </script>
+
+</body>
 </html>
