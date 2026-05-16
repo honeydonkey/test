@@ -408,6 +408,112 @@
           line-height: 1;
         }
       }
+
+		/* =========================================
+   MOBILE + RESPONSIVE IMPROVEMENTS
+========================================= */
+
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: clamp(3.2rem, 14vw, 6rem);
+    letter-spacing: -0.06em;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+
+  .glass-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .container-main {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .glass,
+  .glass-nav {
+    border-radius: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-spacing {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .hero-title {
+    line-height: 0.95;
+  }
+
+  .icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 18px;
+  }
+
+  .glass {
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+  }
+
+  .orb {
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 640px) {
+  main {
+    padding-top: 110px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 15vw, 4.5rem);
+  }
+
+  .glass-button {
+    min-height: 56px;
+    font-size: 0.9rem;
+  }
+
+  .glass,
+  .glass-hover {
+    padding: 1.4rem;
+  }
+
+  .experience-toggle {
+    padding: 1.6rem;
+  }
+
+  .experience-details {
+    padding-left: 1.6rem !important;
+    padding-right: 1.6rem !important;
+    padding-bottom: 1.6rem !important;
+  }
+
+  .text-5xl {
+    font-size: 2.4rem !important;
+    line-height: 1.1;
+  }
+
+  .text-4xl {
+    font-size: 2rem !important;
+  }
+
+  .text-3xl {
+    font-size: 1.55rem !important;
+  }
+
+  p.text-xl,
+  .text-xl {
+    font-size: 1rem !important;
+    line-height: 1.75rem !important;
+  }
+}
     </style>
   </head>
   <body>
