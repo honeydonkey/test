@@ -1051,10 +1051,6 @@
 
   lucide.createIcons();
 }
-		/* =========================================
-   ACTIVE SECTION TRACKING
-========================================= */
-
 /* =========================================
    ACTIVE SECTION TRACKING
 ========================================= */
@@ -1063,37 +1059,59 @@ const sections = navItems
   .map(item => document.getElementById(item.id))
   .filter(Boolean);
 
+let visibleSections = new Map();
+
 const observer = new IntersectionObserver(
   (entries) => {
 
     entries.forEach(entry => {
 
-      // only activate when section is entering viewport
       if (entry.isIntersecting) {
-
-        currentActive = entry.target.id;
-
-        renderNav(currentActive);
+        visibleSections.set(
+          entry.target.id,
+          entry.intersectionRatio
+        );
+      } else {
+        visibleSections.delete(entry.target.id);
       }
 
     });
 
+    // find MOST visible section
+    let mostVisibleSection = currentActive;
+    let highestRatio = 0;
+
+    visibleSections.forEach((ratio, id) => {
+      if (ratio > highestRatio) {
+        highestRatio = ratio;
+        mostVisibleSection = id;
+      }
+    });
+
+    if (mostVisibleSection !== currentActive) {
+      currentActive = mostVisibleSection;
+      renderNav(currentActive);
+    }
+
   },
   {
-    // IMPORTANT:
-    // activates section when its top crosses
-    // around middle-top viewport area
-    rootMargin: '-35% 0px -55% 0px',
+    threshold: [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7
+    ],
 
-    // trigger immediately
-    threshold: 0
+    rootMargin: '-20% 0px -35% 0px'
   }
 );
 
 sections.forEach(section => {
   observer.observe(section);
 });
-
       function renderSkills() {
         const el = document.getElementById('skillsList');
         el.innerHTML = skills.map(skill => `
@@ -1227,9 +1245,15 @@ sections.forEach(section => {
       function scrollToSection(id) {
         const section = document.getElementById(id);
         if (section) {
-          section.scrollIntoView({
-            behavior: 'smooth'
-          });
+          const y =
+  section.getBoundingClientRect().top +
+  window.pageYOffset -
+  120;
+
+window.scrollTo({
+  top: y,
+  behavior: 'smooth'
+});
         }
         document.getElementById('mobileNav').classList.add('hidden');
       }
