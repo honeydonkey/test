@@ -1016,28 +1016,65 @@
         link: 'https://drive.google.com/file/d/1FCblOIgXGqrGZmxy2dRg-rmIWYtM1dzQ/view'
       }];
 
-      function renderNav() {
-        const desktop = document.getElementById('desktopNav');
-        const mobile = document.getElementById('mobileNavItems');
-        desktop.innerHTML = navItems.map(item => `
-          
-			<button
-            class="nav-btn glass-button px-4 xl:px-5 py-3 text-sm font-bold text-slate-700 whitespace-nowrap"
-            data-target="${item.id}"
-          >
-            ${item.label}
-          </button>
-        `).join('');
-        mobile.innerHTML = navItems.map(item => `
-          
-			<button
-            class="nav-btn w-full glass-button px-5 py-4 text-left text-sm font-bold text-slate-700"
-            data-target="${item.id}"
-          >
-            ${item.label}
-          </button>
-        `).join('');
+      function renderNav(activeSection = 'home') {
+
+  const desktop = document.getElementById('desktopNav');
+  const mobile = document.getElementById('mobileNavItems');
+
+  desktop.innerHTML = navItems.map(item => `
+    <button
+      class="nav-btn nav-item ${
+        activeSection === item.id ? 'active' : ''
+      }"
+      data-target="${item.id}"
+    >
+      ${item.label}
+    </button>
+  `).join('');
+
+  mobile.innerHTML = navItems.map(item => `
+    <button
+      class="nav-btn mobile-nav-item ${
+        activeSection === item.id ? 'active' : ''
+      }"
+      data-target="${item.id}"
+    >
+      ${item.label}
+    </button>
+  `).join('');
+
+  lucide.createIcons();
+}
+		/* =========================================
+   ACTIVE SECTION TRACKING
+========================================= */
+
+const observer = new IntersectionObserver(
+  entries => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+        renderNav(entry.target.id);
       }
+
+    });
+
+  },
+  {
+    threshold: 0.45
+  }
+);
+
+navItems.forEach(item => {
+
+  const section = document.getElementById(item.id);
+
+  if (section) {
+    observer.observe(section);
+  }
+
+});
 
       function renderSkills() {
         const el = document.getElementById('skillsList');
@@ -1216,7 +1253,7 @@
           }
         }
       });
-      renderNav();
+      renderNav('home');
       renderSkills();
       renderExperiences();
       renderAchievements();
