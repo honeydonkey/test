@@ -524,50 +524,33 @@
       <div class="orb orb-3"></div>
     </div>
     <!-- NAVIGATION -->
-<nav class="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
-  <div class="container-main">
+<nav class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-full px-4">
+  <div class="flex justify-center">
+    
+    <!-- FLOATING NAV PIL -->
     <div
-      class="glass-nav relative rounded-full min-h-[74px] lg:h-20 px-4 sm:px-6"
+      class="nav-pill flex items-center gap-2 p-2"
+      id="desktopNav"
+    ></div>
+
+    <!-- MOBILE BUTTON -->
+    <button
+      id="menuBtn"
+      class="mobile-menu-btn lg:hidden"
     >
-      <!-- LEFT LOGO -->
-      <div
-        class="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 flex items-center"
-      >
-        <div
-          class="w-11 h-11 rounded-full bg-gradient-to-br from-pink-400 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-pink-500/20"
-        >
-          <span class="text-white font-black text-sm">MW</span>
-        </div>
-      </div>
+      <i data-lucide="menu" class="w-5 h-5"></i>
+    </button>
+  </div>
 
-      <!-- CENTER NAV -->
-      <div class="hidden lg:flex justify-center items-center h-full">
-        <div
-          id="desktopNav"
-          class="flex items-center gap-2 xl:gap-3"
-        ></div>
-      </div>
-
-      <!-- MOBILE MENU BUTTON -->
-      <div
-        class="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 lg:hidden"
-      >
-        <button
-          id="menuBtn"
-          class="glass-button w-12 h-12 flex items-center justify-center"
-        >
-          <i data-lucide="menu" class="w-5 h-5 text-pink-600"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- MOBILE NAV -->
+  <!-- MOBILE NAV -->
+  <div
+    id="mobileNav"
+    class="hidden mt-4 max-w-sm mx-auto"
+  >
     <div
-      id="mobileNav"
-      class="hidden mt-4 glass p-4 sm:p-5 rounded-3xl"
-    >
-      <div id="mobileNavItems" class="space-y-3"></div>
-    </div>
+      id="mobileNavItems"
+      class="mobile-nav-panel flex flex-col gap-2 p-3"
+    ></div>
   </div>
 </nav>
     <!-- MAIN -->
