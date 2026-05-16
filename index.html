@@ -796,15 +796,8 @@ btn.classList.toggle('text-white', isActive);
       }
 
 function updateNavStyle() {
-  const nav = document.getElementById('topNav');
-
-  if (window.scrollY > 20) {
-    nav.classList.add('top-2');
-    nav.classList.remove('top-4');
-  } else {
-    nav.classList.add('top-4');
-    nav.classList.remove('top-2');
-  }
+  nav.className =
+'fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-white/10 bg-white/[0.03] backdrop-blur-2xl';
 }
 
       function updateActiveSection() {
