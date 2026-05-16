@@ -3,7 +3,10 @@ import {
   Shield,
   Terminal,
   Network,
-  Award,
+  Zap,
+  GraduationCap,
+  Certificate,
+  Trophy,
   Mail,
   Phone,
   Github,
@@ -14,19 +17,11 @@ import {
   ExternalLink,
   Download,
   Share2,
-  Briefcase,
-  FileText,
-  Zap,
-  GraduationCap,
-  Certificate,
-  Trophy,
-  Flag,
-  Bot,
-  Bug,
-  UserCheck,
-  Book,
   Send,
+  Briefcase,
   Home,
+  FileText,
+  Book,
 } from 'lucide-react';
 
 export default function App() {
@@ -41,6 +36,18 @@ export default function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
+    }
+  };
+
+  const toggleExp = (index) => {
+    setExpandedExp(expandedExp === index ? null : index);
+  };
 
   const navItems = [
     { id: 'home', label: 'Home', icon: Home },
@@ -61,10 +68,10 @@ export default function App() {
       color: 'cyan',
       details: [
         'Conduct third-party security risk assessments and vendor evaluations',
-        'Perform due diligence reviews of vendor security postures',
-        'Maintain a vendor risk dashboard to track compliance metrics',
-        'Identify, document, and prioritize findings and gaps',
-        'Develop and track remediation plans for identified vulnerabilities',
+        'Perform due diligence reviews of vendor security controls and compliance postures',
+        'Maintain a vendor risk dashboard to track and monitor security metrics',
+        'Identify, document, and prioritize findings from security assessments',
+        'Develop and track remediation plans for identified vulnerabilities and gaps',
       ],
     },
     {
@@ -73,10 +80,10 @@ export default function App() {
       period: 'Jan 2023 – Dec 2025',
       color: 'pink',
       details: [
-        'Ensured regulatory compliance (DORA, PCI-DSS, GDPR)',
-        'Spearheaded organisation-wide security awareness programs',
+        'Ensured regulatory compliance (DORA, PCI-DSS, ISO27001) across the organization',
+        'Spearheaded organisation-wide security awareness training initiatives',
         'Created educational materials to strengthen security culture',
-        'Co-led offensive security campaigns, reducing attack surface',
+        'Co-led offensive security campaigns, reducing attack surface by 40%',
         'Investigated security incidents and developed response procedures',
         'Delivered key projects including Threat Intelligence framework',
         'Contributed to AI-powered security chatbot development',
@@ -90,8 +97,8 @@ export default function App() {
       period: 'Jun 2022 – Dec 2022',
       color: 'cyan',
       details: [
-        'Completed a nine-module program with industry experts',
-        'Implemented security measures including MFA and access controls',
+        'Completed a nine-module program with industry mentors',
+        'Implemented security measures including endpoint hardening and access controls',
       ],
     },
     {
@@ -100,9 +107,9 @@ export default function App() {
       period: 'Mar 2021 – Jun 2021',
       color: 'pink',
       details: [
-        'Partnered with cross-functional teams to deliver IT solutions',
+        'Partnered with cross-functional teams to deliver IT projects',
         'Produced detailed process flowcharts and documentation',
-        'Supported project management initiatives and stakeholder coordination',
+        'Supported project management initiatives and reporting',
       ],
     },
   ];
@@ -146,60 +153,43 @@ export default function App() {
       title: 'Global Cyber Skills Benchmark CTF 2025',
       rank: 'Rank 57/796',
       organization: 'Global Cybersecurity Org',
-      icon: Flag,
-      color: 'cyan',
       description:
         'Participated with Deriv colleagues and ranked 57 out of 796 participants in an international cybersecurity competition.',
       link: 'https://drive.google.com/file/d/1-GFO9SalKL8FN1ETDzBRgPDv2iGJ3lJv/view',
+      icon: Trophy,
+      color: 'cyan',
     },
     {
       title: 'Wiz AI Security 2025',
       rank: 'Completed',
       organization: 'Wiz',
-      icon: Bot,
-      color: 'pink',
       description:
         'Completed AI prompt injection activities, demonstrating skills in identifying and exploiting AI security vulnerabilities.',
       link: 'https://drive.google.com/file/d/1Ifr1TRc1RqVrjvesGCW9I9kqzLFvrsDl/view',
+      icon: Trophy,
+      color: 'pink',
     },
     {
       title: 'Kaspersky {CTF} 2025',
       rank: 'Participant',
       organization: 'Kaspersky',
-      icon: Bug,
-      color: 'cyan',
       description:
         'Participated in Kaspersky\'s Capture The Flag competition focusing on threat hunting.',
       link: 'https://drive.google.com/file/d/1CSoBVBAM9bbdvSvjrvw-ltpjG8uDI-P2/view',
+      icon: Trophy,
+      color: 'cyan',
     },
     {
       title: 'Girls in CTF 2024',
       rank: 'Rank 65/80',
       organization: 'Girls in CTF Organization',
-      icon: UserCheck,
-      color: 'pink',
       description:
         'Competed and ranked 65 out of 80 teams, demonstrating advanced skills in Open Source Intelligence (OSINT).',
       link: 'https://drive.google.com/file/d/1FCblOIgXGqrGZmxy2dRg-rmIWYtM1dzQ/view',
+      icon: Trophy,
+      color: 'pink',
     },
   ];
-
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
-  };
-
-  const toggleExp = (index) => {
-    setExpandedExp(expandedExp === index ? null : index);
-  };
-
-  const copyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
-    alert('Portfolio link copied to clipboard!');
-  };
 
   return (
     <div className="min-h-screen bg-black text-white font-sans antialiased overflow-x-hidden">
@@ -247,7 +237,7 @@ export default function App() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-sm font-medium text-gray-300 hover:text-cyan-400 transition-colors flex items-center gap-1"
+                  className="text-sm text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-1"
                 >
                   <item.icon className="w-4 h-4" />
                   {item.label}
@@ -261,11 +251,7 @@ export default function App() {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none"
               >
-                {isMenuOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
           </div>
@@ -279,10 +265,12 @@ export default function App() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-colors flex items-center gap-2"
+                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-cyan-400 hover:bg-white/5"
                 >
-                  <item.icon className="w-4 h-4" />
-                  <span>{item.label}</span>
+                  <div className="flex items-center gap-2">
+                    <item.icon className="w-5 h-5" />
+                    <span>{item.label}</span>
+                  </div>
                 </button>
               ))}
             </div>
@@ -291,7 +279,7 @@ export default function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 z-10">
+      <section id="home" className="relative min-h-screen flex items-center justify-center pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 text-left">
@@ -308,16 +296,17 @@ export default function App() {
                 Building resilient security ecosystems through AI-driven governance, threat
                 intelligence, and offensive security insight.
               </p>
-              <div className="flex flex-wrap gap-4">
+
+              <div className="flex flex-wrap gap-4 mb-8">
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="px-8 py-4 bg-gradient-to-r from-cyan-600 to-cyan-700 text-white font-bold rounded-lg hover:from-cyan-500 hover:to-cyan-600 transition-all shadow-lg shadow-cyan-500/25 flex items-center gap-2"
+                  className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-cyan-600 text-black font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all flex items-center gap-2"
                 >
                   <Send className="w-5 h-5" /> Connect
                 </button>
                 <button
                   onClick={() => scrollToSection('experience')}
-                  className="px-8 py-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-lg hover:border-gray-700 transition-all flex items-center gap-2"
+                  className="px-8 py-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-full hover:border-cyan-500/50 transition-all flex items-center gap-2"
                 >
                   <Briefcase className="w-5 h-5" /> View Experience
                 </button>
@@ -325,53 +314,48 @@ export default function App() {
                   href="https://flowcv.com/resume/2mofja4dwmne"
                   target="_blank"
                   rel="noreferrer"
-                  className="px-8 py-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-lg hover:border-gray-700 transition-all flex items-center gap-2"
+                  className="px-8 py-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-full hover:border-pink-500/50 transition-all flex items-center gap-2"
                 >
                   <Download className="w-5 h-5" /> Resume PDF
                 </a>
               </div>
 
               {/* Contact Links */}
-              <div className="mt-12">
-                <p className="text-xs font-bold tracking-widest text-gray-500 uppercase mb-4">
-                  Get in touch
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <a
-                    href="mailto:marianne_wong@protonmail.com"
-                    className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-lg hover:border-cyan-500/30 transition-all"
-                  >
-                    <Mail className="w-5 h-5 text-cyan-400" />
-                    <span className="break-all text-sm">marianne_wong@protonmail.com</span>
-                  </a>
-                  <a
-                    href="https://wa.me/601923456789"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-lg hover:border-pink-500/30 transition-all"
-                  >
-                    <Phone className="w-5 h-5 text-pink-400" />
-                    <span className="text-sm">+6019-234-56789</span>
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/mwhm/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-lg hover:border-cyan-500/30 transition-all"
-                  >
-                    <Linkedin className="w-5 h-5 text-cyan-400" />
-                    <span className="text-sm">LinkedIn</span>
-                  </a>
-                  <a
-                    href="https://tryhackme.com/p/honeydonkey"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-lg hover:border-pink-500/30 transition-all"
-                  >
-                    <Shield className="w-5 h-5 text-pink-400" />
-                    <span className="text-sm">TryHackMe</span>
-                  </a>
-                </div>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="mailto:marianne_wong@protonmail.com"
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white rounded-full hover:border-cyan-500/50 transition-all text-sm"
+                >
+                  <Mail className="w-5 h-5 text-cyan-400" />
+                  <span className="break-all">marianne_wong@protonmail.com</span>
+                </a>
+                <a
+                  href="https://wa.me/601923456789"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white rounded-full hover:border-pink-500/50 transition-all text-sm"
+                >
+                  <Phone className="w-5 h-5 text-pink-400" />
+                  <span>+6019-234-56789</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mwhm/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white rounded-full hover:border-cyan-500/50 transition-all text-sm"
+                >
+                  <Linkedin className="w-5 h-5 text-cyan-400" />
+                  <span>LinkedIn</span>
+                </a>
+                <a
+                  href="https://tryhackme.com/p/honeydonkey"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white rounded-full hover:border-pink-500/50 transition-all text-sm"
+                >
+                  <Shield className="w-5 h-5 text-pink-400" />
+                  <span>TryHackMe</span>
+                </a>
               </div>
             </div>
           </div>
@@ -379,27 +363,27 @@ export default function App() {
       </section>
 
       {/* Summary Section */}
-      <section id="summary" className="relative py-20 z-10">
+      <section id="summary" className="relative py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
             <Terminal className="w-6 h-6 text-pink-500" />
             <h2 className="text-3xl font-bold">SUMMARY</h2>
           </div>
-          <div className="bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 relative overflow-hidden hover:border-gray-700 transition-all">
+          <div className="bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-cyan-500 to-pink-500"></div>
             <p className="text-lg leading-relaxed text-gray-300 pl-4">
               Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk
               management, security awareness, and security operations support. Experienced in vendor
-              security assessments, compliance frameworks, and threat analysis. Proficient in
-              AI-powered automation and security tooling. Strong communicator with proven ability to
-              translate technical security concepts for non-technical stakeholders.
+              security assessments, compliance frameworks (PCI-DSS, DORA, ISO 27001), and
+              implementing security solutions. Passionate about leveraging AI and automation to
+              strengthen security posture.
             </p>
           </div>
         </div>
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="relative py-20 z-10">
+      <section id="experience" className="relative py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
             <Network className="w-6 h-6 text-cyan-500" />
@@ -409,21 +393,20 @@ export default function App() {
             {experiences.map((exp, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-2xl overflow-hidden hover:border-gray-700 transition-all"
+                className="bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-2xl overflow-hidden"
               >
                 <div
                   className="p-6 cursor-pointer flex flex-col md:flex-row md:items-center md:justify-between gap-4"
                   onClick={() => toggleExp(index)}
                 >
                   <div className="flex items-start gap-4">
-                    <button className="mt-1 text-gray-400 transition-transform duration-200">
-                      <ChevronRight
-                        className="w-5 h-5"
-                        style={{
-                          transform:
-                            expandedExp === index ? 'rotate(90deg)' : 'rotate(0)',
-                        }}
-                      />
+                    <button
+                      className="mt-1 text-gray-400 transition-transform duration-200"
+                      style={{
+                        transform: expandedExp === index ? 'rotate(90deg)' : 'rotate(0)',
+                      }}
+                    >
+                      <ChevronRight className="w-5 h-5" />
                     </button>
                     <div>
                       <h3 className="text-xl font-bold text-white flex items-center gap-2 flex-wrap">
@@ -433,14 +416,16 @@ export default function App() {
                       <p className="text-sm text-gray-400 mt-1">{exp.period}</p>
                     </div>
                   </div>
+
                   {exp.status && (
                     <span className="inline-flex items-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-cyan-400">
                       {exp.status}
                     </span>
                   )}
                 </div>
+
                 {expandedExp === index && (
-                  <div className="px-6 pb-6 pt-0 border-t border-gray-800">
+                  <div className="px-6 pb-6 pl-16">
                     <ul className="space-y-3">
                       {exp.details.map((detail, i) => (
                         <li key={i} className="flex items-start gap-3">
@@ -462,7 +447,7 @@ export default function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="relative py-20 z-10">
+      <section id="skills" className="relative py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
             <Zap className="w-6 h-6 text-pink-500" />
@@ -474,13 +459,13 @@ export default function App() {
                 index % 3 === 0
                   ? 'border-cyan-500/30 bg-cyan-500/10 text-cyan-400'
                   : index % 3 === 1
-                  ? 'border-pink-500/30 bg-pink-500/10 text-pink-400'
-                  : 'border-purple-500/30 bg-purple-500/10 text-purple-400';
+                    ? 'border-pink-500/30 bg-pink-500/10 text-pink-400'
+                    : 'border-purple-500/30 bg-purple-500/10 text-purple-400';
 
               return (
                 <span
-                  key={skill}
-                  className={`border rounded-full px-4 py-2 text-sm font-medium ${colorClass} hover:scale-105 transition-transform`}
+                  key={index}
+                  className={`border rounded-full px-4 py-2 text-sm font-medium transition-all hover:shadow-lg ${colorClass}`}
                 >
                   {skill}
                 </span>
@@ -491,13 +476,13 @@ export default function App() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="relative py-20 z-10">
+      <section id="education" className="relative py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
             <GraduationCap className="w-6 h-6 text-cyan-500" />
             <h2 className="text-3xl font-bold">EDUCATION</h2>
           </div>
-          <div className="bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 relative overflow-hidden hover:border-gray-700 transition-all">
+          <div className="bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-cyan-500 to-cyan-600"></div>
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-xl border border-cyan-500/30 bg-cyan-500/10 flex items-center justify-center flex-shrink-0">
@@ -518,13 +503,13 @@ export default function App() {
       </section>
 
       {/* Certifications Section */}
-      <section id="certifications" className="relative py-20 z-10">
+      <section id="certifications" className="relative py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
             <Certificate className="w-6 h-6 text-pink-500" />
             <h2 className="text-3xl font-bold">CERTIFICATIONS</h2>
           </div>
-          <div className="bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 relative overflow-hidden hover:border-gray-700 transition-all">
+          <div className="bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-pink-500 to-pink-600"></div>
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-xl border border-pink-500/30 bg-pink-500/10 flex items-center justify-center flex-shrink-0">
@@ -542,14 +527,14 @@ export default function App() {
                     href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-cyan-400 hover:border-cyan-400 transition-all"
+                    className="inline-flex items-center justify-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-cyan-400 hover:bg-cyan-500/20 transition-all"
                   >
                     Verify Cert
                   </a>
                 </div>
                 <p className="mt-4 text-gray-300 leading-relaxed">
-                  Validates baseline cybersecurity skills including threat management, cryptography,
-                  identity management, network security, and risk mitigation.
+                  Validates baseline cybersecurity skills including threat management,
+                  cryptography, identity management, network security, and risk mitigation.
                 </p>
               </div>
             </div>
@@ -558,7 +543,7 @@ export default function App() {
       </section>
 
       {/* Achievements Section */}
-      <section id="achievements" className="relative py-20 z-10">
+      <section id="achievements" className="relative py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
             <Trophy className="w-6 h-6 text-cyan-500" />
@@ -575,7 +560,7 @@ export default function App() {
               return (
                 <div
                   key={index}
-                  className="bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-gray-700 transition-all flex flex-col h-full"
+                  className="bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6"
                 >
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
@@ -613,20 +598,48 @@ export default function App() {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <section id="contact" className="relative py-20 border-t border-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-sm font-bold tracking-widest text-cyan-400 uppercase mb-4">
+              Get in Touch
+            </p>
+            <h2 className="text-3xl font-bold mb-8">Let's Connect</h2>
+            <div className="flex flex-wrap justify-center gap-3">
+              <a
+                href="mailto:marianne_wong@protonmail.com"
+                className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 text-black font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all inline-flex items-center gap-2"
+              >
+                <Mail className="w-5 h-5" /> Email Me
+              </a>
+              <a
+                href="https://www.linkedin.com/in/mwhm/"
+                target="_blank"
+                rel="noreferrer"
+                className="px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-full hover:border-cyan-500/50 transition-all inline-flex items-center gap-2"
+              >
+                <Linkedin className="w-5 h-5" /> LinkedIn
+              </a>
+              <a
+                href="https://tryhackme.com/p/honeydonkey"
+                target="_blank"
+                rel="noreferrer"
+                className="px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-full hover:border-pink-500/50 transition-all inline-flex items-center gap-2"
+              >
+                <Shield className="w-5 h-5" /> TryHackMe
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer id="contact" className="relative py-8 border-t border-gray-800 z-10">
+      <footer className="relative py-8 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-xs tracking-widest uppercase text-gray-500 font-mono">
             SYS.DATE: 2026 // MARIANNE_WONG // SEC_RISK_ANALYST // CONNECTION_SECURE
           </p>
-          <div className="mt-6 flex justify-center gap-3">
-            <button
-              onClick={copyLink}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-lg hover:border-pink-500/30 transition-all text-sm font-semibold"
-            >
-              <Share2 className="w-4 h-4" /> Share Portfolio
-            </button>
-          </div>
         </div>
       </footer>
     </div>
