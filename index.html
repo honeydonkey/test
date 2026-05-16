@@ -562,23 +562,28 @@
   font-size: 0.92rem;
   font-weight: 700;
 
-  transition:
-    all 0.35s cubic-bezier(.22,1,.36,1);
-
   overflow: hidden;
 
-  z-index: 1;
+  isolation: isolate;
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
-/* ACTIVE CAPSULE */
+/* ACTIVE */
 .nav-item.active {
+
   color: #ec4899;
 
   background:
     linear-gradient(
       180deg,
-      rgba(255,255,255,0.92),
-      rgba(255,255,255,0.58)
+      rgba(255,255,255,0.95),
+      rgba(255,255,255,0.72)
     );
 
   border:
@@ -586,43 +591,47 @@
 
   box-shadow:
     inset 0 1px 1px rgba(255,255,255,1),
-    0 10px 30px rgba(236,72,153,0.20);
+    0 10px 30px rgba(236,72,153,0.18);
 
-  transform: scale(1.02);
+  transform: translateY(-1px);
 }
+
+/* SHINE */
 .nav-item.active::before {
-  z-index: -1;
-}
 
-/* HOVER */
-.nav-item:hover {
-  color: #ec4899;
-}
-
-/* LIQUID REFLECTION */
-.nav-item.active::before {
   content: "";
 
   position: absolute;
 
-  top: 0;
-  left: -40%;
+  inset: 0;
 
-  width: 65%;
-  height: 100%;
+  border-radius: inherit;
 
   background:
     linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,0.72),
-      transparent
+      120deg,
+      transparent 20%,
+      rgba(255,255,255,0.65) 50%,
+      transparent 80%
     );
 
-  transform: skewX(-18deg);
+  transform: translateX(-120%) skewX(-15deg);
 
-  animation:
-    liquidShine 5s ease-in-out infinite;
+  animation: liquidShine 4.5s linear infinite;
+
+  z-index: 0;
+}
+
+.nav-item span,
+.nav-item i {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes liquidShine {
+  to {
+    transform: translateX(120%) skewX(-15deg);
+  }
 }
 
 @keyframes liquidShine {
@@ -1036,13 +1045,13 @@
 
   desktop.innerHTML = navItems.map(item => `
     <button
-      class="nav-btn nav-item ${
-        activeSection === item.id ? 'active' : ''
-      }"
-      data-target="${item.id}"
-    >
-      ${item.label}
-    </button>
+  class="nav-btn nav-item ${
+    activeSection === item.id ? 'active' : ''
+  }"
+  data-target="${item.id}"
+>
+  <span>${item.label}</span>
+</button>
   `).join('');
 
   mobile.innerHTML = navItems.map(item => `
