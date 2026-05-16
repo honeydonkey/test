@@ -1021,6 +1021,7 @@
         link: 'https://drive.google.com/file/d/1FCblOIgXGqrGZmxy2dRg-rmIWYtM1dzQ/view'
       }];
 
+	let currentActive = 'home';
       function renderNav(activeSection = currentActive) {    if (activeSection === currentActive &&       document.querySelector('.nav-item.active')) {     return;   }    currentActive = activeSection;
 
   const desktop = document.getElementById('desktopNav');
@@ -1061,8 +1062,6 @@
 const sections = navItems
   .map(item => document.getElementById(item.id))
   .filter(Boolean);
-
-let currentActive = 'home';
 
 const observer = new IntersectionObserver(
   (entries) => {
