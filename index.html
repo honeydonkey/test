@@ -3,719 +3,534 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marianne Wong — Cybersecurity Risk Analyst</title>
-
+  <title>Modern Cybersecurity Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet" />
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            bg: '#050816',
-            surface: 'rgba(255,255,255,0.04)',
-            border: 'rgba(255,255,255,0.08)',
-            cyan: '#00e5ff',
-            pink: '#ff4fd8',
-            muted: '#9aa4bf'
-          },
-          fontFamily: {
-            display: ['Orbitron', 'sans-serif'],
-            body: ['Inter', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    :root {
-      --bg: #050816;
-      --surface: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.08);
-      --cyan: #00e5ff;
-      --pink: #ff4fd8;
-      --text: #f5f7ff;
-      --muted: #9aa4bf;
-    }
-
-    * {
-      scroll-behavior: smooth;
-    }
-
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(0,229,255,.12), transparent 25%),
-        radial-gradient(circle at bottom right, rgba(255,79,216,.10), transparent 25%),
-        linear-gradient(135deg, #050816 0%, #070b1a 40%, #090d1f 100%);
-      color: var(--text);
-      min-height: 100vh;
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #000;
+      color: #fff;
       overflow-x: hidden;
     }
-
-    h1, h2, h3, .font-display {
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: .05em;
+    .bg-grid-pattern {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
     }
-
-    .container-wrap {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 32px 24px 80px;
+    .section-title { letter-spacing: 0.02em; }
+    .glass {
+      background: linear-gradient(90deg, rgba(17,24,39,0.55), rgba(31,41,55,0.55));
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(55,65,81,0.8);
     }
-
-    .glass-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-radius: 28px;
-      transition: .35s ease;
-      position: relative;
-      overflow: hidden;
+    .chip {
+      border-radius: 9999px;
+      border: 1px solid;
     }
-
-    .glass-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(0,229,255,.22);
-      box-shadow:
-        0 15px 50px rgba(0,0,0,.45),
-        0 0 35px rgba(0,229,255,.08);
+    .link-card:hover, .btn-card:hover {
+      transform: translateY(-2px);
     }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 28px;
-      font-size: 1.7rem;
-      font-weight: 700;
-    }
-
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(0,229,255,.55),
-        rgba(255,79,216,.55),
-        transparent
-      );
-      margin: 70px 0;
-    }
-
-    .skill-pill {
-      border: 1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.03);
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: .92rem;
-      color: #dce6ff;
-      transition: .3s ease;
-    }
-
-    .skill-pill:hover {
-      border-color: rgba(0,229,255,.35);
-      color: white;
-      box-shadow: 0 0 18px rgba(0,229,255,.15);
-    }
-
-    .timeline-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: var(--cyan);
-      box-shadow: 0 0 12px rgba(0,229,255,.8);
-      margin-top: 9px;
-      flex-shrink: 0;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 48px;
-      align-items: center;
-      min-height: 88vh;
-    }
-
-    .hero-orb {
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle,
-        rgba(0,229,255,.65),
-        rgba(0,229,255,.08),
-        transparent 72%);
-      filter: blur(8px);
-      animation: floaty 6s ease-in-out infinite;
-      margin: 0 auto;
-    }
-
-    @keyframes floaty {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-
-    .experience-item {
-      cursor: pointer;
-    }
-
-    .experience-content {
-      display: none;
-    }
-
-    .experience-item.active .experience-content {
-      display: block;
-    }
-
-    .experience-item.active .expand-icon {
-      transform: rotate(90deg);
-      color: var(--cyan);
-    }
-
-    .expand-icon {
-      transition: .3s ease;
-    }
-
-    a {
-      transition: .3s ease;
-    }
-
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,.12);
-      border-radius: 999px;
-    }
-
-    @media (max-width: 900px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding-top: 60px;
-      }
-
-      .hero-orb {
-        width: 260px;
-        height: 260px;
-      }
+    .icon-btn {
+      width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 9999px;
     }
   </style>
 </head>
-
 <body>
-  <main class="container-wrap">
+  <!-- Background -->
+  <div class="fixed inset-0 z-0 pointer-events-none">
+    <div class="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
+    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-900/10 via-transparent to-pink-900/10"></div>
+    <div class="absolute inset-0">
+      <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute top-0 right-0 w-96 h-96 bg-pink-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay:2s"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay:4s"></div>
+    </div>
+    <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+  </div>
 
-    <!-- HERO -->
-    <section class="hero-grid">
-      <div>
-        <p class="font-display uppercase tracking-[0.35em] text-cyan text-xs mb-5">
-          Cybersecurity Risk Analyst
-        </p>
-
-        <h1 class="text-6xl lg:text-7xl font-black leading-none mb-8">
-          Marianne
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500">
-            Wong
-          </span>
-        </h1>
-
-        <p class="text-lg text-slate-400 leading-relaxed max-w-2xl mb-10">
-          Building resilient security ecosystems through governance, third-party risk management,
-          threat intelligence, compliance operations, and security awareness initiatives.
-        </p>
-
-        <div class="flex flex-wrap gap-4 mb-10">
-          <a href="#contact" class="px-7 py-3 rounded-full bg-cyan text-black font-semibold hover:bg-white">
-            Connect
-          </a>
-
-          <a href="#experience" class="px-7 py-3 rounded-full border border-white/10 hover:border-cyan/40">
-            View Experience
-          </a>
+  <!-- Nav -->
+  <nav id="topNav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-cyan-500/25">
+            <i data-lucide="shield" class="w-6 h-6 text-white"></i>
+          </div>
+          <div>
+            <p class="text-xs font-bold tracking-widest text-cyan-400 uppercase">Cybersecurity</p>
+            <p class="text-xs text-gray-400">Marianne Wong</p>
+          </div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-400">
-          <div class="glass-card p-4">
-            <div class="flex items-center gap-3">
-              <i class="fas fa-envelope text-cyan"></i>
-              <span>marianne_wong@protonmail.com</span>
-            </div>
-          </div>
+        <div class="hidden md:flex items-center space-x-6" id="desktopNav"></div>
 
-          <div class="glass-card p-4">
-            <div class="flex items-center gap-3">
-              <i class="fas fa-phone text-pink"></i>
-              <span>+6019-234-56789</span>
-            </div>
-          </div>
-
-          <div class="glass-card p-4">
-            <div class="flex items-center gap-3">
-              <i class="fas fa-location-dot text-cyan"></i>
-              <span>Dengkil, Selangor, Malaysia</span>
-            </div>
-          </div>
-
-          <div class="glass-card p-4">
-            <div class="flex items-center gap-3">
-              <i class="fas fa-shield-halved text-pink"></i>
-              <span>GRC · Threat Intelligence · Vendor Risk</span>
-            </div>
-          </div>
+        <div class="md:hidden">
+          <button id="menuBtn" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
+            <i data-lucide="menu" class="w-6 h-6" id="menuIcon"></i>
+          </button>
         </div>
       </div>
+    </div>
 
-      <div class="relative flex justify-center items-center">
-        <div class="hero-orb"></div>
+    <div id="mobileNav" class="hidden md:hidden bg-black/95 backdrop-blur-md border-t border-gray-800">
+      <div class="px-2 pt-2 pb-3 space-y-1" id="mobileNavItems"></div>
+    </div>
+  </nav>
+
+  <main class="relative z-10 pt-16">
+    <!-- Hero -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+          <div class="flex-1 text-left">
+            <p class="text-sm font-bold tracking-widest text-cyan-400 uppercase mb-6">Cybersecurity Risk Analyst</p>
+            <h1 class="text-5xl sm:text-6xl lg:text-8xl font-black leading-none mb-6">
+              Marianne <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-pink-500 to-purple-600">Wong</span>
+            </h1>
+            <p class="text-xl sm:text-2xl text-gray-300 mb-10 max-w-3xl leading-relaxed">
+              Building resilient security ecosystems through governance, third-party risk management, threat intelligence, compliance operations, and security awareness initiatives.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <button class="btn-card px-8 py-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-full hover:border-cyan-500/30 hover:bg-cyan-500/10 transition-all duration-300 flex items-center gap-2" data-scroll="contact">
+                <i data-lucide="send" class="w-5 h-5"></i>Connect
+              </button>
+              <button class="btn-card px-8 py-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-full hover:border-cyan-500/30 hover:bg-cyan-500/10 transition-all duration-300 flex items-center gap-2" data-scroll="experience">
+                <i data-lucide="briefcase" class="w-5 h-5"></i>View Experience
+              </button>
+              <a href="https://flowcv.com/resume/2mofja4dwmne" target="_blank" rel="noreferrer" class="btn-card px-8 py-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-full hover:border-cyan-500/30 hover:bg-cyan-500/10 transition-all duration-300 flex items-center gap-2">
+                <i data-lucide="download" class="w-5 h-5"></i>Resume PDF
+              </a>
+            </div>
+
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a href="mailto:marianne_wong@protonmail.com" class="link-card inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-xl text-white hover:border-cyan-500/30 hover:bg-cyan-500/10 transition-all duration-300">
+                <i data-lucide="mail" class="w-5 h-5 text-cyan-400"></i>
+                <span class="break-all">marianne_wong@protonmail.com</span>
+              </a>
+              <a href="https://wa.me/601923456789" target="_blank" rel="noreferrer" class="link-card inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-xl text-white hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300">
+                <i data-lucide="phone" class="w-5 h-5 text-pink-400"></i>
+                <span>+6019-234-56789</span>
+              </a>
+              <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="link-card inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-xl text-white hover:border-cyan-500/30 hover:bg-cyan-500/10 transition-all duration-300">
+                <i data-lucide="linkedin" class="w-5 h-5 text-cyan-400"></i>
+                <span>LinkedIn Profile</span>
+              </a>
+              <a href="https://tryhackme.com/p/honeydonkey" target="_blank" rel="noreferrer" class="link-card inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-xl text-white hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300">
+                <i data-lucide="shield" class="w-5 h-5 text-pink-400"></i>
+                <span>TryHackMe</span>
+              </a>
+              <a href="https://profile.hackthebox.com/profile/019e0311-f857-703a-a1aa-b18288684ab7" target="_blank" rel="noreferrer" class="link-card inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 rounded-xl text-white hover:border-cyan-500/30 hover:bg-cyan-500/10 transition-all duration-300">
+                <i data-lucide="shield" class="w-5 h-5 text-cyan-400"></i>
+                <span>Hack The Box</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <div class="section-divider"></div>
-
-    <!-- SUMMARY -->
-    <section>
-      <h2 class="section-title">
-        <i class="fas fa-terminal text-pink"></i>
-        SYS.SUMMARY
-      </h2>
-
-      <div class="glass-card p-8 leading-relaxed text-slate-300 text-[15px]">
-        Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk management,
-        security awareness, and security operations support. Experienced in vendor security assessments,
-        regulatory compliance aligned with PCI DSS and DORA, and threat intelligence analysis.
-        Demonstrated success improving phishing resilience through enterprise security awareness campaigns.
-        Combines risk analysis, incident investigation, and threat intelligence to strengthen organisational
-        security posture through AI adoption and operational security improvements.
+    <!-- Summary -->
+    <section id="summary" class="relative py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 mb-8">
+          <i data-lucide="terminal" class="w-6 h-6 text-pink-500"></i>
+          <h2 class="text-3xl font-bold section-title">SUMMARY</h2>
+        </div>
+        <div class="glass rounded-2xl p-8 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-cyan-500 to-pink-500"></div>
+          <p class="text-lg leading-relaxed text-gray-300 pl-4">
+            Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk management, security awareness, and security operations support. Experienced in vendor security assessments, regulatory compliance aligned with PCI DSS and DORA, and threat intelligence analysis. Demonstrated success improving phishing resilience by <span class="font-bold text-cyan-400">40%</span> through enterprise security awareness campaigns. Combines risk analysis, incident investigation, and threat intelligence to strengthen organisational security posture through practical AI adoption.
+          </p>
+        </div>
       </div>
     </section>
 
-    <div class="section-divider"></div>
+    <!-- Experience -->
+    <section id="experience" class="relative py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 mb-8">
+          <i data-lucide="network" class="w-6 h-6 text-cyan-500"></i>
+          <h2 class="text-3xl font-bold section-title">EXPERIENCE</h2>
+        </div>
+        <div class="space-y-6" id="experienceList"></div>
+      </div>
+    </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience">
-      <h2 class="section-title">
-        <i class="fas fa-network-wired text-cyan"></i>
-        EXP.LOG
-      </h2>
+    <!-- Skills -->
+    <section id="skills" class="relative py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 mb-8">
+          <i data-lucide="zap" class="w-6 h-6 text-pink-500"></i>
+          <h2 class="text-3xl font-bold section-title">SKILLS</h2>
+        </div>
+        <div class="flex flex-wrap gap-3" id="skillsList"></div>
+      </div>
+    </section>
 
-      <div class="space-y-6">
-
-        <!-- Grab -->
-        <div class="glass-card experience-item p-8" onclick="toggleExp(this)">
-          <div class="flex justify-between gap-5 flex-wrap">
+    <!-- Education -->
+    <section id="education" class="relative py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 mb-8">
+          <i data-lucide="graduation-cap" class="w-6 h-6 text-cyan-500"></i>
+          <h2 class="text-3xl font-bold section-title">EDUCATION</h2>
+        </div>
+        <div class="glass rounded-2xl p-8 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-cyan-500 to-cyan-600"></div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl border border-cyan-500/30 bg-cyan-500/10 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="book" class="w-6 h-6 text-cyan-400"></i>
+            </div>
             <div>
-              <h3 class="text-2xl font-semibold flex items-center gap-4 mb-2">
-                <i class="fas fa-chevron-right expand-icon text-sm text-slate-500"></i>
-                Risk Analyst
-                <span class="text-pink">@ Grab</span>
-              </h3>
+              <h3 class="text-xl font-bold text-white">Bachelor of Science (Honours) in Cybersecurity</h3>
+              <p class="mt-2 text-pink-400">Asia Pacific Institute of Technology (APIIT)</p>
+              <p class="mt-2 text-sm text-gray-400">May 2019 – Apr 2022 · First Class Honours · CGPA 3.7</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <p class="text-sm text-slate-500">
-                Dec 2025 – Present
+    <!-- Certifications -->
+    <section id="certifications" class="relative py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 mb-8">
+          <i data-lucide="badge-check" class="w-6 h-6 text-pink-500"></i>
+          <h2 class="text-3xl font-bold section-title">CERTIFICATIONS</h2>
+        </div>
+        <div class="glass rounded-2xl p-8 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-pink-500 to-pink-600"></div>
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 rounded-xl border border-pink-500/30 bg-pink-500/10 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="shield" class="w-6 h-6 text-pink-400"></i>
+            </div>
+            <div class="flex-1">
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
+                <div>
+                  <h3 class="text-xl font-bold text-white">CompTIA Security+</h3>
+                  <p class="mt-2 text-sm text-gray-400">CompTIA · Issued Feb 2026 · Expires Feb 2029</p>
+                </div>
+                <a href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-cyan-400 hover:bg-cyan-500/20 transition-colors">
+                  Verify Cert
+                </a>
+              </div>
+              <p class="mt-4 text-gray-300 leading-relaxed">
+                Validates baseline cybersecurity skills including threat management, cryptography, identity management, network security, and risk mitigation.
               </p>
             </div>
-
-            <span class="h-fit px-4 py-2 rounded-full text-xs border border-cyan/30 text-cyan uppercase tracking-widest">
-              Active
-            </span>
-          </div>
-
-          <div class="experience-content mt-8 space-y-5">
-            <div class="flex gap-4">
-              <span class="timeline-dot"></span>
-              <p>Conduct third-party security risk assessments evaluating vendor controls across infrastructure security, data protection, and compliance.</p>
-            </div>
-
-            <div class="flex gap-4">
-              <span class="timeline-dot"></span>
-              <p>Perform due diligence reviews of vendor security documentation, including security policies, SOC reports, and compliance attestations.</p>
-            </div>
-
-            <div class="flex gap-4">
-              <span class="timeline-dot"></span>
-              <p>Maintain a vendor risk dashboard to track key metrics and provide regular updates to management.</p>
-            </div>
-
-            <div class="flex gap-4">
-              <span class="timeline-dot"></span>
-              <p>Identify, document, and prioritize findings from risk assessments and vendor evaluations.</p>
-            </div>
-
-            <div class="flex gap-4">
-              <span class="timeline-dot"></span>
-              <p>Develop and track remediation plans for identified findings or issues, ensuring timely resolution and mitigation of risks.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Deriv -->
-        <div class="glass-card experience-item p-8" onclick="toggleExp(this)">
-          <div>
-            <h3 class="text-2xl font-semibold flex items-center gap-4 mb-2">
-              <i class="fas fa-chevron-right expand-icon text-sm text-slate-500"></i>
-              Junior Security Analyst
-              <span class="text-pink">@ Deriv HQ</span>
-            </h3>
-
-            <p class="text-sm text-slate-500">
-              Jan 2023 – Dec 2025
-            </p>
-          </div>
-
-          <div class="experience-content mt-8 space-y-5">
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Ensured regulatory compliance through policy reviews, gap analyses and vendor risk assessments.</p></div>
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Spearheaded organisation-wide security awareness programs.</p></div>
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Created educational materials to strengthen employee engagement.</p></div>
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Co-led offensive security campaigns focused on reducing organisational attack surface.</p></div>
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Investigated security incidents and developed incident response playbooks.</p></div>
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Delivered projects including Threat Map Model initiatives, PCI-DSS scans and DORA readiness assessments.</p></div>
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Contributed to AI-powered security chatbot development.</p></div>
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Applied AI tools to automate GRC processes.</p></div>
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Analysed weekly threat intelligence feeds to identify emerging risks.</p></div>
-          </div>
-        </div>
-
-        <!-- BeSquare -->
-        <div class="glass-card experience-item p-8" onclick="toggleExp(this)">
-          <div>
-            <h3 class="text-2xl font-semibold flex items-center gap-4 mb-2">
-              <i class="fas fa-chevron-right expand-icon text-sm text-slate-500"></i>
-              BeSquare IT Graduate Programme
-            </h3>
-
-            <p class="text-sm text-slate-500">
-              Jun 2022 – Dec 2022
-            </p>
-          </div>
-
-          <div class="experience-content mt-8 space-y-5">
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Completed a nine-module program with industry experts, developing a full-stack web application in a five-member team.</p></div>
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Implemented security measures including input validation and password hashing.</p></div>
-          </div>
-        </div>
-
-        <!-- Internship -->
-        <div class="glass-card experience-item p-8" onclick="toggleExp(this)">
-          <div>
-            <h3 class="text-2xl font-semibold flex items-center gap-4 mb-2">
-              <i class="fas fa-chevron-right expand-icon text-sm text-slate-500"></i>
-              IT Project Management Intern
-            </h3>
-
-            <p class="text-sm text-slate-500">
-              Mar 2021 – Jun 2021
-            </p>
-          </div>
-
-          <div class="experience-content mt-8 space-y-5">
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Partnered with cross-functional teams to design comprehensive network improvement strategies.</p></div>
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Produced detailed process flowcharts and technical documentation for upcoming projects.</p></div>
-            <div class="flex gap-4"><span class="timeline-dot"></span><p>Supported project management initiatives by participating in vendor meetings and stakeholder discussions.</p></div>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="section-divider"></div>
-
-    <!-- SKILLS -->
-    <section>
-      <h2 class="section-title">
-        <i class="fas fa-microchip text-pink"></i>
-        CAPABILITIES
-      </h2>
-
-      <div class="flex flex-wrap gap-4">
-        <span class="skill-pill">Incident Playbooks</span>
-        <span class="skill-pill">Gap Analysis</span>
-        <span class="skill-pill">Security Awareness</span>
-        <span class="skill-pill">Third Party Vendor Risk Assessment</span>
-        <span class="skill-pill">AI Prompting</span>
-        <span class="skill-pill">Threat Intelligence</span>
-        <span class="skill-pill">Vendor Risk Management</span>
-        <span class="skill-pill">GRC</span>
-        <span class="skill-pill">PCI-DSS</span>
-        <span class="skill-pill">DORA Compliance</span>
-        <span class="skill-pill">Phishing Simulations</span>
-        <span class="skill-pill">Incident Response</span>
-        <span class="skill-pill">KnowBe4</span>
-        <span class="skill-pill">Google Workspace</span>
-        <span class="skill-pill">CrowdStrike</span>
-        <span class="skill-pill">UpGuard</span>
-        <span class="skill-pill">Windows</span>
-        <span class="skill-pill">macOS</span>
-        <span class="skill-pill">Kandji</span>
-        <span class="skill-pill">JumpCloud</span>
-        <span class="skill-pill">Microsoft 365</span>
-        <span class="skill-pill">BurpSuite</span>
-        <span class="skill-pill">Wireshark</span>
-        <span class="skill-pill">Nmap</span>
-        <span class="skill-pill">CATO</span>
-        <span class="skill-pill">NordLayer</span>
-        <span class="skill-pill">FortiManager</span>
-        <span class="skill-pill">Linux</span>
-        <span class="skill-pill">JamF</span>
-        <span class="skill-pill">ClickUp</span>
-        <span class="skill-pill">Certa</span>
+    <!-- Achievements -->
+    <section id="achievements" class="relative py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 mb-8">
+          <i data-lucide="trophy" class="w-6 h-6 text-cyan-500"></i>
+          <h2 class="text-3xl font-bold section-title">ACHIEVEMENTS</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6" id="achievementsGrid"></div>
       </div>
     </section>
 
-    <div class="section-divider"></div>
-
-    <!-- EDUCATION -->
-    <section>
-      <h2 class="section-title">
-        <i class="fas fa-graduation-cap text-cyan"></i>
-        EDUCATION_DATA
-      </h2>
-
-      <div class="glass-card p-8 flex gap-6 items-start">
-        <div class="w-16 h-16 rounded-full border border-cyan/30 flex items-center justify-center shrink-0">
-          <i class="fas fa-book text-cyan text-xl"></i>
+    <!-- Contact -->
+    <section id="contact" class="relative py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3 mb-8">
+          <i data-lucide="satellite" class="w-6 h-6 text-pink-500"></i>
+          <h2 class="text-3xl font-bold section-title">CONTACT</h2>
         </div>
-
-        <div>
-          <h3 class="text-2xl font-semibold mb-2">
-            Bachelor of Science (Honours) in Cybersecurity
-          </h3>
-
-          <p class="text-pink mb-2">
-            Asia Pacific Institute of Technology (APIIT)
-          </p>
-
-          <p class="text-slate-400 text-sm">
-            May 2019 – Apr 2022
-          </p>
+        <div class="flex flex-wrap gap-4">
+          <button id="shareBtn" class="btn-card inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-full hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300">
+            <i data-lucide="share-2" class="w-5 h-5" id="shareIcon"></i>
+            <span id="shareText">Share Portfolio</span>
+          </button>
         </div>
       </div>
     </section>
-
-    <div class="section-divider"></div>
-
-    <!-- CERTIFICATIONS -->
-    <section>
-      <h2 class="section-title">
-        <i class="fas fa-certificate text-pink"></i>
-        CERTIFICATIONS
-      </h2>
-
-      <div class="glass-card p-8 flex gap-6 items-start justify-between flex-wrap">
-        <div class="flex gap-5">
-          <div class="w-16 h-16 rounded-full border border-pink/30 flex items-center justify-center shrink-0">
-            <i class="fas fa-shield-alt text-pink text-xl"></i>
-          </div>
-
-          <div>
-            <h3 class="text-2xl font-semibold mb-2">
-              CompTIA Security+
-            </h3>
-
-            <p class="text-slate-400 text-sm mb-4">
-              CompTIA · Issued Feb 2026 · Expires Feb 2029
-            </p>
-
-            <p class="text-slate-400 leading-relaxed max-w-2xl">
-              Validates cybersecurity skills including threat management, cryptography,
-              identity management, network security, and risk mitigation.
-            </p>
-          </div>
-        </div>
-
-        <a href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url"
-           target="_blank"
-           class="px-5 py-3 rounded-full border border-cyan/30 text-cyan hover:bg-cyan hover:text-black h-fit">
-          Verify Certificate
-        </a>
-      </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- ACHIEVEMENTS -->
-    <section>
-      <h2 class="section-title">
-        <i class="fas fa-trophy text-cyan"></i>
-        ACHIEVEMENTS
-      </h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-
-        <div class="glass-card p-8">
-          <div class="flex justify-between items-start mb-5">
-            <h3 class="text-xl font-semibold leading-snug pr-5">
-              Global Cyber Skills Benchmark CTF 2025
-            </h3>
-
-            <i class="fas fa-flag text-cyan"></i>
-          </div>
-
-          <p class="text-slate-400 leading-relaxed mb-6">
-            Participated with Deriv colleagues in an international cybersecurity competition.
-          </p>
-
-          <a href="https://drive.google.com/file/d/1-GFO9SalKL8FN1ETDzBRgPDv2iGJ3lJv/view"
-             target="_blank"
-             class="text-cyan hover:text-white">
-            View Reference
-          </a>
-        </div>
-
-        <div class="glass-card p-8">
-          <div class="flex justify-between items-start mb-5">
-            <h3 class="text-xl font-semibold leading-snug pr-5">
-              Wiz AI Security 2025
-            </h3>
-
-            <i class="fas fa-robot text-pink"></i>
-          </div>
-
-          <p class="text-slate-400 leading-relaxed mb-6">
-            Completed AI prompt injection activities focused on identifying and exploiting AI security vulnerabilities.
-          </p>
-
-          <a href="https://drive.google.com/file/d/1Ifr1TRc1RqVrjvesGCW9I9kqzLFvrsDl/view"
-             target="_blank"
-             class="text-pink hover:text-white">
-            View Reference
-          </a>
-        </div>
-
-        <div class="glass-card p-8">
-          <div class="flex justify-between items-start mb-5">
-            <h3 class="text-xl font-semibold leading-snug pr-5">
-              Kaspersky CTF 2025
-            </h3>
-
-            <i class="fas fa-bug text-cyan"></i>
-          </div>
-
-          <p class="text-slate-400 leading-relaxed mb-6">
-            Participated in Kaspersky Capture The Flag competition focused on threat hunting.
-          </p>
-
-          <a href="https://drive.google.com/file/d/1CSoBVBAM9bbdvSvjrvw-ltpjG8uDI-P2/view"
-             target="_blank"
-             class="text-cyan hover:text-white">
-            View Reference
-          </a>
-        </div>
-
-        <div class="glass-card p-8">
-          <div class="flex justify-between items-start mb-5">
-            <h3 class="text-xl font-semibold leading-snug pr-5">
-              Girls in CTF 2024
-            </h3>
-
-            <i class="fas fa-user-ninja text-pink"></i>
-          </div>
-
-          <p class="text-slate-400 leading-relaxed mb-6">
-            Competed in an Open Source Intelligence (OSINT) focused cybersecurity competition.
-          </p>
-
-          <a href="https://drive.google.com/file/d/1FCblOIgXGqrGZmxy2dRg-rmIWYtM1dzQ/view"
-             target="_blank"
-             class="text-pink hover:text-white">
-            View Reference
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-divider"></div>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2 class="section-title">
-        <i class="fas fa-satellite-dish text-pink"></i>
-        UPLINK_ESTABLISHED
-      </h2>
-
-      <div class="grid md:grid-cols-2 gap-5 mb-8">
-
-        <a href="mailto:marianne_wong@protonmail.com"
-           class="glass-card p-6 flex items-center gap-4 hover:text-cyan">
-          <i class="fas fa-envelope text-cyan text-lg"></i>
-          <span>marianne_wong@protonmail.com</span>
-        </a>
-
-        <a href="https://wa.me/601923456789"
-           target="_blank"
-           class="glass-card p-6 flex items-center gap-4 hover:text-pink">
-          <i class="fab fa-whatsapp text-pink text-lg"></i>
-          <span>+6019-234-56789</span>
-        </a>
-
-        <a href="https://www.linkedin.com/in/mwhm/"
-           target="_blank"
-           class="glass-card p-6 flex items-center gap-4 hover:text-cyan">
-          <i class="fab fa-linkedin text-cyan text-lg"></i>
-          <span>linkedin.com/in/mwhm/</span>
-        </a>
-
-        <a href="https://tryhackme.com/p/honeydonkey"
-           target="_blank"
-           class="glass-card p-6 flex items-center gap-4 hover:text-pink">
-          <i class="fas fa-shield-alt text-pink text-lg"></i>
-          <span>tryhackme.com/p/honeydonkey</span>
-        </a>
-
-        <a href="https://app.hackthebox.com/profile/1698023"
-           target="_blank"
-           class="glass-card p-6 flex items-center gap-4 hover:text-cyan md:col-span-2">
-          <i class="fas fa-cube text-cyan text-lg"></i>
-          <span>hackthebox.com/profile/1698023</span>
-        </a>
-      </div>
-
-      <div class="flex flex-wrap gap-5">
-        <a href="https://flowcv.com/resume/2mofja4dwmne"
-           target="_blank"
-           class="px-8 py-4 rounded-full bg-cyan text-black font-semibold hover:bg-white transition-all">
-          DOWNLOAD_RESUME.PDF
-        </a>
-
-        <button onclick="copyLink(this)"
-                class="glass-card px-8 py-4 rounded-full">
-          <span class="copy-text">SHARE_PORTFOLIO</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="text-center text-slate-600 text-xs tracking-[0.3em] mt-24 pt-8 border-t border-white/5 font-display">
-      SYS.DATE: 2026 // MARIANNE_WONG // SEC_RISK_ANALYST // CONNECTION_SECURE
-    </footer>
   </main>
 
+  <footer class="relative py-8 border-t border-gray-800 z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-xs tracking-widest uppercase text-gray-500 font-mono">
+        SYS.DATE: 2026 // MARIANNE_WONG // SEC_RISK_ANALYST // CONNECTION_SECURE
+      </p>
+    </div>
+  </footer>
+
   <script>
-    function toggleExp(element) {
-      element.classList.toggle('active');
+    const navItems = [
+      { id: 'home', label: 'Home', icon: 'home' },
+      { id: 'summary', label: 'Summary', icon: 'file-text' },
+      { id: 'experience', label: 'Experience', icon: 'briefcase' },
+      { id: 'skills', label: 'Skills', icon: 'zap' },
+      { id: 'education', label: 'Education', icon: 'graduation-cap' },
+      { id: 'certifications', label: 'Certifications', icon: 'badge-check' },
+      { id: 'achievements', label: 'Achievements', icon: 'trophy' },
+      { id: 'contact', label: 'Contact', icon: 'mail' }
+    ];
+
+    const skills = [
+      'Incident Playbooks', 'Gap Analysis', 'Security Awareness', 'Third Party Vendor Risk Assessment',
+      'AI Prompting', 'Threat Intelligence', 'Vendor Risk Management', 'GRC', 'PCI-DSS', 'DORA Compliance',
+      'Phishing Simulations', 'Incident Response', 'KnowBe4', 'Google Workspace', 'CrowdStrike', 'UpGuard',
+      'Windows', 'macOS', 'Kandji', 'JumpCloud', 'Microsoft 365', 'BurpSuite', 'Wireshark', 'Nmap',
+      'CATO', 'NordLayer', 'FortiManager', 'Linux', 'JamF', 'ClickUp', 'Certa'
+    ];
+
+    const experiences = [
+      {
+        title: 'Risk Analyst', company: 'Grab', period: 'Dec 2025 – Present', status: 'Active', color: 'cyan',
+        details: [
+          'Conduct third-party security risk assessments evaluating vendor controls across infrastructure security, data protection, and compliance.',
+          'Perform due diligence reviews of vendor security documentation, including security policies, SOC reports, and compliance attestations.',
+          'Maintain a vendor risk dashboard to track key metrics and provide regular updates to management.',
+          'Identify, document, and prioritize findings from risk assessments and vendor evaluations.',
+          'Develop and track remediation plans for identified findings or issues, ensuring timely resolution and mitigation of risks.'
+        ]
+      },
+      {
+        title: 'Junior Security Analyst', company: 'Deriv HQ', period: 'Jan 2023 – Dec 2025', status: '', color: 'pink',
+        details: [
+          'Ensured regulatory compliance (DORA, PCI-DSS) through policy reviews, gap analyses and vendor risk assessments.',
+          'Spearheaded organisation-wide security awareness programs, achieving 90%+ completion and 97% participation rates.',
+          'Created educational materials to strengthen employee engagement.',
+          'Co-led offsec campaigns, reducing attack surface by 30%.',
+          'Investigated security incidents and developed incident response playbooks.',
+          'Delivered key projects including Threat Map Model, quarterly PCI-DSS scans and DORA readiness assessments.',
+          'Contributed to AI-powered security chatbot, reducing help desk workload by 25%.',
+          'Applied AI tools to automate GRC processes.',
+          'Analysed 200+ weekly threat intelligence feeds to identify emerging risks.'
+        ]
+      },
+      {
+        title: 'BeSquare IT Graduate Programme', company: 'Deriv HQ', period: 'Jun 2022 – Dec 2022', status: '', color: 'cyan',
+        details: [
+          'Completed a nine-module program with industry experts, developing a full-stack web app in a five-member team.',
+          'Implemented security measures including input validation and password hashing.'
+        ]
+      },
+      {
+        title: 'IT Project Management Intern', company: 'Asian Supply Base SDN. BHD.', period: 'Mar 2021 – Jun 2021', status: '', color: 'pink',
+        details: [
+          'Partnered with cross-functional teams to design comprehensive network improvement strategies.',
+          'Produced detailed process flowcharts and technical documentation for upcoming projects.',
+          'Supported project management initiatives by participating in vendor meetings and stakeholder discussions.'
+        ]
+      }
+    ];
+
+    const achievements = [
+      {
+        title: 'Global Cyber Skills Benchmark CTF 2025', organization: 'Global Cybersecurity Org', rank: 'Rank 57/796', icon: 'flag', color: 'cyan',
+        description: 'Participated with Deriv colleagues and ranked 57 out of 796 participants in an international cybersecurity competition.',
+        link: 'https://drive.google.com/file/d/1-GFO9SalKL8FN1ETDzBRgPDv2iGJ3lJv/view'
+      },
+      {
+        title: 'Wiz AI Security 2025', organization: 'Wiz', rank: 'Completed', icon: 'bot', color: 'pink',
+        description: 'Completed AI prompt injection activities, demonstrating skills in identifying and exploiting AI security vulnerabilities.',
+        link: 'https://drive.google.com/file/d/1Ifr1TRc1RqVrjvesGCW9I9kqzLFvrsDl/view'
+      },
+      {
+        title: 'Kaspersky CTF 2025', organization: 'Kaspersky', rank: 'Participant', icon: 'bug', color: 'cyan',
+        description: "Participated in Kaspersky's Capture The Flag competition focusing on threat hunting.",
+        link: 'https://drive.google.com/file/d/1CSoBVBAM9bbdvSvjrvw-ltpjG8uDI-P2/view'
+      },
+      {
+        title: 'Girls in CTF 2024', organization: 'Girls in CTF Organization', rank: 'Rank 65/80', icon: 'user-ninja', color: 'pink',
+        description: 'Competed and ranked 65 out of 80 teams, demonstrating advanced skills in Open Source Intelligence (OSINT).',
+        link: 'https://drive.google.com/file/d/1FCblOIgXGqrGZmxy2dRg-rmIWYtM1dzQ/view'
+      }
+    ];
+
+    function renderNavItems() {
+      const desktop = document.getElementById('desktopNav');
+      const mobile = document.getElementById('mobileNavItems');
+      desktop.innerHTML = navItems.map(item => `
+        <button class="nav-btn text-sm font-medium transition-all duration-200 text-gray-300 hover:text-white" data-target="${item.id}">
+          ${item.label}
+        </button>
+      `).join('');
+      mobile.innerHTML = navItems.map(item => `
+        <button class="nav-btn block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-all duration-200 flex items-center gap-3 text-gray-300 hover:text-white hover:bg-white/5" data-target="${item.id}">
+          <i data-lucide="${item.icon}" class="w-5 h-5"></i><span>${item.label}</span>
+        </button>
+      `).join('');
     }
 
-    function copyLink(btn) {
-      navigator.clipboard.writeText(window.location.href)
-        .then(() => {
-          const text = btn.querySelector('.copy-text');
-          const original = text.innerText;
+    function renderSkills() {
+      const el = document.getElementById('skillsList');
+      el.innerHTML = skills.map((skill, index) => {
+        const colorClass = index % 3 === 0
+          ? 'border-cyan-500/30 bg-cyan-500/10 text-cyan-400'
+          : index % 3 === 1
+            ? 'border-pink-500/30 bg-pink-500/10 text-pink-400'
+            : 'border-purple-500/30 bg-purple-500/10 text-purple-400';
+        return `<span class="chip inline-flex items-center px-4 py-2 text-sm font-medium ${colorClass}">${skill}</span>`;
+      }).join('');
+    }
 
-          text.innerText = 'LINK_COPIED';
+    function renderExperiences() {
+      const el = document.getElementById('experienceList');
+      el.innerHTML = experiences.map((exp, idx) => `
+        <div class="glass rounded-2xl overflow-hidden transition-all duration-300 hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-500/10">
+          <button class="w-full text-left p-6 cursor-pointer flex flex-col md:flex-row md:items-center md:justify-between gap-4 exp-toggle" data-index="${idx}">
+            <div class="flex items-start gap-4">
+              <span class="mt-1 text-gray-400 transition-transform duration-200 exp-chevron" data-index="${idx}"><i data-lucide="chevron-right" class="w-5 h-5"></i></span>
+              <div>
+                <h3 class="text-xl font-bold text-white flex items-center gap-2 flex-wrap">${exp.title} <span class="text-pink-500">@</span> <span>${exp.company}</span></h3>
+                <p class="text-sm text-gray-400 mt-1">${exp.period}</p>
+              </div>
+            </div>
+            ${exp.status ? `<span class="inline-flex items-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-cyan-400">${exp.status}</span>` : ''}
+          </button>
+          <div class="px-6 pb-6 pl-20 hidden exp-details" data-index="${idx}">
+            <ul class="space-y-3">
+              ${exp.details.map(detail => `
+                <li class="flex items-start gap-3">
+                  <span class="mt-2 h-2 w-2 rotate-45 ${exp.color === 'cyan' ? 'bg-cyan-500' : 'bg-pink-500'} shrink-0"></span>
+                  <p class="text-gray-300 leading-relaxed">${detail}</p>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        </div>
+      `).join('');
+    }
 
+    function renderAchievements() {
+      const el = document.getElementById('achievementsGrid');
+      el.innerHTML = achievements.map((a) => `
+        <div class="glass rounded-2xl p-6 h-full flex flex-col">
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <h3 class="text-lg font-bold text-white">${a.title}</h3>
+              <div class="mt-2 flex flex-wrap items-center gap-2">
+                <span class="rounded-md px-2.5 py-1 text-xs font-bold uppercase ${a.color === 'cyan' ? 'border border-cyan-500/30 bg-cyan-500/10 text-cyan-400' : 'border border-pink-500/30 bg-pink-500/10 text-pink-400'}">${a.rank}</span>
+                <span class="text-xs text-gray-400">${a.organization}</span>
+              </div>
+            </div>
+            <i data-lucide="${a.icon}" class="w-6 h-6 mt-1 ${a.color === 'cyan' ? 'text-cyan-400' : 'text-pink-400'}"></i>
+          </div>
+          <p class="text-gray-300 leading-relaxed flex-grow">${a.description}</p>
+          <a href="${a.link}" target="_blank" rel="noreferrer" class="mt-4 inline-flex items-center gap-2 text-sm font-bold ${a.color === 'cyan' ? 'text-cyan-400 hover:text-cyan-300' : 'text-pink-400 hover:text-pink-300'} transition-colors">
+            <i data-lucide="external-link" class="w-4 h-4"></i>
+            View Data
+          </a>
+        </div>
+      `).join('');
+    }
+
+    function setActiveNav(activeId) {
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        const isActive = btn.dataset.target === activeId;
+        btn.classList.toggle('text-cyan-400', isActive);
+        btn.classList.toggle('bg-cyan-500/10', isActive && btn.closest('#mobileNavItems'));
+        btn.classList.toggle('border', isActive && btn.closest('#mobileNavItems'));
+        btn.classList.toggle('border-cyan-500/30', isActive && btn.closest('#mobileNavItems'));
+        if (!btn.closest('#mobileNavItems')) {
+          btn.classList.toggle('text-gray-300', !isActive);
+          btn.classList.toggle('hover:text-white', !isActive);
+        }
+      });
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('mobileNav').classList.add('hidden');
+      const menuIcon = document.getElementById('menuIcon');
+      menuIcon.setAttribute('data-lucide', 'menu');
+      lucide.createIcons();
+    }
+
+    function updateNavStyle() {
+      const nav = document.getElementById('topNav');
+      const scrolled = window.scrollY > 20;
+      if (scrolled) {
+        nav.className = 'fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black/80 backdrop-blur-md border-b border-gray-800';
+      } else {
+        nav.className = 'fixed top-0 left-0 right-0 z-50 transition-all duration-300';
+      }
+    }
+
+    function updateActiveSection() {
+      const sections = ['home', 'summary', 'experience', 'skills', 'education', 'certifications', 'achievements', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (!el) continue;
+        const top = el.offsetTop;
+        const bottom = top + el.offsetHeight;
+        if (scrollPosition >= top && scrollPosition < bottom) {
+          setActiveNav(section);
+          break;
+        }
+      }
+    }
+
+    document.addEventListener('click', async (e) => {
+      const navBtn = e.target.closest('.nav-btn');
+      if (navBtn) {
+        scrollToSection(navBtn.dataset.target);
+        return;
+      }
+      const scrollBtn = e.target.closest('[data-scroll]');
+      if (scrollBtn) {
+        scrollToSection(scrollBtn.dataset.scroll);
+        return;
+      }
+      const expToggle = e.target.closest('.exp-toggle');
+      if (expToggle) {
+        const index = expToggle.dataset.index;
+        const details = document.querySelector(`.exp-details[data-index="${index}"]`);
+        const chevron = document.querySelector(`.exp-chevron[data-index="${index}"]`);
+        const isOpen = !details.classList.contains('hidden');
+        details.classList.toggle('hidden');
+        chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
+        return;
+      }
+      if (e.target.closest('#menuBtn')) {
+        const mobileNav = document.getElementById('mobileNav');
+        mobileNav.classList.toggle('hidden');
+        const menuIcon = document.getElementById('menuIcon');
+        menuIcon.setAttribute('data-lucide', mobileNav.classList.contains('hidden') ? 'menu' : 'x');
+        lucide.createIcons();
+      }
+      if (e.target.closest('#shareBtn')) {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          document.getElementById('shareText').textContent = 'Link Copied';
+          document.getElementById('shareIcon').setAttribute('data-lucide', 'check');
+          lucide.createIcons();
           setTimeout(() => {
-            text.innerText = original;
-          }, 2500);
-        })
-        .catch(err => console.error(err));
-    }
+            document.getElementById('shareText').textContent = 'Share Portfolio';
+            document.getElementById('shareIcon').setAttribute('data-lucide', 'share-2');
+            lucide.createIcons();
+          }, 2200);
+        } catch (err) {
+          alert('Copy failed: ' + err.message);
+        }
+      }
+    });
+
+    window.addEventListener('scroll', () => {
+      updateNavStyle();
+      updateActiveSection();
+    });
+
+    renderNavItems();
+    renderSkills();
+    renderExperiences();
+    renderAchievements();
+    lucide.createIcons();
+    updateNavStyle();
+    updateActiveSection();
   </script>
 </body>
 </html>
-```
