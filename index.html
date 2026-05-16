@@ -128,6 +128,10 @@
                 <i data-lucide="shield" class="w-5 h-5 text-cyan-400"></i>
                 <span>Hack The Box</span>
               </a>
+              <button id="shareBtn" class="btn-card inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-full hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300">
+            <i data-lucide="share-2" class="w-5 h-5" id="shareIcon"></i>
+            <span id="shareText">Share Portfolio</span>
+          </button>
             </div>
           </div>
         </div>
@@ -237,22 +241,6 @@
         <div class="grid md:grid-cols-2 gap-6" id="achievementsGrid"></div>
       </div>
     </section>
-
-    <!-- Contact -->
-    <section id="contact" class="relative py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center gap-3 mb-8">
-          <i data-lucide="satellite" class="w-6 h-6 text-pink-500"></i>
-          <h2 class="text-3xl font-bold section-title">CONTACT</h2>
-        </div>
-        <div class="flex flex-wrap gap-4">
-          <button id="shareBtn" class="btn-card inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-800 text-white font-bold rounded-full hover:border-pink-500/30 hover:bg-pink-500/10 transition-all duration-300">
-            <i data-lucide="share-2" class="w-5 h-5" id="shareIcon"></i>
-            <span id="shareText">Share Portfolio</span>
-          </button>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="relative py-8 border-t border-gray-800 z-10">
@@ -271,8 +259,7 @@
       { id: 'skills', label: 'Skills', icon: 'zap' },
       { id: 'education', label: 'Education', icon: 'graduation-cap' },
       { id: 'certifications', label: 'Certifications', icon: 'badge-check' },
-      { id: 'achievements', label: 'Achievements', icon: 'trophy' },
-      { id: 'contact', label: 'Contact', icon: 'mail' }
+      { id: 'achievements', label: 'Achievements', icon: 'trophy' }
     ];
 
     const skills = [
@@ -460,7 +447,7 @@
     }
 
     function updateActiveSection() {
-      const sections = ['home', 'summary', 'experience', 'skills', 'education', 'certifications', 'achievements', 'contact'];
+      const sections = ['home', 'summary', 'experience', 'skills', 'education', 'certifications', 'achievements'];
       const scrollPosition = window.scrollY + 100;
       for (const section of sections) {
         const el = document.getElementById(section);
