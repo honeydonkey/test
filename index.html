@@ -495,15 +495,17 @@ btn.classList.toggle('text-white', isActive);
         lucide.createIcons();
       }
 
-      function updateNavStyle() {
-        const nav = document.getElementById('topNav');
-        const scrolled = window.scrollY > 20;
-        if (scrolled) {
-          nav.className = 'fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black/80 backdrop-blur-md border-b border-gray-800';
-        } else {
-          nav.className = 'fixed top-0 left-0 right-0 z-50 transition-all duration-300';
-        }
-      }
+function updateNavStyle() {
+  const nav = document.getElementById('topNav');
+
+  if (window.scrollY > 20) {
+    nav.classList.add('top-2');
+    nav.classList.remove('top-4');
+  } else {
+    nav.classList.add('top-4');
+    nav.classList.remove('top-2');
+  }
+}
 
       function updateActiveSection() {
         const sections = ['home', 'summary', 'experience', 'skills', 'education', 'certifications', 'achievements'];
