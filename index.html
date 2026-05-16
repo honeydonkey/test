@@ -7,6 +7,19 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
+    #menuPanel {
+  transform-origin: top center;
+}
+
+.light-mode nav .bg-black {
+  background: white !important;
+  color: black !important;
+}
+
+.light-mode #menuPanel > div {
+  background: #111;
+  color: white;
+}
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
