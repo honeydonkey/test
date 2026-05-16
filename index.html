@@ -1,46 +1,61 @@
+# Light Pink Glassmorphism Cybersecurity Portfolio
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marianne Wong | Cybersecurity Portfolio</title>
+  <title>Marianne Wong • Cybersecurity Portfolio</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
     :root {
-      --bg-primary: #fff7fb;
-      --bg-secondary: #ffe9f5;
-      --text-primary: #221b2f;
-      --text-secondary: #6b5a72;
-      --glass-bg: rgba(255, 255, 255, 0.42);
-      --glass-border: rgba(255, 255, 255, 0.7);
-      --glass-shadow: rgba(236, 72, 153, 0.16);
-      --accent-primary: #ec4899;
-      --accent-secondary: #c026d3;
-      --accent-soft: rgba(236, 72, 153, 0.1);
+      --bg-primary: #f5f7ff;
+      --bg-secondary: rgba(255,255,255,0.6);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+
+      --accent: #ec4899;
+
+      --glass-bg:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.60),
+          rgba(255,255,255,0.22)
+        );
+
+      --glass-border:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.85),
+          rgba(255,255,255,0.18)
+        );
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       overflow-x: hidden;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(236,72,153,0.16), transparent 25%),
-        radial-gradient(circle at top right, rgba(192,38,211,0.18), transparent 28%),
-        radial-gradient(circle at bottom left, rgba(244,114,182,0.16), transparent 25%),
-        linear-gradient(to bottom right, #fff7fb, #fff1f7, #ffe9f5);
+      background: var(--bg-primary);
       color: var(--text-primary);
-      min-height: 100vh;
+      font-family:
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Segoe UI",
+        sans-serif;
     }
 
     .bg-grid-pattern {
@@ -50,496 +65,346 @@
       background-size: 48px 48px;
     }
 
-    .glass {
-      position: relative;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      box-shadow:
-        0 8px 32px rgba(255,255,255,0.45) inset,
-        0 10px 40px var(--glass-shadow),
-        0 2px 12px rgba(255,255,255,0.5) inset;
+    .section-title {
+      letter-spacing: 0.08em;
     }
 
-    .glass::before {
+    .apple-glass {
+      position: relative;
+      overflow: hidden;
+      border-radius: 32px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(32px) saturate(180%);
+      -webkit-backdrop-filter: blur(32px) saturate(180%);
+      border: 1px solid transparent;
+      background-clip: padding-box;
+      box-shadow:
+        0 8px 32px rgba(236,72,153,0.08),
+        inset 0 1px 1px rgba(255,255,255,0.4),
+        inset 0 -1px 1px rgba(255,255,255,0.06);
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .apple-glass::before {
       content: "";
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.55),
-        rgba(255,255,255,0.08)
-      );
+      padding: 1px;
+      background: var(--glass-border);
+
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+
       pointer-events: none;
+    }
+
+    .apple-glass-hover:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow:
+        0 20px 45px rgba(236,72,153,0.16),
+        inset 0 1px 1px rgba(255,255,255,0.4);
     }
 
     .apple-btn {
       position: relative;
       overflow: hidden;
-      background: rgba(255,255,255,0.4);
-      border: 1px solid rgba(255,255,255,0.75);
-      backdrop-filter: blur(22px) saturate(180%);
-      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      border-radius: 9999px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.40),
+          rgba(255,255,255,0.15)
+        );
+
+      border: 1px solid rgba(255,255,255,0.35);
+
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+
       box-shadow:
-        0 4px 24px rgba(236,72,153,0.14),
-        inset 0 1px 1px rgba(255,255,255,0.9),
-        inset 0 -1px 1px rgba(255,255,255,0.25);
-      transition: all 0.35s ease;
-    }
+        inset 0 1px 1px rgba(255,255,255,0.35),
+        0 10px 30px rgba(236,72,153,0.10);
 
-    .apple-btn::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -120%;
-      width: 60%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.65),
-        transparent
-      );
-      transform: skewX(-25deg);
-      transition: 0.7s;
-    }
-
-    .apple-btn:hover::before {
-      left: 150%;
+      transition: all 0.3s ease;
     }
 
     .apple-btn:hover {
-      transform: translateY(-4px) scale(1.01);
-      background: rgba(255,255,255,0.52);
+      transform: translateY(-2px) scale(1.02);
+      border-color: rgba(236,72,153,0.45);
       box-shadow:
-        0 12px 40px rgba(236,72,153,0.22),
-        inset 0 1px 1px rgba(255,255,255,0.95);
+        0 16px 40px rgba(236,72,153,0.18),
+        inset 0 1px 1px rgba(255,255,255,0.35);
     }
 
-    .chip {
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 6px 18px rgba(236,72,153,0.12);
+    .purple-pink-gradient {
+      background: linear-gradient(90deg,#c026d3,#ec4899,#8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .section-title {
-      letter-spacing: 0.08em;
-    }
+    .glass-nav {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.35),
+          rgba(255,255,255,0.14)
+        );
 
-    .nav-glass {
-      background: rgba(255,255,255,0.38);
-      backdrop-filter: blur(28px) saturate(180%);
-      -webkit-backdrop-filter: blur(28px) saturate(180%);
-      border-bottom: 1px solid rgba(255,255,255,0.7);
-      box-shadow: 0 8px 24px rgba(236,72,153,0.08);
-    }
+      backdrop-filter: blur(30px) saturate(180%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
 
-    .hero-glow {
-      position: absolute;
-      border-radius: 999px;
-      filter: blur(90px);
-      opacity: 0.6;
-      pointer-events: none;
-    }
+      border-bottom: 1px solid rgba(255,255,255,0.20);
 
-    .glass-hover {
-      transition: all 0.35s ease;
-    }
-
-    .glass-hover:hover {
-      transform: translateY(-6px);
       box-shadow:
-        0 16px 48px rgba(236,72,153,0.18),
-        0 2px 12px rgba(255,255,255,0.6) inset;
+        0 8px 30px rgba(236,72,153,0.06);
+    }
+
+    .hero-orb {
+      animation: floatOrb 10s ease-in-out infinite;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-30px);
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Background -->
-  <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-    <div class="hero-glow w-[32rem] h-[32rem] bg-pink-300 top-[-10rem] left-[-8rem]"></div>
-    <div class="hero-glow w-[34rem] h-[34rem] bg-fuchsia-300 top-[10rem] right-[-12rem]"></div>
-    <div class="hero-glow w-[28rem] h-[28rem] bg-rose-200 bottom-[-10rem] left-[30%]"></div>
-    <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
+  <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+
+    <div class="absolute inset-0 bg-gradient-to-br from-fuchsia-100 via-white to-purple-100"></div>
+
+    <div class="absolute inset-0 bg-grid-pattern opacity-[0.05]"></div>
+
+    <div class="absolute -top-32 left-[-120px] w-[520px] h-[520px] rounded-full bg-fuchsia-400/25 blur-3xl hero-orb"></div>
+
+    <div class="absolute top-[15%] right-[-120px] w-[540px] h-[540px] rounded-full bg-purple-400/20 blur-3xl hero-orb" style="animation-delay:2s"></div>
+
+    <div class="absolute bottom-[-180px] left-[20%] w-[520px] h-[520px] rounded-full bg-pink-400/20 blur-3xl hero-orb" style="animation-delay:4s"></div>
+
   </div>
 
-  <!-- NAVBAR -->
-  <nav id="topNav" class="fixed top-0 left-0 right-0 z-50 nav-glass transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
+  <nav class="fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+
+      <div class="glass-nav rounded-full px-6 h-16 flex items-center justify-between">
 
         <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center">
-            <i data-lucide="shield" class="w-6 h-6 text-pink-500"></i>
+
+          <div class="w-11 h-11 rounded-2xl flex items-center justify-center bg-gradient-to-br from-fuchsia-500 to-purple-500 shadow-lg shadow-pink-500/20">
+            <i data-lucide="shield" class="w-5 h-5 text-white"></i>
           </div>
 
           <div>
-            <p class="text-xs font-black tracking-[0.3em] uppercase text-pink-500">
+            <p class="text-[11px] tracking-[0.25em] uppercase font-bold text-fuchsia-500">
               Cybersecurity
             </p>
-            <p class="text-sm text-gray-500 font-medium">
+
+            <p class="text-xs text-slate-500">
               Marianne Wong
             </p>
           </div>
+
         </div>
 
-        <div class="hidden md:flex items-center gap-3" id="desktopNav"></div>
+        <div class="hidden md:flex items-center gap-3">
+          <a href="#summary" class="apple-btn px-5 py-2 text-sm font-semibold text-slate-700">Summary</a>
+          <a href="#experience" class="apple-btn px-5 py-2 text-sm font-semibold text-slate-700">Experience</a>
+          <a href="#skills" class="apple-btn px-5 py-2 text-sm font-semibold text-slate-700">Skills</a>
+          <a href="#contact" class="apple-btn px-5 py-2 text-sm font-semibold text-slate-700">Contact</a>
+        </div>
 
-        <button id="menuBtn" class="md:hidden glass rounded-xl p-3">
-          <i data-lucide="menu" class="w-5 h-5 text-pink-500" id="menuIcon"></i>
-        </button>
       </div>
-    </div>
 
-    <div id="mobileNav" class="hidden md:hidden px-4 pb-5">
-      <div class="glass rounded-3xl p-3 flex flex-col gap-2" id="mobileNavItems"></div>
     </div>
   </nav>
 
-  <main class="relative z-10 pt-20">
+  <main class="relative z-10 pt-24">
 
-    <!-- HERO -->
-    <section id="home" class="min-h-screen flex items-center py-24 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <section id="home" class="relative min-h-screen flex items-center justify-center">
 
-        <div class="glass rounded-[42px] p-10 md:p-16 overflow-hidden relative glass-hover">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
 
-          <div class="absolute top-0 right-0 w-80 h-80 bg-pink-300/30 rounded-full blur-3xl"></div>
+        <p class="text-sm font-bold tracking-[0.35em] uppercase text-fuchsia-500 mb-6">
+          Cybersecurity Risk Analyst
+        </p>
 
-          <div class="relative z-10 max-w-5xl">
+        <h1 class="text-5xl sm:text-6xl lg:text-[8rem] font-black leading-none tracking-tight mb-8">
+          Marianne
+          <span class="purple-pink-gradient">Wong</span>
+        </h1>
 
-            <p class="text-sm font-black tracking-[0.35em] uppercase text-pink-500 mb-7">
-              Cybersecurity Risk Analyst
-            </p>
+        <p class="text-xl sm:text-2xl text-slate-600 max-w-4xl leading-relaxed mb-12">
+          Building resilient security ecosystems through governance, third-party risk management, threat intelligence, compliance operations, and security awareness initiatives.
+        </p>
 
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black leading-none mb-8 tracking-tight text-gray-900">
-              Marianne
-              <span class="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-500 bg-clip-text text-transparent">
-                Wong
-              </span>
-            </h1>
+        <div class="flex flex-wrap gap-5 mb-12">
 
-            <p class="text-xl sm:text-2xl text-gray-600 leading-relaxed max-w-4xl mb-12 font-medium">
-              Building resilient security ecosystems through governance, third-party risk management, threat intelligence, compliance operations, and security awareness initiatives.
-            </p>
+          <a href="#contact" class="apple-btn px-8 py-4 text-sm font-bold text-slate-800 flex items-center gap-3">
+            <i data-lucide="send" class="w-5 h-5"></i>
+            Connect
+          </a>
 
-            <!-- Buttons -->
-            <div class="flex flex-wrap gap-5 mb-10">
+          <a href="#experience" class="apple-btn px-8 py-4 text-sm font-bold text-slate-800 flex items-center gap-3">
+            <i data-lucide="briefcase" class="w-5 h-5"></i>
+            View Experience
+          </a>
 
-              <button class="apple-btn rounded-full px-8 py-4 font-semibold text-gray-800 flex items-center gap-3" data-scroll="contact">
-                <i data-lucide="send" class="w-5 h-5 text-pink-500"></i>
-                Connect
-              </button>
+          <a
+            href="https://flowcv.com/resume/2mofja4dwmne"
+            target="_blank"
+            class="apple-btn px-8 py-4 text-sm font-bold text-slate-800 flex items-center gap-3"
+          >
+            <i data-lucide="download" class="w-5 h-5"></i>
+            Resume PDF
+          </a>
 
-              <button class="apple-btn rounded-full px-8 py-4 font-semibold text-gray-800 flex items-center gap-3" data-scroll="experience">
-                <i data-lucide="briefcase" class="w-5 h-5 text-fuchsia-500"></i>
-                View Experience
-              </button>
-
-              <a href="https://flowcv.com/resume/2mofja4dwmne" target="_blank" class="apple-btn rounded-full px-8 py-4 font-semibold text-gray-800 flex items-center gap-3">
-                <i data-lucide="download" class="w-5 h-5 text-pink-500"></i>
-                Resume PDF
-              </a>
-
-              <button id="shareBtn" class="apple-btn rounded-full px-8 py-4 font-semibold text-gray-800 flex items-center gap-3">
-                <i data-lucide="share-2" class="w-5 h-5 text-fuchsia-500" id="shareIcon"></i>
-                <span id="shareText">Share Portfolio</span>
-              </button>
-            </div>
-
-            <!-- CONTACTS -->
-            <div class="flex flex-wrap gap-4">
-
-              <a href="mailto:marianne_wong@protonmail.com" class="apple-btn rounded-2xl px-6 py-4 flex items-center gap-3 text-gray-700 font-medium">
-                <i data-lucide="mail" class="w-5 h-5 text-pink-500"></i>
-                <span class="break-all">marianne_wong@protonmail.com</span>
-              </a>
-
-              <a href="https://wa.me/601923456789" target="_blank" class="apple-btn rounded-2xl px-6 py-4 flex items-center gap-3 text-gray-700 font-medium">
-                <i data-lucide="message-square-text" class="w-5 h-5 text-fuchsia-500"></i>
-                +6019-234-56789
-              </a>
-
-              <a href="https://www.linkedin.com/in/mwhm/" target="_blank" class="apple-btn rounded-2xl px-6 py-4 flex items-center gap-3 text-gray-700 font-medium">
-                <i data-lucide="contact" class="w-5 h-5 text-pink-500"></i>
-                LinkedIn Profile
-              </a>
-
-              <a href="https://tryhackme.com/p/honeydonkey" target="_blank" class="apple-btn rounded-2xl px-6 py-4 flex items-center gap-3 text-gray-700 font-medium">
-                <i data-lucide="laptop" class="w-5 h-5 text-fuchsia-500"></i>
-                TryHackMe
-              </a>
-
-              <a href="https://profile.hackthebox.com/profile/019e0311-f857-703a-a1aa-b18288684ab7" target="_blank" class="apple-btn rounded-2xl px-6 py-4 flex items-center gap-3 text-gray-700 font-medium">
-                <i data-lucide="laptop" class="w-5 h-5 text-pink-500"></i>
-                Hack The Box
-              </a>
-            </div>
-          </div>
         </div>
+
       </div>
+
     </section>
 
-    <!-- SUMMARY -->
-    <section id="summary" class="py-20 relative">
+    <section id="summary" class="relative py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div class="flex items-center gap-4 mb-8">
-          <div class="glass rounded-2xl p-3">
-            <i data-lucide="terminal" class="w-6 h-6 text-pink-500"></i>
+        <div class="flex items-center gap-4 mb-10">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-pink-500 flex items-center justify-center shadow-lg shadow-pink-500/20">
+            <i data-lucide="terminal" class="w-5 h-5 text-white"></i>
           </div>
 
-          <h2 class="text-3xl font-black section-title text-gray-900">
-            SUMMARY
-          </h2>
+          <h2 class="text-3xl font-black section-title">SUMMARY</h2>
         </div>
 
-        <div class="glass rounded-[36px] p-10 glass-hover relative overflow-hidden">
-          <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-pink-500 via-fuchsia-500 to-purple-500"></div>
-
-          <p class="text-lg leading-relaxed text-gray-700 pl-6 font-medium">
-            Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk management, security awareness, and security operations support. Experienced in vendor security assessments, regulatory compliance aligned with PCI DSS and DORA, and threat intelligence analysis. Demonstrated success improving phishing resilience by <span class="font-black text-pink-500">40%</span> through enterprise security awareness campaigns. Combines risk analysis, incident investigation, and threat intelligence to strengthen organisational security posture through practical AI adoption.
+        <div class="apple-glass p-10 apple-glass-hover">
+          <p class="text-lg leading-relaxed text-slate-700">
+            Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk management, security awareness, and security operations support. Experienced in vendor security assessments, regulatory compliance aligned with PCI DSS and DORA, and threat intelligence analysis.
           </p>
         </div>
+
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" class="py-20 relative">
+    <section id="experience" class="relative py-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div class="flex items-center gap-4 mb-8">
-          <div class="glass rounded-2xl p-3">
-            <i data-lucide="briefcase" class="w-6 h-6 text-fuchsia-500"></i>
+        <div class="flex items-center gap-4 mb-10">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-pink-500/20">
+            <i data-lucide="network" class="w-5 h-5 text-white"></i>
           </div>
 
-          <h2 class="text-3xl font-black section-title text-gray-900">
-            EXPERIENCE
-          </h2>
+          <h2 class="text-3xl font-black section-title">EXPERIENCE</h2>
         </div>
 
-        <div class="space-y-6" id="experienceList"></div>
+        <div class="space-y-8">
+
+          <div class="apple-glass apple-glass-hover p-8">
+            <h3 class="text-2xl font-bold mb-2">Risk Analyst @ Grab</h3>
+            <p class="text-fuchsia-500 font-semibold mb-4">Dec 2025 – Present</p>
+            <p class="text-slate-700 leading-relaxed">
+              Conduct third-party security risk assessments evaluating vendor controls across infrastructure security, data protection, and compliance.
+            </p>
+          </div>
+
+          <div class="apple-glass apple-glass-hover p-8">
+            <h3 class="text-2xl font-bold mb-2">Junior Security Analyst @ Deriv HQ</h3>
+            <p class="text-fuchsia-500 font-semibold mb-4">Jan 2023 – Dec 2025</p>
+            <p class="text-slate-700 leading-relaxed">
+              Ensured regulatory compliance, led phishing awareness campaigns, investigated incidents, and supported AI-powered security automation initiatives.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="skills" class="relative py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex items-center gap-4 mb-10">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-500 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-pink-500/20">
+            <i data-lucide="zap" class="w-5 h-5 text-white"></i>
+          </div>
+
+          <h2 class="text-3xl font-black section-title">SKILLS</h2>
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+          <span class="apple-glass px-5 py-3 text-sm font-semibold text-fuchsia-600">Threat Intelligence</span>
+          <span class="apple-glass px-5 py-3 text-sm font-semibold text-pink-600">Vendor Risk Management</span>
+          <span class="apple-glass px-5 py-3 text-sm font-semibold text-purple-600">PCI-DSS</span>
+          <span class="apple-glass px-5 py-3 text-sm font-semibold text-fuchsia-600">Incident Response</span>
+          <span class="apple-glass px-5 py-3 text-sm font-semibold text-pink-600">Security Awareness</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact" class="relative py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="flex items-center gap-4 mb-10">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-purple-500 flex items-center justify-center shadow-lg shadow-pink-500/20">
+            <i data-lucide="mail" class="w-5 h-5 text-white"></i>
+          </div>
+
+          <h2 class="text-3xl font-black section-title">CONTACT</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+
+          <a href="mailto:marianne_wong@protonmail.com" class="apple-glass apple-glass-hover px-6 py-5 flex items-center gap-4">
+            <i data-lucide="mail" class="w-5 h-5 text-fuchsia-500"></i>
+            <span class="text-slate-700">marianne_wong@protonmail.com</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/mwhm/" target="_blank" class="apple-glass apple-glass-hover px-6 py-5 flex items-center gap-4">
+            <i data-lucide="linkedin" class="w-5 h-5 text-pink-500"></i>
+            <span class="text-slate-700">LinkedIn Profile</span>
+          </a>
+
+        </div>
+
       </div>
     </section>
 
   </main>
 
+  <footer class="relative z-10 py-10">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="apple-glass py-6 px-8 text-center">
+
+        <p class="text-xs tracking-[0.3em] uppercase text-slate-500 font-mono">
+          SYS.DATE: 2026 // MARIANNE_WONG // SEC_RISK_ANALYST
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
   <script>
-    const navItems = [
-      { id: 'home', label: 'Home', icon: 'home' },
-      { id: 'summary', label: 'Summary', icon: 'file-text' },
-      { id: 'experience', label: 'Experience', icon: 'briefcase' },
-      { id: 'skills', label: 'Skills', icon: 'zap' },
-      { id: 'education', label: 'Education', icon: 'graduation-cap' },
-      { id: 'certifications', label: 'Certifications', icon: 'badge-check' },
-      { id: 'achievements', label: 'Achievements', icon: 'trophy' }
-    ];
-
-    const experiences = [
-      {
-        title: 'Risk Analyst',
-        company: 'Grab',
-        period: 'Dec 2025 – Present',
-        status: 'Active',
-        details: [
-          'Conduct third-party security risk assessments evaluating vendor controls across infrastructure security, data protection, and compliance.',
-          'Perform due diligence reviews of vendor security documentation, including security policies, SOC reports, and compliance attestations.',
-          'Maintain a vendor risk dashboard to track key metrics and provide regular updates to management.',
-          'Identify, document, and prioritize findings from risk assessments and vendor evaluations.',
-          'Develop and track remediation plans for identified findings or issues, ensuring timely resolution and mitigation of risks.'
-        ]
-      },
-      {
-        title: 'Junior Security Analyst',
-        company: 'Deriv HQ',
-        period: 'Jan 2023 – Dec 2025',
-        status: '',
-        details: [
-          'Ensured regulatory compliance (DORA, PCI-DSS) through policy reviews, gap analyses and vendor risk assessments.',
-          'Spearheaded organisation-wide security awareness programs, achieving 90%+ completion and 97% participation rates.',
-          'Created educational materials to strengthen employee engagement.',
-          'Co-led offsec campaigns, reducing attack surface by 30%.',
-          'Investigated security incidents and developed incident response playbooks.',
-          'Delivered key projects including Threat Map Model, quarterly PCI-DSS scans and DORA readiness assessments.',
-          'Contributed to AI-powered security chatbot, reducing help desk workload by 25%.',
-          'Applied AI tools to automate GRC processes.',
-          'Analysed 200+ weekly threat intelligence feeds to identify emerging risks.'
-        ]
-      }
-    {
-        title: 'BeSquare IT Graduate Programme',
-        company: 'Deriv HQ',
-        period: 'Jun 2022 – Dec 2022',
-        status: '',
-        details: [
-          'Completed a nine-module program with industry experts, developing a full-stack web app in a five-member team.',
-          'Implemented security measures including input validation and password hashing.'
-        ]
-      },
-      {
-        title: 'IT Project Management Intern',
-        company: 'Asian Supply Base SDN. BHD.',
-        period: 'Mar 2021 – Jun 2021',
-        status: '',
-        details: [
-          'Partnered with cross-functional teams to design comprehensive network improvement strategies.',
-          'Produced detailed process flowcharts and technical documentation for upcoming projects.',
-          'Supported project management initiatives by participating in vendor meetings and stakeholder discussions.'
-        ]
-      }
-    ];
-
-    function renderNavItems() {
-      const desktop = document.getElementById('desktopNav');
-      const mobile = document.getElementById('mobileNavItems');
-
-      desktop.innerHTML = navItems.map(item => `
-        <button class="apple-btn rounded-full px-5 py-2 text-sm font-semibold text-gray-700 nav-btn" data-target="${item.id}">
-          ${item.label}
-        </button>
-      `).join('');
-
-      mobile.innerHTML = navItems.map(item => `
-        <button class="apple-btn rounded-2xl px-4 py-3 text-left text-gray-700 font-medium flex items-center gap-3 nav-btn" data-target="${item.id}">
-          <i data-lucide="${item.icon}" class="w-5 h-5 text-pink-500"></i>
-          ${item.label}
-        </button>
-      `).join('');
-    }
-
-    function renderExperiences() {
-      const el = document.getElementById('experienceList');
-
-      el.innerHTML = experiences.map((exp, idx) => `
-        <div class="glass rounded-[32px] overflow-hidden glass-hover">
-
-          <button class="w-full text-left p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 exp-toggle" data-index="${idx}">
-
-            <div class="flex items-start gap-5">
-              <div class="glass rounded-2xl p-3">
-                <i data-lucide="chevron-right" class="w-5 h-5 text-pink-500 exp-chevron" data-index="${idx}"></i>
-              </div>
-
-              <div>
-                <h3 class="text-2xl font-black text-gray-900 flex flex-wrap items-center gap-2">
-                  ${exp.title}
-                  <span class="text-pink-500">@</span>
-                  ${exp.company}
-                </h3>
-
-                <p class="text-gray-500 mt-2 font-medium">
-                  ${exp.period}
-                </p>
-              </div>
-            </div>
-
-            ${exp.status ? `
-              <span class="apple-btn rounded-full px-4 py-2 text-xs font-bold uppercase tracking-widest text-pink-600">
-                ${exp.status}
-              </span>
-            ` : ''}
-
-          </button>
-
-          <div class="px-8 pb-8 pl-24 hidden exp-details" data-index="${idx}">
-            <ul class="space-y-4">
-              ${exp.details.map(detail => `
-                <li class="flex items-start gap-4 text-gray-700 leading-relaxed font-medium">
-                  <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-pink-500 to-fuchsia-500 mt-3 shrink-0"></span>
-                  ${detail}
-                </li>
-              `).join('')}
-            </ul>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function scrollToSection(id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-
-      document.getElementById('mobileNav').classList.add('hidden');
-
-      const menuIcon = document.getElementById('menuIcon');
-      menuIcon.setAttribute('data-lucide', 'menu');
-      lucide.createIcons();
-    }
-
-    document.addEventListener('click', async (e) => {
-
-      const navBtn = e.target.closest('.nav-btn');
-      if (navBtn) {
-        scrollToSection(navBtn.dataset.target);
-      }
-
-      const expToggle = e.target.closest('.exp-toggle');
-      if (expToggle) {
-
-        const index = expToggle.dataset.index;
-
-        const details = document.querySelector(`.exp-details[data-index="${index}"]`);
-
-        const chevron = document.querySelector(`.exp-chevron[data-index="${index}"]`);
-
-        const isOpen = !details.classList.contains('hidden');
-
-        details.classList.toggle('hidden');
-
-        chevron.style.transform = isOpen
-          ? 'rotate(0deg)'
-          : 'rotate(90deg)';
-      }
-
-      if (e.target.closest('#menuBtn')) {
-
-        const mobileNav = document.getElementById('mobileNav');
-        mobileNav.classList.toggle('hidden');
-
-        const menuIcon = document.getElementById('menuIcon');
-
-        menuIcon.setAttribute(
-          'data-lucide',
-          mobileNav.classList.contains('hidden') ? 'menu' : 'x'
-        );
-
-        lucide.createIcons();
-      }
-
-      if (e.target.closest('#shareBtn')) {
-        try {
-
-          await navigator.clipboard.writeText(window.location.href);
-
-          document.getElementById('shareText').textContent = 'Link Copied';
-
-          document.getElementById('shareIcon').setAttribute('data-lucide', 'check');
-
-          lucide.createIcons();
-
-          setTimeout(() => {
-            document.getElementById('shareText').textContent = 'Share Portfolio';
-            document.getElementById('shareIcon').setAttribute('data-lucide', 'share-2');
-            lucide.createIcons();
-          }, 2200);
-
-        } catch (err) {
-          alert('Copy failed: ' + err.message);
-        }
-      }
-    });
-
-    renderNavItems();
-    renderExperiences();
-
     lucide.createIcons();
   </script>
+
 </body>
 </html>
 ```
