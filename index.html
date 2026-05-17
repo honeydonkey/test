@@ -542,22 +542,25 @@
   padding-right: 10px;
 }
 
+
 /* NAV BUTTON */
 .nav-item {
+  position: relative;
+
   appearance: none;
-  -webkit-appearance: none;
   border: none;
   outline: none;
-  background: transparent;
 
   height: 56px;
-  padding: 0 22px;
+  padding: 0 24px;
 
   border-radius: 9999px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background: transparent;
 
   color: #5b5562;
 
@@ -566,15 +569,104 @@
 
   cursor: pointer;
 
+  overflow: hidden;
+
   transition:
-    color 0.3s ease,
-    opacity 0.3s ease;
+    color 0.45s cubic-bezier(.22,1,.36,1),
+    transform 0.45s cubic-bezier(.22,1,.36,1),
+    box-shadow 0.45s cubic-bezier(.22,1,.36,1),
+    background 0.45s cubic-bezier(.22,1,.36,1);
 }
+
+/* LIQUID LAYER */
+.nav-item::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+
+  opacity: 0;
+  transform: scale(0.82);
+
+  transition:
+    opacity 0.55s cubic-bezier(.22,1,.36,1),
+    transform 0.55s cubic-bezier(.22,1,.36,1),
+    background 0.55s cubic-bezier(.22,1,.36,1),
+    box-shadow 0.55s cubic-bezier(.22,1,.36,1);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.92),
+      rgba(255,255,255,0.50)
+    );
+
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+
+  border:
+    1px solid rgba(255,255,255,0.9);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,1),
+    inset 0 -1px 1px rgba(255,255,255,0.32),
+    0 8px 24px rgba(236,72,153,0.14);
+
+  z-index: 0;
+}
+
+/* TEXT ABOVE GLASS */
+.nav-item span {
+  position: relative;
+  z-index: 2;
+}
+
 /* ACTIVE */
 .nav-item.active {
   color: #ec4899;
 }
 
+.nav-item.active::before {
+  opacity: 1;
+  transform: scale(1);
+}
+		.nav-item::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 120%;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,0.72),
+      transparent
+    );
+
+  transition: left 0.9s cubic-bezier(.22,1,.36,1);
+
+  z-index: 1;
+}
+
+.nav-item.active::after {
+  left: 120%;
+}
+
+/* HOVER */
+.nav-item:hover:not(.active) {
+  color: #ec4899;
+  transform: translateY(-1px);
+}
 
 
 /* MOBILE MENU BTN */
@@ -891,7 +983,7 @@
         </div>
       </div>
     </footer>
-    <script>
+   <!-- <script> script 1
       const navItems = [{
         id: 'home',
         label: 'Home'
@@ -1240,7 +1332,7 @@ window.scrollTo({
       renderExperiences();
       renderAchievements();
       lucide.createIcons();
-    </script>
+    </script> -->
     <script>
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -1449,6 +1541,7 @@ window.scrollTo({
     .filter(Boolean);
 
   let visibleSections = new Map();
+let manualScrolling = false;
 
   const observer = new IntersectionObserver(
     entries => {
@@ -1467,7 +1560,7 @@ window.scrollTo({
       });
 
       let mostVisibleSection = currentActive;
-      let highestRatio = 0;
+     
 
       visibleSections.forEach((ratio, id) => {
 
@@ -1484,8 +1577,8 @@ window.scrollTo({
 
     },
     {
-      threshold: 0.35,
-      rootMargin: '-10% 0px -45% 0px'
+      threshold: 0.12,
+	rootMargin: '-18% 0px -55% 0px'
     }
   );
 
