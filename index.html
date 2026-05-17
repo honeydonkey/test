@@ -1126,393 +1126,272 @@
   ];
 
   /* =========================================
-     NAVIGATION
-  ========================================= */
+   NAVIGATION
+========================================= */
 
-  let currentActive = 'home';
-
-  function renderNav() {
-    const desktop = document.getElementById('desktopNav');
-    const mobile = document.getElementById('mobileNavItems');
-
-    desktop.innerHTML = navItems
-      .map(
-        item => `
-        <button
-          class="nav-btn nav-item"
-          data-target="${item.id}"
-        >
-          <span>${item.label}</span>
-        </button>
-      `
-      )
-      .join('');
-
-    mobile.innerHTML = navItems
-      .map(
-        item => `
-        <button
-          class="nav-btn mobile-nav-item"
-          data-target="${item.id}"
-        >
-          ${item.label}
-        </button>
-      `
-      )
-      .join('');
-
-    lucide.createIcons();
-  }
-
-  function setActiveNav(id) {
-    currentActive = id;
-
-    document.querySelectorAll('.nav-item').forEach(btn => {
-      btn.classList.toggle(
-        'active',
-        btn.dataset.target === id
-      );
-    });
-
-    document.querySelectorAll('.mobile-nav-item').forEach(btn => {
-      btn.classList.toggle(
-        'active',
-        btn.dataset.target === id
-      );
-    });
-  }
-
-  /* =========================================
-     ACTIVE SECTION TRACKING
-  ========================================= */
-
-  const sections = navItems
-    .map(item => document.getElementById(item.id))
-    .filter(Boolean);
-
-  let visibleSections = new Map();
+let currentActive = 'home';
 let manualScrolling = false;
 
-  const observer = new IntersectionObserver(
-    entries => {
+function renderNav() {
 
-      entries.forEach(entry => {
+  const desktop = document.getElementById('desktopNav');
+  const mobile = document.getElementById('mobileNavItems');
 
-        if (entry.isIntersecting) {
-          visibleSections.set(
-            entry.target.id,
-            entry.intersectionRatio
-          );
-        } else {
-          visibleSections.delete(entry.target.id);
-        }
+  desktop.innerHTML = navItems.map(item => `
+    <button
+      class="nav-btn nav-item"
+      data-target="${item.id}"
+    >
+      <span>${item.label}</span>
+    </button>
+  `).join('');
 
-      });
+  mobile.innerHTML = navItems.map(item => `
+    <button
+      class="nav-btn mobile-nav-item"
+      data-target="${item.id}"
+    >
+      ${item.label}
+    </button>
+  `).join('');
 
-      let mostVisibleSection = currentActive;
-     
+  lucide.createIcons();
+}
 
-      visibleSections.forEach((ratio, id) => {
+/* =========================================
+   ACTIVE NAV
+========================================= */
 
-        if (ratio > highestRatio) {
-          highestRatio = ratio;
-          mostVisibleSection = id;
-        }
+function setActiveNav(id) {
 
-      });
+  currentActive = id;
 
-      if (mostVisibleSection !== currentActive) {
-        setActiveNav(mostVisibleSection);
-      }
+  document.querySelectorAll('.nav-item').forEach(btn => {
 
-    },
-    {
-      threshold: 0.12,
-	rootMargin: '-18% 0px -55% 0px'
-    }
-  );
+    btn.classList.toggle(
+      'active',
+      btn.dataset.target === id
+    );
 
-  sections.forEach(section => {
-    observer.observe(section);
   });
 
-  /* =========================================
-     SKILLS
-  ========================================= */
+  document.querySelectorAll('.mobile-nav-item').forEach(btn => {
 
-  function renderSkills() {
+    btn.classList.toggle(
+      'active',
+      btn.dataset.target === id
+    );
 
-    const el = document.getElementById('skillsList');
+  });
 
-    el.innerHTML = skills.map(skill => `
-      <span class="chip px-5 py-3 text-sm font-bold text-pink-600">
-        ${skill}
-      </span>
-    `).join('');
-  }
+}
 
-  /* =========================================
-     EXPERIENCES
-  ========================================= */
+/* =========================================
+   SCROLL TO SECTION
+========================================= */
 
-  function renderExperiences() {
+function scrollToSection(id) {
 
-    const el = document.getElementById('experienceList');
+  const section = document.getElementById(id);
 
-    el.innerHTML = experiences.map((exp, idx) => `
+  if (!section) return;
 
-      <div class="glass glass-hover experience-card">
+  const y =
+    section.getBoundingClientRect().top +
+    window.pageYOffset -
+    120;
 
-        <button
-          class="experience-toggle w-full text-left p-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8"
-          data-index="${idx}"
-        >
+  window.scrollTo({
+    top: y,
+    behavior: 'smooth'
+  });
 
-          <div class="flex items-start gap-6">
+  document
+    .getElementById('mobileNav')
+    .classList.add('hidden');
+}
 
-            <div class="icon-wrap shrink-0">
-              <span class="chevron" data-chevron="${idx}">
-                <i data-lucide="chevron-right" class="w-5 h-5 text-pink-500"></i>
-              </span>
-            </div>
+/* =========================================
+   ACTIVE SECTION TRACKING
+========================================= */
 
-            <div>
-              <h3 class="text-3xl font-black leading-tight">
-                ${exp.title}
-                <span class="text-pink-500">@</span>
-                ${exp.company}
-              </h3>
+const sections = navItems
+  .map(item => document.getElementById(item.id))
+  .filter(Boolean);
 
-              <p class="mt-5 text-lg text-slate-500">
-                ${exp.period}
-              </p>
-            </div>
+let visibleSections = new Map();
 
-          </div>
+const observer = new IntersectionObserver(
 
-          ${
-            exp.status
-              ? `
-                <div class="glass-button px-5 py-3 text-xs font-black uppercase tracking-[0.22em] text-pink-600">
-                  ${exp.status}
-                </div>
-              `
-              : ''
-          }
+  entries => {
 
-        </button>
+    entries.forEach(entry => {
 
-        <div
-          class="experience-details px-10 pb-10"
-          data-details="${idx}"
-        >
+      if (entry.isIntersecting) {
 
-          <div class="divider mb-8"></div>
+        visibleSections.set(
+          entry.target.id,
+          entry.intersectionRatio
+        );
 
-          <ul class="space-y-6">
+      } else {
 
-            ${exp.details.map(detail => `
-              <li class="flex items-start gap-5">
-                <div class="mt-2.5 w-2.5 h-2.5 rounded-full bg-gradient-to-r from-pink-500 to-fuchsia-500 shrink-0"></div>
+        visibleSections.delete(entry.target.id);
 
-                <p class="text-lg leading-relaxed text-slate-600">
-                  ${detail}
-                </p>
-              </li>
-            `).join('')}
+      }
 
-          </ul>
+    });
 
-        </div>
+    let mostVisibleSection = currentActive;
+    let highestRatio = 0;
 
-      </div>
+    visibleSections.forEach((ratio, id) => {
 
-    `).join('');
-  }
+      if (ratio > highestRatio) {
 
-  /* =========================================
-     ACHIEVEMENTS
-  ========================================= */
+        highestRatio = ratio;
+        mostVisibleSection = id;
 
-  function renderAchievements() {
+      }
 
-    const el = document.getElementById('achievementsGrid');
+    });
 
-    el.innerHTML = achievements.map(a => `
+    /* PREVENT OBSERVER FROM
+       OVERRIDING USER CLICK */
 
-      <div class="glass glass-hover p-10 flex flex-col">
+    if (
+      !manualScrolling &&
+      mostVisibleSection !== currentActive
+    ) {
 
-        <div class="flex items-start justify-between gap-5 mb-8">
-
-          <div>
-
-            <h3 class="text-3xl font-black leading-tight">
-              ${a.title}
-            </h3>
-
-            <div class="flex flex-wrap items-center gap-4 mt-6">
-
-              <span class="glass-button px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-pink-600">
-                ${a.rank}
-              </span>
-
-              <span class="text-slate-500 text-sm font-semibold">
-                ${a.organization}
-              </span>
-
-            </div>
-
-          </div>
-
-          <div class="icon-wrap shrink-0">
-            <i data-lucide="${a.icon}" class="w-6 h-6 text-fuchsia-500"></i>
-          </div>
-
-        </div>
-
-        <div class="divider mb-8"></div>
-
-        <p class="text-lg leading-relaxed text-slate-600 flex-grow">
-          ${a.description}
-        </p>
-
-        <a
-          href="${a.link}"
-          target="_blank"
-          rel="noreferrer"
-          class="glass-button mt-10 px-6 py-4 w-fit text-sm font-black text-slate-700 flex items-center gap-3"
-        >
-          <i data-lucide="external-link" class="w-5 h-5 text-pink-500"></i>
-          View Evidence
-        </a>
-
-      </div>
-
-    `).join('');
-  }
-
-  /* =========================================
-     SCROLL TO SECTION
-  ========================================= */
-
-  function scrollToSection(id) {
-
-    const section = document.getElementById(id);
-
-    if (section) {
-
-      const y =
-        section.getBoundingClientRect().top +
-        window.pageYOffset -
-        120;
-
-      window.scrollTo({
-        top: y,
-        behavior: 'smooth'
-      });
+      setActiveNav(mostVisibleSection);
 
     }
+
+  },
+
+  {
+    threshold: 0.12,
+    rootMargin: '-18% 0px -55% 0px'
+  }
+
+);
+
+sections.forEach(section => {
+  observer.observe(section);
+});
+
+/* =========================================
+   GLOBAL CLICK EVENTS
+========================================= */
+
+document.addEventListener('click', async (e) => {
+
+  /* NAVIGATION BUTTONS */
+  const navBtn = e.target.closest('.nav-btn');
+
+  if (navBtn) {
+
+    const target = navBtn.dataset.target;
+
+    /* LOCK OBSERVER TEMPORARILY */
+    manualScrolling = true;
+
+    /* IMMEDIATE ACTIVE FEEDBACK */
+    setActiveNav(target);
+
+    /* SMOOTH SCROLL */
+    scrollToSection(target);
+
+    /* RELEASE OBSERVER */
+    setTimeout(() => {
+
+      manualScrolling = false;
+
+    }, 900);
+
+    return;
+  }
+
+  /* SCROLL BUTTONS */
+  const scrollBtn = e.target.closest('[data-scroll]');
+
+  if (scrollBtn) {
+
+    scrollToSection(scrollBtn.dataset.scroll);
+
+    return;
+  }
+
+  /* EXPERIENCE ACCORDION */
+  const expBtn = e.target.closest('.experience-toggle');
+
+  if (expBtn) {
+
+    const idx = expBtn.dataset.index;
+
+    const details = document.querySelector(
+      `[data-details="${idx}"]`
+    );
+
+    const chevron = document.querySelector(
+      `[data-chevron="${idx}"]`
+    );
+
+    const isVisible =
+      details.style.display === 'block';
+
+    details.style.display =
+      isVisible ? 'none' : 'block';
+
+    chevron.style.transform =
+      isVisible
+        ? 'rotate(0deg)'
+        : 'rotate(90deg)';
+
+    return;
+  }
+
+  /* MOBILE MENU */
+  if (e.target.closest('#menuBtn')) {
 
     document
       .getElementById('mobileNav')
-      .classList.add('hidden');
+      .classList.toggle('hidden');
+
+    return;
   }
 
-  /* =========================================
-     GLOBAL CLICK EVENTS
-  ========================================= */
+  /* SHARE */
+  if (e.target.closest('#shareBtn')) {
 
-  document.addEventListener('click', async (e) => {
+    try {
 
-    /* NAV */
-    const navBtn = e.target.closest('.nav-btn');
-
-    if (navBtn) {
-
-      const target = navBtn.dataset.target;
-
-      setActiveNav(target);
-      scrollToSection(target);
-
-      return;
-    }
-
-    /* SCROLL BUTTONS */
-    const scrollBtn = e.target.closest('[data-scroll]');
-
-    if (scrollBtn) {
-
-      scrollToSection(scrollBtn.dataset.scroll);
-
-      return;
-    }
-
-    /* EXPERIENCE ACCORDION */
-    const expBtn = e.target.closest('.experience-toggle');
-
-    if (expBtn) {
-
-      const idx = expBtn.dataset.index;
-
-      const details = document.querySelector(
-        `[data-details="${idx}"]`
+      await navigator.clipboard.writeText(
+        window.location.href
       );
 
-      const chevron = document.querySelector(
-        `[data-chevron="${idx}"]`
-      );
+      const shareText =
+        document.getElementById('shareText');
 
-      const isVisible =
-        details.style.display === 'block';
+      shareText.textContent = 'Link Copied';
 
-      details.style.display =
-        isVisible ? 'none' : 'block';
+      setTimeout(() => {
 
-      chevron.style.transform =
-        isVisible
-          ? 'rotate(0deg)'
-          : 'rotate(90deg)';
+        shareText.textContent =
+          'Share Portfolio';
 
-      return;
+      }, 2200);
+
+    } catch (err) {
+
+      alert('Copy failed');
+
     }
 
-    /* MOBILE MENU */
-    if (e.target.closest('#menuBtn')) {
+  }
 
-      document
-        .getElementById('mobileNav')
-        .classList.toggle('hidden');
-
-      return;
-    }
-
-    /* SHARE */
-    if (e.target.closest('#shareBtn')) {
-
-      try {
-
-        await navigator.clipboard.writeText(
-          window.location.href
-        );
-
-        const shareText =
-          document.getElementById('shareText');
-
-        shareText.textContent = 'Link Copied';
-
-        setTimeout(() => {
-          shareText.textContent =
-            'Share Portfolio';
-        }, 2200);
-
-      } catch (err) {
-
-        alert('Copy failed');
-
-      }
-    }
-
-  });
+});
 
   /* =========================================
      INITIALIZE
