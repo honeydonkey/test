@@ -544,10 +544,13 @@
 
 /* NAV BUTTON */
 .nav-item {
-  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
 
   height: 56px;
-
   padding: 0 22px;
 
   border-radius: 9999px;
@@ -561,15 +564,17 @@
   font-size: 0.92rem;
   font-weight: 700;
 
+  cursor: pointer;
+
   transition:
     color 0.3s ease,
-    transform 0.3s ease;
+    opacity 0.3s ease;
 }
-
 /* ACTIVE */
 .nav-item.active {
   color: #ec4899;
 }
+
 
 
 /* MOBILE MENU BTN */
