@@ -161,6 +161,63 @@
         }
       }
 
+      /* =========================================
+   HERO SUMMARY GLASS
+========================================= */
+      /* =========================================
+   HERO SUMMARY GLASS
+========================================= */
+      .summary-card {
+        position: relative;
+        width: 100%;
+        border-radius: 38px;
+        background:
+          linear-gradient(145deg,
+            rgba(255, 255, 255, 0.24),
+            rgba(255, 255, 255, 0.10));
+        border:
+          1px solid rgba(255, 255, 255, 0.34);
+        backdrop-filter:
+          blur(18px) saturate(185%);
+        -webkit-backdrop-filter:
+          blur(18px) saturate(185%);
+        box-shadow:
+          0 10px 32px rgba(236, 72, 153, 0.05),
+          inset 0 1px 0 rgba(255, 255, 255, 0.42);
+        overflow: hidden;
+      }
+
+      /* LIGHT LAYER */
+      .summary-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background:
+          linear-gradient(180deg,
+            rgba(255, 255, 255, 0.20),
+            transparent 30%);
+        pointer-events: none;
+      }
+
+      .summary-icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background:
+          linear-gradient(145deg,
+            rgba(255, 255, 255, 0.42),
+            rgba(255, 255, 255, 0.18));
+        border:
+          1px solid rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(12px);
+        box-shadow:
+          0 6px 18px rgba(236, 72, 153, 0.06);
+      }
+
       .container-main {
         position: relative;
         z-index: 2;
@@ -309,7 +366,7 @@
 
       .eyebrow {
         font-size: 0.7rem;
-    	letter-spacing: 0.28em;
+        letter-spacing: 0.28em;
       }
 
       .section-title {
@@ -410,353 +467,295 @@
         }
       }
 
-		/* =========================================
+      /* =========================================
    MOBILE + RESPONSIVE IMPROVEMENTS
 ========================================= */
+      @media (max-width: 1024px) {
+        .hero-title {
+          font-size: clamp(3.2rem, 14vw, 6rem);
+          letter-spacing: -0.06em;
+        }
 
-@media (max-width: 1024px) {
-  .hero-title {
-    font-size: clamp(3.2rem, 14vw, 6rem);
-    letter-spacing: -0.06em;
-  }
+        .section-title {
+          font-size: 2rem;
+          line-height: 1.1;
+        }
 
-  .section-title {
-    font-size: 2rem;
-    line-height: 1.1;
-  }
+        .glass-button {
+          width: 100%;
+          justify-content: center;
+        }
 
-  .glass-button {
-    width: 100%;
-    justify-content: center;
-  }
+        .container-main {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
 
-  .container-main {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
+        .glass,
+        .glass-nav {
+          border-radius: 28px;
+        }
+      }
 
-  .glass,
-  .glass-nav {
-    border-radius: 28px;
-  }
-}
+      @media (max-width: 768px) {
+        .section-spacing {
+          padding-top: 72px;
+          padding-bottom: 72px;
+        }
 
-@media (max-width: 768px) {
-  .section-spacing {
-    padding-top: 72px;
-    padding-bottom: 72px;
-  }
+        .hero-title {
+          font-size: clamp(3.5rem, 18vw, 5.5rem);
+          line-height: 0.92;
+        }
 
-  .hero-title {
-    font-size: clamp(3.5rem, 18vw, 5.5rem);
-    line-height: 0.92;
-  }
+        .icon-wrap {
+          width: 52px;
+          height: 52px;
+          border-radius: 18px;
+        }
 
-  .icon-wrap {
-    width: 52px;
-    height: 52px;
-    border-radius: 18px;
-  }
+        .glass {
+          backdrop-filter: blur(20px) saturate(160%);
+          -webkit-backdrop-filter: blur(20px) saturate(160%);
+        }
 
-  .glass {
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-  }
+        .orb {
+          opacity: 0.3;
+        }
+      }
 
-  .orb {
-    opacity: 0.3;
-  }
-}
+      @media (max-width: 640px) {
+        main {
+          padding-top: 110px;
+        }
 
-@media (max-width: 640px) {
-  main {
-    padding-top: 110px;
-  }
+        .hero-title {
+          font-size: clamp(2.8rem, 15vw, 4.5rem);
+        }
 
-  .hero-title {
-    font-size: clamp(2.8rem, 15vw, 4.5rem);
-  }
+        .glass-button {
+          min-height: 56px;
+          font-size: 0.9rem;
+        }
 
-  .glass-button {
-    min-height: 56px;
-    font-size: 0.9rem;
-  }
+        .glass,
+        .glass-hover {
+          padding: 1.4rem;
+        }
 
-  .glass,
-  .glass-hover {
-    padding: 1.4rem;
-  }
+        .experience-toggle {
+          padding: 1.6rem;
+        }
 
-  .experience-toggle {
-    padding: 1.6rem;
-  }
+        .experience-details {
+          padding-left: 1.6rem !important;
+          padding-right: 1.6rem !important;
+          padding-bottom: 1.6rem !important;
+        }
 
-  .experience-details {
-    padding-left: 1.6rem !important;
-    padding-right: 1.6rem !important;
-    padding-bottom: 1.6rem !important;
-  }
+        .text-5xl {
+          font-size: 2.4rem !important;
+          line-height: 1.1;
+        }
 
-  .text-5xl {
-    font-size: 2.4rem !important;
-    line-height: 1.1;
-  }
+        .text-4xl {
+          font-size: 2rem !important;
+        }
 
-  .text-4xl {
-    font-size: 2rem !important;
-  }
+        .text-3xl {
+          font-size: 1.55rem !important;
+        }
 
-  .text-3xl {
-    font-size: 1.55rem !important;
-  }
+        p.text-xl,
+        .text-xl {
+          font-size: 1rem !important;
+          line-height: 1.75rem !important;
+        }
+      }
 
-  p.text-xl,
-  .text-xl {
-    font-size: 1rem !important;
-    line-height: 1.75rem !important;
-  }
-}
-		/* =========================================
+      /* =========================================
    APPLE LIQUID TAB NAV
 ========================================= */
-
-.nav-pill {
-  position: relative;
-
-  border-radius: 9999px;
-
-  background:
-    rgba(255,255,255,0.14);
-
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
-
-  border:
-    1px solid rgba(255,255,255,0.22);
-
-  box-shadow:
-    0 8px 30px rgba(0,0,0,0.06),
-    inset 0 1px 1px rgba(255,255,255,0.18);
-
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-
-/* NAV BUTTON */
-.nav-item {
-  position: relative;
-
-  appearance: none;
-  border: none;
-  outline: none;
-
-  height: 56px;
-  padding: 0 24px;
-
-  border-radius: 9999px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: transparent;
-
-  color: #5b5562;
-
-  font-size: 0.92rem;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  overflow: hidden;
-
-  transition:
-    color 0.45s cubic-bezier(.22,1,.36,1),
-    transform 0.45s cubic-bezier(.22,1,.36,1),
-    box-shadow 0.45s cubic-bezier(.22,1,.36,1),
-    background 0.45s cubic-bezier(.22,1,.36,1);
-}
-
-/* LIQUID LAYER */
-.nav-item::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  border-radius: inherit;
-
-  opacity: 0;
-  transform: scale(0.82);
-
-  transition:
-    opacity 0.55s cubic-bezier(.22,1,.36,1),
-    transform 0.55s cubic-bezier(.22,1,.36,1),
-    background 0.55s cubic-bezier(.22,1,.36,1),
-    box-shadow 0.55s cubic-bezier(.22,1,.36,1);
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.92),
-      rgba(255,255,255,0.50)
-    );
-
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-
-  border:
-    1px solid rgba(255,255,255,0.9);
-
-  box-shadow:
-    inset 0 1px 1px rgba(255,255,255,1),
-    inset 0 -1px 1px rgba(255,255,255,0.32),
-    0 8px 24px rgba(236,72,153,0.14);
-
-  z-index: 0;
-}
-
-/* TEXT ABOVE GLASS */
-.nav-item span {
-  position: relative;
-  z-index: 2;
-}
-
-/* ACTIVE */
-.nav-item.active {
-  color: #ec4899;
-}
-
-.nav-item.active::before {
-  opacity: 1;
-  transform: scale(1);
-}
-		.nav-item::after {
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  left: -120%;
-
-  width: 120%;
-  height: 100%;
-
-  border-radius: inherit;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255,255,255,0.72),
-      transparent
-    );
-
-  transition: left 0.9s cubic-bezier(.22,1,.36,1);
-
-  z-index: 1;
-}
-
-.nav-item.active::after {
-  left: 120%;
-}
-
-/* HOVER */
-.nav-item:hover:not(.active) {
-  color: #ec4899;
-  transform: translateY(-1px);
-}
-
-
-/* MOBILE MENU BTN */
-.mobile-menu-btn {
-  width: 56px;
-  height: 56px;
-
-  border-radius: 9999px;
-
-  background:
-    rgba(255,255,255,0.18);
-
-  backdrop-filter: blur(16px);
-
-  border:
-    1px solid rgba(255,255,255,0.24);
-
-  color: #ec4899;
-
-  display: none;
-  align-items: center;
-  justify-content: center;
-
-  box-shadow:
-    0 8px 20px rgba(0,0,0,0.06);
-}
-
-/* MOBILE PANEL */
-.mobile-nav-panel {
-  border-radius: 30px;
-
-  background:
-    rgba(255,255,255,0.16);
-
-  backdrop-filter: blur(18px);
-
-  border:
-    1px solid rgba(255,255,255,0.22);
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.06);
-}
-
-/* MOBILE NAV BUTTONS */
-.mobile-nav-item {
-  height: 54px;
-
-  border-radius: 20px;
-
-  padding: 0 18px;
-
-  display: flex;
-  align-items: center;
-
-  font-weight: 700;
-
-  color: #5b5562;
-
-  transition: all 0.3s ease;
-}
-
-.mobile-nav-item.active {
-  background:
-    rgba(255,255,255,0.45);
-
-  color: #ec4899;
-}
-
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-
-  #desktopNav {
-    display: none;
-  }
-
-  .mobile-menu-btn {
-    display: flex;
-  }
-}
-
-@media (max-width: 640px) {
-
-  .nav-pill {
-    display: none;
-  }
-
-  main {
-    padding-top: 100px;
-  }
-}
+      .nav-pill {
+        position: relative;
+        border-radius: 9999px;
+        background:
+          rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(14px) saturate(180%);
+        -webkit-backdrop-filter: blur(14px) saturate(180%);
+        border:
+          1px solid rgba(255, 255, 255, 0.22);
+        box-shadow:
+          0 8px 30px rgba(0, 0, 0, 0.06),
+          inset 0 1px 1px rgba(255, 255, 255, 0.18);
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      /* NAV BUTTON */
+      .nav-item {
+        position: relative;
+        appearance: none;
+        border: none;
+        outline: none;
+        height: 56px;
+        padding: 0 24px;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        color: #5b5562;
+        font-size: 0.92rem;
+        font-weight: 700;
+        cursor: pointer;
+        overflow: hidden;
+        transition:
+          color 0.45s cubic-bezier(.22, 1, .36, 1),
+          transform 0.45s cubic-bezier(.22, 1, .36, 1),
+          box-shadow 0.45s cubic-bezier(.22, 1, .36, 1),
+          background 0.45s cubic-bezier(.22, 1, .36, 1);
+      }
+
+      /* LIQUID LAYER */
+      .nav-item::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        opacity: 0;
+        transform: scale(0.82);
+        transition:
+          opacity 0.55s cubic-bezier(.22, 1, .36, 1),
+          transform 0.55s cubic-bezier(.22, 1, .36, 1),
+          background 0.55s cubic-bezier(.22, 1, .36, 1),
+          box-shadow 0.55s cubic-bezier(.22, 1, .36, 1);
+        background:
+          linear-gradient(180deg,
+            rgba(255, 255, 255, 0.92),
+            rgba(255, 255, 255, 0.50));
+        backdrop-filter: blur(18px) saturate(180%);
+        -webkit-backdrop-filter: blur(18px) saturate(180%);
+        border:
+          1px solid rgba(255, 255, 255, 0.9);
+        box-shadow:
+          inset 0 1px 1px rgba(255, 255, 255, 1),
+          inset 0 -1px 1px rgba(255, 255, 255, 0.32),
+          0 8px 24px rgba(236, 72, 153, 0.14);
+        z-index: 0;
+      }
+
+      /* TEXT ABOVE GLASS */
+      .nav-item span {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* ACTIVE */
+      .nav-item.active {
+        color: #ec4899;
+      }
+
+      .nav-item.active::before {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .nav-item::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -120%;
+        width: 120%;
+        height: 100%;
+        border-radius: inherit;
+        background:
+          linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.72),
+            transparent);
+        transition: left 0.9s cubic-bezier(.22, 1, .36, 1);
+        z-index: 1;
+      }
+
+      .nav-item.active::after {
+        left: 120%;
+      }
+
+      /* HOVER */
+      .nav-item:hover:not(.active) {
+        color: #ec4899;
+        transform: translateY(-1px);
+      }
+
+      /* MOBILE MENU BTN */
+      .mobile-menu-btn {
+        width: 56px;
+        height: 56px;
+        border-radius: 9999px;
+        background:
+          rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(16px);
+        border:
+          1px solid rgba(255, 255, 255, 0.24);
+        color: #ec4899;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow:
+          0 8px 20px rgba(0, 0, 0, 0.06);
+      }
+
+      /* MOBILE PANEL */
+      .mobile-nav-panel {
+        border-radius: 30px;
+        background:
+          rgba(255, 255, 255, 0.16);
+        backdrop-filter: blur(18px);
+        border:
+          1px solid rgba(255, 255, 255, 0.22);
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.06);
+      }
+
+      /* MOBILE NAV BUTTONS */
+      .mobile-nav-item {
+        height: 54px;
+        border-radius: 20px;
+        padding: 0 18px;
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        color: #5b5562;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-nav-item.active {
+        background:
+          rgba(255, 255, 255, 0.45);
+        color: #ec4899;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1024px) {
+        #desktopNav {
+          display: none;
+        }
+
+        .mobile-menu-btn {
+          display: flex;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav-pill {
+          display: none;
+        }
+
+        main {
+          padding-top: 100px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -767,42 +766,24 @@
       <div class="orb orb-3"></div>
     </div>
     <!-- NAVIGATION -->
-<nav class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-full px-4">
-  <div class="flex justify-center">
-    
-    <!-- FLOATING NAV PIL -->
-    <div
-      class="nav-pill flex items-center gap-2 p-2"
-      id="desktopNav"
-    ></div>
-
-    <!-- MOBILE BUTTON -->
-    <button
-      id="menuBtn"
-      class="mobile-menu-btn lg:hidden"
-    >
-      <i data-lucide="menu" class="w-5 h-5"></i>
-    </button>
-  </div>
-
-  <!-- MOBILE NAV -->
-  <div
-    id="mobileNav"
-    class="hidden mt-4 max-w-sm mx-auto"
-  >
-    <div
-      id="mobileNavItems"
-      class="mobile-nav-panel flex flex-col gap-2 p-3"
-    ></div>
-  </div>
-</nav>
+    <nav class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-full px-4">
+      <div class="flex justify-center">
+        <!-- FLOATING NAV PIL -->
+        <div class="nav-pill flex items-center gap-2 p-2" id="desktopNav"></div>
+        <!-- MOBILE BUTTON -->
+        <button id="menuBtn" class="mobile-menu-btn lg:hidden">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <!-- MOBILE NAV -->
+      <div id="mobileNav" class="hidden mt-4 max-w-sm mx-auto">
+        <div id="mobileNavItems" class="mobile-nav-panel flex flex-col gap-2 p-3"></div>
+      </div>
+    </nav>
     <!-- MAIN -->
     <main class="relative z-10 pt-44 md:pt-48">
       <!-- HERO -->
-      <section
-  id="home"
-  class="min-h-screen flex items-start pt-10 md:pt-16"
->
+      <section id="home" class="min-h-screen flex items-start pt-10 md:pt-16">
         <div class="container-main">
           <div class="fade-up">
             <p class="eyebrow text-sm font-black uppercase text-pink-500 mb-8"> Cybersecurity Risk Analyst </p>
@@ -815,14 +796,13 @@
               <a href="mailto:marianne_wong@protonmail.com" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
                 <i data-lucide="mail" class="w-5 h-5 text-pink-500"></i> Email </a>
               <a href="https://wa.me/60192345442" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
-                <i data-lucide="phone" class="w-5 h-5 text-pink-500"></i> WhatsApp</a>
+                <i data-lucide="phone" class="w-5 h-5 text-pink-500"></i> WhatsApp </a>
               <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
                 <i data-lucide="contact" class="w-5 h-5 text-pink-500"></i> LinkedIn </a>
               <a href="https://tryhackme.com/p/honeydonkey" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
                 <i data-lucide="laptop" class="w-5 h-5 text-pink-500"></i> TryHackMe </a>
               <a href="https://profile.hackthebox.com/profile/019e0311-f857-703a-a1aa-b18288684ab7" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
                 <i data-lucide="shield" class="w-5 h-5 text-pink-500"></i> Hack The Box </a>
-              
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
               <a href="https://flowcv.com/resume/2mofja4dwmne" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
@@ -830,148 +810,151 @@
               <button id="shareBtn" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
                 <i data-lucide="share-2" class="w-5 h-5 text-fuchsia-500"></i>
                 <span id="shareText"> Share Portfolio </span>
-              </button></div>
-
-      <!-- SUMMARY -->
-      <section id="summary" class="section-spacing">
-        <div class="container-main">
-          <div class="flex items-center gap-5 mb-12">
-            <div class="icon-wrap">
-              <i data-lucide="sparkles" class="w-5 h-5 text-pink-500"></i>
+              </button>
             </div>
-            <div>
-              <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Profile </p>
-              <h2 class="text-4xl font-black section-title"> SUMMARY </h2>
-            </div>
-          </div>
-          <div class="glass glass-hover p-10 sm:p-14">
-            <p class="text-lg sm:text-xl leading-relaxed text-slate-600"> Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk management, security awareness, and security operations support. Experienced in vendor security assessments, regulatory compliance aligned with PCI DSS and DORA, and threat intelligence analysis. <br />
-              <br /> Demonstrated success improving phishing resilience by <span class="font-black text-pink-500"> 40% </span> through enterprise security awareness campaigns. Combines risk analysis, incident investigation, and threat intelligence to strengthen organisational security posture through practical AI adoption.
-            </p>
-          </div>
-        </div>
-      </section>
-      <!-- EXPERIENCE -->
-      <section id="experience" class="section-spacing">
-        <div class="container-main">
-          <div class="flex items-center gap-5 mb-12">
-            <div class="icon-wrap">
-              <i data-lucide="briefcase" class="w-5 h-5 text-fuchsia-500"></i>
-            </div>
-            <div>
-              <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Career </p>
-              <h2 class="text-4xl font-black section-title"> EXPERIENCE </h2>
-            </div>
-          </div>
-          <div id="experienceList" class="space-y-7"></div>
-        </div>
-      </section>
-      <!-- SKILLS -->
-      <section id="skills" class="section-spacing">
-        <div class="container-main">
-          <div class="flex items-center gap-5 mb-12">
-            <div class="icon-wrap">
-              <i data-lucide="zap" class="w-5 h-5 text-pink-500"></i>
-            </div>
-            <div>
-              <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Expertise </p>
-              <h2 class="text-4xl font-black section-title"> SKILLS </h2>
-            </div>
-          </div>
-          <div id="skillsList" class="flex flex-wrap gap-4"></div>
-        </div>
-      </section>
-      <!-- EDUCATION -->
-      <section id="education" class="section-spacing">
-        <div class="container-main">
-          <div class="flex items-center gap-5 mb-12">
-            <div class="icon-wrap">
-              <i data-lucide="graduation-cap" class="w-5 h-5 text-fuchsia-500"></i>
-            </div>
-            <div>
-              <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Academic </p>
-              <h2 class="text-4xl font-black section-title"> EDUCATION </h2>
-            </div>
-          </div>
-          <div class="glass glass-hover p-10 sm:p-14">
-            <div class="flex flex-col md:flex-row md:items-start gap-7">
-              <div class="icon-wrap shrink-0">
-                <i data-lucide="book-open" class="w-6 h-6 text-pink-500"></i>
-              </div>
-              <div>
-                <h3 class="text-3xl font-black leading-tight"> Bachelor of Science (Honours) in Cybersecurity </h3>
-                <p class="mt-5 text-lg font-bold text-pink-500"> Asia Pacific Institute of Technology (APIIT) </p>
-                <div class="divider my-6"></div>
-                <p class="text-slate-500 text-lg"> May 2019 – Apr 2022 · First Class Honours · CGPA 3.7 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- CERTIFICATIONS -->
-      <section id="certifications" class="section-spacing">
-        <div class="container-main">
-          <div class="flex items-center gap-5 mb-12">
-            <div class="icon-wrap">
-              <i data-lucide="badge-check" class="w-5 h-5 text-pink-500"></i>
-            </div>
-            <div>
-              <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Credentials </p>
-              <h2 class="text-4xl font-black section-title"> CERTIFICATIONS </h2>
-            </div>
-          </div>
-          <div class="glass glass-hover p-10 sm:p-14">
-            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
-              <div class="flex items-start gap-7">
-                <div class="icon-wrap shrink-0">
-                  <i data-lucide="shield-check" class="w-6 h-6 text-fuchsia-500"></i>
+            <!-- SUMMARY CARD -->
+            <div class="summary-card mt-14 px-9 py-10 sm:px-14 sm:py-14">
+              <div class="flex items-center gap-5 mb-7">
+                <div class="summary-icon">
+                  <i data-lucide="sparkles" class="w-5 h-5 text-pink-500"></i>
                 </div>
                 <div>
-                  <h3 class="text-3xl font-black"> CompTIA Security+ </h3>
-                  <p class="mt-4 text-lg font-semibold text-pink-500"> CompTIA </p>
-                  <p class="mt-4 text-slate-500 text-lg"> Issued Feb 2026 · Expires Feb 2029 </p>
-                  <div class="divider my-6"></div>
-                  <p class="text-lg leading-relaxed text-slate-600 max-w-3xl"> Validates baseline cybersecurity skills including threat management, cryptography, identity management, network security, and risk mitigation. </p>
+                  <p class="text-sm uppercase tracking-[0.28em]
+               text-pink-500 font-black"> Profile </p>
                 </div>
               </div>
-              <a href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 h-fit text-sm font-black text-slate-700 flex items-center gap-3">
-                <i data-lucide="external-link" class="w-5 h-5 text-pink-500"></i> Verify Certification </a>
+              <div class="max-w-[980px] pl-[78px] sm:pl-[84px]">
+                <p class="text-[1.08rem] sm:text-[1.24rem]
+         leading-[2.15rem]
+         tracking-[-0.015em]
+         font-medium
+         text-slate-700"> Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk management, security awareness, and security operations support. <br>
+                  <br> Experienced in vendor security assessments, regulatory compliance aligned with PCI DSS and DORA, and threat intelligence analysis. <br>
+                  <br> Demonstrated success improving phishing resilience by <span class="font-extrabold text-pink-500 text-[1.18em]"> 40% </span> through enterprise security awareness campaigns.
+                </p>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-      <!-- ACHIEVEMENTS -->
-      <section id="achievements" class="section-spacing">
-        <div class="container-main">
-          <div class="flex items-center gap-5 mb-12">
-            <div class="icon-wrap">
-              <i data-lucide="trophy" class="w-5 h-5 text-fuchsia-500"></i>
-            </div>
-            <div>
-              <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Recognition </p>
-              <h2 class="text-4xl font-black section-title"> ACHIEVEMENTS </h2>
-            </div>
-          </div>
-          <div id="achievementsGrid" class="grid lg:grid-cols-2 gap-8"></div>
-        </div>
-      </section>
-      <!-- CONTACT -->
-      <section id="contact" class="section-spacing">
-        <div class="container-main">
-          <div class="glass p-14 text-center">
-            <p class="text-sm uppercase tracking-[0.35em] text-pink-500 font-black mb-6"> Let's Collaborate </p>
-            <h2 class="text-5xl font-black mb-8"> Ready To Build <span class="gradient-text"> Secure Systems </span>
-            </h2>
-            <p class="max-w-3xl mx-auto text-xl leading-relaxed text-slate-600 mb-12"> Open to cybersecurity risk, GRC, vendor security, compliance operations, and security intelligence opportunities. </p>
-            <div class="flex flex-wrap justify-center gap-5">
-              <a href="mailto:marianne_wong@protonmail.com" class="glass-button px-8 py-4 text-sm font-black text-slate-700 flex items-center gap-3">
-                <i data-lucide="mail" class="w-5 h-5 text-pink-500"></i> Email me </a>
-              <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-black text-slate-700 flex items-center gap-3">
-                <i data-lucide="contact" class="w-5 h-5 text-fuchsia-500"></i> LinkedIn </a>
-            </div>
-          </div>
-        </div>
-      </section>
+            <!-- EXPERIENCE -->
+            <section id="experience" class="section-spacing">
+              <div class="container-main">
+                <div class="flex items-center gap-5 mb-12">
+                  <div class="icon-wrap">
+                    <i data-lucide="briefcase" class="w-5 h-5 text-fuchsia-500"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Career </p>
+                    <h2 class="text-4xl font-black section-title"> EXPERIENCE </h2>
+                  </div>
+                </div>
+                <div id="experienceList" class="space-y-7"></div>
+              </div>
+            </section>
+            <!-- SKILLS -->
+            <section id="skills" class="section-spacing">
+              <div class="container-main">
+                <div class="flex items-center gap-5 mb-12">
+                  <div class="icon-wrap">
+                    <i data-lucide="zap" class="w-5 h-5 text-pink-500"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Expertise </p>
+                    <h2 class="text-4xl font-black section-title"> SKILLS </h2>
+                  </div>
+                </div>
+                <div id="skillsList" class="flex flex-wrap gap-4"></div>
+              </div>
+            </section>
+            <!-- EDUCATION -->
+            <section id="education" class="section-spacing">
+              <div class="container-main">
+                <div class="flex items-center gap-5 mb-12">
+                  <div class="icon-wrap">
+                    <i data-lucide="graduation-cap" class="w-5 h-5 text-fuchsia-500"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Academic </p>
+                    <h2 class="text-4xl font-black section-title"> EDUCATION </h2>
+                  </div>
+                </div>
+                <div class="glass glass-hover p-10 sm:p-14">
+                  <div class="flex flex-col md:flex-row md:items-start gap-7">
+                    <div class="icon-wrap shrink-0">
+                      <i data-lucide="book-open" class="w-6 h-6 text-pink-500"></i>
+                    </div>
+                    <div>
+                      <h3 class="text-3xl font-black leading-tight"> Bachelor of Science (Honours) in Cybersecurity </h3>
+                      <p class="mt-5 text-lg font-bold text-pink-500"> Asia Pacific Institute of Technology (APIIT) </p>
+                      <div class="divider my-6"></div>
+                      <p class="text-slate-500 text-lg"> May 2019 – Apr 2022 · First Class Honours · CGPA 3.7 </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- CERTIFICATIONS -->
+            <section id="certifications" class="section-spacing">
+              <div class="container-main">
+                <div class="flex items-center gap-5 mb-12">
+                  <div class="icon-wrap">
+                    <i data-lucide="badge-check" class="w-5 h-5 text-pink-500"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Credentials </p>
+                    <h2 class="text-4xl font-black section-title"> CERTIFICATIONS </h2>
+                  </div>
+                </div>
+                <div class="glass glass-hover p-10 sm:p-14">
+                  <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
+                    <div class="flex items-start gap-7">
+                      <div class="icon-wrap shrink-0">
+                        <i data-lucide="shield-check" class="w-6 h-6 text-fuchsia-500"></i>
+                      </div>
+                      <div>
+                        <h3 class="text-3xl font-black"> CompTIA Security+ </h3>
+                        <p class="mt-4 text-lg font-semibold text-pink-500"> CompTIA </p>
+                        <p class="mt-4 text-slate-500 text-lg"> Issued Feb 2026 · Expires Feb 2029 </p>
+                        <div class="divider my-6"></div>
+                        <p class="text-lg leading-relaxed text-slate-600 max-w-3xl"> Validates baseline cybersecurity skills including threat management, cryptography, identity management, network security, and risk mitigation. </p>
+                      </div>
+                    </div>
+                    <a href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 h-fit text-sm font-black text-slate-700 flex items-center gap-3">
+                      <i data-lucide="external-link" class="w-5 h-5 text-pink-500"></i> Verify Certification </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- ACHIEVEMENTS -->
+            <section id="achievements" class="section-spacing">
+              <div class="container-main">
+                <div class="flex items-center gap-5 mb-12">
+                  <div class="icon-wrap">
+                    <i data-lucide="trophy" class="w-5 h-5 text-fuchsia-500"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Recognition </p>
+                    <h2 class="text-4xl font-black section-title"> ACHIEVEMENTS </h2>
+                  </div>
+                </div>
+                <div id="achievementsGrid" class="grid lg:grid-cols-2 gap-8"></div>
+              </div>
+            </section>
+            <!-- CONTACT -->
+            <section id="contact" class="section-spacing">
+              <div class="container-main">
+                <div class="glass p-14 text-center">
+                  <p class="text-sm uppercase tracking-[0.35em] text-pink-500 font-black mb-6"> Let's Collaborate </p>
+                  <h2 class="text-5xl font-black mb-8"> Ready To Build <span class="gradient-text"> Secure Systems </span>
+                  </h2>
+                  <p class="max-w-3xl mx-auto text-xl leading-relaxed text-slate-600 mb-12"> Open to cybersecurity risk, GRC, vendor security, compliance operations, and security intelligence opportunities. </p>
+                  <div class="flex flex-wrap justify-center gap-5">
+                    <a href="mailto:marianne_wong@protonmail.com" class="glass-button px-8 py-4 text-sm font-black text-slate-700 flex items-center gap-3">
+                      <i data-lucide="mail" class="w-5 h-5 text-pink-500"></i> Email me </a>
+                    <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-black text-slate-700 flex items-center gap-3">
+                      <i data-lucide="contact" class="w-5 h-5 text-fuchsia-500"></i> LinkedIn </a>
+                  </div>
+                </div>
+              </div>
+            </section>
     </main>
     <!-- FOOTER -->
     <footer class="relative z-10">
@@ -982,476 +965,275 @@
       </div>
     </footer>
     <script>
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'summary', label: 'Summary' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'education', label: 'Education' },
-    { id: 'certifications', label: 'Certifications' },
-    { id: 'achievements', label: 'Achievements' }
-  ];
-
-  const skills = [
-    'Incident Playbooks',
-    'Gap Analysis',
-    'Security Awareness',
-    'Third Party Vendor Risk Assessment',
-    'AI Prompting',
-    'Threat Intelligence',
-    'Vendor Risk Management',
-    'GRC',
-    'PCI-DSS',
-    'DORA Compliance',
-    'Phishing Simulations',
-    'Incident Response',
-    'KnowBe4',
-    'Google Workspace',
-    'CrowdStrike',
-    'UpGuard',
-    'Windows',
-    'macOS',
-    'Kandji',
-    'JumpCloud',
-    'Microsoft 365',
-    'BurpSuite',
-    'Wireshark',
-    'Nmap',
-    'CATO',
-    'NordLayer',
-    'FortiManager',
-    'Linux',
-    'JamF',
-    'ClickUp',
-    'Certa'
-  ];
-
-  const experiences = [
-    {
-      title: 'Risk Analyst',
-      company: 'Grab',
-      period: 'Dec 2025 – Present',
-      status: 'Active',
-      details: [
-        'Conduct third-party security risk assessments evaluating vendor controls across infrastructure security, data protection, and compliance.',
-        'Perform due diligence reviews of vendor security documentation, including security policies, SOC reports, and compliance attestations.',
-        'Maintain a vendor risk dashboard to track key metrics and provide regular updates to management.',
-        'Identify, document, and prioritize findings from risk assessments and vendor evaluations.',
-        'Develop and track remediation plans for identified findings or issues, ensuring timely resolution and mitigation of risks.'
-      ]
-    },
-    {
-      title: 'Junior Security Analyst',
-      company: 'Deriv HQ',
-      period: 'Jan 2023 – Dec 2025',
-      status: '',
-      details: [
-        'Ensured regulatory compliance (DORA, PCI-DSS) through policy reviews, gap analyses and vendor risk assessments.',
-        'Spearheaded organisation-wide security awareness programs, achieving 90%+ completion and 97% participation rates.',
-        'Created educational materials to strengthen employee engagement.',
-        'Co-led offsec campaigns, reducing attack surface by 30%.',
-        'Investigated security incidents and developed incident response playbooks.',
-        'Delivered key projects including Threat Map Model, quarterly PCI-DSS scans and DORA readiness assessments.',
-        'Contributed to AI-powered security chatbot, reducing help desk workload by 25%.',
-        'Applied AI tools to automate GRC processes.',
-        'Analysed 200+ weekly threat intelligence feeds to identify emerging risks.'
-      ]
-    },
-    {
-      title: 'BeSquare IT Graduate Programme',
-      company: 'Deriv HQ',
-      period: 'Jun 2022 – Dec 2022',
-      status: '',
-      details: [
-        'Completed a nine-module program with industry experts, developing a full-stack web app in a five-member team.',
-        'Implemented security measures including input validation and password hashing.'
-      ]
-    },
-    {
-      title: 'IT Project Management Intern',
-      company: 'Asian Supply Base SDN. BHD.',
-      period: 'Mar 2021 – Jun 2021',
-      status: '',
-      details: [
-        'Partnered with cross-functional teams to design comprehensive network improvement strategies.',
-        'Produced detailed process flowcharts and technical documentation for upcoming projects.',
-        'Supported project management initiatives by participating in vendor meetings and stakeholder discussions.'
-      ]
-    }
-  ];
-
-  const achievements = [
-    {
-      title: 'Global Cyber Skills Benchmark CTF 2025',
-      organization: 'Global Cybersecurity Org',
-      rank: 'Rank 57/796',
-      icon: 'flag',
-      description:
-        'Participated with Deriv colleagues and ranked 57 out of 796 participants in an international cybersecurity competition.',
-      link:
-        'https://drive.google.com/file/d/1-GFO9SalKL8FN1ETDzBRgPDv2iGJ3lJv/view'
-    },
-    {
-      title: 'Wiz AI Security 2025',
-      organization: 'Wiz',
-      rank: 'Completed',
-      icon: 'bot',
-      description:
-        'Completed AI prompt injection activities, demonstrating skills in identifying and exploiting AI security vulnerabilities.',
-      link:
-        'https://drive.google.com/file/d/1Ifr1TRc1RqVrjvesGCW9I9kqzLFvrsDl/view'
-    },
-    {
-      title: 'Kaspersky CTF 2025',
-      organization: 'Kaspersky',
-      rank: 'Participant',
-      icon: 'bug',
-      description:
-        "Participated in Kaspersky's Capture The Flag competition focusing on threat hunting.",
-      link:
-        'https://drive.google.com/file/d/1CSoBVBAM9bbdvSvjrvw-ltpjG8uDI-P2/view'
-    },
-    {
-      title: 'Girls in CTF 2024',
-      organization: 'Girls in CTF Organization',
-      rank: 'Rank 65/80',
-      icon: 'venus',
-      description:
-        'Competed and ranked 65 out of 80 teams, demonstrating advanced skills in Open Source Intelligence (OSINT).',
-      link:
-        'https://drive.google.com/file/d/1FCblOIgXGqrGZmxy2dRg-rmIWYtM1dzQ/view'
-    }
-  ];
-
-  /* =========================================
+      const navItems = [{
+        id: 'home',
+        label: 'Home'
+      }, {
+        id: 'experience',
+        label: 'Experience'
+      }, {
+        id: 'skills',
+        label: 'Skills'
+      }, {
+        id: 'education',
+        label: 'Education'
+      }, {
+        id: 'certifications',
+        label: 'Certifications'
+      }, {
+        id: 'achievements',
+        label: 'Achievements'
+      }];
+      const skills = ['Incident Playbooks', 'Gap Analysis', 'Security Awareness', 'Third Party Vendor Risk Assessment', 'AI Prompting', 'Threat Intelligence', 'Vendor Risk Management', 'GRC', 'PCI-DSS', 'DORA Compliance', 'Phishing Simulations', 'Incident Response', 'KnowBe4', 'Google Workspace', 'CrowdStrike', 'UpGuard', 'Windows', 'macOS', 'Kandji', 'JumpCloud', 'Microsoft 365', 'BurpSuite', 'Wireshark', 'Nmap', 'CATO', 'NordLayer', 'FortiManager', 'Linux', 'JamF', 'ClickUp', 'Certa'];
+      const experiences = [{
+        title: 'Risk Analyst',
+        company: 'Grab',
+        period: 'Dec 2025 – Present',
+        status: 'Active',
+        details: ['Conduct third-party security risk assessments evaluating vendor controls across infrastructure security, data protection, and compliance.', 'Perform due diligence reviews of vendor security documentation, including security policies, SOC reports, and compliance attestations.', 'Maintain a vendor risk dashboard to track key metrics and provide regular updates to management.', 'Identify, document, and prioritize findings from risk assessments and vendor evaluations.', 'Develop and track remediation plans for identified findings or issues, ensuring timely resolution and mitigation of risks.']
+      }, {
+        title: 'Junior Security Analyst',
+        company: 'Deriv HQ',
+        period: 'Jan 2023 – Dec 2025',
+        status: '',
+        details: ['Ensured regulatory compliance (DORA, PCI-DSS) through policy reviews, gap analyses and vendor risk assessments.', 'Spearheaded organisation-wide security awareness programs, achieving 90%+ completion and 97% participation rates.', 'Created educational materials to strengthen employee engagement.', 'Co-led offsec campaigns, reducing attack surface by 30%.', 'Investigated security incidents and developed incident response playbooks.', 'Delivered key projects including Threat Map Model, quarterly PCI-DSS scans and DORA readiness assessments.', 'Contributed to AI-powered security chatbot, reducing help desk workload by 25%.', 'Applied AI tools to automate GRC processes.', 'Analysed 200+ weekly threat intelligence feeds to identify emerging risks.']
+      }, {
+        title: 'BeSquare IT Graduate Programme',
+        company: 'Deriv HQ',
+        period: 'Jun 2022 – Dec 2022',
+        status: '',
+        details: ['Completed a nine-module program with industry experts, developing a full-stack web app in a five-member team.', 'Implemented security measures including input validation and password hashing.']
+      }, {
+        title: 'IT Project Management Intern',
+        company: 'Asian Supply Base SDN. BHD.',
+        period: 'Mar 2021 – Jun 2021',
+        status: '',
+        details: ['Partnered with cross-functional teams to design comprehensive network improvement strategies.', 'Produced detailed process flowcharts and technical documentation for upcoming projects.', 'Supported project management initiatives by participating in vendor meetings and stakeholder discussions.']
+      }];
+      const achievements = [{
+        title: 'Global Cyber Skills Benchmark CTF 2025',
+        organization: 'Global Cybersecurity Org',
+        rank: 'Rank 57/796',
+        icon: 'flag',
+        description: 'Participated with Deriv colleagues and ranked 57 out of 796 participants in an international cybersecurity competition.',
+        link: 'https://drive.google.com/file/d/1-GFO9SalKL8FN1ETDzBRgPDv2iGJ3lJv/view'
+      }, {
+        title: 'Wiz AI Security 2025',
+        organization: 'Wiz',
+        rank: 'Completed',
+        icon: 'bot',
+        description: 'Completed AI prompt injection activities, demonstrating skills in identifying and exploiting AI security vulnerabilities.',
+        link: 'https://drive.google.com/file/d/1Ifr1TRc1RqVrjvesGCW9I9kqzLFvrsDl/view'
+      }, {
+        title: 'Kaspersky CTF 2025',
+        organization: 'Kaspersky',
+        rank: 'Participant',
+        icon: 'bug',
+        description: "Participated in Kaspersky's Capture The Flag competition focusing on threat hunting.",
+        link: 'https://drive.google.com/file/d/1CSoBVBAM9bbdvSvjrvw-ltpjG8uDI-P2/view'
+      }, {
+        title: 'Girls in CTF 2024',
+        organization: 'Girls in CTF Organization',
+        rank: 'Rank 65/80',
+        icon: 'venus',
+        description: 'Competed and ranked 65 out of 80 teams, demonstrating advanced skills in Open Source Intelligence (OSINT).',
+        link: 'https://drive.google.com/file/d/1FCblOIgXGqrGZmxy2dRg-rmIWYtM1dzQ/view'
+      }];
+      /* =========================================
    NAVIGATION
 ========================================= */
+      let currentActive = 'home';
+      let manualScrolling = false;
 
-let currentActive = 'home';
-let manualScrolling = false;
-
-function renderNav() {
-
-  const desktop = document.getElementById('desktopNav');
-  const mobile = document.getElementById('mobileNavItems');
-
-  desktop.innerHTML = navItems.map(item => `
-    <button
+      function renderNav() {
+        const desktop = document.getElementById('desktopNav');
+        const mobile = document.getElementById('mobileNavItems');
+        desktop.innerHTML = navItems.map(item => `
+    
+										<button
       class="nav-btn nav-item"
       data-target="${item.id}"
     >
-      <span>${item.label}</span>
-    </button>
+											<span>${item.label}</span>
+										</button>
   `).join('');
-
-  mobile.innerHTML = navItems.map(item => `
-    <button
+        mobile.innerHTML = navItems.map(item => `
+    
+										<button
       class="nav-btn mobile-nav-item"
       data-target="${item.id}"
     >
       ${item.label}
     </button>
   `).join('');
-
-  lucide.createIcons();
-}
-
-/* =========================================
-   ACTIVE NAV
-========================================= */
-
-function setActiveNav(id) {
-
-  currentActive = id;
-
-  document.querySelectorAll('.nav-item').forEach(btn => {
-
-    btn.classList.toggle(
-      'active',
-      btn.dataset.target === id
-    );
-
-  });
-
-  document.querySelectorAll('.mobile-nav-item').forEach(btn => {
-
-    btn.classList.toggle(
-      'active',
-      btn.dataset.target === id
-    );
-
-  });
-
-}
-
-/* =========================================
-   SCROLL TO SECTION
-========================================= */
-
-function scrollToSection(id) {
-
-  const section = document.getElementById(id);
-
-  if (!section) return;
-
-  // immediately activate clicked nav
-  setActiveNav(id);
-
-  // pause observer updates
-  manualScrolling = true;
-
-  clearTimeout(manualScrollTimeout);
-
-  const y =
-    section.getBoundingClientRect().top +
-    window.pageYOffset -
-    120;
-
-  window.scrollTo({
-    top: y,
-    behavior: 'smooth'
-  });
-
-  // resume observer after smooth scroll finishes
-  manualScrollTimeout = setTimeout(() => {
-    manualScrolling = false;
-  }, 900);
-
-  document
-    .getElementById('mobileNav')
-    .classList.add('hidden');
-}
-
-/* =========================================
-   ACTIVE SECTION TRACKING
-========================================= */
-
-const sections = navItems
-  .map(item => document.getElementById(item.id))
-  .filter(Boolean);
-
-let visibleSections = new Map();
-let manualScrollTimeout;
-
-const observer = new IntersectionObserver(
-  entries => {
-
-    if (manualScrolling) return;
-
-    entries.forEach(entry => {
-
-      if (entry.isIntersecting) {
-
-        visibleSections.set(
-          entry.target.id,
-          entry.intersectionRatio
-        );
-
-      } else {
-
-        visibleSections.delete(entry.target.id);
-
+        lucide.createIcons();
       }
-
-    });
-
-    let mostVisibleSection = currentActive;
-    let highestRatio = 0;
-
-    visibleSections.forEach((ratio, id) => {
-
-      if (ratio > highestRatio) {
-
-        highestRatio = ratio;
-        mostVisibleSection = id;
-
+      /* =========================================
+         ACTIVE NAV
+      ========================================= */
+      function setActiveNav(id) {
+        currentActive = id;
+        document.querySelectorAll('.nav-item').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.target === id);
+        });
+        document.querySelectorAll('.mobile-nav-item').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.target === id);
+        });
       }
-
-    });
-
-    if (
-      mostVisibleSection &&
-      mostVisibleSection !== currentActive
-    ) {
-
-      setActiveNav(mostVisibleSection);
-
-    }
-
-  },
-  {
-    threshold: [0.15, 0.3, 0.5, 0.7],
-    rootMargin: '-18% 0px -55% 0px'
-  }
-);
-
-sections.forEach(section => {
-  observer.observe(section);
-});
-
-
-/* =========================================
-   GLOBAL CLICK EVENTS
-========================================= */
-
-document.addEventListener('click', async (e) => {
-
-  /* NAVIGATION BUTTONS */
-  const navBtn = e.target.closest('.nav-btn');
-
-  if (navBtn) {
-
-    const target = navBtn.dataset.target;
-
-    /* LOCK OBSERVER TEMPORARILY */
-    manualScrolling = true;
-
-    /* IMMEDIATE ACTIVE FEEDBACK */
-    setActiveNav(target);
-
-    /* SMOOTH SCROLL */
-    scrollToSection(target);
-
-    /* RELEASE OBSERVER */
-    setTimeout(() => {
-
-      manualScrolling = false;
-
-    }, 900);
-
-    return;
-  }
-
-  /* SCROLL BUTTONS */
-  const scrollBtn = e.target.closest('[data-scroll]');
-
-  if (scrollBtn) {
-
-    scrollToSection(scrollBtn.dataset.scroll);
-
-    return;
-  }
-
-  /* EXPERIENCE ACCORDION */
-  const expBtn = e.target.closest('.experience-toggle');
-
-  if (expBtn) {
-
-    const idx = expBtn.dataset.index;
-
-    const details = document.querySelector(
-      `[data-details="${idx}"]`
-    );
-
-    const chevron = document.querySelector(
-      `[data-chevron="${idx}"]`
-    );
-
-    const isVisible =
-      details.style.display === 'block';
-
-    details.style.display =
-      isVisible ? 'none' : 'block';
-
-    chevron.style.transform =
-      isVisible
-        ? 'rotate(0deg)'
-        : 'rotate(90deg)';
-
-    return;
-  }
-
-  /* MOBILE MENU */
-  if (e.target.closest('#menuBtn')) {
-
-    document
-      .getElementById('mobileNav')
-      .classList.toggle('hidden');
-
-    return;
-  }
-
-  /* SHARE */
-  if (e.target.closest('#shareBtn')) {
-
-    try {
-
-      await navigator.clipboard.writeText(
-        window.location.href
-      );
-
-      const shareText =
-        document.getElementById('shareText');
-
-      shareText.textContent = 'Link Copied';
-
-      setTimeout(() => {
-
-        shareText.textContent =
-          'Share Portfolio';
-
-      }, 2200);
-
-    } catch (err) {
-
-      alert('Copy failed');
-
-    }
-
-  }
-
-});
-/* =========================================
-     render skills
-  ========================================= */
-		
-		function renderSkills() {
-  const skillsList = document.getElementById('skillsList');
-
-  skillsList.innerHTML = skills.map(skill => `
-    <div class="chip px-5 py-3 text-sm font-bold text-slate-700">
+      /* =========================================
+         SCROLL TO SECTION
+      ========================================= */
+      function scrollToSection(id) {
+        const section = document.getElementById(id);
+        if (!section) return;
+        // immediately activate clicked nav
+        setActiveNav(id);
+        // pause observer updates
+        manualScrolling = true;
+        clearTimeout(manualScrollTimeout);
+        const y = section.getBoundingClientRect().top + window.pageYOffset - 120;
+        window.scrollTo({
+          top: y,
+          behavior: 'smooth'
+        });
+        // resume observer after smooth scroll finishes
+        manualScrollTimeout = setTimeout(() => {
+          manualScrolling = false;
+        }, 900);
+        document.getElementById('mobileNav').classList.add('hidden');
+      }
+      /* =========================================
+         ACTIVE SECTION TRACKING
+      ========================================= */
+      const sections = navItems.map(item => document.getElementById(item.id)).filter(Boolean);
+      let visibleSections = new Map();
+      let manualScrollTimeout;
+      const observer = new IntersectionObserver(entries => {
+        if (manualScrolling) return;
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            visibleSections.set(entry.target.id, entry.intersectionRatio);
+          } else {
+            visibleSections.delete(entry.target.id);
+          }
+        });
+        let mostVisibleSection = currentActive;
+        let highestRatio = 0;
+        visibleSections.forEach((ratio, id) => {
+          if (ratio > highestRatio) {
+            highestRatio = ratio;
+            mostVisibleSection = id;
+          }
+        });
+        if (mostVisibleSection && mostVisibleSection !== currentActive) {
+          setActiveNav(mostVisibleSection);
+        }
+      }, {
+        threshold: [0.15, 0.3, 0.5, 0.7],
+        rootMargin: '-20% 0px -60% 0px'
+      });
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+      /* =========================================
+         GLOBAL CLICK EVENTS
+      ========================================= */
+      document.addEventListener('click', async (e) => {
+        /* NAVIGATION BUTTONS */
+        const navBtn = e.target.closest('.nav-btn');
+        if (navBtn) {
+          const target = navBtn.dataset.target;
+          /* LOCK OBSERVER TEMPORARILY */
+          manualScrolling = true;
+          /* IMMEDIATE ACTIVE FEEDBACK */
+          setActiveNav(target);
+          /* SMOOTH SCROLL */
+          scrollToSection(target);
+          /* RELEASE OBSERVER */
+          setTimeout(() => {
+            manualScrolling = false;
+          }, 900);
+          return;
+        }
+        /* SCROLL BUTTONS */
+        const scrollBtn = e.target.closest('[data-scroll]');
+        if (scrollBtn) {
+          scrollToSection(scrollBtn.dataset.scroll);
+          return;
+        }
+        /* EXPERIENCE ACCORDION */
+        const expBtn = e.target.closest('.experience-toggle');
+        if (expBtn) {
+          const idx = expBtn.dataset.index;
+          const details = document.querySelector(`[data-details="${idx}"]`);
+          const chevron = document.querySelector(`[data-chevron="${idx}"]`);
+          const isVisible = details.style.display === 'block';
+          details.style.display = isVisible ? 'none' : 'block';
+          chevron.style.transform = isVisible ? 'rotate(0deg)' : 'rotate(90deg)';
+          return;
+        }
+        /* MOBILE MENU */
+        if (e.target.closest('#menuBtn')) {
+          document.getElementById('mobileNav').classList.toggle('hidden');
+          return;
+        }
+        /* SHARE */
+        if (e.target.closest('#shareBtn')) {
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            const shareText = document.getElementById('shareText');
+            shareText.textContent = 'Link Copied';
+            setTimeout(() => {
+              shareText.textContent = 'Share Portfolio';
+            }, 2200);
+          } catch (err) {
+            alert('Copy failed');
+          }
+        }
+      });
+      /* =========================================
+           render skills
+        ========================================= */
+      function renderSkills() {
+        const skillsList = document.getElementById('skillsList');
+        skillsList.innerHTML = skills.map(skill => `
+    
+										<div class="chip px-5 py-3 text-sm font-bold text-slate-700">
       ${skill}
     </div>
   `).join('');
-}
-		function renderExperiences() {
+      }
 
-  const experienceList =
-    document.getElementById('experienceList');
+      function renderExperiences() {
+        const experienceList = document.getElementById('experienceList');
+        if (!experienceList) return;
+        experienceList.innerHTML = experiences.map((exp, index) => `
 
-  if (!experienceList) return;
-
-  experienceList.innerHTML = experiences.map((exp, index) => `
-
-    <div class="glass glass-hover overflow-hidden">
-
-      <!-- HEADER -->
-      <button
+    
+										<div class="glass glass-hover overflow-hidden">
+											<!-- HEADER -->
+											<button
         class="experience-toggle w-full text-left p-8 sm:p-10 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6"
         data-index="${index}"
       >
-
-        <div class="flex items-start gap-6">
-
-          <div class="icon-wrap shrink-0">
-            <i
+												<div class="flex items-start gap-6">
+													<div class="icon-wrap shrink-0">
+														<i
               data-lucide="briefcase"
               class="w-5 h-5 text-pink-500"
             ></i>
-          </div>
-
-          <div>
-
-            <div class="flex flex-wrap items-center gap-3 mb-3">
-
-              <h3 class="text-2xl sm:text-3xl font-black leading-tight">
+													</div>
+													<div>
+														<div class="flex flex-wrap items-center gap-3 mb-3">
+															<h3 class="text-2xl sm:text-3xl font-black leading-tight">
                 ${exp.title}
               </h3>
 
               ${
                 exp.status
                   ? `
-                    <span
+                    
+															<span
                       class="chip px-4 py-1 text-xs font-black uppercase tracking-[0.2em] text-pink-500"
                     >
                       ${exp.status}
@@ -1460,154 +1242,120 @@ document.addEventListener('click', async (e) => {
                   : ''
               }
 
-            </div>
-
-            <p class="text-lg font-bold text-pink-500 mb-3">
+            
+														</div>
+														<p class="text-lg font-bold text-pink-500 mb-3">
               ${exp.company}
             </p>
-
-            <p class="text-slate-500 text-base">
+														<p class="text-slate-500 text-base">
               ${exp.period}
             </p>
-
-          </div>
-
-        </div>
-
-        <!-- CHEVRON -->
-        <div
+													</div>
+												</div>
+												<!-- CHEVRON -->
+												<div
           class="chevron shrink-0"
           data-chevron="${index}"
         >
-          <i
+													<i
             data-lucide="chevron-right"
             class="w-6 h-6 text-pink-500"
           ></i>
-        </div>
-
-      </button>
-
-      <!-- DETAILS -->
-      <div
+												</div>
+											</button>
+											<!-- DETAILS -->
+											<div
         class="experience-details px-8 sm:px-10 pb-8 sm:pb-10"
         data-details="${index}"
       >
-
-        <div class="divider mb-8"></div>
-
-        <ul class="space-y-4">
+												<div class="divider mb-8"></div>
+												<ul class="space-y-4">
 
           ${exp.details.map(detail => `
 
-            <li class="flex items-start gap-4 text-slate-600 leading-relaxed">
-
-              <div
+            
+													<li class="flex items-start gap-4 text-slate-600 leading-relaxed">
+														<div
                 class="mt-2 w-2 h-2 rounded-full bg-pink-400 shrink-0"
               ></div>
-
-              <span>${detail}</span>
-
-            </li>
+														<span>${detail}</span>
+													</li>
 
           `).join('')}
 
-        </ul>
-
-      </div>
-
-    </div>
+        
+												</ul>
+											</div>
+										</div>
 
   `).join('');
+        lucide.createIcons();
+      }
 
-  lucide.createIcons();
-}
-		function renderAchievements() {
+      function renderAchievements() {
+        const achievementsGrid = document.getElementById('achievementsGrid');
+        if (!achievementsGrid) return;
+        achievementsGrid.innerHTML = achievements.map(item => `
 
-  const achievementsGrid =
-    document.getElementById('achievementsGrid');
-
-  if (!achievementsGrid) return;
-
-  achievementsGrid.innerHTML = achievements.map(item => `
-
-    <div class="glass glass-hover p-8 sm:p-10 flex flex-col h-full">
-
-      <!-- TOP -->
-      <div class="flex items-start gap-6 mb-6">
-
-        <div class="icon-wrap shrink-0">
-
-          <i
+    
+										<div class="glass glass-hover p-8 sm:p-10 flex flex-col h-full">
+											<!-- TOP -->
+											<div class="flex items-start gap-6 mb-6">
+												<div class="icon-wrap shrink-0">
+													<i
             data-lucide="${item.icon}"
             class="w-5 h-5 text-fuchsia-500"
           ></i>
-
-        </div>
-
-        <div>
-
-          <h3 class="text-2xl font-black leading-tight mb-3">
+												</div>
+												<div>
+													<h3 class="text-2xl font-black leading-tight mb-3">
             ${item.title}
           </h3>
-
-          <p class="text-pink-500 font-bold mb-2">
+													<p class="text-pink-500 font-bold mb-2">
             ${item.organization}
           </p>
-
-          <p class="text-sm uppercase tracking-[0.2em] text-slate-500 font-black">
+													<p class="text-sm uppercase tracking-[0.2em] text-slate-500 font-black">
             ${item.rank}
           </p>
-
-        </div>
-
-      </div>
-
-      <!-- DESCRIPTION -->
-      <p class="text-slate-600 leading-relaxed mb-8 flex-1">
+												</div>
+											</div>
+											<!-- DESCRIPTION -->
+											<p class="text-slate-600 leading-relaxed mb-8 flex-1">
         ${item.description}
       </p>
-
-      <!-- BUTTON -->
-      <a
+											<!-- BUTTON -->
+											<a
         href="${item.link}"
         target="_blank"
         rel="noreferrer"
         class="glass-button px-6 py-4 text-sm font-black text-slate-700 flex items-center justify-center gap-3"
       >
-
-        <i
+												<i
           data-lucide="external-link"
           class="w-5 h-5 text-pink-500"
         ></i>
 
         View Certificate
 
-      </a>
-
-    </div>
+      
+											</a>
+										</div>
 
   `).join('');
-
-  lucide.createIcons();
-}
-
-  /* =========================================
-     INITIALIZE
-  ========================================= */
-document.addEventListener('DOMContentLoaded', () => {
-  renderNav();
-
-  renderSkills();
-  renderExperiences();
-  renderAchievements();
-
-  setActiveNav('home');
-
-  lucide.createIcons();
-
-  initObserver();
-});
-
-</script>
+        lucide.createIcons();
+      }
+      /* =========================================
+         INITIALIZE
+      ========================================= */
+      document.addEventListener('DOMContentLoaded', () => {
+        renderNav();
+        renderSkills();
+        renderExperiences();
+        renderAchievements();
+        setActiveNav('home');
+        lucide.createIcons();
+        initObserver();
+      });
+    </script>
   </body>
 </html>
