@@ -1196,6 +1196,14 @@ function scrollToSection(id) {
 
   if (!section) return;
 
+  // immediately activate clicked nav
+  setActiveNav(id);
+
+  // pause observer updates
+  manualScrolling = true;
+
+  clearTimeout(manualScrollTimeout);
+
   const y =
     section.getBoundingClientRect().top +
     window.pageYOffset -
@@ -1205,6 +1213,11 @@ function scrollToSection(id) {
     top: y,
     behavior: 'smooth'
   });
+
+  // resume observer after smooth scroll finishes
+  manualScrollTimeout = setTimeout(() => {
+    manualScrolling = false;
+  }, 900);
 
   document
     .getElementById('mobileNav')
@@ -1220,10 +1233,12 @@ const sections = navItems
   .filter(Boolean);
 
 let visibleSections = new Map();
+let manualScrollTimeout;
 
 const observer = new IntersectionObserver(
-
   entries => {
+
+    if (manualScrolling) return;
 
     entries.forEach(entry => {
 
@@ -1256,11 +1271,8 @@ const observer = new IntersectionObserver(
 
     });
 
-    /* PREVENT OBSERVER FROM
-       OVERRIDING USER CLICK */
-
     if (
-      !manualScrolling &&
+      mostVisibleSection &&
       mostVisibleSection !== currentActive
     ) {
 
@@ -1269,17 +1281,16 @@ const observer = new IntersectionObserver(
     }
 
   },
-
   {
-    threshold: 0.12,
+    threshold: [0.15, 0.3, 0.5, 0.7],
     rootMargin: '-18% 0px -55% 0px'
   }
-
 );
 
 sections.forEach(section => {
   observer.observe(section);
 });
+
 
 /* =========================================
    GLOBAL CLICK EVENTS
