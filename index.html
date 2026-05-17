@@ -30,6 +30,7 @@
       Modern Glassmorphism best practices
     */
       :root {
+        --ui-scale: 0.82;
         --bg: #fff7fb;
         --bg-secondary: #fff0f8;
         --surface:
@@ -69,6 +70,7 @@
       }
 
       body {
+        
         overflow-x: hidden;
         background:
           radial-gradient(circle at top left, #ffe3f2 0%, transparent 35%),
@@ -124,8 +126,8 @@
       }
 
       .orb-1 {
-        width: 600px;
-        height: 600px;
+        width: 420px;
+  height: 420px;
         top: -180px;
         left: -120px;
         background: rgba(255, 124, 190, 0.40);
@@ -234,8 +236,8 @@
         background: var(--surface);
         border-radius: var(--radius-xl);
         border: 1px solid transparent;
-        backdrop-filter: blur(28px) saturate(180%);
-        -webkit-backdrop-filter: blur(28px) saturate(180%);
+        backdrop-filter: blur(16px) saturate(140%);
+        -webkit-backdrop-filter: blur(16px) saturate(140%);
         background-clip: padding-box;
         box-shadow:
           var(--shadow-soft),
@@ -349,9 +351,13 @@
 
       .hero-title {
         font-size: clamp(4rem, 12vw, 9rem);
-        line-height: 0.92;
+        
         font-weight: 900;
-        letter-spacing: -0.07em;
+
+        font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+}
       }
 
       .gradient-text {
@@ -374,8 +380,8 @@
       }
 
       .section-spacing {
-        padding-top: 110px;
-        padding-bottom: 110px;
+        padding-top: 72px;
+  padding-bottom: 72px;
       }
 
       .chip {
@@ -458,8 +464,8 @@
 
       @media (max-width: 768px) {
         .section-spacing {
-          padding-top: 80px;
-          padding-bottom: 80px;
+           padding-top: 56px;
+    padding-bottom: 56px;
         }
 
         .hero-title {
@@ -534,7 +540,7 @@
         }
 
         .glass-button {
-          min-height: 56px;
+          min-height: 48px;
           font-size: 0.9rem;
         }
 
@@ -790,24 +796,24 @@
             <h1 class="hero-title mb-10"> Marianne <br />
               <span class="gradient-text"> Wong </span>
             </h1>
-            <p class="max-w-4xl text-xl sm:text-2xl leading-relaxed text-slate-600 mb-14"> Building resilient security ecosystems through governance, third-party risk management, threat intelligence, compliance operations, and enterprise security awareness initiatives. </p>
+            <p class="max-w-4xl text-lg sm:text-xl leading-relaxed text-slate-600 mb-14"> Building resilient security ecosystems through governance, third-party risk management, threat intelligence, compliance operations, and enterprise security awareness initiatives. </p>
             <!-- BUTTONS -->
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:flex gap-4 mb-14">
-              <a href="mailto:marianne_wong@protonmail.com" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <a href="mailto:marianne_wong@protonmail.com" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
                 <i data-lucide="mail" class="w-5 h-5 text-pink-500"></i> Email </a>
-              <a href="https://wa.me/60192345442" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <a href="https://wa.me/60192345442" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
                 <i data-lucide="phone" class="w-5 h-5 text-pink-500"></i> WhatsApp </a>
-              <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
                 <i data-lucide="contact" class="w-5 h-5 text-pink-500"></i> LinkedIn </a>
-              <a href="https://tryhackme.com/p/honeydonkey" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <a href="https://tryhackme.com/p/honeydonkey" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
                 <i data-lucide="laptop" class="w-5 h-5 text-pink-500"></i> TryHackMe </a>
-              <a href="https://profile.hackthebox.com/profile/019e0311-f857-703a-a1aa-b18288684ab7" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <a href="https://profile.hackthebox.com/profile/019e0311-f857-703a-a1aa-b18288684ab7" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
                 <i data-lucide="shield" class="w-5 h-5 text-pink-500"></i> Hack The Box </a>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-              <a href="https://flowcv.com/resume/2mofja4dwmne" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <a href="https://flowcv.com/resume/2mofja4dwmne" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
                 <i data-lucide="download" class="w-5 h-5 text-pink-500"></i> Resume PDF </a>
-              <button id="shareBtn" class="glass-button px-8 py-4 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <button id="shareBtn" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
                 <i data-lucide="share-2" class="w-5 h-5 text-fuchsia-500"></i>
                 <span id="shareText"> Share Portfolio </span>
               </button>
@@ -825,7 +831,7 @@
               </div>
               <div class="max-w-[980px] pl-[78px] sm:pl-[84px]">
                 <p class="text-[1.08rem] sm:text-[1.24rem]
-         leading-[2.15rem]
+         leading-[1.8rem]
          tracking-[-0.015em]
          font-medium
          text-slate-700"> Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk management, security awareness, and security operations support. <br>
@@ -843,7 +849,7 @@
                   </div>
                   <div>
                     <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Career </p>
-                    <h2 class="text-4xl font-black section-title"> EXPERIENCE </h2>
+                    <h2 class="text-3xl font-black section-title"> EXPERIENCE </h2>
                   </div>
                 </div>
                 <div id="experienceList" class="space-y-7"></div>
@@ -858,7 +864,7 @@
                   </div>
                   <div>
                     <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Expertise </p>
-                    <h2 class="text-4xl font-black section-title"> SKILLS </h2>
+                    <h2 class="text-3xl font-black section-title"> SKILLS </h2>
                   </div>
                 </div>
                 <div id="skillsList" class="flex flex-wrap gap-4"></div>
@@ -873,10 +879,10 @@
                   </div>
                   <div>
                     <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Academic </p>
-                    <h2 class="text-4xl font-black section-title"> EDUCATION </h2>
+                    <h2 class="text-3xl font-black section-title"> EDUCATION </h2>
                   </div>
                 </div>
-                <div class="glass glass-hover p-10 sm:p-14">
+                <div class="glass glass-hover p-7 sm:p-9">
                   <div class="flex flex-col md:flex-row md:items-start gap-7">
                     <div class="icon-wrap shrink-0">
                       <i data-lucide="book-open" class="w-6 h-6 text-pink-500"></i>
@@ -900,10 +906,10 @@
                   </div>
                   <div>
                     <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Credentials </p>
-                    <h2 class="text-4xl font-black section-title"> CERTIFICATIONS </h2>
+                    <h2 class="text-3xl font-black section-title"> CERTIFICATIONS </h2>
                   </div>
                 </div>
-                <div class="glass glass-hover p-10 sm:p-14">
+                <div class="glass glass-hover p-7 sm:p-9">
                   <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
                     <div class="flex items-start gap-7">
                       <div class="icon-wrap shrink-0">
@@ -917,7 +923,7 @@
                         <p class="text-lg leading-relaxed text-slate-600 max-w-3xl"> Validates baseline cybersecurity skills including threat management, cryptography, identity management, network security, and risk mitigation. </p>
                       </div>
                     </div>
-                    <a href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 h-fit text-sm font-black text-slate-700 flex items-center gap-3">
+                    <a href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 h-fit text-sm font-black text-slate-700 flex items-center gap-3">
                       <i data-lucide="external-link" class="w-5 h-5 text-pink-500"></i> Verify Certification </a>
                   </div>
                 </div>
@@ -932,7 +938,7 @@
                   </div>
                   <div>
                     <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Recognition </p>
-                    <h2 class="text-4xl font-black section-title"> ACHIEVEMENTS </h2>
+                    <h2 class="text-3xl font-black section-title"> ACHIEVEMENTS </h2>
                   </div>
                 </div>
                 <div id="achievementsGrid" class="grid lg:grid-cols-2 gap-8"></div>
@@ -947,9 +953,9 @@
                   </h2>
                   <p class="max-w-3xl mx-auto text-xl leading-relaxed text-slate-600 mb-12"> Open to cybersecurity risk, GRC, vendor security, compliance operations, and security intelligence opportunities. </p>
                   <div class="flex flex-wrap justify-center gap-5">
-                    <a href="mailto:marianne_wong@protonmail.com" class="glass-button px-8 py-4 text-sm font-black text-slate-700 flex items-center gap-3">
+                    <a href="mailto:marianne_wong@protonmail.com" class="glass-button px-6 py-3 text-sm font-black text-slate-700 flex items-center gap-3">
                       <i data-lucide="mail" class="w-5 h-5 text-pink-500"></i> Email me </a>
-                    <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-8 py-4 text-sm font-black text-slate-700 flex items-center gap-3">
+                    <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-black text-slate-700 flex items-center gap-3">
                       <i data-lucide="contact" class="w-5 h-5 text-fuchsia-500"></i> LinkedIn </a>
                   </div>
                 </div>
