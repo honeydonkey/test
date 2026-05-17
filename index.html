@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
     <title>Marianne Wong • Cybersecurity Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -31,6 +31,7 @@
     */
       :root {
         --ui-scale: 0.82;
+        /* LIGHT THEME */
         --bg: #fff7fb;
         --bg-secondary: #fff0f8;
         --surface:
@@ -47,9 +48,9 @@
             rgba(255, 255, 255, 0.18));
         --text-primary: #1f1728;
         --text-secondary: #6b5878;
+        --text-muted: #7c6f86;
         --pink-primary: #ec4899;
         --pink-secondary: #d946ef;
-        --pink-soft: rgba(236, 72, 153, 0.12);
         --shadow-soft:
           0 10px 40px rgba(236, 72, 153, 0.10);
         --shadow-large:
@@ -57,6 +58,88 @@
         --radius-xl: 34px;
         --radius-lg: 26px;
         --radius-md: 20px;
+      }
+
+      /* =========================================
+   DARK MODE
+========================================= */
+      /* =========================================
+   DARK MODE — PREMIUM PINK GLASS
+========================================= */
+      body.dark {
+        --bg: #0b0712;
+        --bg-secondary: #140d1d;
+        --surface:
+          linear-gradient(145deg,
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 255, 255, 0.04));
+        --surface-strong:
+          linear-gradient(145deg,
+            rgba(255, 255, 255, 0.14),
+            rgba(255, 255, 255, 0.06));
+        --glass-border:
+          linear-gradient(145deg,
+            rgba(255, 255, 255, 0.18),
+            rgba(255, 255, 255, 0.05));
+        --text-primary: #fff4fb;
+        --text-secondary: #efe7f7;
+        --text-muted: #cbbdd8;
+        --pink-primary: #ff63b8;
+        --pink-secondary: #d946ef;
+        --shadow-soft:
+          0 10px 40px rgba(255, 70, 160, 0.18);
+        --shadow-large:
+          0 25px 70px rgba(255, 70, 160, 0.24);
+      }
+
+      body.dark .glass-button {
+        background:
+          linear-gradient(145deg,
+            rgba(28, 22, 40, 0.88),
+            rgba(20, 16, 30, 0.82));
+        border:
+          1px solid rgba(255, 255, 255, 0.08);
+        color: #fff4fb;
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.30),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        backdrop-filter:
+          blur(28px) saturate(180%);
+      }
+
+      body.dark .glass-button:hover {
+        background:
+          linear-gradient(145deg,
+            rgba(38, 30, 52, 0.94),
+            rgba(26, 20, 38, 0.90));
+        border-color:
+          rgba(255, 99, 184, 0.28);
+        box-shadow:
+          0 20px 50px 0 8px 30px rgba(0, 0, 0, 0.45);
+      }
+
+      body.dark .chip {
+        background:
+          linear-gradient(145deg,
+            rgba(30, 24, 42, 0.86),
+            rgba(22, 18, 34, 0.78));
+        border:
+          1px solid rgba(255, 255, 255, 0.08);
+        color: #fff4fb;
+        box-shadow:
+          0 6px 20px rgba(0, 0, 0, 0.22);
+      }
+
+      body.dark .icon-wrap,
+      body.dark .summary-icon {
+        background:
+          linear-gradient(145deg,
+            rgba(34, 28, 46, 0.92),
+            rgba(24, 18, 36, 0.82));
+        border:
+          1px solid rgba(255, 255, 255, 0.08);
+        box-shadow:
+          0 10px 24px rgba(0, 0, 0, 0.28);
       }
 
       * {
@@ -71,28 +154,48 @@
 
       body {
         display: flex;
-  flex-direction: column;
-  align-items: center;
+        flex-direction: column;
+        align-items: center;
         overflow-x: hidden;
         background:
-          radial-gradient(circle at top left, #ffe3f2 0%, transparent 35%),
-          radial-gradient(circle at top right, #f5d7ff 0%, transparent 32%),
-          radial-gradient(circle at bottom left, #ffd6ec 0%, transparent 30%),
+          radial-gradient(circle at top left,
+            rgba(255, 90, 180, 0.16) 0%,
+            transparent 34%),
+          radial-gradient(circle at top right,
+            rgba(217, 70, 239, 0.14) 0%,
+            transparent 34%),
+          radial-gradient(circle at bottom left,
+            rgba(255, 140, 210, 0.14) 0%,
+            transparent 30%),
+          radial-gradient(circle at bottom right,
+            rgba(236, 72, 153, 0.10) 0%,
+            transparent 26%),
           linear-gradient(180deg,
-            #fff7fb 0%,
-            #fff9fd 40%,
-            #fff3f9 100%);
+            var(--bg) 0%,
+            var(--bg-secondary) 100%);
         color: var(--text-primary);
         font-family:
           "SF Pro Display",
           ui-sans-serif,
           system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
           sans-serif;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
+        transition:
+          background 0.5s ease,
+          color 0.5s ease;
+      }
+
+      .text-primary {
+        color: var(--text-primary);
+      }
+
+      .text-secondary {
+        color: var(--text-secondary);
+      }
+
+      .text-muted {
+        color: var(--text-muted);
       }
 
       ::selection {
@@ -129,7 +232,7 @@
 
       .orb-1 {
         width: 420px;
-  height: 420px;
+        height: 420px;
         top: -180px;
         left: -120px;
         background: rgba(255, 124, 190, 0.40);
@@ -151,6 +254,80 @@
         left: 18%;
         background: rgba(255, 166, 212, 0.34);
         animation-delay: 5s;
+      }
+
+      body.dark .orb-1 {
+        background: rgba(255, 70, 170, 0.42);
+      }
+
+      body.dark .orb-2 {
+        background: rgba(217, 70, 239, 0.34);
+      }
+
+      body.dark .orb-3 {
+        background: rgba(255, 120, 200, 0.28);
+      }
+
+      /* =========================================
+   PREMIUM ACTIVE BADGE
+========================================= */
+      .active-badge {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 38px;
+        padding: 0 18px;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: #ffffff;
+        background:
+          linear-gradient(180deg,
+            rgba(255, 255, 255, 0.10),
+            rgba(255, 255, 255, 0.03));
+        border:
+          1px solid rgba(255, 99, 184, 0.28);
+        backdrop-filter:
+          blur(20px) saturate(180%);
+        -webkit-backdrop-filter:
+          blur(20px) saturate(180%);
+        box-shadow:
+          0 0 0 1px rgba(255, 255, 255, 0.03),
+          0 8px 20px rgba(255, 70, 170, 0.16),
+          inset 0 1px 0 rgba(255, 255, 255, 0.10);
+        overflow: hidden;
+      }
+
+      /* glowing liquid center */
+      .active-badge::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background:
+          radial-gradient(circle at top,
+            rgba(255, 255, 255, 0.14),
+            transparent 60%);
+        pointer-events: none;
+      }
+
+      /* subtle pink glow edge */
+      .active-badge::after {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        background:
+          linear-gradient(90deg,
+            rgba(255, 99, 184, 0.10),
+            rgba(255, 99, 184, 0.35),
+            rgba(255, 99, 184, 0.10));
+        opacity: 0.7;
+        filter: blur(10px);
+        z-index: -1;
       }
 
       @keyframes float {
@@ -191,6 +368,29 @@
         overflow: hidden;
       }
 
+      body.dark .summary-card {
+        background:
+          linear-gradient(145deg,
+            rgba(14, 14, 18, 0.72),
+            rgba(18, 14, 26, 0.76));
+        border:
+          1px solid rgba(255, 255, 255, 0.08);
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.34),
+          0 10px 40px rgba(255, 70, 170, 0.10);
+        backdrop-filter:
+          blur(20px) saturate(180%);
+        -webkit-backdrop-filter:
+          blur(20px) saturate(180%);
+      }
+
+      body.dark .summary-card::before {
+        background:
+          linear-gradient(180deg,
+            rgba(255, 255, 255, 0.06),
+            transparent 40%);
+      }
+
       /* LIGHT LAYER */
       .summary-card::before {
         content: "";
@@ -223,11 +423,11 @@
       }
 
       .container-main {
-  width: 100%;
-  max-width: 1100px;
-  margin-inline: auto;
-  padding-inline: 32px;
-}
+        width: 100%;
+        max-width: 1100px;
+        margin-inline: auto;
+        padding-inline: 32px;
+      }
 
       .glass {
         position: relative;
@@ -246,6 +446,149 @@
           transform 0.45s ease,
           box-shadow 0.45s ease,
           background 0.45s ease;
+      }
+
+      body.dark .glass {
+        position: relative;
+        background:
+          linear-gradient(180deg,
+            rgba(28, 28, 32, 0.78) 0%,
+            rgba(18, 18, 22, 0.72) 100%);
+        border:
+          1px solid rgba(255, 255, 255, 0.07);
+        backdrop-filter:
+          blur(34px) saturate(180%);
+        -webkit-backdrop-filter:
+          blur(34px) saturate(180%);
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.42),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06),
+          inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+        overflow: hidden;
+      }
+
+      /* TOP LIGHT REFLECTION */
+      body.dark .glass::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background:
+          linear-gradient(180deg,
+            rgba(255, 255, 255, 0.10) 0%,
+            rgba(255, 255, 255, 0.03) 18%,
+            transparent 42%);
+        pointer-events: none;
+      }
+
+      /* SUBTLE INNER EDGE */
+      body.dark .glass::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background:
+          linear-gradient(145deg,
+            rgba(255, 255, 255, 0.14),
+            rgba(255, 255, 255, 0.03));
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      /* HERO PROFILE CARD */
+      body.dark .summary-card {
+        position: relative;
+        background:
+          linear-gradient(180deg,
+            rgba(32, 32, 38, 0.82) 0%,
+            rgba(20, 20, 24, 0.76) 100%);
+        border:
+          1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter:
+          blur(40px) saturate(190%);
+        -webkit-backdrop-filter:
+          blur(40px) saturate(190%);
+        box-shadow:
+          0 30px 80px rgba(0, 0, 0, 0.48),
+          0 10px 30px rgba(255, 255, 255, 0.03),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      }
+
+      /* TOP GLOSS */
+      body.dark .summary-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background:
+          linear-gradient(180deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.03) 22%,
+            transparent 46%);
+        pointer-events: none;
+      }
+
+      /* BUTTONS */
+      body.dark .glass-button {
+        background:
+          linear-gradient(180deg,
+            rgba(40, 40, 46, 0.78),
+            rgba(24, 24, 28, 0.74));
+        border:
+          1px solid rgba(255, 255, 255, 0.08);
+        color: #fff7fb;
+        backdrop-filter:
+          blur(24px) saturate(180%);
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.36),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      }
+
+      /* BUTTON HOVER */
+      body.dark .glass-button:hover {
+        transform:
+          translateY(-2px) scale(1.01);
+        background:
+          linear-gradient(180deg,
+            rgba(52, 52, 58, 0.88),
+            rgba(28, 28, 34, 0.84));
+        border-color:
+          rgba(255, 255, 255, 0.12);
+        box-shadow:
+          0 18px 50px rgba(0, 0, 0, 0.42),
+          0 0 30px rgba(255, 105, 180, 0.08);
+      }
+
+      /* ICONS */
+      body.dark .icon-wrap,
+      body.dark .summary-icon {
+        background:
+          linear-gradient(180deg,
+            rgba(44, 44, 50, 0.82),
+            rgba(28, 28, 34, 0.74));
+        border:
+          1px solid rgba(255, 255, 255, 0.08);
+        box-shadow:
+          0 10px 24px rgba(0, 0, 0, 0.34),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        backdrop-filter:
+          blur(20px);
+      }
+
+      /* CHIPS */
+      body.dark .chip {
+        background: #ffffff;
+        color: #ec4899;
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow:
+          0 2px 10px rgba(0, 0, 0, 0.16);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
       }
 
       .glass::before {
@@ -350,13 +693,11 @@
 
       .hero-title {
         font-size: clamp(4rem, 12vw, 9rem);
-        
         font-weight: 900;
-
         font-size: clamp(3rem, 8vw, 6.5rem);
-  line-height: 0.96;
-  letter-spacing: -0.055em;
-}
+        line-height: 0.96;
+        letter-spacing: -0.055em;
+      }
       }
 
       .gradient-text {
@@ -380,7 +721,7 @@
 
       .section-spacing {
         padding-top: 72px;
-  padding-bottom: 72px;
+        padding-bottom: 72px;
       }
 
       .chip {
@@ -463,8 +804,8 @@
 
       @media (max-width: 768px) {
         .section-spacing {
-           padding-top: 56px;
-    padding-bottom: 56px;
+          padding-top: 56px;
+          padding-bottom: 56px;
         }
 
         .hero-title {
@@ -490,8 +831,6 @@
           width: 100%;
           justify-content: center;
         }
-
-    
 
         .glass,
         .glass-nav {
@@ -769,10 +1108,14 @@
     </div>
     <!-- NAVIGATION -->
     <nav class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-full px-4">
-      <div class="flex justify-center">
-        <!-- FLOATING NAV PIL -->
+      <div class="flex items-center justify-center gap-3">
+        <!-- FLOATING NAV -->
         <div class="nav-pill flex items-center gap-2 p-2" id="desktopNav"></div>
-        <!-- MOBILE BUTTON -->
+        <!-- THEME TOGGLE -->
+        <button id="themeToggle" class="glass-button w-14 h-14 flex items-center justify-center shrink-0" aria-label="Toggle dark mode">
+          <i data-lucide="moon" class="w-5 h-5 text-pink-500"></i>
+        </button>
+        <!-- MOBILE MENU BUTTON -->
         <button id="menuBtn" class="mobile-menu-btn lg:hidden">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
@@ -792,24 +1135,24 @@
             <h1 class="hero-title mb-10"> Marianne <br />
               <span class="gradient-text"> Wong </span>
             </h1>
-            <p class="max-w-4xl text-lg sm:text-xl leading-relaxed text-slate-600 mb-14"> Bridging security, governance, and business needs </p>
+            <p class="max-w-4xl text-lg sm:text-xl leading-relaxed text-secondary mb-14"> Bridging security, governance, and business needs </p>
             <!-- BUTTONS -->
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:flex gap-4 mb-14">
-              <a href="mailto:marianne_wong@protonmail.com" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <a href="mailto:marianne_wong@protonmail.com" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
                 <i data-lucide="mail" class="w-5 h-5 text-pink-500"></i> Email </a>
-              <a href="https://wa.me/60192345442" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <a href="https://wa.me/60192345442" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
                 <i data-lucide="phone" class="w-5 h-5 text-pink-500"></i> WhatsApp </a>
-              <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
                 <i data-lucide="contact" class="w-5 h-5 text-pink-500"></i> LinkedIn </a>
-              <a href="https://tryhackme.com/p/honeydonkey" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <a href="https://tryhackme.com/p/honeydonkey" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
                 <i data-lucide="laptop" class="w-5 h-5 text-pink-500"></i> TryHackMe </a>
-              <a href="https://profile.hackthebox.com/profile/019e0311-f857-703a-a1aa-b18288684ab7" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <a href="https://profile.hackthebox.com/profile/019e0311-f857-703a-a1aa-b18288684ab7" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
                 <i data-lucide="shield" class="w-5 h-5 text-pink-500"></i> Hack The Box </a>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-              <a href="https://flowcv.com/resume/2mofja4dwmne" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <a href="https://flowcv.com/resume/2mofja4dwmne" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
                 <i data-lucide="download" class="w-5 h-5 text-pink-500"></i> Resume PDF </a>
-              <button id="shareBtn" class="glass-button px-6 py-3 text-sm font-bold text-slate-700 flex items-center gap-3">
+              <button id="shareBtn" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
                 <i data-lucide="share-2" class="w-5 h-5 text-fuchsia-500"></i>
                 <span id="shareText"> Share Portfolio </span>
               </button>
@@ -830,7 +1173,7 @@
          leading-[1.8rem]
          tracking-[-0.015em]
          font-medium
-         text-slate-700"> Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk management, security awareness, and security operations support. <br>
+         text-primary"> Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk management, security awareness, and security operations support. <br>
                   <br> Experienced in vendor security assessments, regulatory compliance aligned with PCI DSS and DORA, and threat intelligence analysis. <br>
                   <br> Demonstrated success improving phishing resilience by <span class="font-extrabold text-pink-500 text-[1.18em]"> 40% </span> through enterprise security awareness campaigns.
                 </p>
@@ -887,7 +1230,7 @@
                       <h3 class="text-3xl font-black leading-tight"> Bachelor of Science (Honours) in Cybersecurity </h3>
                       <p class="mt-5 text-lg font-bold text-pink-500"> Asia Pacific Institute of Technology (APIIT) </p>
                       <div class="divider my-6"></div>
-                      <p class="text-slate-500 text-lg"> May 2019 – Apr 2022 · First Class Honours · CGPA 3.7 </p>
+                      <p class="text-muted text-lg"> May 2019 – Apr 2022 · First Class Honours · CGPA 3.7 </p>
                     </div>
                   </div>
                 </div>
@@ -914,12 +1257,12 @@
                       <div>
                         <h3 class="text-3xl font-black"> CompTIA Security+ </h3>
                         <p class="mt-4 text-lg font-semibold text-pink-500"> CompTIA </p>
-                        <p class="mt-4 text-slate-500 text-lg"> Issued Feb 2026 · Expires Feb 2029 </p>
+                        <p class="mt-4 text-muted text-lg"> Issued Feb 2026 · Expires Feb 2029 </p>
                         <div class="divider my-6"></div>
-                        <p class="text-lg leading-relaxed text-slate-600 max-w-3xl"> Validates baseline cybersecurity skills including threat management, cryptography, identity management, network security, and risk mitigation. </p>
+                        <p class="text-lg leading-relaxed text-secondary max-w-3xl"> Validates baseline cybersecurity skills including threat management, cryptography, identity management, network security, and risk mitigation. </p>
                       </div>
                     </div>
-                    <a href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 h-fit text-sm font-black text-slate-700 flex items-center gap-3">
+                    <a href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 h-fit text-sm font-black text-primary flex items-center gap-3">
                       <i data-lucide="external-link" class="w-5 h-5 text-pink-500"></i> Verify Certification </a>
                   </div>
                 </div>
@@ -947,11 +1290,11 @@
                   <p class="text-sm uppercase tracking-[0.35em] text-pink-500 font-black mb-6"> Let's Collaborate </p>
                   <h2 class="text-5xl font-black mb-8"> Ready To Build <span class="gradient-text"> Secure Systems </span>
                   </h2>
-                  <p class="max-w-3xl mx-auto text-xl leading-relaxed text-slate-600 mb-12"> Open to cybersecurity risk, GRC, vendor security, compliance operations, and security intelligence opportunities. </p>
+                  <p class="max-w-3xl mx-auto text-xl leading-relaxed text-secondary mb-12"> Open to cybersecurity risk, GRC, vendor security, compliance operations, and security intelligence opportunities. </p>
                   <div class="flex flex-wrap justify-center gap-5">
-                    <a href="mailto:marianne_wong@protonmail.com" class="glass-button px-6 py-3 text-sm font-black text-slate-700 flex items-center gap-3">
+                    <a href="mailto:marianne_wong@protonmail.com" class="glass-button px-6 py-3 text-sm font-black text-primary flex items-center gap-3">
                       <i data-lucide="mail" class="w-5 h-5 text-pink-500"></i> Email me </a>
-                    <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-black text-slate-700 flex items-center gap-3">
+                    <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-black text-primary flex items-center gap-3">
                       <i data-lucide="contact" class="w-5 h-5 text-fuchsia-500"></i> LinkedIn </a>
                   </div>
                 </div>
@@ -962,11 +1305,31 @@
     <footer class="relative z-10">
       <div class="container-main">
         <div class="glass py-7 px-8 text-center">
-          <p class="text-xs tracking-[0.35em] uppercase text-slate-400 font-black"> MARIANNE_WONG // CYBERSECURITY_RISK_ANALYST </p>
+          <p class="text-xs tracking-[0.35em] uppercase text-muted font-black"> MARIANNE_WONG // CYBERSECURITY_RISK_ANALYST </p>
         </div>
       </div>
     </footer>
     <script>
+      /* =========================================
+   THEME TOGGLE
+========================================= */
+      const themeToggle = document.getElementById("themeToggle");
+      /* LOAD SAVED THEME */
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark");
+      }
+      /* TOGGLE */
+      themeToggle?.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        const isDark = document.body.classList.contains("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        /* update icon */
+        themeToggle.innerHTML = isDark ? `
+										<i data-lucide="sun" class="w-5 h-5 text-yellow-300"></i>` : `
+										<i data-lucide="moon" class="w-5 h-5 text-pink-500"></i>`;
+        lucide.createIcons();
+      });
       const navItems = [{
         id: 'home',
         label: 'Home'
@@ -1052,6 +1415,7 @@
         const mobile = document.getElementById('mobileNavItems');
         desktop.innerHTML = navItems.map(item => `
     
+										
 										<button
       class="nav-btn nav-item"
       data-target="${item.id}"
@@ -1061,6 +1425,7 @@
   `).join('');
         mobile.innerHTML = navItems.map(item => `
     
+										
 										<button
       class="nav-btn mobile-nav-item"
       data-target="${item.id}"
@@ -1200,7 +1565,8 @@
         const skillsList = document.getElementById('skillsList');
         skillsList.innerHTML = skills.map(skill => `
     
-										<div class="chip px-5 py-3 text-sm font-bold text-slate-700">
+										
+										<div class="chip px-5 py-3 text-sm font-bold text-primary">
       ${skill}
     </div>
   `).join('');
@@ -1212,6 +1578,7 @@
         experienceList.innerHTML = experiences.map((exp, index) => `
 
     
+										
 										<div class="glass glass-hover overflow-hidden">
 											<!-- HEADER -->
 											<button
@@ -1235,21 +1602,27 @@
                 exp.status
                   ? `
                     
+															
 															<span
-                      class="chip px-4 py-1 text-xs font-black uppercase tracking-[0.2em] text-pink-500"
-                    >
-                      ${exp.status}
-                    </span>
+  class="chip px-4 py-[0.38rem]
+         text-[0.72rem]
+         font-black
+         uppercase
+         tracking-[0.24em]"
+>
+  ACTIVE
+</span>
                   `
                   : ''
               }
 
             
+														
 														</div>
 														<p class="text-lg font-bold text-pink-500 mb-3">
               ${exp.company}
             </p>
-														<p class="text-slate-500 text-base">
+														<p class="text-muted text-base">
               ${exp.period}
             </p>
 													</div>
@@ -1276,7 +1649,8 @@
           ${exp.details.map(detail => `
 
             
-													<li class="flex items-start gap-4 text-slate-600 leading-relaxed">
+													
+													<li class="flex items-start gap-4 text-secondary leading-relaxed">
 														<div
                 class="mt-2 w-2 h-2 rounded-full bg-pink-400 shrink-0"
               ></div>
@@ -1286,6 +1660,7 @@
           `).join('')}
 
         
+												
 												</ul>
 											</div>
 										</div>
@@ -1300,6 +1675,7 @@
         achievementsGrid.innerHTML = achievements.map(item => `
 
     
+										
 										<div class="glass glass-hover p-8 sm:p-10 flex flex-col h-full">
 											<!-- TOP -->
 											<div class="flex items-start gap-6 mb-6">
@@ -1316,13 +1692,13 @@
 													<p class="text-pink-500 font-bold mb-2">
             ${item.organization}
           </p>
-													<p class="text-sm uppercase tracking-[0.2em] text-slate-500 font-black">
+													<p class="text-sm uppercase tracking-[0.2em] text-muted font-black">
             ${item.rank}
           </p>
 												</div>
 											</div>
 											<!-- DESCRIPTION -->
-											<p class="text-slate-600 leading-relaxed mb-8 flex-1">
+											<p class="text-secondary leading-relaxed mb-8 flex-1">
         ${item.description}
       </p>
 											<!-- BUTTON -->
@@ -1330,7 +1706,7 @@
         href="${item.link}"
         target="_blank"
         rel="noreferrer"
-        class="glass-button px-6 py-4 text-sm font-black text-slate-700 flex items-center justify-center gap-3"
+        class="glass-button px-6 py-4 text-sm font-black text-primary flex items-center justify-center gap-3"
       >
 												<i
           data-lucide="external-link"
@@ -1340,6 +1716,7 @@
         View Certificate
 
       
+											
 											</a>
 										</div>
 
