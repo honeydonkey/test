@@ -1403,22 +1403,212 @@ document.addEventListener('click', async (e) => {
   }
 
 });
+/* =========================================
+     render skills
+  ========================================= */
+		
+		function renderSkills() {
+  const skillsList = document.getElementById('skillsList');
+
+  skillsList.innerHTML = skills.map(skill => `
+    <div class="chip px-5 py-3 text-sm font-bold text-slate-700">
+      ${skill}
+    </div>
+  `).join('');
+}
+		function renderExperiences() {
+
+  const experienceList =
+    document.getElementById('experienceList');
+
+  if (!experienceList) return;
+
+  experienceList.innerHTML = experiences.map((exp, index) => `
+
+    <div class="glass glass-hover overflow-hidden">
+
+      <!-- HEADER -->
+      <button
+        class="experience-toggle w-full text-left p-8 sm:p-10 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6"
+        data-index="${index}"
+      >
+
+        <div class="flex items-start gap-6">
+
+          <div class="icon-wrap shrink-0">
+            <i
+              data-lucide="briefcase"
+              class="w-5 h-5 text-pink-500"
+            ></i>
+          </div>
+
+          <div>
+
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+
+              <h3 class="text-2xl sm:text-3xl font-black leading-tight">
+                ${exp.title}
+              </h3>
+
+              ${
+                exp.status
+                  ? `
+                    <span
+                      class="chip px-4 py-1 text-xs font-black uppercase tracking-[0.2em] text-pink-500"
+                    >
+                      ${exp.status}
+                    </span>
+                  `
+                  : ''
+              }
+
+            </div>
+
+            <p class="text-lg font-bold text-pink-500 mb-3">
+              ${exp.company}
+            </p>
+
+            <p class="text-slate-500 text-base">
+              ${exp.period}
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- CHEVRON -->
+        <div
+          class="chevron shrink-0"
+          data-chevron="${index}"
+        >
+          <i
+            data-lucide="chevron-right"
+            class="w-6 h-6 text-pink-500"
+          ></i>
+        </div>
+
+      </button>
+
+      <!-- DETAILS -->
+      <div
+        class="experience-details px-8 sm:px-10 pb-8 sm:pb-10"
+        data-details="${index}"
+      >
+
+        <div class="divider mb-8"></div>
+
+        <ul class="space-y-4">
+
+          ${exp.details.map(detail => `
+
+            <li class="flex items-start gap-4 text-slate-600 leading-relaxed">
+
+              <div
+                class="mt-2 w-2 h-2 rounded-full bg-pink-400 shrink-0"
+              ></div>
+
+              <span>${detail}</span>
+
+            </li>
+
+          `).join('')}
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  `).join('');
+
+  lucide.createIcons();
+}
+		function renderAchievements() {
+
+  const achievementsGrid =
+    document.getElementById('achievementsGrid');
+
+  if (!achievementsGrid) return;
+
+  achievementsGrid.innerHTML = achievements.map(item => `
+
+    <div class="glass glass-hover p-8 sm:p-10 flex flex-col h-full">
+
+      <!-- TOP -->
+      <div class="flex items-start gap-6 mb-6">
+
+        <div class="icon-wrap shrink-0">
+
+          <i
+            data-lucide="${item.icon}"
+            class="w-5 h-5 text-fuchsia-500"
+          ></i>
+
+        </div>
+
+        <div>
+
+          <h3 class="text-2xl font-black leading-tight mb-3">
+            ${item.title}
+          </h3>
+
+          <p class="text-pink-500 font-bold mb-2">
+            ${item.organization}
+          </p>
+
+          <p class="text-sm uppercase tracking-[0.2em] text-slate-500 font-black">
+            ${item.rank}
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- DESCRIPTION -->
+      <p class="text-slate-600 leading-relaxed mb-8 flex-1">
+        ${item.description}
+      </p>
+
+      <!-- BUTTON -->
+      <a
+        href="${item.link}"
+        target="_blank"
+        rel="noreferrer"
+        class="glass-button px-6 py-4 text-sm font-black text-slate-700 flex items-center justify-center gap-3"
+      >
+
+        <i
+          data-lucide="external-link"
+          class="w-5 h-5 text-pink-500"
+        ></i>
+
+        View Certificate
+
+      </a>
+
+    </div>
+
+  `).join('');
+
+  lucide.createIcons();
+}
 
   /* =========================================
      INITIALIZE
   ========================================= */
-
+document.addEventListener('DOMContentLoaded', () => {
   renderNav();
 
   renderSkills();
-
   renderExperiences();
-
   renderAchievements();
 
   setActiveNav('home');
 
   lucide.createIcons();
+
+  initObserver();
+});
 
 </script>
   </body>
