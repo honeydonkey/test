@@ -1,1791 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="color-scheme" content="light dark" />
-    <title>Marianne Wong • Cybersecurity Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-      /*
-      APPLE LIQUID GLASS RESEARCH IMPLEMENTATION
-      ------------------------------------------
-      Applied principles based on Apple Liquid Glass / Glassmorphism research:
-      - layered translucency
-      - restrained blur
-      - depth hierarchy
-      - floating navigation
-      - adaptive soft lighting
-      - minimal hard borders
-      - vibrant accent emphasis
-      - sparse glass usage for hierarchy
-      - reduced visual noise
-      - organic gradients
-      - spatial separation
-      - premium typography rhythm
-
-      References:
-      Apple HIG Materials + Liquid Glass
-      Apple HIG Color System
-      Modern Glassmorphism best practices
-    */
-      :root {
-        --ui-scale: 0.82;
-        /* LIGHT THEME */
-        --bg: #fff7fb;
-        --bg-secondary: #fff0f8;
-        --surface:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.72),
-            rgba(255, 255, 255, 0.38));
-        --surface-strong:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.88),
-            rgba(255, 255, 255, 0.52));
-        --glass-border:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.95),
-            rgba(255, 255, 255, 0.18));
-        --text-primary: #1f1728;
-        --text-secondary: #6b5878;
-        --text-muted: #7c6f86;
-        --pink-primary: #ec4899;
-        --pink-secondary: #d946ef;
-        --shadow-soft:
-          0 10px 40px rgba(236, 72, 153, 0.10);
-        --shadow-large:
-          0 25px 60px rgba(236, 72, 153, 0.14);
-        --radius-xl: 34px;
-        --radius-lg: 26px;
-        --radius-md: 20px;
-      }
-
-      /* =========================================
-   DARK MODE
-========================================= */
-      /* =========================================
-   DARK MODE — PREMIUM PINK GLASS
-========================================= */
-      body.dark {
-        --bg: #0b0712;
-        --bg-secondary: #140d1d;
-        --surface:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.10),
-            rgba(255, 255, 255, 0.04));
-        --surface-strong:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.14),
-            rgba(255, 255, 255, 0.06));
-        --glass-border:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.18),
-            rgba(255, 255, 255, 0.05));
-        --text-primary: #fff4fb;
-        --text-secondary: #efe7f7;
-        --text-muted: #cbbdd8;
-        --pink-primary: #ff63b8;
-        --pink-secondary: #d946ef;
-        --shadow-soft:
-          0 10px 40px rgba(255, 70, 160, 0.18);
-        --shadow-large:
-          0 25px 70px rgba(255, 70, 160, 0.24);
-      }
-
-      body.dark .glass-button {
-        background:
-          linear-gradient(145deg,
-            rgba(28, 22, 40, 0.88),
-            rgba(20, 16, 30, 0.82));
-        border:
-          1px solid rgba(255, 255, 255, 0.08);
-        color: #fff4fb;
-        box-shadow:
-          0 10px 30px rgba(0, 0, 0, 0.30),
-          inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        backdrop-filter:
-          blur(28px) saturate(180%);
-      }
-
-      body.dark .glass-button:hover {
-        background:
-          linear-gradient(145deg,
-            rgba(38, 30, 52, 0.94),
-            rgba(26, 20, 38, 0.90));
-        border-color:
-          rgba(255, 99, 184, 0.28);
-        box-shadow:
-          0 20px 50px 0 8px 30px rgba(0, 0, 0, 0.45);
-      }
-
-      body.dark .chip {
-        background:
-          linear-gradient(145deg,
-            rgba(30, 24, 42, 0.86),
-            rgba(22, 18, 34, 0.78));
-        border:
-          1px solid rgba(255, 255, 255, 0.08);
-        color: #fff4fb;
-        box-shadow:
-          0 6px 20px rgba(0, 0, 0, 0.22);
-      }
-
-      body.dark .icon-wrap,
-      body.dark .summary-icon {
-        background:
-          linear-gradient(145deg,
-            rgba(34, 28, 46, 0.92),
-            rgba(24, 18, 36, 0.82));
-        border:
-          1px solid rgba(255, 255, 255, 0.08);
-        box-shadow:
-          0 10px 24px rgba(0, 0, 0, 0.28);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        overflow-x: hidden;
-        background:
-          radial-gradient(circle at top left,
-            rgba(255, 90, 180, 0.16) 0%,
-            transparent 34%),
-          radial-gradient(circle at top right,
-            rgba(217, 70, 239, 0.14) 0%,
-            transparent 34%),
-          radial-gradient(circle at bottom left,
-            rgba(255, 140, 210, 0.14) 0%,
-            transparent 30%),
-          radial-gradient(circle at bottom right,
-            rgba(236, 72, 153, 0.10) 0%,
-            transparent 26%),
-          linear-gradient(180deg,
-            var(--bg) 0%,
-            var(--bg-secondary) 100%);
-        color: var(--text-primary);
-        font-family:
-          "SF Pro Display",
-          ui-sans-serif,
-          system-ui,
-          sans-serif;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-        transition:
-          background 0.5s ease,
-          color 0.5s ease;
-      }
-
-      .text-primary {
-        color: var(--text-primary);
-      }
-
-      .text-secondary {
-        color: var(--text-secondary);
-      }
-
-      .text-muted {
-        color: var(--text-muted);
-      }
-
-      ::selection {
-        background: rgba(236, 72, 153, 0.18);
-      }
-
-      .noise {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 0;
-        opacity: 0.04;
-        background-image:
-          radial-gradient(circle at 25% 25%, #000 1px, transparent 0),
-          radial-gradient(circle at 75% 75%, #000 1px, transparent 0);
-        background-size: 26px 26px;
-      }
-
-      .ambient-light {
-        position: fixed;
-        inset: 0;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      .orb {
-        position: absolute;
-        border-radius: 9999px;
-        filter: blur(100px);
-        opacity: 0.55;
-        animation: float 14s ease-in-out infinite;
-      }
-
-      .orb-1 {
-        width: 420px;
-        height: 420px;
-        top: -180px;
-        left: -120px;
-        background: rgba(255, 124, 190, 0.40);
-      }
-
-      .orb-2 {
-        width: 540px;
-        height: 540px;
-        top: 20%;
-        right: -140px;
-        background: rgba(216, 132, 255, 0.32);
-        animation-delay: 3s;
-      }
-
-      .orb-3 {
-        width: 500px;
-        height: 500px;
-        bottom: -160px;
-        left: 18%;
-        background: rgba(255, 166, 212, 0.34);
-        animation-delay: 5s;
-      }
-
-      body.dark .orb-1 {
-        background: rgba(255, 70, 170, 0.42);
-      }
-
-      body.dark .orb-2 {
-        background: rgba(217, 70, 239, 0.34);
-      }
-
-      body.dark .orb-3 {
-        background: rgba(255, 120, 200, 0.28);
-      }
-
-      /* =========================================
-   PREMIUM ACTIVE BADGE
-========================================= */
-      .active-badge {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        height: 38px;
-        padding: 0 18px;
-        border-radius: 999px;
-        font-size: 0.72rem;
-        font-weight: 900;
-        letter-spacing: 0.28em;
-        text-transform: uppercase;
-        color: #ffffff;
-        background:
-          linear-gradient(180deg,
-            rgba(255, 255, 255, 0.10),
-            rgba(255, 255, 255, 0.03));
-        border:
-          1px solid rgba(255, 99, 184, 0.28);
-        backdrop-filter:
-          blur(20px) saturate(180%);
-        -webkit-backdrop-filter:
-          blur(20px) saturate(180%);
-        box-shadow:
-          0 0 0 1px rgba(255, 255, 255, 0.03),
-          0 8px 20px rgba(255, 70, 170, 0.16),
-          inset 0 1px 0 rgba(255, 255, 255, 0.10);
-        overflow: hidden;
-      }
-
-      /* glowing liquid center */
-      .active-badge::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background:
-          radial-gradient(circle at top,
-            rgba(255, 255, 255, 0.14),
-            transparent 60%);
-        pointer-events: none;
-      }
-
-      /* subtle pink glow edge */
-      .active-badge::after {
-        content: "";
-        position: absolute;
-        inset: -1px;
-        border-radius: inherit;
-        background:
-          linear-gradient(90deg,
-            rgba(255, 99, 184, 0.10),
-            rgba(255, 99, 184, 0.35),
-            rgba(255, 99, 184, 0.10));
-        opacity: 0.7;
-        filter: blur(10px);
-        z-index: -1;
-      }
-
-      @keyframes float {
-
-        0%,
-        100% {
-          transform: translateY(0px) translateX(0px);
-        }
-
-        50% {
-          transform: translateY(-28px) translateX(18px);
-        }
-      }
-
-      /* =========================================
-   HERO SUMMARY GLASS
-========================================= */
-      /* =========================================
-   HERO SUMMARY GLASS
-========================================= */
-      .summary-card {
-        position: relative;
-        width: 100%;
-        border-radius: 38px;
-        background:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.24),
-            rgba(255, 255, 255, 0.10));
-        border:
-          1px solid rgba(255, 255, 255, 0.34);
-        backdrop-filter:
-          blur(18px) saturate(185%);
-        -webkit-backdrop-filter:
-          blur(18px) saturate(185%);
-        box-shadow:
-          0 10px 32px rgba(236, 72, 153, 0.05),
-          inset 0 1px 0 rgba(255, 255, 255, 0.42);
-        overflow: hidden;
-      }
-
-      body.dark .summary-card {
-        background:
-          linear-gradient(145deg,
-            rgba(14, 14, 18, 0.72),
-            rgba(18, 14, 26, 0.76));
-        border:
-          1px solid rgba(255, 255, 255, 0.08);
-        box-shadow:
-          0 20px 60px rgba(0, 0, 0, 0.34),
-          0 10px 40px rgba(255, 70, 170, 0.10);
-        backdrop-filter:
-          blur(20px) saturate(180%);
-        -webkit-backdrop-filter:
-          blur(20px) saturate(180%);
-      }
-
-      body.dark .summary-card::before {
-        background:
-          linear-gradient(180deg,
-            rgba(255, 255, 255, 0.06),
-            transparent 40%);
-      }
-
-      /* LIGHT LAYER */
-      .summary-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background:
-          linear-gradient(180deg,
-            rgba(255, 255, 255, 0.20),
-            transparent 30%);
-        pointer-events: none;
-      }
-
-      .summary-icon {
-        width: 58px;
-        height: 58px;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.42),
-            rgba(255, 255, 255, 0.18));
-        border:
-          1px solid rgba(255, 255, 255, 0.45);
-        backdrop-filter: blur(12px);
-        box-shadow:
-          0 6px 18px rgba(236, 72, 153, 0.06);
-      }
-
-      .container-main {
-        width: 100%;
-        max-width: 1100px;
-        margin-inline: auto;
-        padding-inline: 32px;
-      }
-
-      .glass {
-        position: relative;
-        overflow: hidden;
-        background: var(--surface);
-        border-radius: var(--radius-xl);
-        border: 1px solid transparent;
-        backdrop-filter: blur(16px) saturate(140%);
-        -webkit-backdrop-filter: blur(16px) saturate(140%);
-        background-clip: padding-box;
-        box-shadow:
-          var(--shadow-soft),
-          inset 0 1px 0 rgba(255, 255, 255, 0.95),
-          inset 0 -1px 0 rgba(255, 255, 255, 0.18);
-        transition:
-          transform 0.45s ease,
-          box-shadow 0.45s ease,
-          background 0.45s ease;
-      }
-
-      body.dark .glass {
-        position: relative;
-        background:
-          linear-gradient(180deg,
-            rgba(28, 28, 32, 0.78) 0%,
-            rgba(18, 18, 22, 0.72) 100%);
-        border:
-          1px solid rgba(255, 255, 255, 0.07);
-        backdrop-filter:
-          blur(34px) saturate(180%);
-        -webkit-backdrop-filter:
-          blur(34px) saturate(180%);
-        box-shadow:
-          0 20px 60px rgba(0, 0, 0, 0.42),
-          inset 0 1px 0 rgba(255, 255, 255, 0.06),
-          inset 0 -1px 0 rgba(255, 255, 255, 0.03);
-        overflow: hidden;
-      }
-
-      /* TOP LIGHT REFLECTION */
-      body.dark .glass::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background:
-          linear-gradient(180deg,
-            rgba(255, 255, 255, 0.10) 0%,
-            rgba(255, 255, 255, 0.03) 18%,
-            transparent 42%);
-        pointer-events: none;
-      }
-
-      /* SUBTLE INNER EDGE */
-      body.dark .glass::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        padding: 1px;
-        background:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.14),
-            rgba(255, 255, 255, 0.03));
-        -webkit-mask:
-          linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        pointer-events: none;
-      }
-
-      /* HERO PROFILE CARD */
-      body.dark .summary-card {
-        position: relative;
-        background:
-          linear-gradient(180deg,
-            rgba(32, 32, 38, 0.82) 0%,
-            rgba(20, 20, 24, 0.76) 100%);
-        border:
-          1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter:
-          blur(40px) saturate(190%);
-        -webkit-backdrop-filter:
-          blur(40px) saturate(190%);
-        box-shadow:
-          0 30px 80px rgba(0, 0, 0, 0.48),
-          0 10px 30px rgba(255, 255, 255, 0.03),
-          inset 0 1px 0 rgba(255, 255, 255, 0.06);
-      }
-
-      /* TOP GLOSS */
-      body.dark .summary-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background:
-          linear-gradient(180deg,
-            rgba(255, 255, 255, 0.12),
-            rgba(255, 255, 255, 0.03) 22%,
-            transparent 46%);
-        pointer-events: none;
-      }
-
-      /* BUTTONS */
-      body.dark .glass-button {
-        background:
-          linear-gradient(180deg,
-            rgba(40, 40, 46, 0.78),
-            rgba(24, 24, 28, 0.74));
-        border:
-          1px solid rgba(255, 255, 255, 0.08);
-        color: #fff7fb;
-        backdrop-filter:
-          blur(24px) saturate(180%);
-        box-shadow:
-          0 10px 30px rgba(0, 0, 0, 0.36),
-          inset 0 1px 0 rgba(255, 255, 255, 0.06);
-      }
-
-      /* BUTTON HOVER */
-      body.dark .glass-button:hover {
-        transform:
-          translateY(-2px) scale(1.01);
-        background:
-          linear-gradient(180deg,
-            rgba(52, 52, 58, 0.88),
-            rgba(28, 28, 34, 0.84));
-        border-color:
-          rgba(255, 255, 255, 0.12);
-        box-shadow:
-          0 18px 50px rgba(0, 0, 0, 0.42),
-          0 0 30px rgba(255, 105, 180, 0.08);
-      }
-
-      /* ICONS */
-      body.dark .icon-wrap,
-      body.dark .summary-icon {
-        background:
-          linear-gradient(180deg,
-            rgba(44, 44, 50, 0.82),
-            rgba(28, 28, 34, 0.74));
-        border:
-          1px solid rgba(255, 255, 255, 0.08);
-        box-shadow:
-          0 10px 24px rgba(0, 0, 0, 0.34),
-          inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        backdrop-filter:
-          blur(20px);
-      }
-
-      /* CHIPS */
-      body.dark .chip {
-        background: #ffffff;
-        color: #ec4899;
-        border: 1px solid rgba(255, 255, 255, 0.9);
-        box-shadow:
-          0 2px 10px rgba(0, 0, 0, 0.16);
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-      }
-
-      .glass::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        padding: 1px;
-        background: var(--glass-border);
-        -webkit-mask:
-          linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        pointer-events: none;
-      }
-
-      .glass::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background:
-          linear-gradient(180deg,
-            rgba(255, 255, 255, 0.52),
-            transparent 24%);
-        opacity: 0.9;
-        pointer-events: none;
-      }
-
-      .glass-hover:hover {
-        transform: translateY(-5px);
-        box-shadow:
-          var(--shadow-large),
-          inset 0 1px 0 rgba(255, 255, 255, 0.95),
-          inset 0 -1px 0 rgba(255, 255, 255, 0.18);
-      }
-
-      .glass-nav {
-        background:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.3),
-            rgba(255, 255, 255, 0.3));
-        backdrop-filter: blur(30px) saturate(180%);
-        -webkit-backdrop-filter: blur(30px) saturate(180%);
-        border: 1px solid rgba(255, 255, 255, 0.75);
-        box-shadow:
-          0 12px 40px rgba(236, 72, 153, 0.10);
-      }
-
-      .glass-button {
-        position: relative;
-        overflow: hidden;
-        border-radius: 9999px;
-        background:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.72),
-            rgba(255, 255, 255, 0.30));
-        border: 1px solid rgba(255, 255, 255, 0.80);
-        backdrop-filter: blur(22px) saturate(180%);
-        -webkit-backdrop-filter: blur(22px) saturate(180%);
-        box-shadow:
-          inset 0 1px 0 rgba(255, 255, 255, 0.95),
-          0 10px 24px rgba(236, 72, 153, 0.10);
-        transition:
-          transform 0.35s ease,
-          box-shadow 0.35s ease,
-          border-color 0.35s ease,
-          background 0.35s ease;
-      }
-
-      .glass-button:hover {
-        transform: translateY(-3px) scale(1.015);
-        background:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.84),
-            rgba(255, 255, 255, 0.42));
-        border-color: rgba(236, 72, 153, 0.38);
-        box-shadow:
-          0 18px 40px rgba(236, 72, 153, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.95);
-      }
-
-      .glass-button::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -120%;
-        width: 120%;
-        height: 100%;
-        background:
-          linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.75),
-            transparent);
-        transition: left 0.9s ease;
-      }
-
-      .glass-button:hover::before {
-        left: 120%;
-      }
-
-      .hero-title {
-        font-size: clamp(4rem, 12vw, 9rem);
-        font-weight: 900;
-        font-size: clamp(3rem, 8vw, 6.5rem);
-        line-height: 0.96;
-        letter-spacing: -0.055em;
-      }
-      }
-
-      .gradient-text {
-        background:
-          linear-gradient(90deg,
-            #ec4899,
-            #d946ef,
-            #fb7185);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .eyebrow {
-        font-size: 0.7rem;
-        letter-spacing: 0.28em;
-      }
-
-      .section-title {
-        letter-spacing: 0.12em;
-      }
-
-      .section-spacing {
-        padding-top: 72px;
-        padding-bottom: 72px;
-      }
-
-      /* =========================================
-   STATUS PILL
-========================================= */
-
-.chip {
-  border-radius: 9999px;
-
-  padding:
-    0.42rem 1rem;
-
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.24em;
-
-  text-transform: uppercase;
-
-  transition:
-    background 0.35s ease,
-    color 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-/* LIGHT MODE */
-body:not(.dark) .chip {
-  background:
-    linear-gradient(
-      145deg,
-      #64748b,
-      #475569
-    );
-
-  color: white;
-
-  border:
-    1px solid rgba(255,255,255,0.65);
-
-  box-shadow:
-    0 6px 18px rgba(71,85,105,0.16),
-    inset 0 1px 0 rgba(255,255,255,0.18);
-}
-
-/* DARK MODE */
-body.dark .chip {
-  background: #ffffff;
-
-  color: #ec4899;
-
-  border:
-    1px solid rgba(255,255,255,0.92);
-
-  box-shadow:
-    0 4px 14px rgba(0,0,0,0.18);
-}
-
-      .fade-up {
-        animation: fadeUp 1s cubic-bezier(.22, 1, .36, 1) forwards;
-      }
-
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .divider {
-        width: 100%;
-        height: 1px;
-        background:
-          linear-gradient(90deg,
-            transparent,
-            rgba(236, 72, 153, 0.18),
-            transparent);
-      }
-
-      .icon-wrap {
-        width: 58px;
-        height: 58px;
-        border-radius: 20px;
-        background:
-          linear-gradient(145deg,
-            rgba(255, 255, 255, 0.82),
-            rgba(255, 255, 255, 0.34));
-        border: 1px solid rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(18px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow:
-          0 10px 24px rgba(236, 72, 153, 0.10);
-      }
-
-      .experience-details {
-        display: none;
-      }
-
-      .experience-open .experience-details {
-        display: block;
-      }
-
-      .experience-open .chevron {
-        transform: rotate(90deg);
-      }
-
-      .chevron {
-        transition: transform 0.35s ease;
-      }
-
-      footer {
-        padding-top: 40px;
-        padding-bottom: 60px;
-      }
-
-      @media (max-width: 768px) {
-        .section-spacing {
-          padding-top: 56px;
-          padding-bottom: 56px;
-        }
-
-        .hero-title {
-          line-height: 1;
-        }
-      }
-
-      /* =========================================
-   MOBILE + RESPONSIVE IMPROVEMENTS
-========================================= */
-      @media (max-width: 1024px) {
-        .hero-title {
-          font-size: clamp(3.2rem, 14vw, 6rem);
-          letter-spacing: -0.06em;
-        }
-
-        .section-title {
-          font-size: 2rem;
-          line-height: 1.1;
-        }
-
-        .glass-button {
-          width: 100%;
-          justify-content: center;
-        }
-
-        .glass,
-        .glass-nav {
-          border-radius: 28px;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .section-spacing {
-          padding-top: 72px;
-          padding-bottom: 72px;
-        }
-
-        .hero-title {
-          font-size: clamp(3.5rem, 18vw, 5.5rem);
-          line-height: 0.92;
-        }
-
-        .icon-wrap {
-          width: 52px;
-          height: 52px;
-          border-radius: 18px;
-        }
-
-        .glass {
-          backdrop-filter: blur(20px) saturate(160%);
-          -webkit-backdrop-filter: blur(20px) saturate(160%);
-        }
-
-        .orb {
-          opacity: 0.3;
-        }
-      }
-
-      @media (max-width: 640px) {
-        main {
-          padding-top: 110px;
-        }
-
-        .hero-title {
-          font-size: clamp(2.8rem, 15vw, 4.5rem);
-        }
-
-        .glass-button {
-          min-height: 48px;
-          font-size: 0.9rem;
-        }
-
-        .glass,
-        .glass-hover {
-          padding: 1.4rem;
-        }
-
-        .experience-toggle {
-          padding: 1.6rem;
-        }
-
-        .experience-details {
-          padding-left: 1.6rem !important;
-          padding-right: 1.6rem !important;
-          padding-bottom: 1.6rem !important;
-        }
-
-        .text-5xl {
-          font-size: 2.4rem !important;
-          line-height: 1.1;
-        }
-
-        .text-4xl {
-          font-size: 2rem !important;
-        }
-
-        .text-3xl {
-          font-size: 1.55rem !important;
-        }
-
-        p.text-xl,
-        .text-xl {
-          font-size: 1rem !important;
-          line-height: 1.75rem !important;
-        }
-      }
-
-      /* =========================================
-   APPLE LIQUID TAB NAV
-========================================= */
-      .nav-pill {
-        position: relative;
-        border-radius: 9999px;
-        background:
-          rgba(255, 255, 255, 0.14);
-        backdrop-filter: blur(14px) saturate(180%);
-        -webkit-backdrop-filter: blur(14px) saturate(180%);
-        border:
-          1px solid rgba(255, 255, 255, 0.22);
-        box-shadow:
-          0 8px 30px rgba(0, 0, 0, 0.06),
-          inset 0 1px 1px rgba(255, 255, 255, 0.18);
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-
-      /* NAV BUTTON */
-      .nav-item {
-        position: relative;
-        appearance: none;
-        border: none;
-        outline: none;
-        height: 56px;
-        padding: 0 24px;
-        border-radius: 9999px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-        color: #5b5562;
-        font-size: 0.92rem;
-        font-weight: 700;
-        cursor: pointer;
-        overflow: hidden;
-        transition:
-          color 0.45s cubic-bezier(.22, 1, .36, 1),
-          transform 0.45s cubic-bezier(.22, 1, .36, 1),
-          box-shadow 0.45s cubic-bezier(.22, 1, .36, 1),
-          background 0.45s cubic-bezier(.22, 1, .36, 1);
-      }
-      /* DARK MODE NAV TEXT */
-body.dark .nav-item {
-  color: rgba(255, 255, 255, 0.82);
-}
-
-/* DARK MODE HOVER */
-body.dark .nav-item:hover:not(.active) {
-  color: #ffffff;
-}
-
-/* DARK MODE ACTIVE */
-body.dark .nav-item.active {
-  color: #ec4899;
-}
-
-      /* LIQUID LAYER */
-      .nav-item::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        opacity: 0;
-        transform: scale(0.82);
-        transition:
-          opacity 0.55s cubic-bezier(.22, 1, .36, 1),
-          transform 0.55s cubic-bezier(.22, 1, .36, 1),
-          background 0.55s cubic-bezier(.22, 1, .36, 1),
-          box-shadow 0.55s cubic-bezier(.22, 1, .36, 1);
-        background:
-          linear-gradient(180deg,
-            rgba(255, 255, 255, 0.92),
-            rgba(255, 255, 255, 0.50));
-        backdrop-filter: blur(18px) saturate(180%);
-        -webkit-backdrop-filter: blur(18px) saturate(180%);
-        border:
-          1px solid rgba(255, 255, 255, 0.9);
-        box-shadow:
-          inset 0 1px 1px rgba(255, 255, 255, 1),
-          inset 0 -1px 1px rgba(255, 255, 255, 0.32),
-          0 8px 24px rgba(236, 72, 153, 0.14);
-        z-index: 0;
-      }
-
-      /* TEXT ABOVE GLASS */
-      .nav-item span {
-        position: relative;
-        z-index: 2;
-      }
-
-      /* ACTIVE */
-      .nav-item.active {
-        color: #ec4899;
-      }
-
-      .nav-item.active::before {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      .nav-item::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -120%;
-        width: 120%;
-        height: 100%;
-        border-radius: inherit;
-        background:
-          linear-gradient(90deg,
-            transparent,
-            rgba(255, 255, 255, 0.72),
-            transparent);
-        transition: left 0.9s cubic-bezier(.22, 1, .36, 1);
-        z-index: 1;
-      }
-
-      .nav-item.active::after {
-        left: 120%;
-      }
-
-      /* HOVER */
-      .nav-item:hover:not(.active) {
-        color: #ec4899;
-        transform: translateY(-1px);
-      }
-
-      /* MOBILE MENU BTN */
-      .mobile-menu-btn {
-        width: 56px;
-        height: 56px;
-        border-radius: 9999px;
-        background:
-          rgba(255, 255, 255, 0.18);
-        backdrop-filter: blur(16px);
-        border:
-          1px solid rgba(255, 255, 255, 0.24);
-        color: #ec4899;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        box-shadow:
-          0 8px 20px rgba(0, 0, 0, 0.06);
-      }
-
-      /* MOBILE PANEL */
-      .mobile-nav-panel {
-        border-radius: 30px;
-        background:
-          rgba(255, 255, 255, 0.16);
-        backdrop-filter: blur(18px);
-        border:
-          1px solid rgba(255, 255, 255, 0.22);
-        box-shadow:
-          0 10px 30px rgba(0, 0, 0, 0.06);
-      }
-
-      /* MOBILE NAV BUTTONS */
-      .mobile-nav-item {
-        height: 54px;
-        border-radius: 20px;
-        padding: 0 18px;
-        display: flex;
-        align-items: center;
-        font-weight: 700;
-        color: #5b5562;
-        transition: all 0.3s ease;
-      }
-
-      .mobile-nav-item.active {
-        background:
-          rgba(255, 255, 255, 0.45);
-        color: #ec4899;
-      }
-
-      /* RESPONSIVE */
-      @media (max-width: 1024px) {
-        #desktopNav {
-          display: none;
-        }
-
-        .mobile-menu-btn {
-          display: flex;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .nav-pill {
-          display: none;
-        }
-
-        main {
-          padding-top: 100px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="noise"></div>
-    <div class="ambient-light">
-      <div class="orb orb-1"></div>
-      <div class="orb orb-2"></div>
-      <div class="orb orb-3"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marianne Wong — Cyber Risk Analyst</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+    html{scroll-behavior:smooth}
+    body{background:#fff;color:#1d1d1f}
+    .card{background:#f5f5f7;border-radius:20px;transition:transform .25s,box-shadow .25s}
+    .card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.06)}
+    .card-link{text-decoration:none;color:inherit;display:block}
+    .card-link .card:hover{box-shadow:0 8px 30px rgba(0,0,0,.1)}
+    .tag{padding:8px 16px;border-radius:100px;font-size:13px;font-weight:500;background:#f5f5f7;color:#6e6e73;transition:all .2s}
+    .tag:hover{background:#1d1d1f;color:#fff}
+    .nav-link{font-size:14px;color:#6e6e73;transition:color .2s}
+    .nav-link:hover,.nav-link.active{color:#1d1d1f}
+    .btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 32px;background:#1d1d1f;color:#fff;font-size:15px;font-weight:500;border-radius:980px;transition:all .25s;text-decoration:none;box-sizing:border-box;cursor:pointer;border:none}
+    .btn-primary:hover{background:#333;transform:scale(1.02)}
+    .btn-primary:active{transform:scale(.98)}
+    .btn-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 32px;background:transparent;color:#1d1d1f;font-size:15px;font-weight:500;border-radius:980px;border:1.5px solid #d2d2d7;transition:all .25s;text-decoration:none;box-sizing:border-box;cursor:pointer}
+    .btn-secondary:hover{background:#f5f5f7;border-color:#86868b}
+    .btn-light{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 32px;background:#fff;color:#1d1d1f;font-size:15px;font-weight:500;border-radius:980px;transition:all .25s;text-decoration:none;box-sizing:border-box;cursor:pointer;border:none}
+    .btn-light:hover{background:#e5e5ea;transform:scale(1.02)}
+    .btn-light:active{transform:scale(.98)}
+    .btn-ghost-dark{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 32px;background:transparent;color:#fff;font-size:15px;font-weight:500;border-radius:980px;border:1px solid #424245;transition:all .25s;text-decoration:none;box-sizing:border-box}
+    .btn-ghost-dark:hover{background:#2d2d2f;border-color:#6e6e73}
+    .btn-ats-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 32px;background:transparent;color:#fff;font-size:15px;font-weight:500;border-radius:980px;border:1.5px solid rgba(255,255,255,.35);transition:all .25s;text-decoration:none;box-sizing:border-box;cursor:pointer}
+    .btn-ats-outline:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.55)}
+    .btn-ats-outline:active{transform:scale(.98)}
+    .experience-item{border-left:1px solid #e5e5ea;padding-left:32px;transition:border-color .2s}
+    .experience-item:hover{border-left-color:#1d1d1f}
+    .section-label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#86868b}
+    .progress-bar{height:3px;border-radius:2px;background:#e5e5ea;overflow:hidden}
+    .progress-fill{height:100%;border-radius:2px;background:#1d1d1f}
+    .verify-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;color:#6e6e73;text-decoration:none;transition:color .2s}
+    .verify-link:hover{color:#1d1d1f}
+    .evidence-hint{margin-top:16px;display:flex;align-items:center;gap:6px;font-size:12px;color:#86868b}
+    .ats-note{font-size:11px;color:#86868b;margin-top:8px;display:flex;align-items:center;gap:4px}
+
+    .ats-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:32px 0}
+    .ats-overlay.open{display:block}
+    .ats-paper-wrap{display:flex;justify-content:center;padding:0 16px 32px}
+    .ats-paper{background:#fff;width:794px;max-width:100%;box-shadow:0 4px 60px rgba(0,0,0,.12);border-radius:2px;overflow:hidden;position:relative;flex-shrink:0}
+    .ats-toolbar{position:sticky;top:0;z-index:2;background:#fff;border-bottom:1px solid #e5e5ea;padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+    .ats-toolbar button{display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:980px;font-size:12.5px;font-weight:600;cursor:pointer;border:none;font-family:Inter,system-ui,sans-serif;transition:all .2s}
+    .ats-toolbar .ab-pdf{background:#1d1d1f;color:#fff}
+    .ats-toolbar .ab-txt{background:#f5f5f7;color:#1d1d1f;border:1px solid #d2d2d7}
+    .ats-toolbar .ab-txt:hover{background:#e5e5ea}
+    .ats-toolbar .ab-cp{background:#f5f5f7;color:#1d1d1f;border:1px solid #d2d2d7}
+    .ats-toolbar .ab-cp:hover{background:#e5e5ea}
+    .ats-toolbar .done{background:#15803d!important;color:#fff!important;border-color:#15803d!important}
+    .ats-close{position:absolute;top:10px;right:12px;width:32px;height:32px;border-radius:50%;border:none;background:#f5f5f7;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:#6e6e73;transition:all .2s;z-index:3}
+    .ats-close:hover{background:#e5e5ea;color:#1d1d1f}
+    .ats-fallback-note{display:none;background:#f5f7;border-radius:12px;padding:12px 16px;margin:0 20px 16px;font-size:12px;color:#6e6e73;text-align:center;line-height:1.5}
+    .ats-fallback-note.show{display:block}
+    .resume-page{padding:48px 56px;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:#111;font-size:10pt;line-height:1.6;background:#fff}
+    .resume-page .rh1{font-size:24pt;font-weight:700;letter-spacing:.04em;margin:0 0 2px 0;color:#111}
+    .resume-page .rtitle{font-size:11pt;color:#555;margin:0 0 10px 0;font-weight:500}
+    .resume-page .rcontact{font-size:8.5pt;color:#777;margin:0 0 20px 0;padding-bottom:14px;border-bottom:1.5px solid #111}
+    .resume-page .rsec{margin:20px 0 14px 0}
+    .resume-page .rsec h2{font-size:9pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#111;margin:0 0 0 0;padding:0 0 5px 0;border-bottom:1px solid #ddd}
+    .resume-page .rsec-body{margin-top:10px}
+    .resume-page .rjob{margin-bottom:14px}
+    .resume-page .rjob:last-child{margin-bottom:0}
+    .resume-page .rjob h3{font-size:10.5pt;font-weight:700;margin:0 0 2px 0;color:#111}
+    .resume-page .rmeta{font-size:8.5pt;color:#777;margin:0 0 8px 0}
+    .resume-page .rbullets{list-style:none;padding:0;margin:0 0 0 14px}
+    .resume-page .rbullets li{position:relative;padding-left:12px;margin-bottom:3px;font-size:9.5pt;line-height:1.55;color:#333}
+    .resume-page .rbullets li::before{content:"";position:absolute;left:0;top:6px;width:3px;height:3px;border-radius:50%;background:#bbb}
+    .resume-page .rskills{display:grid;grid-template-columns:1fr 1fr;gap:10px 32px}
+    .resume-page .rscat{margin-bottom:6px}
+    .resume-page .rscat b{font-size:8.5pt;color:#111}
+    .resume-page .rscat span{font-size:8.5pt;color:#555}
+    .resume-page .rlang{display:inline;font-size:9pt;color:#333;margin-right:24px}
+    .resume-page .rlang b{font-weight:600}
+    .resume-page .rlang em{color:#888;font-style:normal}
+    .resume-page .ract{margin-bottom:3px;font-size:9.5pt;line-height:1.5;color:#333}
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:#d2d2d2d7;border-radius:3px}
+  </style>
+</head>
+<body>
+
+  <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-8 h-12 flex items-center justify-between">
+      <a href="#" class="text-sm font-semibold tracking-tight">Marianne Wong</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#activities" class="nav-link">Activities</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a id="nav-resume-link" href="#" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-[#1d1d1f] hover:opacity-70 transition-opacity"></a>
+        <button id="mobile-menu-btn" class="md:hidden p-1" aria-label="Menu"><i data-lucide="menu" class="w-5 h-5"></i></button>
+      </div>
     </div>
-    <!-- NAVIGATION -->
-    <nav class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-full px-4">
-      <div class="flex items-center justify-center gap-3">
-        <!-- FLOATING NAV -->
-        <div class="nav-pill flex items-center gap-2 p-2" id="desktopNav"></div>
-        <!-- THEME TOGGLE -->
-        <button id="themeToggle" class="glass-button w-14 h-14 flex items-center justify-center shrink-0" aria-label="Toggle dark mode">
-          <i data-lucide="moon" class="w-5 h-5 text-pink-500"></i>
-        </button>
-        <!-- MOBILE MENU BUTTON -->
-        <button id="menuBtn" class="mobile-menu-btn lg:hidden">
-          <i data-lucide="menu" class="w-5 h-5"></i>
-        </button>
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-xl border-b border-[#e5e5ea]">
+      <div class="max-w-[1080px] mx-auto px-6 py-5 flex flex-col gap-4" id="mobile-menu-items"></div>
+    </div>
+  </nav>
+
+  <section class="pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-36">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-8">
+      <p class="section-label mb-6" id="hero-subtitle"></p>
+      <h1 id="hero-name" class="text-[44px] sm:text-[56px] lg:text-[72px] font-semibold leading-[1.05] tracking-tight max-w-3xl mb-6"></h1>
+      <p id="hero-summary" class="text-lg sm:text-xl text-[#6e6e73] leading-relaxed max-w-2xl mb-10"></p>
+      <div id="hero-buttons" class="flex flex-wrap gap-4 mb-4"></div>
+      <p id="hero-ats-note" class="ats-note mb-10"></p>
+      <div id="hero-meta" class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-[#86868b]"></div>
+    </div>
+  </section>
+
+  <section class="pb-20 sm:pb-28">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-8">
+      <div id="metrics-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-[#e5e5ea] rounded-2xl overflow-hidden"></div>
+    </div>
+  </section>
+
+  <section id="about" class="pb-24 sm:pb-32">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-8">
+      <p class="section-label mb-12">About</p>
+      <div id="about-grid" class="grid md:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <section id="experience" class="pb-24 sm:pb-32">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-8">
+      <p class="section-label mb-12">Experience</p>
+      <div id="experience-list" class="space-y-12"></div>
+    </div>
+  </section>
+
+  <section id="education" class="pb-24 sm:pb-32">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-8">
+      <p class="section-label mb-12">Education</p>
+      <div id="education-list"></div>
+    </div>
+  </section>
+
+  <section id="skills" class="pb-24 sm:pb-32">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-8">
+      <p class="section-label mb-12">Skills &amp; Tools</p>
+      <div id="skills-list" class="space-y-10"></div>
+    </div>
+  </section>
+
+  <section id="certifications" class="pb-24 sm:pb-32">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-8">
+      <p class="section-label mb-12">Certification</p>
+      <div id="certs-list"></div>
+    </div>
+  </section>
+
+  <section id="activities" class="pb-24 sm:pb-32">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-8">
+      <p class="section-label mb-12">CTF &amp; Extracurricular</p>
+      <div id="activities-grid" class="grid sm:grid-cols-2 gap-6"></div>
+    </div>
+  </section>
+
+  <section id="languages" class="pb-24 sm:pb-32">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-8">
+      <p class="section-label mb-12">Languages</p>
+      <div id="languages-grid" class="grid grid-cols-3 gap-6 max-w-md"></div>
+    </div>
+  </section>
+
+  <section id="download" class="pb-24 sm:pb-32">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-8">
+      <div class="bg-[#1d1d1f] rounded-[24px] p-8 sm:p-16 text-center">
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-white mb-4">Get my resume</h2>
+        <p id="cta-subtitle" class="text-[#86868b] text-lg max-w-lg mx-auto mb-10"></p>
+        <div id="cta-buttons" class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"></div>
+        <p class="text-[#6e6e73] text-xs max-w-md mx-auto mb-8">ATS version opens a designed resume preview — PDF, TXT, or copy to clipboard</p>
+        <div id="cta-links" class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[#6e6e73]"></div>
       </div>
-      <!-- MOBILE NAV -->
-      <div id="mobileNav" class="hidden mt-4 max-w-sm mx-auto">
-        <div id="mobileNavItems" class="mobile-nav-panel flex flex-col gap-2 p-3"></div>
+    </div>
+  </section>
+
+  <footer class="pb-8">
+    <div class="max-w-[1080px] mx-auto px-6 lg:px-8">
+      <div class="border-t border-[#e5e5ea] pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p id="footer-text" class="text-xs text-[#86868b]"></p>
+        <div id="footer-icons" class="flex items-center gap-4"></div>
       </div>
-    </nav>
-    <!-- MAIN -->
-    <main class="relative z-10 pt-44 md:pt-48">
-      <!-- HERO -->
-      <section id="home" class="min-h-screen flex justify-center">
-        <div class="container-main">
-          <div class="fade-up">
-            <p class="eyebrow text-sm font-black uppercase text-pink-500 mb-8"> Cybersecurity Risk Analyst </p>
-            <h1 class="hero-title mb-10"> Marianne <br />
-              <span class="gradient-text"> Wong </span>
-            </h1>
-            <p class="max-w-4xl text-lg sm:text-xl leading-relaxed text-secondary mb-14"> Bridging security, governance, and business needs </p>
-            <!-- BUTTONS -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 xl:flex gap-4 mb-14">
-              <a href="mailto:marianne_wong@protonmail.com" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
-                <i data-lucide="mail" class="w-5 h-5 text-pink-500"></i> Email </a>
-              <a href="https://wa.me/60192345442" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
-                <i data-lucide="phone" class="w-5 h-5 text-pink-500"></i> WhatsApp </a>
-              <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
-                <i data-lucide="contact" class="w-5 h-5 text-pink-500"></i> LinkedIn </a>
-              <a href="https://tryhackme.com/p/honeydonkey" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
-                <i data-lucide="laptop" class="w-5 h-5 text-pink-500"></i> TryHackMe </a>
-              <a href="https://profile.hackthebox.com/profile/019e0311-f857-703a-a1aa-b18288684ab7" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
-                <i data-lucide="shield" class="w-5 h-5 text-pink-500"></i> Hack The Box </a>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-              <a href="https://flowcv.com/resume/2mofja4dwmne" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
-                <i data-lucide="download" class="w-5 h-5 text-pink-500"></i> Resume PDF </a>
-              <button id="shareBtn" class="glass-button px-6 py-3 text-sm font-bold text-primary flex items-center gap-3">
-                <i data-lucide="share-2" class="w-5 h-5 text-fuchsia-500"></i>
-                <span id="shareText"> Share Portfolio </span>
-              </button>
-            </div>
-            <!-- SUMMARY CARD -->
-            <div class="summary-card mt-14 px-9 py-10 sm:px-14 sm:py-14">
-              <div class="flex items-center gap-5 mb-7">
-                <div class="summary-icon">
-                  <i data-lucide="sparkles" class="w-5 h-5 text-pink-500"></i>
-                </div>
-                <div>
-                  <p class="text-sm uppercase tracking-[0.28em]
-               text-pink-500 font-black"> Profile </p>
-                </div>
-              </div>
-              <div class="max-w-[980px] pl-[78px] sm:pl-[84px]">
-                <p class="text-[1.08rem] sm:text-[1.24rem]
-         leading-[1.8rem]
-         tracking-[-0.015em]
-         font-medium
-         text-primary"> Cybersecurity Risk Analyst with 3+ years of experience across GRC, third-party risk management, security awareness, and security operations support. <br>
-                  <br> Experienced in vendor security assessments, regulatory compliance aligned with PCI DSS and DORA, and threat intelligence analysis. <br>
-                  <br> Demonstrated success improving phishing resilience by <span class="font-extrabold text-pink-500 text-[1.18em]"> 40% </span> through enterprise security awareness campaigns.
-                </p>
-              </div>
-            </div>
-            <!-- EXPERIENCE -->
-            <section id="experience" class="section-spacing">
-              <div class="container-main">
-                <div class="flex items-center gap-5 mb-12">
-                  <div class="icon-wrap">
-                    <i data-lucide="briefcase" class="w-5 h-5 text-fuchsia-500"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Career </p>
-                    <h2 class="text-3xl font-black section-title"> EXPERIENCE </h2>
-                  </div>
-                </div>
-                <div id="experienceList" class="space-y-7"></div>
-              </div>
-            </section>
-            <!-- SKILLS -->
-            <section id="skills" class="section-spacing">
-              <div class="container-main">
-                <div class="flex items-center gap-5 mb-12">
-                  <div class="icon-wrap">
-                    <i data-lucide="zap" class="w-5 h-5 text-pink-500"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Expertise </p>
-                    <h2 class="text-3xl font-black section-title"> SKILLS </h2>
-                  </div>
-                </div>
-                <div id="skillsList" class="flex flex-wrap gap-4"></div>
-              </div>
-            </section>
-            <!-- EDUCATION -->
-            <section id="education" class="section-spacing">
-              <div class="container-main">
-                <div class="flex items-center gap-5 mb-12">
-                  <div class="icon-wrap">
-                    <i data-lucide="graduation-cap" class="w-5 h-5 text-fuchsia-500"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Academic </p>
-                    <h2 class="text-3xl font-black section-title"> EDUCATION </h2>
-                  </div>
-                </div>
-                <div class="glass glass-hover p-7 sm:p-9">
-                  <div class="flex flex-col md:flex-row md:items-start gap-7">
-                    <div class="icon-wrap shrink-0">
-                      <i data-lucide="book-open" class="w-6 h-6 text-pink-500"></i>
-                    </div>
-                    <div>
-                      <h3 class="text-3xl font-black leading-tight"> Bachelor of Science (Honours) in Cybersecurity </h3>
-                      <p class="mt-5 text-lg font-bold text-pink-500"> Asia Pacific Institute of Technology (APIIT) </p>
-                      <div class="divider my-6"></div>
-                      <p class="text-muted text-lg"> May 2019 – Apr 2022 · First Class Honours · CGPA 3.7 </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <!-- CERTIFICATIONS -->
-            <section id="certifications" class="section-spacing">
-              <div class="container-main">
-                <div class="flex items-center gap-5 mb-12">
-                  <div class="icon-wrap">
-                    <i data-lucide="badge-check" class="w-5 h-5 text-pink-500"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Credentials </p>
-                    <h2 class="text-3xl font-black section-title"> CERTIFICATIONS </h2>
-                  </div>
-                </div>
-                <div class="glass glass-hover p-7 sm:p-9">
-                  <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
-                    <div class="flex items-start gap-7">
-                      <div class="icon-wrap shrink-0">
-                        <i data-lucide="shield-check" class="w-6 h-6 text-fuchsia-500"></i>
-                      </div>
-                      <div>
-                        <h3 class="text-3xl font-black"> CompTIA Security+ </h3>
-                        <p class="mt-4 text-lg font-semibold text-pink-500"> CompTIA </p>
-                        <p class="mt-4 text-muted text-lg"> Issued Feb 2026 · Expires Feb 2029 </p>
-                        <div class="divider my-6"></div>
-                        <p class="text-lg leading-relaxed text-secondary max-w-3xl"> Validates baseline cybersecurity skills including threat management, cryptography, identity management, network security, and risk mitigation. </p>
-                      </div>
-                    </div>
-                    <a href="https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 h-fit text-sm font-black text-primary flex items-center gap-3">
-                      <i data-lucide="external-link" class="w-5 h-5 text-pink-500"></i> Verify Certification </a>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <!-- ACHIEVEMENTS -->
-            <section id="achievements" class="section-spacing">
-              <div class="container-main">
-                <div class="flex items-center gap-5 mb-12">
-                  <div class="icon-wrap">
-                    <i data-lucide="trophy" class="w-5 h-5 text-fuchsia-500"></i>
-                  </div>
-                  <div>
-                    <p class="text-sm uppercase tracking-[0.25em] text-pink-500 font-black mb-2"> Recognition </p>
-                    <h2 class="text-3xl font-black section-title"> ACHIEVEMENTS </h2>
-                  </div>
-                </div>
-                <div id="achievementsGrid" class="grid lg:grid-cols-2 gap-8"></div>
-              </div>
-            </section>
-            <!-- CONTACT -->
-            <section id="contact" class="section-spacing">
-              <div class="container-main">
-                <div class="glass p-14 text-center">
-                  <p class="text-sm uppercase tracking-[0.35em] text-pink-500 font-black mb-6"> Let's Collaborate </p>
-                  <h2 class="text-5xl font-black mb-8"> Ready To Build <span class="gradient-text"> Secure Systems </span>
-                  </h2>
-                  <p class="max-w-3xl mx-auto text-xl leading-relaxed text-secondary mb-12"> Open to cybersecurity risk, GRC, vendor security, compliance operations, and security intelligence opportunities. </p>
-                  <div class="flex flex-wrap justify-center gap-5">
-                    <a href="mailto:marianne_wong@protonmail.com" class="glass-button px-6 py-3 text-sm font-black text-primary flex items-center gap-3">
-                      <i data-lucide="mail" class="w-5 h-5 text-pink-500"></i> Email me </a>
-                    <a href="https://www.linkedin.com/in/mwhm/" target="_blank" rel="noreferrer" class="glass-button px-6 py-3 text-sm font-black text-primary flex items-center gap-3">
-                      <i data-lucide="contact" class="w-5 h-5 text-fuchsia-500"></i> LinkedIn </a>
-                  </div>
-                </div>
-              </div>
-            </section>
-    </main>
-    <!-- FOOTER -->
-    <footer class="relative z-10">
-      <div class="container-main">
-        <div class="glass py-7 px-8 text-center">
-          <p class="text-xs tracking-[0.35em] uppercase text-muted font-black"> MARIANNE_WONG // CYBERSECURITY_RISK_ANALYST </p>
+    </div>
+  </footer>
+
+  <!-- ATS Resume Modal -->
+  <div id="ats-modal" class="ats-overlay">
+    <div class="ats-paper-wrap">
+      <div class="ats-paper" id="ats-paper">
+        <button class="ats-close" onclick="closeATS()">&times;</button>
+        <div class="ats-toolbar">
+          <button class="ab-pdf" id="modal-pdf" onclick="pdfATS()">Download PDF</button>
+          <button class="ab-txt" id="modal-dl" onclick="dlATS()">Download TXT</button>
+          <button class="ab-cp" id="modal-cp" onclick="cpATS()">Copy Text</button>
         </div>
+        <div class="resume-page" id="resume-page"></div>
+        <div class="ats-fallback-note" id="ats-fallback-note">PDF rendered with clean text layout. For the designed version, view on desktop browser and use Save as PDF.</div>
       </div>
-    </footer>
-    <script>
-      /* =========================================
-   THEME TOGGLE
-========================================= */
-      const themeToggle = document.getElementById("themeToggle");
-      /* LOAD SAVED THEME */
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme === "dark") {
-        document.body.classList.add("dark");
-      }
-      /* TOGGLE */
-      themeToggle?.addEventListener("click", () => {
-        document.body.classList.toggle("dark");
-        const isDark = document.body.classList.contains("dark");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-        /* update icon */
-        themeToggle.innerHTML = isDark ? `
-										<i data-lucide="sun" class="w-5 h-5 text-yellow-300"></i>` : `
-										<i data-lucide="moon" class="w-5 h-5 text-pink-500"></i>`;
-        lucide.createIcons();
-      });
-      const navItems = [{
-        id: 'home',
-        label: 'Home'
-      }, {
-        id: 'experience',
-        label: 'Experience'
-      }, {
-        id: 'skills',
-        label: 'Skills'
-      }, {
-        id: 'education',
-        label: 'Education'
-      }, {
-        id: 'certifications',
-        label: 'Certifications'
-      }, {
-        id: 'achievements',
-        label: 'Achievements'
-      }];
-      const skills = ['Incident Playbooks', 'Gap Analysis', 'Security Awareness', 'Third Party Vendor Risk Assessment', 'AI Prompting', 'Threat Intelligence', 'Vendor Risk Management', 'GRC', 'PCI-DSS', 'DORA Compliance', 'Phishing Simulations', 'Incident Response', 'KnowBe4', 'Google Workspace', 'CrowdStrike', 'UpGuard', 'Windows', 'macOS', 'Kandji', 'JumpCloud', 'Microsoft 365', 'BurpSuite', 'Wireshark', 'Nmap', 'CATO', 'NordLayer', 'FortiManager', 'Linux', 'JamF', 'ClickUp', 'Certa'];
-      const experiences = [{
-        title: 'Risk Analyst',
-        company: 'Grab',
-        period: 'Dec 2025 – Present',
-        status: 'Active',
-        details: ['Conduct third-party security risk assessments evaluating vendor controls across infrastructure security, data protection, and compliance.', 'Perform due diligence reviews of vendor security documentation, including security policies, SOC reports, and compliance attestations.', 'Maintain a vendor risk dashboard to track key metrics and provide regular updates to management.', 'Identify, document, and prioritize findings from risk assessments and vendor evaluations.', 'Develop and track remediation plans for identified findings or issues, ensuring timely resolution and mitigation of risks.']
-      }, {
-        title: 'Junior Security Analyst',
-        company: 'Deriv HQ',
-        period: 'Jan 2023 – Dec 2025',
-        status: '',
-        details: ['Ensured regulatory compliance (DORA, PCI-DSS) through policy reviews, gap analyses and vendor risk assessments.', 'Spearheaded organisation-wide security awareness programs, achieving 90%+ completion and 97% participation rates.', 'Created educational materials to strengthen employee engagement.', 'Co-led offsec campaigns, reducing attack surface by 30%.', 'Investigated security incidents and developed incident response playbooks.', 'Delivered key projects including Threat Map Model, quarterly PCI-DSS scans and DORA readiness assessments.', 'Contributed to AI-powered security chatbot, reducing help desk workload by 25%.', 'Applied AI tools to automate GRC processes.', 'Analysed 200+ weekly threat intelligence feeds to identify emerging risks.']
-      }, {
-        title: 'BeSquare IT Graduate Programme',
-        company: 'Deriv HQ',
-        period: 'Jun 2022 – Dec 2022',
-        status: '',
-        details: ['Completed a nine-module program with industry experts, developing a full-stack web app in a five-member team.', 'Implemented security measures including input validation and password hashing.']
-      }, {
-        title: 'IT Project Management Intern',
-        company: 'Asian Supply Base SDN. BHD.',
-        period: 'Mar 2021 – Jun 2021',
-        status: '',
-        details: ['Partnered with cross-functional teams to design comprehensive network improvement strategies.', 'Produced detailed process flowcharts and technical documentation for upcoming projects.', 'Supported project management initiatives by participating in vendor meetings and stakeholder discussions.']
-      }];
-      const achievements = [{
-        title: 'Global Cyber Skills Benchmark CTF 2025',
-        organization: 'Global Cybersecurity Org',
-        rank: 'Rank 57/796',
-        icon: 'flag',
-        description: 'Participated with Deriv colleagues and ranked 57 out of 796 participants in an international cybersecurity competition.',
-        link: 'https://drive.google.com/file/d/1-GFO9SalKL8FN1ETDzBRgPDv2iGJ3lJv/view'
-      }, {
-        title: 'Wiz AI Security 2025',
-        organization: 'Wiz',
-        rank: 'Completed',
-        icon: 'bot',
-        description: 'Completed AI prompt injection activities, demonstrating skills in identifying and exploiting AI security vulnerabilities.',
-        link: 'https://drive.google.com/file/d/1Ifr1TRc1RqVrjvesGCW9I9kqzLFvrsDl/view'
-      }, {
-        title: 'Kaspersky CTF 2025',
-        organization: 'Kaspersky',
-        rank: 'Participant',
-        icon: 'bug',
-        description: "Participated in Kaspersky's Capture The Flag competition focusing on threat hunting.",
-        link: 'https://drive.google.com/file/d/1CSoBVBAM9bbdvSvjrvw-ltpjG8uDI-P2/view'
-      }, {
-        title: 'Girls in CTF 2024',
-        organization: 'Girls in CTF Organization',
-        rank: 'Rank 65/80',
-        icon: 'venus',
-        description: 'Competed and ranked 65 out of 80 teams, demonstrating advanced skills in Open Source Intelligence (OSINT).',
-        link: 'https://drive.google.com/file/d/1FCblOIgXGqrGZmxy2dRg-rmIWYtM1dzQ/view'
-      }];
-      /* =========================================
-   NAVIGATION
-========================================= */
-      let currentActive = 'home';
-      let manualScrolling = false;
-
-      function renderNav() {
-        const desktop = document.getElementById('desktopNav');
-        const mobile = document.getElementById('mobileNavItems');
-        desktop.innerHTML = navItems.map(item => `
-    
-										
-										<button
-      class="nav-btn nav-item"
-      data-target="${item.id}"
-    >
-											<span>${item.label}</span>
-										</button>
-  `).join('');
-        mobile.innerHTML = navItems.map(item => `
-    
-										
-										<button
-      class="nav-btn mobile-nav-item"
-      data-target="${item.id}"
-    >
-      ${item.label}
-    </button>
-  `).join('');
-        lucide.createIcons();
-      }
-      /* =========================================
-         ACTIVE NAV
-      ========================================= */
-      function setActiveNav(id) {
-        currentActive = id;
-        document.querySelectorAll('.nav-item').forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.target === id);
-        });
-        document.querySelectorAll('.mobile-nav-item').forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.target === id);
-        });
-      }
-      /* =========================================
-         SCROLL TO SECTION
-      ========================================= */
-      function scrollToSection(id) {
-        const section = document.getElementById(id);
-        if (!section) return;
-        // immediately activate clicked nav
-        setActiveNav(id);
-        // pause observer updates
-        manualScrolling = true;
-        clearTimeout(manualScrollTimeout);
-        const y = section.getBoundingClientRect().top + window.pageYOffset - 120;
-        window.scrollTo({
-          top: y,
-          behavior: 'smooth'
-        });
-        // resume observer after smooth scroll finishes
-        manualScrollTimeout = setTimeout(() => {
-          manualScrolling = false;
-        }, 900);
-        document.getElementById('mobileNav').classList.add('hidden');
-      }
-      /* =========================================
-         ACTIVE SECTION TRACKING
-      ========================================= */
-      const sections = navItems.map(item => document.getElementById(item.id)).filter(Boolean);
-      let visibleSections = new Map();
-      let manualScrollTimeout;
-      const observer = new IntersectionObserver(entries => {
-        if (manualScrolling) return;
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            visibleSections.set(entry.target.id, entry.intersectionRatio);
-          } else {
-            visibleSections.delete(entry.target.id);
-          }
-        });
-        let mostVisibleSection = currentActive;
-        let highestRatio = 0;
-        visibleSections.forEach((ratio, id) => {
-          if (ratio > highestRatio) {
-            highestRatio = ratio;
-            mostVisibleSection = id;
-          }
-        });
-        if (mostVisibleSection && mostVisibleSection !== currentActive) {
-          setActiveNav(mostVisibleSection);
-        }
-      }, {
-        threshold: [0.15, 0.3, 0.5, 0.7],
-        rootMargin: '-20% 0px -60% 0px'
-      });
-      sections.forEach(section => {
-        observer.observe(section);
-      });
-      /* =========================================
-         GLOBAL CLICK EVENTS
-      ========================================= */
-      document.addEventListener('click', async (e) => {
-        /* NAVIGATION BUTTONS */
-        const navBtn = e.target.closest('.nav-btn');
-        if (navBtn) {
-          const target = navBtn.dataset.target;
-          /* LOCK OBSERVER TEMPORARILY */
-          manualScrolling = true;
-          /* IMMEDIATE ACTIVE FEEDBACK */
-          setActiveNav(target);
-          /* SMOOTH SCROLL */
-          scrollToSection(target);
-          /* RELEASE OBSERVER */
-          setTimeout(() => {
-            manualScrolling = false;
-          }, 900);
-          return;
-        }
-        /* SCROLL BUTTONS */
-        const scrollBtn = e.target.closest('[data-scroll]');
-        if (scrollBtn) {
-          scrollToSection(scrollBtn.dataset.scroll);
-          return;
-        }
-        /* EXPERIENCE ACCORDION */
-        const expBtn = e.target.closest('.experience-toggle');
-        if (expBtn) {
-          const idx = expBtn.dataset.index;
-          const details = document.querySelector(`[data-details="${idx}"]`);
-          const chevron = document.querySelector(`[data-chevron="${idx}"]`);
-          const isVisible = details.style.display === 'block';
-          details.style.display = isVisible ? 'none' : 'block';
-          chevron.style.transform = isVisible ? 'rotate(0deg)' : 'rotate(90deg)';
-          return;
-        }
-        /* MOBILE MENU */
-        if (e.target.closest('#menuBtn')) {
-          document.getElementById('mobileNav').classList.toggle('hidden');
-          return;
-        }
-        /* SHARE */
-        if (e.target.closest('#shareBtn')) {
-          try {
-            await navigator.clipboard.writeText(window.location.href);
-            const shareText = document.getElementById('shareText');
-            shareText.textContent = 'Link Copied';
-            setTimeout(() => {
-              shareText.textContent = 'Share Portfolio';
-            }, 2200);
-          } catch (err) {
-            alert('Copy failed');
-          }
-        }
-      });
-      /* =========================================
-           render skills
-        ========================================= */
-      function renderSkills() {
-        const skillsList = document.getElementById('skillsList');
-        skillsList.innerHTML = skills.map(skill => `
-    
-										
-										<div class="chip px-5 py-3 text-sm font-bold text-primary">
-      ${skill}
     </div>
-  `).join('');
-      }
+  </div>
 
-      function renderExperiences() {
-        const experienceList = document.getElementById('experienceList');
-        if (!experienceList) return;
-        experienceList.innerHTML = experiences.map((exp, index) => `
-
-    
-										
-										<div class="glass glass-hover overflow-hidden">
-											<!-- HEADER -->
-											<button
-        class="experience-toggle w-full text-left p-8 sm:p-10 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6"
-        data-index="${index}"
-      >
-												<div class="flex items-start gap-6">
-													<div class="icon-wrap shrink-0">
-														<i
-              data-lucide="briefcase"
-              class="w-5 h-5 text-pink-500"
-            ></i>
-													</div>
-													<div>
-														<div class="flex flex-wrap items-center gap-3 mb-3">
-															<h3 class="text-2xl sm:text-3xl font-black leading-tight">
-                ${exp.title}
-              </h3>
-
-              ${
-                exp.status
-                  ? `
-                    
-															
-															<span
-  class="chip"
->
-  ACTIVE
-</span>
-                  `
-                  : ''
-              }
-
-            
-														
-														</div>
-														<p class="text-lg font-bold text-pink-500 mb-3">
-              ${exp.company}
-            </p>
-														<p class="text-muted text-base">
-              ${exp.period}
-            </p>
-													</div>
-												</div>
-												<!-- CHEVRON -->
-												<div
-          class="chevron shrink-0"
-          data-chevron="${index}"
-        >
-													<i
-            data-lucide="chevron-right"
-            class="w-6 h-6 text-pink-500"
-          ></i>
-												</div>
-											</button>
-											<!-- DETAILS -->
-											<div
-        class="experience-details px-8 sm:px-10 pb-8 sm:pb-10"
-        data-details="${index}"
-      >
-												<div class="divider mb-8"></div>
-												<ul class="space-y-4">
-
-          ${exp.details.map(detail => `
-
-            
-													
-													<li class="flex items-start gap-4 text-secondary leading-relaxed">
-														<div
-                class="mt-2 w-2 h-2 rounded-full bg-pink-400 shrink-0"
-              ></div>
-														<span>${detail}</span>
-													</li>
-
-          `).join('')}
-
-        
-												
-												</ul>
-											</div>
-										</div>
-
-  `).join('');
-        lucide.createIcons();
-      }
-
-      function renderAchievements() {
-        const achievementsGrid = document.getElementById('achievementsGrid');
-        if (!achievementsGrid) return;
-        achievementsGrid.innerHTML = achievements.map(item => `
-
-    
-										
-										<div class="glass glass-hover p-8 sm:p-10 flex flex-col h-full">
-											<!-- TOP -->
-											<div class="flex items-start gap-6 mb-6">
-												<div class="icon-wrap shrink-0">
-													<i
-            data-lucide="${item.icon}"
-            class="w-5 h-5 text-fuchsia-500"
-          ></i>
-												</div>
-												<div>
-													<h3 class="text-2xl font-black leading-tight mb-3">
-            ${item.title}
-          </h3>
-													<p class="text-pink-500 font-bold mb-2">
-            ${item.organization}
-          </p>
-													<p class="text-sm uppercase tracking-[0.2em] text-muted font-black">
-            ${item.rank}
-          </p>
-												</div>
-											</div>
-											<!-- DESCRIPTION -->
-											<p class="text-secondary leading-relaxed mb-8 flex-1">
-        ${item.description}
-      </p>
-											<!-- BUTTON -->
-											<a
-        href="${item.link}"
-        target="_blank"
-        rel="noreferrer"
-        class="glass-button px-6 py-4 text-sm font-black text-primary flex items-center justify-center gap-3"
-      >
-												<i
-          data-lucide="external-link"
-          class="w-5 h-5 text-pink-500"
-        ></i>
-
-        View Certificate
-
-      
-											
-											</a>
-										</div>
-
-  `).join('');
-        lucide.createIcons();
-      }
-      /* =========================================
-         INITIALIZE
-      ========================================= */
-      document.addEventListener('DOMContentLoaded', () => {
-        renderNav();
-        renderSkills();
-        renderExperiences();
-        renderAchievements();
-        setActiveNav('home');
-        lucide.createIcons();
-        initObserver();
-      });
-    </script>
-  </body>
-</html>
+  <script>
+    var DATA = {
+      hero: {
+        subtitle: "Cyber Risk Analyst \u2014 TPRM",
+        name: "Marianne Wong",
+        summary: "3+ years in GRC, third-party risk management, and security operations. Currently at Grab, conducting vendor security assessments across ISO 27001, SOC 2, and PCI-DSS.",
+        resumeUrl: "https://flowcv.com/resume/2mofja4dwmne",
+        resumeLabel: "View Resume",
+        atsLabel: "ATS Resume",
+        meta: [
+          { type: "status", text: "Available \u00B7 60 days notice" },
+          { type: "text", text: "Dengkil, Selangor" },
+          { type: "email", text: "marianne_wong@protonmail.com" }
+        ]
+      },
+      metrics: [
+        { value: "3+", label: "Years in GRC" },
+        { value: "40%", label: "Phishing resilience \u2191" },
+        { value: "97%", label: "Awareness participation" },
+        { value: "200+", label: "Weekly TI feeds analyzed" }
+      ],
+      about: [
+        { icon: "shield-check", title: "Third-Party Risk", description: "Vendor security assessments evaluating infrastructure, data protection, and compliance against ISO 27001, SOC 2, and PCI-DSS frameworks." },
+        { icon: "users", title: "Security Awareness", description: "Built enterprise-wide programs with KnowBe4 and Secure Code Warrior \u2014 90% completion, 97% participation, 40% phishing resilience improvement." },
+        { icon: "brain", title: "AI-Enhanced GRC", description: "Automated regulatory gap analysis and vendor risk assessments with AI. Reduced help desk load 25% through AI chatbot development." }
+      ],
+      experience: [
+        { title: "Risk Analyst", company: "Grab", location: "Petaling Jaya", period: "Dec 2025 \u2013 Present", bullets: ["Conduct third-party security risk assessments evaluating vendor controls across infrastructure security, data protection, and compliance.", "Perform due diligence reviews of vendor security documentation, including ISMS policies and compliance attestations such as ISO 27001, SOC 2, and PCI-DSS.", "Maintain a vendor risk register to track and provide regular updates to management.", "Identify, document, and prioritize findings from risk assessments and vendor evaluations.", "Develop and track remediation plans for identified findings or issues, ensuring timely resolution and mitigation of risks."] },
+        { title: "Junior Security Analyst", company: "Deriv HQ", location: "Cyberjaya", period: "Jan 2023 \u2013 Dec 2025", bullets: ["Reviewed regulatory compliance (DORA, PCI-DSS) through policy reviews, gap analyses, and vendor risk assessments.", "Spearheaded organization-wide security awareness programs, including KnowBe4 phishing simulations, Secure Code Warrior tournaments, and Cybersecurity Awareness Month, achieving 90% completion and 97% participation rates.", "Co-led offensive security campaigns (quishing, tailgating, deepfake, KYC fraud, USB drops), reducing attack surface by 30%.", "Assisted investigation of security incidents, documenting incident reports and updating incident response playbooks for SOC team.", "Delivered key projects including Threat Map Model, quarterly PCI-DSS scans through Qualys, and DORA readiness assessments.", "Gathered FAQs for team developing AI-powered security chatbot, reducing help desk workload by 25% and streamlining responses.", "Applied AI tools to automate GRC processes such as regulatory gap analysis and vendor risk assessments.", "Analyzed 200+ weekly threat intelligence feeds to identify emerging risks."] },
+        { title: "BeSquare IT Graduate Programme", company: "Deriv HQ", location: "Cyberjaya", period: "Jun 2022 \u2013 Dec 2022", bullets: ["Completed a nine-module programme (Product Design, Front-End, Mobile, Back-End, Testing, DevOps, Cybersecurity, BI, and Trading) with Deriv team.", "Developed a full-stack web application in a five-member team while serving as UI/UX designer, front-end developer, and cybersecurity engineer.", "Implemented security measures including input validation and password hashing."] },
+        { title: "IT Project Management Intern", company: "Asian Supply Base Sdn. Bhd.", location: "Labuan", period: "Mar 2021 \u2013 Jun 2021", bullets: ["Partnered with IT, procurement, and project management team to design network improvement plans.", "Supported project management initiatives by participating in vendor meetings and stakeholder discussions."] }
+      ],
+      education: [{ degree: "Bachelor of Science (Honours) in Cybersecurity", school: "Asia Pacific Institute of Technology (APIIT)", period: "May 2019 \u2013 Apr 2022", detail: "CGPA 3.7" }],
+      skills: [
+        { label: "Core Competencies", items: ["Third-Party Vendor Risk Assessment", "Gap Analysis", "Security Awareness Programs", "Incident Playbooks and Reporting", "Threat Intelligence Analysis", "DORA Compliance", "PCI-DSS", "Basic AI Prompting"] },
+        { label: "GRC and Risk Tools", items: ["MetricStreams", "UpGuard", "Qualys", "KnowBe4", "JIRA", "ClickUp"] },
+        { label: "Security and Infrastructure", items: ["CrowdStrike", "BurpSuite", "Wireshark", "Nmap", "CATO", "NordLayer", "FortiManager", "Linux"] },
+        { label: "MDM and Endpoint", items: ["Kandji", "JumpCloud", "JamF", "Microsoft 365", "Google Workspace"] },
+        { label: "AI and Automation", items: ["Google Gemini", "n8n", "Basic AI Prompting"] },
+        { label: "Practical Platforms", items: [{ label: "TryHackMe", url: "https://tryhackme.com/p/honeydonkey" }, { label: "Hack The Box", url: "https://profile.hackthebox.com/profile/019e0311-f857-703a-a1aa-b18288684ab7" }] }
+      ],
+      certifications: [{ name: "CompTIA Security+", issuer: "CompTIA", detail: "Valid through February 2029", verifyUrl: "https://www.credly.com/badges/c6a9aee8-dd04-4905-b3b9-e39ab2134414/public_url", verifyLabel: "Verify" }],
+      activities: [
+        { title: "Global Cyber Skills Benchmark CTF 2025", year: "2025", subtitle: "Operation Blackout", rank: "57 / 796", rankLabel: "Ranked 57th", progress: 92.8, link: "https://drive.google.com/file/d/1-GFO9SalKL8FN1ETDzBRgPDv2iGJ3lJv/view" },
+        { title: "Girls in CTF 2024", year: "2024", subtitle: "Women in cybersecurity competition", rank: "65 / 80", rankLabel: "Ranked 65th", progress:
